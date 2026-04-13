@@ -1135,6 +1135,9 @@
                     el.classList.remove('skeleton', 'skeleton-text');
                     el.innerHTML = html;
                     localStorage.setItem('cache_winners_html', html);
+                    
+                    // Firebaseにデータが届いたら、即座にフラグをONにする
+                    window.isWinnerUpdatedForNext = true;
                 }
             });
 
@@ -1250,8 +1253,8 @@
             const hours = now.getHours();
             const mins = now.getMinutes();
 
-            // 抽選時間（月・木の18:20以降）かどうかの判定
-            const isAfterReset = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
+            // 抽選時間（月・木の18:20以降、20:20まで）かどうかの判定
+            const isAfterReset = (day === 1 || day === 4) && (hours >= 18 && hours < 20) && (hours > 18 || mins >= 20);
 
             if (isAfterReset) {
                 // 18:20ちょうどならリセット実行
@@ -1273,6 +1276,9 @@
             const todayRound = latestId + 1;  // 今から結果が出る回
             const nextRound = latestId + 2;   // 次回の受付回
             
+            // Firebase側ですでに今日の結果が届いている（またはファイルが更新済み）なら、待機UIをスキップ
+            if (window.isWinnerUpdatedForNext) return;
+
             // UI上の回号表示を更新
             const roundEl = document.getElementById('latestRoundInfo');
             if (roundEl) roundEl.innerText = `🔮 第${nextRound}回 予想受付中`;
