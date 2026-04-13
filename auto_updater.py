@@ -124,7 +124,7 @@ def update_html():
             data.append({
                 "id": f"第{row[0]}回",
                 "date": row[1],
-                "nums": [int(row[i]) for i in range(2, 8)],
+                "numbers": [int(row[i]) for i in range(2, 8)],
                 "bonus": int(row[8]),
                 "set_ball": row[20]
             })
@@ -134,7 +134,8 @@ def update_html():
     with open(HTML_PATH, "r", encoding="utf-8") as f:
         content = f.read()
     
-    json_data = json.dumps(data, ensure_ascii=False, indent=4)
+    # 圧縮してファイルサイズを削減
+    json_data = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
     new_content = re.sub(
         r"const lotoData = \[.*?\];",
         f"const lotoData = {json_data};",
