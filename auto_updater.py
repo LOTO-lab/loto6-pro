@@ -163,10 +163,11 @@ def run_update_process():
     if not latest: return False
     
     # 既に当選データに prizes があるかチェック (完了済みの証)
-    current_winners = fetch_from_firebase("stats/winners")
-    if current_winners and current_winners.get("round") == latest["round"] and "prizes" in current_winners and current_winners.get("status") != "updating":
-        print(f"Round {latest['round']} is ALREADY updated.")
-        return True
+    # ※push失敗時のリカバリのため、一時的に常に実行するようにガードをコメントアウトします
+    # current_winners = fetch_from_firebase("stats/winners")
+    # if current_winners and current_winners.get("round") == latest["round"] and "prizes" in current_winners and current_winners.get("status") != "updating":
+    #     print(f"Round {latest['round']} is ALREADY updated.")
+    #     return True
 
     # 更新中フラグ
     update_firebase("stats/winners", {"status": "updating"}, method="patch")
