@@ -954,9 +954,6 @@
 
             let isViewingFirstLoaded = false;
             onValue(ref(db, "presence"), (snap) => {
-                // Firebaseの内部キャッシュ由来の通知をスキップ
-                if (snap.metadata && snap.metadata.fromCache) return;
-
                 if (snap.exists()) {
                     const count = Object.keys(snap.val()).length;
                     

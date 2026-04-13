@@ -160,6 +160,7 @@ def calculate_site_prizes(draw_id, win_nums, bonus_num):
 
 def update_local_files(result):
     try:
+        # UTF-8 with BOM (utf-8-sig) を使用してWindows環境での文字化けを防止
         if os.path.exists(CSV_PATH):
             rows = []
             with open(CSV_PATH, "r", encoding="utf-8-sig") as f:
@@ -177,18 +178,21 @@ def update_local_files(result):
             next(reader)
             for row in reader:
                 if len(row) < 21: continue
+                # 文字化け防止のため Unicode エスケープを使用
+                # 第 = \u7b2c, 回 = \u56de
+                round_label = f"\u7b2c{row[0]}\u56de"
                 data.append({
-                    "id": f"第{row[0]}回", "date": row[1],
+                    "id": round_label, "date": row[1],
                     "numbers": [int(row[i]) for i in range(2, 8)],
                     "bonus": int(row[8]), "set_ball": row[20],
                     "sum": sum([int(row[i]) for i in range(2, 8)])
                 })
         data.reverse()
-        with open(JSON_DATA_PATH, "w", encoding="utf-8") as f:
+        with open(JSON_DATA_PATH, "w", encoding="utf-8-sig") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
-        with open(JS_DATA_PATH, "w", encoding="utf-8") as f:
+        with open(JS_DATA_PATH, "w", encoding="utf-8-sig") as f:
             f.write(f"const lotoData = {json.dumps(data, ensure_ascii=False)};")
-        print("Local files updated.")
+        print("Local files updated (UTF-8-SIG).")
     except Exception as e: print(f"File Update Error: {e}")
 
 def run_update_process():
