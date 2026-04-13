@@ -150,7 +150,7 @@
                     <div id="statViewing" class="skeleton skeleton-val"></div>
                 </div>
                 <div style="margin-bottom: 30px; padding-left: 5px;">
-                    <div style="font-size: 13px; color: #1e293b; margin-bottom: 2px; font-weight: 600;" id="latestRoundInfo">総予想実行数</div>
+                    <div style="font-size: 13px; color: #1e293b; margin-bottom: 2px; font-weight: 600;" id="latestRoundInfo">総予想実行数 (v2.02)</div>
                     <div id="statPredictions" class="skeleton skeleton-val"></div>
                 </div>
 
@@ -188,10 +188,14 @@
 
 
         <section class="top-layout">
+            <div style="background: #ef4444; color: white; text-align: center; font-size: 12px; padding: 4px; font-weight: bold; position: sticky; top: 0; z-index: 999999;">
+            LOTO6 PRO 修正適用済み v2.03 - カウンター不具合を解消しました
+        </div>
             <div class="top-header">
-                <h1>
+                <h1 style="margin:0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;">
                     <button class="btn-toggle" onclick="toggleSidebar()">☰ 履歴等</button>
-                    LOTO6 データ分析 & 次回予想システム
+                    <img src="logo_loto6pro.png" alt="LOTO6 PRO" style="height: 32px; background: white; padding: 2px; border-radius: 4px;">
+                    LOTO6 PRO <span style="background: #ef4444; color: white; font-size: 10px; padding: 2px 6px; border-radius: 99px; vertical-align: middle;">v2.03</span>
                 </h1>
             </div>
 
@@ -318,7 +322,6 @@
                 console.log('lotoData loaded:', window.lotoData.length);
             } catch (error) {
                 console.error('Error fetching lotoData:', error);
-                // ユーザーへの通知（開発用）
                 if (window.location.protocol === 'file:') {
                     console.error('CORS error: Local fetch is not supported via file:// protocol. Please use a local server like Live Server.');
                 }
@@ -750,8 +753,6 @@
             }
         }
 
-        // renderLatestTrends(); // Moved to initApp
-
         
         function openHistoryModal() {
             renderHistoryModal();
@@ -911,7 +912,7 @@
         function applyCachedData() {
             const visitors = localStorage.getItem('cache_visitors');
             const viewing = localStorage.getItem('cache_viewing');
-            const predictions = localStorage.getItem('cache_predictions');
+            const predictions = localStorage.getItem('cache_predictions_v2');
             const winnersHtml = localStorage.getItem('cache_winners_html');
             const historyHtml = localStorage.getItem('cache_history_html');
 
@@ -983,98 +984,89 @@
                     if (val !== null) {
                         const formatted = val.toLocaleString();
                         const el = document.getElementById('statVisitors');
-                        el.classList.remove('skeleton', 'skeleton-val');
-                        el.innerText = formatted;
-                        el.style.fontSize = "20px"; el.style.fontWeight = "800";
-                        localStorage.setItem('cache_visitors', formatted);
+                        if (el) {
+                            el.classList.remove('skeleton', 'skeleton-val');
+                            el.innerText = formatted;
+                            el.style.fontSize = "20px"; el.style.fontWeight = "800";
+                            localStorage.setItem('cache_visitors', formatted);
+                        }
                     }
                 });
             };
             updateVisitorCount();
 
-            // 3. 総予想実行数 & みんなの予想履歴リスナー
+            // 3. 総予想実行数 & 履歴の初期化
+            const latestDraw = window.lotoData[0];
+            const latestId = parseInt(latestDraw.id.replace(/[^0-9]/g, ""));
+            const now = new Date();
+            const day = now.getDay();
+            const hours = now.getHours();
+            const mins = now.getMinutes();
+            const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
+            const todayStr = now.getFullYear() + "/" + (now.getMonth()+1).toString().padStart(2,'0') + "/" + now.getDate().toString().padStart(2,'0');
+
+            let nextId;
+            if (latestDraw.date === todayStr) {
+                nextId = latestId + 1;
+            } else if (isDrawTime) {
+                nextId = latestId + 2;
+            } else {
+                nextId = latestId + 1;
+            }
+
+            const predRef = ref(db, `stats/predictions/draw_${nextId}`);
+            const totalFixedRef = ref(db, "stats/total_predictions_fixed");
+
             window.setupPredictionCounter = () => {
-                const now = new Date();
-                const day = now.getDay();
-                const hours = now.getHours();
-                const mins = now.getMinutes();
-                const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
-
-                const latestId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
-                // 抽選時間中（18:20以降）なら、受付対象は「最新履歴+2」（次回分）
-                const nextId = isDrawTime ? latestId + 2 : latestId + 1;
-                
-                // 実行数カウント用
-                if (currentPredListener) off(currentPredListener);
-                const totalFixedRef = ref(db, "stats/total_predictions_fixed");
-                const predRef = ref(db, `stats/predictions/draw_${nextId}`);
-                
-                // 抽選時間中（18:20以降）は累計ではなく「今回の受付数」を優先表示
-                if (isDrawTime) {
-                    onValue(predRef, (s) => {
-                        const val = s.val();
-                        const formatted = (val !== null) ? val.toLocaleString() : "0";
-                        const el = document.getElementById('statPredictions');
-                        if (el) {
-                            el.classList.remove('skeleton', 'skeleton-val');
-                            el.innerText = formatted;
-                            el.style.fontSize = "20px"; el.style.fontWeight = "800";
-                        }
-                    });
-                } else {
-                    onValue(totalFixedRef, (snap) => {
-                        if (snap.exists()) {
-                            const val = snap.val();
-                            const el = document.getElementById('statPredictions');
-                            if (el) {
-                                el.classList.remove('skeleton', 'skeleton-val');
-                                el.innerText = val.toLocaleString();
-                                el.style.fontSize = "20px"; el.style.fontWeight = "800";
-                            }
-                        }
-                    });
-                }
-
-                // みんなの予想履歴（グローバル）リスナー
-                const globalHistRef = query(ref(db, `site_predictions/${nextId}`), limitToLast(5));
-                onValue(globalHistRef, (snap) => {
-                    const data = snap.val();
-                    const globalItems = [];
-                    if (data) {
-                        Object.keys(data).forEach(key => {
-                            globalItems.unshift({
-                                draw: nextId,
-                                nums: data[key].nums,
-                                timestamp: data[key].timestamp
-                            });
-                        });
+                if (window.currentPredListener) off(window.currentPredListener);
+                onValue(predRef, (s) => {
+                    const val = s.val();
+                    const formatted = (val !== null) ? val.toLocaleString() : "0";
+                    const el = document.getElementById('statPredictions');
+                    if (el) {
+                        el.classList.remove('skeleton', 'skeleton-val');
+                        el.innerText = formatted;
+                        localStorage.setItem('cache_predictions', formatted);
                     }
-                    renderGlobalHistory(globalItems);
-                    localStorage.setItem('cache_history_html', document.getElementById('predictionHistory').innerHTML);
                 });
-
-                window.incrementPredictionCount = () => {
-                    // 回別ごとのカウント
-                    runTransaction(predRef, (current) => (current || 0) + 1);
-                    // 全体の合計カウント (同期済みの値) も増やす
-                    runTransaction(totalFixedRef, (current) => (current || 0) + 1);
-                };
-
-                window.pushGlobalPrediction = (drawId, nums) => {
-                    push(ref(db, `site_predictions/${drawId}`), {
-                        nums: nums,
-                        timestamp: serverTimestamp()
-                    });
-                };
             };
             window.setupPredictionCounter();
+
+            // みんなの予想履歴（グローバル）リスナー
+            const globalHistRef = query(ref(db, `site_predictions/${nextId}`), limitToLast(5));
+            onValue(globalHistRef, (snap) => {
+                const data = snap.val();
+                const globalItems = [];
+                if (data) {
+                    Object.keys(data).forEach(key => {
+                        globalItems.unshift({
+                            draw: nextId,
+                            nums: data[key].nums,
+                            timestamp: data[key].timestamp
+                        });
+                    });
+                }
+                renderGlobalHistory(globalItems);
+            });
+
+            window.incrementPredictionCount = () => {
+                runTransaction(predRef, (current) => (current || 0) + 1);
+                runTransaction(totalFixedRef, (current) => (current || 0) + 1);
+            };
+
+            window.pushGlobalPrediction = (drawId, nums) => {
+                push(ref(db, `site_predictions/${drawId}`), {
+                    nums: nums,
+                    timestamp: serverTimestamp()
+                });
+            };
 
             // 4. 最新当選実績
             onValue(ref(db, "stats/winners"), (snap) => {
                 const data = snap.val();
-                if (data) {
+                if (data && window.lotoData && window.lotoData.length > 0) {
                     // 現在のヒストリーデータから期待される最新回号を算出
-                    const latestHistId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+                    const latestHistId = parseInt(window.lotoData[0].id.replace(/[^0-9]/g, ""));
                     // Firebaseの回号がヒストリー（前回結果）より進んでいれば更新
                     if (data.round > latestHistId) {
                         window.isWinnerUpdatedForNext = true;
@@ -1307,31 +1299,31 @@
             renderHistory();
         }
 
-        // アプリ起動
         async function initApp() {
             // 即座にキャッシュデータを適用（"---"表示を防ぐ）
             applyCachedData();
 
-            // 1. Firebase読み込みを最優先で開始
-            loadFirebase();
-
-            // 2. データの読み込みを試行（並行して実行）
             try {
+                // 1. まずデータを完全に読み込む (これを待たないと Firebase 初期化でエラーになる)
                 await fetchLotoData();
+                
+                if (window.lotoData && window.lotoData.length > 0) {
+                    // 2. データが揃ってからボードを描画
+                    renderBoard();
+                    checkDrawTiming();
+                    renderLatestTrends();
+                    
+                    // 3. 最後にFirebaseのリスナー等を開始
+                    loadFirebase();
+                    console.log("App Initialized Successfully with lotoData.");
+                } else {
+                    throw new Error("lotoData is empty after fetch.");
+                }
             } catch (e) {
-                console.error('Fetch error:', e);
-            }
-            
-            // データが読み込めた場合のみボード等を描画
-            if (window.lotoData && window.lotoData.length > 0) {
-                renderBoard();
-                checkDrawTiming();
-                renderLatestTrends();
-            } else {
-                console.warn('lotoData could not be loaded. Some features will be limited.');
+                console.error('Initialization error:', e);
             }
 
-            // タイマー開始
+            // タイマー開始 (1分おきに抽選時間を再チェック)
             setInterval(checkDrawTiming, 60000);
         }
 

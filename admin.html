@@ -548,34 +548,33 @@
                 try {
                     const lotoRes = await fetch('lotoData.json');
                     const ld = await lotoRes.json();
-                    const latestId = parseInt(ld[0].id.replace(/[^0-9]/g, ""));
+                    const latestDraw = ld[0];
+                    const latestId = parseInt(latestDraw.id.replace(/[^0-9]/g, ""));
                     
                     const now = new Date();
                     const day = now.getDay();
                     const hours = now.getHours();
                     const mins = now.getMinutes();
                     const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
-                    
-                    const nextId = isDrawTime ? latestId + 2 : latestId + 1;
+                    const todayStr = now.getFullYear() + "/" + (now.getMonth()+1).toString().padStart(2,'0') + "/" + now.getDate().toString().padStart(2,'0');
+
+                    let nextId;
+                    if (latestDraw.date === todayStr) {
+                        nextId = latestId + 1;
+                    } else if (isDrawTime) {
+                        nextId = latestId + 2;
+                    } else {
+                        nextId = latestId + 1;
+                    }
+
                     const labelEl = document.getElementById('label-predictions');
                     const statEl = document.getElementById('stat-predictions');
 
-                    if (isDrawTime) {
-                        labelEl.innerText = `🔮 第${nextId}回 予想実行数`;
-                        onValue(ref(db, `stats/predictions/draw_${nextId}`), (snap) => {
-                            const val = snap.val() || 0;
-                            statEl.innerText = val.toLocaleString();
-                        });
-                    } else {
-                        labelEl.innerText = "🚀 総予想実行数 (累計)";
-                        const snapFixed = await get(ref(db, "stats/total_predictions_fixed"));
-                        if (snapFixed.exists()) {
-                            statEl.innerText = snapFixed.val().toLocaleString();
-                        }
-                        onValue(ref(db, "stats/total_predictions_fixed"), (snap) => {
-                            if (snap.exists()) statEl.innerText = snap.val().toLocaleString();
-                        });
-                    }
+                    labelEl.innerText = `🔮 第${nextId}回 予想実行数`;
+                    onValue(ref(db, `stats/predictions/draw_${nextId}`), (snap) => {
+                        const val = snap.val() || 0;
+                        statEl.innerText = val.toLocaleString();
+                    });
                 } catch (err) {
                     console.error("Total Prediction Load Error:", err);
                     document.getElementById('stat-predictions').innerText = "error";
