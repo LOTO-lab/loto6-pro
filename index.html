@@ -312,7 +312,7 @@
 
         async function fetchLotoData() {
             try {
-                const response = await fetch('lotoData.json');
+                const response = await fetch('lotoData.json?' + new Date().getTime());
                 if (!response.ok) throw new Error('Failed to load lotoData.json');
                 window.lotoData = await response.json();
                 console.log('lotoData loaded:', window.lotoData.length);
