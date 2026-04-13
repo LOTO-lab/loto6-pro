@@ -61,36 +61,69 @@ def scrape_latest_result():
         
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        h3_title = soup.find("h3", string=re.compile("ロト６抽選結果速報"))
+        # ロト6専用のエリアを特定
+        main_content = soup.find("div", id="main") or soup.find("article") or soup
+        h3_title = main_content.find("h3", string=re.compile(r"第\d+回ロト６(抽選結果|当選番号)速報"))
         if not h3_title:
-            for h3 in soup.find_all("h3"):
-                if "ロト６抽選結果速報" in h3.get_text():
+            for h3 in main_content.find_all("h3"):
+                if "ロト６" in h3.get_text() and "速報" in h3.get_text():
                     h3_title = h3
                     break
-        if not h3_title: return None
+        
+        if not h3_title:
+            print("Target H3 title not found.")
+            return None
+        
+        # 回号と日付の取得 (より厳密に)
+        round_match = re.search(r"第(\d+)回", h3_title.get_text())
+        if not round_match: return None
+        round_id = round_match.group(1)
         
         info_table = h3_title.find_next("table")
-        info_tds = [td.get_text().strip() for td in info_table.find_all("td")]
-        round_id = re.search(r"(\d+)", info_tds[0]).group(1)
-        date_match = re.search(r"(\d{4})年(\d{2})月(\d{2})日", info_tds[1])
-        date_str = f"{date_match.group(1)}/{date_match.group(2)}/{date_match.group(3)}"
-        set_ball = info_tds[3]
+        rows = info_table.find_all("tr")
         
-        num_table = info_table.find_next("table")
-        num_rows = num_table.find_all("tr")
-        data_tds = [td.get_text().strip() for td in num_rows[-1].find_all("td")]
-        win_nums = [int(n) for n in data_tds[:6]]
-        bonus_num = int(data_tds[-1])
+        # 日付とセット球の取得
+        date_str = ""
+        set_ball = ""
+        for row in rows:
+            text = row.get_text()
+            if "抽選日" in text:
+                date_match = re.search(r"(\d{4})年(\d{2})月(\d{2})日", text)
+                if date_match:
+                    date_str = f"{date_match.group(1)}/{date_match.group(2)}/{date_match.group(3)}"
+            if "セット球" in text:
+                set_match = re.search(r"([A-J])セット", text)
+                if set_match: set_ball = set_match.group(1)
         
+        # 当選番号の取得 (専用テーブルを探す)
+        num_table = h3_title.find_next("table", class_="winning-numbers") or info_table.find_next("table")
+        # 本数字(6個)とボーナスを取得
+        win_nums = []
+        bonus_num = None
+        
+        tds = num_table.find_all("td")
+        raw_nums = []
+        for td in tds:
+            val = td.get_text().strip()
+            if val.isdigit():
+                raw_nums.append(int(val))
+        
+        if len(raw_nums) >= 7:
+            # sougaku.comの構造: 本数字6個、その後にボーナス
+            win_nums = sorted(raw_nums[:6])
+            bonus_num = raw_nums[6]
+        else:
+            print(f"Numbers not complete: {raw_nums}")
+            return None
+
+        # キャリーオーバー
         carry_over = "0"
-        all_tds = soup.find_all("td")
-        for i, td in enumerate(all_tds):
-            if "キャリーオーバー" in td.get_text():
-                next_td = all_tds[i+1] if i+1 < len(all_tds) else None
-                if next_td:
-                    val = next_td.get_text().replace(",", "").replace("円", "").strip()
-                    if val.isdigit(): carry_over = val
-                    break
+        carry_section = soup.find(string=re.compile("キャリーオーバー"))
+        if carry_section:
+            parent = carry_section.find_parent(["td", "tr", "div"])
+            val_match = re.search(r"([\d,]+)円", parent.get_text()) if parent else None
+            if val_match:
+                carry_over = val_match.group(1).replace(",", "")
 
         return {
             "round": int(round_id),
