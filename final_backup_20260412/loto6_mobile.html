@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LOTO6 PRO Mobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --radius: 16px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0; padding: 0; line-height: 1.5; overflow-x: hidden;
+        }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 20px 15px 100px; }
+
+        header {
+            background: var(--card-bg); padding: 15px 20px; border-bottom: 1px solid #e2e8f0;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 1000;
+        }
+
+        header h1 { font-family: 'Outfit', sans-serif; font-size: 20px; margin: 0; font-weight: 700; color: var(--primary); letter-spacing: -0.5px; }
+
+        .stats-badges { display: flex; gap: 8px; }
+        .badge { font-size: 10px; padding: 2px 8px; border-radius: 999px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+        .badge-viewing { background: #fee2e2; color: #ef4444; }
+        .badge-access { background: #dcfce7; color: #15803d; }
+
+        .card { background: var(--card-bg); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid #f1f5f9; }
+        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: #334155; }
+
+        .draw-id { background: #f1f5f9; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 700; color: #475569; }
+        .draw-date { font-size: 12px; color: var(--text-muted); }
+
+        .ball-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+        .ball {
+            width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 800; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2); font-family: 'Outfit', sans-serif;
+        }
+        .ball-bonus { background: white !important; color: #1e293b !important; border: 2px solid #1e293b; box-shadow: none; }
+
+        .col-1 { background: #10b981; } .col-2 { background: #06b6d4; }
+        .col-3 { background: #f59e0b; } .col-4 { background: #84cc16; }
+        .col-5 { background: #22c55e; } .col-6 { background: #eab308; }
+        .col-7 { background: #a855f7; } .col-8 { background: #0d9488; }
+        .col-9 { background: #3b82f6; } .col-0 { background: #64748b; }
+
+        .latest-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 10px; border-top: 1px dashed #e2e8f0; font-size: 13px; }
+        .meta-value { color: var(--text-main); font-weight: 700; }
+
+        .control-group { margin-bottom: 15px; }
+        .control-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #475569; }
+        .range-inputs { display: flex; align-items: center; gap: 10px; }
+
+        input[type="number"], select {
+            width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;
+            font-size: 15px; background: #fff; transition: 0.2s;
+        }
+
+        .btn {
+            width: 100%; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 700; border: none;
+            cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-predict { background: var(--primary); color: white; margin-top: 10px; }
+        .btn-predict:active { transform: scale(0.98); }
+        .btn-outline { background: #fff; border: 1px solid #cbd5e1; color: #475569; padding: 10px; font-size: 14px; margin-top: 5px; }
+
+        .theory-toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .theory-btn {
+            background: #fff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px;
+            font-size: 12px; font-weight: 600; color: #64748b; cursor: pointer;
+        }
+        .theory-btn.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+
+        .prediction-box {
+            background: linear-gradient(to bottom, #f0f7ff, #ffffff); border: 1px solid #dbeafe;
+            padding: 20px; border-radius: 16px; margin-top: 5px; display: none;
+        }
+        .logic-explanation { font-size: 12px; color: #475569; margin-top: 15px; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; }
+
+        /* Modal / Selection Grid */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
+            z-index: 2000; display: none; align-items: flex-end;
+        }
+        .modal-content {
+            background: white; width: 100%; border-radius: 24px 24px 0 0;
+            padding: 25px 20px; animation: slideUp 0.3s ease-out; max-height: 90vh; overflow-y: auto;
+        }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        .num-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 15px; }
+        .num-btn {
+            aspect-ratio: 1; border-radius: 8px; border: 1px solid #e2e8f0; background: #f8fafc;
+            display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700;
+            color: #475569; transition: 0.2s;
+        }
+        .num-btn.fixed { background: var(--primary); color: white; border-color: var(--primary); }
+        .num-btn.eliminated { background: #fee2e2; color: #ef4444; border-color: #fecaca; }
+
+        .selection-summary { font-size: 13px; color: var(--text-muted); margin-top: 10px; background: #f1f5f9; padding: 10px; border-radius: 8px; min-height: 40px; }
+
+        /* Navigation */
+        .section-nav { display: flex; gap: 15px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        .section-nav::-webkit-scrollbar { display: none; }
+        .section-nav a { flex-shrink: 0; font-size: 13px; font-weight: 700; color: var(--text-muted); text-decoration: none; padding: 6px 16px; background: #fff; border-radius: 99px; border: 1px solid #e2e8f0; }
+        .section-nav a.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 3000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <div style="margin-top:15px; font-weight:700; font-family:'Outfit';">LOTO6 PRO Mobile</div>
+    </div>
+
+    <!-- Number Selection Modal -->
+    <div id="numModal" class="modal-overlay">
+        <div class="modal-content">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 id="modalTitle" style="margin:0; font-size:18px;">数字を選択</h3>
+                <button onclick="closeModal()" style="border:none; background:none; font-size:24px; color:#94a3b8;">&times;</button>
+            </div>
+            <p id="modalDesc" style="font-size:12px; color:var(--text-muted); margin:5px 0 15px;"></p>
+            <div class="num-grid" id="modalGrid"></div>
+            <div class="selection-summary" id="modalSummary"></div>
+            <button class="btn btn-predict" onclick="closeModal()" style="margin-top:20px;">決定</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>LOTO6 PRO</h1>
+        <div class="stats-badges">
+            <div class="badge badge-access"><span id="vCount">0</span> Access</div>
+            <div class="badge badge-viewing"><span id="onlineCount">0</span> Viewing</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="section-nav">
+            <a href="#latest" class="active">最新結果</a>
+            <a href="#predict">次回予想</a>
+            <a href="#analysis">トレンド</a>
+            <a href="#history">保存履歴</a>
+        </div>
+
+        <div id="latest" class="card">
+            <div class="latest-header">
+                <div class="draw-id" id="latestID">第----回</div>
+                <div class="draw-date" id="latestDate">----/--/--</div>
+            </div>
+            <div class="ball-row" id="latestBalls"></div>
+            <div class="latest-meta">
+                <div class="meta-item">合計: <span class="meta-value" id="latestSum">--</span></div>
+                <div class="meta-item">セット球: <span class="meta-value" id="latestSet">--</span></div>
+            </div>
+        </div>
+
+        <!-- Trend TOP5 Card -->
+        <div id="analysis" class="card">
+            <div class="card-title">📈 次回出現傾向 (TOP5)</div>
+            <div id="trendsContainer" style="font-size:12px;"></div>
+        </div>
+
+        <!-- Prediction Card -->
+        <div id="predict" class="card">
+            <div class="card-title">🎯 次回予想エンジン</div>
+            
+            <div class="theory-toggles">
+                <button id="btnRiver" class="theory-btn" onclick="toggleRiver()">🌊 数字の川理論</button>
+                <button class="theory-btn" id="btnDetailToggle" onclick="toggleDetails()">⚙️ 詳細条件設定</button>
+            </div>
+
+            <!-- Detailed Settings (Collapsible) -->
+            <div id="detailsPanel" style="display:none; background:#f8fafc; padding:15px; border-radius:12px; margin-bottom:15px; border:1px solid #e2e8f0;">
+                <div class="control-group">
+                    <label class="control-label">合計値の範囲</label>
+                    <div class="range-inputs">
+                        <input type="number" id="minSum" value="60"> <span>〜</span> <input type="number" id="maxSum" value="200">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">奇数:偶数の比率</label>
+                    <select id="oddsInput">
+                        <option value="">任意</option>
+                        <option value="0">0:6</option><option value="1">1:5</option><option value="2">2:4</option><option value="3">3:3</option><option value="4">4:2</option><option value="5">5:1</option><option value="6">6:0</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">連番数 (隣り合う数字の組)</label>
+                    <select id="consecutiveInput">
+                        <option value="">任意</option>
+                        <option value="0">0組</option><option value="1">1組</option><option value="2">2組</option><option value="3">3組</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">下一桁同数</label>
+                    <select id="lastDigitInput">
+                        <option value="">任意</option>
+                        <option value="0">0組</option><option value="1">1組</option><option value="2">2組</option><option value="3">3組</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">セット球指定</label>
+                    <select id="setBallSelect">
+                        <option value="">-- 指定なし --</option>
+                        <option value="A">Aセット</option><option value="B">Bセット</option><option value="C">Cセット</option><option value="D">Dセット</option><option value="E">Eセット</option><option value="F">Fセット</option><option value="G">Gセット</option><option value="H">Hセット</option><option value="I">Iセット</option><option value="J">Jセット</option>
+                    </select>
+                    <div id="suggestedSet" style="font-size:11px; color:var(--primary); margin-top:5px; font-weight:700;"></div>
+                </div>
+            </div>
+
+            <!-- Number Selection Buttons -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:15px;">
+                <button class="btn btn-outline" onclick="openModal('fixed')">📌 固定数字を選択<br><span id="fixedCount" style="font-size:11px; color:var(--primary);">未選択</span></button>
+                <button class="btn btn-outline" onclick="openModal('eliminated')">🗑️ 削除数字を選択<br><span id="elimCount" style="font-size:11px; color:var(--danger);">未選択</span></button>
+            </div>
+
+            <button class="btn btn-predict" onclick="runPrediction()">🎯 次回予想を実行</button>
+            <button class="btn" style="background:#f1f5f9; color:#475569; font-size:13px; margin-top:10px; box-shadow:none;" onclick="resetAll()">🔄 全ての条件をリセット</button>
+
+            <div id="predictionResult" class="prediction-box">
+                <div class="ball-row" id="predictedBalls"></div>
+                <div id="predictionLogic" class="logic-explanation"></div>
+            </div>
+        </div>
+
+        <div id="history" class="card">
+            <div class="card-title">🕰️ 予想履歴</div>
+            <div id="historyList"></div>
+            <button id="btnTicket" class="btn" style="background:#475569; color:white; margin-top:15px; display:none;" onclick="issueTicket()">🎟️ 最新の予想で券を発行</button>
+        </div>
+
+        <div style="text-align:center; padding:20px 0; font-size:11px; color:var(--text-muted);">
+            &copy; 2026 LOTO6 PRO Mobile<br>
+            <a href="javascript:void(0)" style="color:var(--primary); text-decoration:none;">プライバシーポリシー</a>
+        </div>
+    </div>
+
+    <!-- Ticket Template (Hidden) -->
+    <div id="ticketTemplate" style="width:300px; background:#fff; padding:20px; font-family:sans-serif; color:#1e293b;">
+        <div style="border:1px solid #1e3a8a; padding:15px; position:relative;">
+            <div style="text-align:center; font-size:24px; font-weight:800; color:#1e3a8a; letter-spacing:2px;">LOTO 6</div>
+            <div id="ticketDraw" style="font-size:12px; text-align:center; border-bottom:1px solid #1e3a8a; padding-bottom:5px; margin-bottom:10px;"></div>
+            <div id="ticketBalls" style="padding:15px 0; display:flex; justify-content:space-around; font-size:18px; font-weight:800; font-family:'Outfit';"></div>
+            <div style="font-size:9px; color:#64748b; border-top:1px dashed #cbd5e1; padding-top:8px; margin-top:10px;">
+                購入日時: <span id="ticketTime"></span><br>
+                ※この券は検証用です。公式サイトでご購入ください。
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, onValue, set, onDisconnect, serverTimestamp, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const fbConfig = {
+            apiKey: "AIzaSyB850G38tHq6-00374025556209", authDomain: "loto6-analytics.firebaseapp.com",
+            databaseURL: "https://loto6-analytics-default-rtdb.firebaseio.com", projectId: "loto6-analytics",
+            storageBucket: "loto6-analytics.appspot.com", messagingSenderId: "374025556209", appId: "1:374025556209:web:9f8e4e9f73f84f009028"
+        };
+        const app = initializeApp(fbConfig); const db = getDatabase(app); window.db = db;
+        const sessionId = Math.random().toString(36).substring(7);
+        const pRef = ref(db, `presence/${sessionId}`);
+        onValue(ref(db, ".info/connected"), (snap) => { if (snap.val()===true) { onDisconnect(pRef).remove(); set(pRef, serverTimestamp()); } });
+        onValue(ref(db, "presence"), snap => { document.getElementById('onlineCount').innerText = snap.exists() ? Object.keys(snap.val()).length : 1; });
+        const todayStr = new Date().toISOString().split('T')[0];
+        const vRef = ref(db, `stats/${todayStr}/visitors`);
+        if(!sessionStorage.getItem('m_v2')) { runTransaction(vRef, c => (c || 0) + 1); sessionStorage.setItem('m_v2', '1'); }
+        onValue(vRef, snap => { document.getElementById('vCount').innerText = (snap.val() || 1).toLocaleString(); });
+
+        fetch("https://loto6-analytics-default-rtdb.firebaseio.com/loto6_results.json")
+            .then(res => res.json()).then(data => {
+                if(data && Array.isArray(data)) { window.lotoData = data; renderLatest(); renderTrends(); initSetBallSuggest();
+                document.getElementById('loading').style.opacity = '0'; setTimeout(()=>document.getElementById('loading').style.display='none', 500); }
+            });
+    </script>
+
+    <script>
+        let fixedNums = [];
+        let eliminatedNums = [];
+        let riverMode = false;
+        let currentModalMode = '';
+
+        function renderLatest() {
+            const d = lotoData[0];
+            const cleanID = d.id.replace('第', '').replace('回', '');
+            document.getElementById('latestID').innerText = `第${cleanID}回`;
+            document.getElementById('latestDate').innerText = d.date;
+            document.getElementById('latestSum').innerText = d.sum;
+            document.getElementById('latestSet').innerText = d.set_ball;
+            document.getElementById('latestBalls').innerHTML = d.numbers.map(n => `<div class="ball col-${n%10}">${n}</div>`).join('') + `<div class="ball ball-bonus">${d.bonus}</div>`;
+        }
+
+        function renderTrends() {
+            const latest = lotoData[0]; const targetNums = [...latest.numbers, latest.bonus];
+            let html = '<div style="display:flex; flex-direction:column; gap:8px;">';
+            targetNums.forEach(n => {
+                let counts = Array(44).fill(0), total = 0;
+                for(let i=1; i<lotoData.length; i++) { if(lotoData[i].numbers.includes(n) || lotoData[i].bonus === n) { total++; lotoData[i-1].numbers.forEach(nxt => counts[nxt]++); } }
+                let top = []; for(let i=1; i<=43; i++) if(counts[i]>0) top.push({n:i, c:counts[i], p:(counts[i]/total*100).toFixed(1)});
+                top.sort((a,b)=>b.c-a.c);
+                html += `<div style="display:flex; justify-content:space-between; border-bottom:1px solid #f1f5f9; padding-bottom:4px;"><span style="font-weight:700; color:#475569;">${n===latest.bonus ? 'ボ' : ''}${n}の次:</span><span>${top.slice(0, 3).map(x => `<span style="color:var(--primary);">[${x.n}]</span> ${x.p}%`).join(' / ')}</span></div>`;
+            });
+            document.getElementById('trendsContainer').innerHTML = html + '</div>';
+        }
+
+        function initSetBallSuggest() {
+            const balls = ['A','B','C','D','E','F','G','H','I','J']; let gaps = {}; balls.forEach(b => gaps[b] = 999);
+            lotoData.forEach((d, i) => { if(balls.includes(d.set_ball) && gaps[d.set_ball] === 999) gaps[d.set_ball] = i; });
+            let cand = 'A', maxG = -1; balls.forEach(b => { if(gaps[b] > maxG) { maxG = gaps[b]; cand = b; } });
+            document.getElementById('suggestedSet').innerText = `💡 推奨: ${cand}セット (${maxG}回未出現)`;
+        }
+
+        function toggleDetails() {
+            const p = document.getElementById('detailsPanel');
+            const btn = document.getElementById('btnDetailToggle');
+            const isHidden = p.style.display === 'none';
+            p.style.display = isHidden ? 'block' : 'none';
+            btn.classList.toggle('active', isHidden);
+        }
+
+        function openModal(mode) {
+            currentModalMode = mode;
+            const modal = document.getElementById('numModal');
+            const title = document.getElementById('modalTitle');
+            const desc = document.getElementById('modalDesc');
+            const grid = document.getElementById('modalGrid');
+            
+            title.innerText = mode === 'fixed' ? '📌 固定数字を選択' : '🗑️ 削除数字を選択';
+            desc.innerText = mode === 'fixed' ? '必ず含めたい数字を最大5つまで選んでください。' : '予想から除外したい数字を選んでください。';
+            
+            let gridHtml = '';
+            for(let i=1; i<=43; i++) {
+                let cls = 'num-btn';
+                if(mode === 'fixed' && fixedNums.includes(i)) cls += ' fixed';
+                if(mode === 'eliminated' && eliminatedNums.includes(i)) cls += ' eliminated';
+                gridHtml += `<button class="${cls}" onclick="toggleNum(${i})">${i}</button>`;
+            }
+            grid.innerHTML = gridHtml;
+            updateModalSummary();
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('numModal').style.display = 'none'; updateButtonLabels(); }
+
+        function toggleNum(n) {
+            if(currentModalMode === 'fixed') {
+                if(fixedNums.includes(n)) fixedNums = fixedNums.filter(x => x!==n);
+                else if(fixedNums.length < 5) {
+                   fixedNums.push(n); eliminatedNums = eliminatedNums.filter(x => x!==n);
+                } else alert("固定数字は5つまでです");
+            } else {
+                if(eliminatedNums.includes(n)) eliminatedNums = eliminatedNums.filter(x => x!==n);
+                else {
+                    eliminatedNums.push(n); fixedNums = fixedNums.filter(x => x!==n);
+                }
+            }
+            openModal(currentModalMode); // Re-render grid
+        }
+
+        function updateModalSummary() {
+            const list = currentModalMode === 'fixed' ? fixedNums : eliminatedNums;
+            document.getElementById('modalSummary').innerText = list.length ? `選択中: ${list.sort((a,b)=>a-b).join(', ')}` : "未選択";
+        }
+
+        function updateButtonLabels() {
+            document.getElementById('fixedCount').innerText = fixedNums.length ? `${fixedNums.length}個選択中` : "未選択";
+            document.getElementById('elimCount').innerText = eliminatedNums.length ? `${eliminatedNums.length}個選択中` : "未選択";
+        }
+
+        function toggleRiver() {
+            riverMode = !riverMode;
+            document.getElementById('btnRiver').classList.toggle('active', riverMode);
+        }
+
+        function runPrediction() {
+            const minS = parseInt(document.getElementById('minSum').value) || 60;
+            const maxS = parseInt(document.getElementById('maxSum').value) || 200;
+            const oddsT = document.getElementById('oddsInput').value !== "" ? parseInt(document.getElementById('oddsInput').value) : null;
+            const consecutiveT = document.getElementById('consecutiveInput').value !== "" ? parseInt(document.getElementById('consecutiveInput').value) : null;
+            const lastDigitT = document.getElementById('lastDigitInput').value !== "" ? parseInt(document.getElementById('lastDigitInput').value) : null;
+
+            let scores = Array(44).fill(1);
+            lotoData.slice(0, 50).forEach(d => d.numbers.forEach(n => scores[n] += 2));
+            if(riverMode) {
+                const rocks = lotoData[0].numbers.filter(n => lotoData[1].numbers.includes(n));
+                (rocks.length ? rocks : [lotoData[0].numbers[0]]).forEach(n => scores[n] += 15);
+            }
+
+            let best = [];
+            for (let t=0; t<10000; t++) {
+                let avail = Array.from({length:43}, (_,i)=>i+1).filter(n => !eliminatedNums.includes(n) && !fixedNums.includes(n));
+                let res = [...fixedNums];
+                while(res.length < 6) {
+                    let curS = res.reduce((a,b)=>a+b, 0), rem = 6-res.length;
+                    let cands = avail.filter(n => (curS+n+(rem-1)*1 <= maxS) && (curS+n+(rem-1)*43 >= minS));
+                    if(!cands.length) break;
+                    let ts = cands.reduce((acc,n)=>acc+scores[n], 0);
+                    let r = Math.random()*ts, p = cands[0];
+                    for(let n of cands) { r -= scores[n]; if(r<=0) { p=n; break; } }
+                    res.push(p); avail = avail.filter(x => x!==p);
+                }
+                if(res.length===6) {
+                    res.sort((a,b)=>a-b);
+                    let s = res.reduce((a,b)=>a+b, 0);
+                    let o = res.filter(n=>n%2!==0).length;
+                    let cGroups = 0; let inG = false;
+                    for(let i=0; i<res.length-1; i++) { if(res[i+1]-res[i]===1){ if(!inG){cGroups++; inG=true;} } else inG=false; }
+                    let dC = {}; res.forEach(n => { let d=n%10; dC[d]=(dC[d]||0)+1; });
+                    let ldGroups = Object.values(dC).filter(v => v>1).length;
+
+                    if(s>=minS && s<=maxS && (oddsT===null || o===oddsT) && (consecutiveT===null || cGroups===consecutiveT) && (lastDigitT===null || ldGroups===lastDigitT)) {
+                        best = res; break;
+                    }
+                }
+            }
+
+            if(best.length===6) {
+                window.lastPrediction = best;
+                displayPrediction(best, minS, maxS, oddsT);
+                savePrediction(best);
+            } else alert("条件に合う組み合わせが見つかりません。条件を緩めてください。");
+        }
+
+        function displayPrediction(nums, minS, maxS, oddsT) {
+            const box = document.getElementById('predictionResult'); box.style.display = 'block';
+            document.getElementById('predictedBalls').innerHTML = nums.map(n => `<div class="ball col-${n%10}">${n}</div>`).join('');
+            const sum = nums.reduce((a,b)=>a+b, 0), odds = nums.filter(n=>n%2!==0).length, low = nums.filter(n=>n<=21).length;
+            document.getElementById('predictionLogic').innerHTML = `
+                <b>【予測ロジック解説】</b><br>
+                ・バランス：奇数 ${odds} : 偶数 ${6-odds} ${oddsT===null ? '(バランス重視)' : '(指定比率適用)'}、低:高 = ${low}:${6-low}<br>
+                ・合計値：${sum}（範囲 ${minS}〜${maxS}）<br>
+                ・特殊条件：${fixedNums.length ? `固定[${fixedNums.sort((a,b)=>a-b).join(',')}]、` : ''}${eliminatedNums.length ? `除外${eliminatedNums.length}個、` : ''}${riverMode ? '川理論適用' : '標準分析'}<br>
+                ・当せん金：誕生日構成回避のため32以上を${nums.filter(n=>n>=32).length}個含む構成。
+            `;
+            box.scrollIntoView({behavior: 'smooth'});
+        }
+
+        function savePrediction(nums) {
+            let h = JSON.parse(localStorage.getItem('m_history') || "[]");
+            h.unshift({ nums, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+            if(h.length > 20) h.pop(); localStorage.setItem('m_history', JSON.stringify(h)); renderHistory();
+        }
+
+        function renderHistory() {
+            const h = JSON.parse(localStorage.getItem('m_history') || "[]");
+            const list = document.getElementById('historyList');
+            if(!h.length) { list.innerHTML = '<div style="color:var(--text-muted); text-align:center; padding:10px;">履歴なし</div>'; return; }
+            list.innerHTML = h.map(item => `
+                <div class="history-item" style="display:flex; flex-direction:column; gap:8px; padding:12px 0; border-bottom:1px solid #f1f5f9;">
+                    <div style="font-size:12px; font-weight:700; color:var(--text-muted);">${item.time}</div>
+                    <div class="history-nums" style="display:flex; gap:6px; justify-content:center;">
+                        ${item.nums.map(n => `<div class="ball col-${n%10}" style="width:28px; height:28px; font-size:12px;">${n}</div>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('btnTicket').style.display = 'flex';
+        }
+
+        function resetAll() {
+            fixedNums = []; eliminatedNums = []; riverMode = false;
+            document.getElementById('minSum').value = 60; document.getElementById('maxSum').value = 200;
+            document.getElementById('oddsInput').value = ""; document.getElementById('consecutiveInput').value = ""; document.getElementById('lastDigitInput').value = ""; document.getElementById('setBallSelect').value = "";
+            document.getElementById('btnRiver').classList.remove('active'); updateButtonLabels();
+            document.getElementById('predictionResult').style.display = 'none';
+        }
+
+        async function issueTicket() {
+            if(!window.lastPrediction) return;
+            const t = document.getElementById('ticketTemplate'); const d = lotoData[0];
+            document.getElementById('ticketDraw').innerText = `第${parseInt(d.id.replace(/[^0-9]/g, ''))+1}回 次回予測分`;
+            document.getElementById('ticketBalls').innerHTML = window.lastPrediction.map(n => `<span>${n < 10 ? '0'+n : n}</span>`).join('');
+            document.getElementById('ticketTime').innerText = new Date().toLocaleString();
+            const canvas = await html2canvas(t); const link = document.createElement('a'); link.download = `loto6_mobile_${Date.now()}.png`; link.href = canvas.toDataURL(); link.click();
+        }
+
+        renderHistory();
+        window.addEventListener('scroll', () => {
+            const sections = ['latest', 'predict', 'analysis', 'history']; let current = 'latest';
+            sections.forEach(s => { const el = document.getElementById(s); if(el && window.scrollY >= el.offsetTop - 120) current = s; });
+            document.querySelectorAll('.section-nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+        });
+    </script>
+</body>
+</html>

@@ -2,8 +2,8 @@ name: Update Loto 6 Data
 
 on:
   schedule:
-    # 毎週月曜日と木曜日の日本時間 19:20 (UTC 10:20) に実行開始
-    - cron: '20 10 * * 1,4'
+    # 毎週月曜日と木曜日の日本時間 20:30 (UTC 11:30) に実行
+    - cron: '30 11 * * 1,4'
   workflow_dispatch: # 手動実行用
 
 jobs:
@@ -18,10 +18,6 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4
-
       - name: Run update script
         run: |
           python auto_updater.py
@@ -30,6 +26,5 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          # 書き出し先のファイルをすべて追加
-          git add loto6_data_with_setball.csv lotoData.json loto6_data.js index.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: Latest Loto 6 results and prize counts" && git push)
+          git add loto6_data.csv loto6_data_with_setball.csv index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: Latest Loto 6 results" && git push)

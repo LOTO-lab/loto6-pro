@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTO6 データ分析 & 次回予想システム (Pro Edition)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        
+        body { font-family: 'Inter', 'ヒラギノ角ゴ ProN', sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 20px; }
+        h1 { font-size: 24px; color: #102080; margin-top: 0; }
+        
+        .header-container { max-width: 1400px; margin: 0 auto 20px; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .board-container { max-width: 1540px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow-x: auto; max-height: 80vh; }
+        
+        table { width: 100%; border-collapse: collapse; text-align: center; }
+        th, td { border: 1px solid #e0e0e0; padding: 2px 1px; font-size: 11px; }
+        th { background-color: #ccddec; font-weight: bold; position: sticky; top: 0; z-index: 10; color: #2e3e59; padding: 4px 1px; transition: background-color 0.3s, color 0.3s; }
+        .id-col { background-color: #e8eef1; font-weight: bold; position: sticky; left: 0; z-index: 11; min-width: 45px; color: #2e3e59; }
+        th.id-col { z-index: 12; background-color: #b3cdd9; }
+        tr:nth-child(even) { background-color: #fafbfc; }
+        tr:nth-child(odd) { background-color: #ffffff; }
+        
+        .num-cell { width: 22px; height: 22px; color: transparent; border-radius: 3px; font-size: 11px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        td.active .num-cell { color: white; }
+
+        .col-1 { background-color: #1a9c2a; } .col-2 { background-color: #00d0e0; } .col-3 { background-color: #f79c11; }
+        .col-4 { background-color: #8c8c11; } .col-5 { background-color: #11d911; } .col-6 { background-color: #fce803; color: #333 !important; }
+        .col-7 { background-color: #881c88; } .col-8 { background-color: #198080; } .col-9 { background-color: #1133e6; }
+        .col-0 { background-color: #828282; }
+
+        .controls-flex { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        
+        .btn { padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; border: none; transition: 0.2s; color: white; }
+        .btn:hover { transform: translateY(-2px); }
+        .predict-btn { background: linear-gradient(135deg, #1fa331 0%, #157321 100%); box-shadow: 0 4px 6px rgba(21, 115, 33, 0.3); }
+        .eliminate-btn { background: linear-gradient(135deg, #6c757d 0%, #495057 100%); box-shadow: 0 4px 6px rgba(108, 117, 125, 0.3); }
+        .river-btn { background: linear-gradient(135deg, #2196F3 0%, #0d47a1 100%); box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3); }
+        .river-btn.active { background: linear-gradient(135deg, #ff9800 0%, #e65100 100%); box-shadow: 0 4px 6px rgba(255, 152, 0, 0.3); border: 2px solid #fff; }
+        .info-btn { background: linear-gradient(135deg, #00acc1 0%, #00838f 100%); box-shadow: 0 4px 6px rgba(0, 172, 193, 0.3); }
+        
+        .predict-result-row { display: flex; align-items: center; gap: 15px; margin-top: 10px; display: none; }
+        .predict-label { font-weight: bold; font-size: 16px; color: #333; min-width:80px;}
+        .predict-numbers { display: flex; gap: 6px; flex-wrap: wrap; }
+        
+        .predict-ball { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .elim-ball { width: 32px; height: 32px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 14px; background-color: #6c757d; text-decoration: line-through; }
+        
+        .info-panel { margin-top: 10px; padding: 16px; border-radius: 6px; line-height: 1.6; font-size: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: none; }
+        .predict-text { background: #fdfdfd; border-left: 5px solid #1fa331; color: #444; }
+        .elim-text { background: #fff; border-left: 5px solid #6c757d; color: #444; }
+        .river-text { background: #e3f2fd; border-left: 5px solid #2196F3; color: #0d47a1; }
+        .exp-text { background: #e0f7fa; border-left: 5px solid #00acc1; color: #006064; }
+
+        /* 期待度グラフ用 */
+        .exp-bar-container { display: flex; align-items: center; margin-bottom: 6px; }
+        .exp-num { width: 30px; font-weight: bold; text-align: center; font-size: 15px; }
+        .exp-bar-bg { flex-grow: 1; background-color: #e0e0e0; height: 16px; border-radius: 8px; margin: 0 10px; overflow: hidden; position: relative; }
+        .exp-bar-fill { height: 100%; border-radius: 8px; transition: width 0.5s ease-in-out; }
+        .exp-pct { width: 50px; text-align: right; font-weight: bold; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>LOTO6 データ分析 ＆ 次回予想システム</h1>
+        <div style="font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.5; background: #f9f9f9; padding: 10px; border-radius: 6px; border-left: 4px solid #aaa;">
+            <strong>【統計学的な注意点（独立事象の原則）】</strong><br>
+            ロト6の抽選は毎回が独立した事象であり、数学的には「次に出る確率はどの数字も常に一定」です。<br>
+            当システムの予想は「過去に何回出なかったから確実に出る」という絶対的保証ではなく、極端な偏りを避け「これまでの出目の傾向・バランス」に基づいた一つの戦略としてお楽しみください。
+        </div>
+        
+        <div class="controls-flex" style="align-items: center; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px; flex-wrap: wrap; gap: 15px;">
+            <div style="display: flex; align-items: center;">
+                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 合計値の範囲:</label>
+                <input type="number" id="minSumInput" placeholder="21" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="21" max="243"> 
+                <span style="font-weight: bold; color: #666; margin: 0 5px;">〜</span>
+                <input type="number" id="maxSumInput" placeholder="243" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="21" max="243">
+            </div>
+            
+            <div style="display: flex; align-items: center;">
+                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 奇数:偶数の比率:</label>
+                <span>奇数</span>
+                <input type="number" id="oddsInput" placeholder="任意" onkeyup="updateEvens()" onchange="updateEvens()" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-left: 5px;" min="0" max="6"> 
+                <span style="font-weight: bold; color: #666; margin: 0 5px;">:</span>
+                <span>偶数</span>
+                <input type="text" id="evensInput" placeholder="-" style="width: 40px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center; background-color: #f5f5f5; margin-left: 5px;" readonly>
+            </div>
+
+            <div style="display: flex; align-items: center;">
+                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 固定数字 (最大4つ):</label>
+                <input type="number" id="fixedNum1" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
+                <input type="number" id="fixedNum2" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
+                <input type="number" id="fixedNum3" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
+                <input type="number" id="fixedNum4" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="1" max="43"> 
+            </div>
+            
+            <div style="font-size: 12px; color: #888; flex-basis: 100%;">※各項目とも空欄の場合は過去傾向が自動適用されます。固定数字は指定した数字を必ず含めます。</div>
+        </div>
+
+        <div class="controls-flex">
+            <button id="btnRiver" class="btn river-btn" onclick="toggleRiverTheory()">🌊 数字の川理論を適用</button>
+            <button class="btn eliminate-btn" onclick="calculateEliminations()">🗑️ 削除数字を選定</button>
+            <button class="btn info-btn" onclick="showExpectations()">📊 期待度を分析</button>
+            <button class="btn predict-btn" onclick="generatePrediction()">🎯 次回予想を実行</button>
+        </div>
+        
+        <div class="info-panel river-text" id="riverText"></div>
+        <div class="info-panel exp-text" id="expectationText"></div>
+
+        <div class="predict-result-row" id="elimResultRow">
+            <div class="predict-label" style="color:#6c757d;">除外数字</div>
+            <div class="predict-numbers" id="elimBallsContainer"></div>
+        </div>
+        <div class="info-panel elim-text" id="elimText"></div>
+
+        <div class="predict-result-row" id="predictResultRow">
+            <div class="predict-label" style="color:#1fa331;">予想結果</div>
+            <div class="predict-numbers" id="predictBallsContainer"></div>
+        </div>
+        <div class="info-panel predict-text" id="predictText"></div>
+    </div>
+
+    <div class="board-container">
+        <table id="mainBoard">
+            <thead>
+                <tr>
+                    <th class="id-col" rowspan="2">回別</th>
+                    <th rowspan="2" style="min-width:30px;">セット</th>
+                    <th colspan="43">本数字</th>
+                </tr>
+                <tr id="tableHeaderNumbers"></tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // TrustedHTML fix for strict environments
+        if (window.trustedTypes && window.trustedTypes.createPolicy) {
+            if (!window.trustedTypes.defaultPolicy) {
+                window.trustedTypes.createPolicy('default', {
+                    createHTML: (string) => string
+                });
+            }
+        }
+        const lotoData = [];
+        
+        window.eliminatedNumbers = [];
+        window.riverMode = false;
+        window.riverRocks = [];
+        window.riverDeserts = [];
+        window.riverHotEnds = [];
+
+        function updateEvens() {
+            let odds = document.getElementById("oddsInput").value;
+            if(odds !== "" && !isNaN(odds)) {
+                let e = 6 - parseInt(odds);
+                if(e >= 0 && e <= 6) document.getElementById("evensInput").value = e;
+                else document.getElementById("evensInput").value = "";
+            } else {
+                document.getElementById("evensInput").value = "";
+            }
+        }
+
+        function getColorClass(n) { return `col-${n % 10}`; }
+
+        function getColorCode(n) {
+            const colors = ["#828282", "#1a9c2a", "#00d0e0", "#f79c11", "#8c8c11", "#11d911", "#ebaa09", "#881c88", "#198080", "#1133e6"];
+            return colors[n % 10];
+        }
+        
+        function renderBoard() {
+            const thContainer = document.getElementById('tableHeaderNumbers');
+            let hHtml = "";
+            for(let i=1; i<=43; i++) { hHtml += `<th>${i < 10 ? "0"+i : i}</th>`; }
+            thContainer.innerHTML = hHtml;
+            
+            const tbody = document.getElementById('tableBody');
+            let bHtml = "";
+            lotoData.forEach(draw => {
+                const setBall = draw.set_ball || '-';
+                bHtml += `<tr><td class="id-col">${draw.id}</td><td style="font-weight:bold; color:#d35400; background-color:#fff9f0;">${setBall}</td>`;
+                for(let i=1; i<=43; i++) {
+                    if(draw.numbers.includes(i)) {
+                        bHtml += `<td class="active"><div class="num-cell ${getColorClass(i)}">${i}</div></td>`;
+                    } else {
+                        bHtml += `<td><div class="num-cell"></div></td>`;
+                    }
+                }
+                bHtml += `</tr>`;
+            });
+            tbody.innerHTML = bHtml;
+        }
+
+        function calculateScores() {
+            if(!lotoData || lotoData.length === 0) return Array(44).fill(1);
+            const latest = lotoData[0].numbers;
+            let scores = Array(44).fill(1);
+            
+            for(let i=0; i<Math.min(50, lotoData.length); i++) lotoData[i].numbers.forEach(n => scores[n] += 1);
+            latest.forEach(n => scores[n] += 5);
+            latest.forEach(n => { if(n > 1) scores[n-1] += 2; if(n < 43) scores[n+1] += 2; });
+            
+            if(window.riverMode) {
+                window.riverRocks.forEach(n => scores[n] += 15);
+                for(let n=1; n<=43; n++) {
+                    if(window.riverHotEnds.includes(n % 10)) scores[n] += 5;
+                }
+            }
+            const popularNumbers = [7, 10, 20, 30];
+            popularNumbers.forEach(n => {
+                if(scores[n] > 0) scores[n] = Math.max(1, scores[n] - 1);
+            });
+            return scores;
+        }
+
+        function toggleRiverTheory() {
+            if(!lotoData || lotoData.length < 2) return;
+            window.riverMode = !window.riverMode;
+            const btn = document.getElementById('btnRiver');
+            const panel = document.getElementById('riverText');
+            if(!window.riverMode) {
+                btn.classList.remove('active');
+                btn.innerHTML = '🌊 数字の川理論を適用';
+                panel.style.display = 'none';
+                if(document.getElementById('expectationText').style.display === 'block') showExpectations();
+                return;
+            }
+            btn.classList.add('active');
+            btn.innerHTML = '🔥 数字の川モード適用中';
+            let latest = lotoData[0].numbers;
+            let previous = lotoData[1].numbers;
+            let rocks = [];
+            latest.forEach(n => { if(previous.includes(n)) rocks.push(n); });
+            if(rocks.length === 0) {
+                let counts = Array(44).fill(0);
+                for(let i=0; i<Math.min(10, lotoData.length); i++) lotoData[i].numbers.forEach(n => counts[n]++);
+                let bestRock = latest[0], maxC = 0;
+                latest.forEach(n => { if(counts[n] > maxC) { maxC = counts[n]; bestRock = n; } });
+                rocks.push(bestRock);
+            }
+            let notSeenSince = Array(44).fill(999);
+            for(let i=0; i<lotoData.length; i++) lotoData[i].numbers.forEach(n => { if(notSeenSince[n] === 999) notSeenSince[n] = i; });
+            let deserts = [];
+            for(let n=1; n<=43; n++) { if(notSeenSince[n] > 20) deserts.push(n); }
+            let endCounts = Array(10).fill(0);
+            for(let i=0; i<Math.min(10, lotoData.length); i++) lotoData[i].numbers.forEach(n => endCounts[n % 10]++);
+            let sdC = [...endCounts].map((c, i) => ({c, i})).sort((a,b) => b.c - a.c);
+            window.riverRocks = rocks;
+            window.riverDeserts = deserts;
+            window.riverHotEnds = [sdC[0].i, sdC[1].i];
+            panel.innerHTML = `<strong>【🌊 数字の川理論 解析レポート】</strong><ul><li><strong>岩（引っ張り候補）</strong>: [${rocks.join(", ")}]</li><li><strong>砂漠（冷え込み数字）</strong>: [${deserts.join(", ")}]</li><li><strong>勢いのある下一桁</strong>: [${window.riverHotEnds.join(", ")}]</li></ul>`;
+            panel.style.display = 'block';
+            if(document.getElementById('expectationText').style.display === 'block') showExpectations();
+        }
+
+        function calculateEliminations() {
+            if(!lotoData || lotoData.length < 20) return;
+            const latest = lotoData[0].numbers;
+            let counts = Array(44).fill(0);
+            lotoData.slice(0, 10).forEach(d => d.numbers.forEach(n => counts[n]++));
+            let elims = [];
+            for(let n=1; n<=43; n++) { if(counts[n] >= 3 && !latest.includes(n)) elims.push(n); }
+            if(elims.length < 5) {
+                let sorted = [...Array(44).keys()].slice(1).sort((a, b) => counts[b] - counts[a]);
+                elims = sorted.slice(0, 7);
+            }
+            window.eliminatedNumbers = elims;
+            const container = document.getElementById('elimBallsContainer');
+            container.innerHTML = elims.map(n => `<div class="elim-ball">${n}</div>`).join("");
+            document.getElementById('elimResultRow').style.display = 'flex';
+            document.getElementById('elimText').innerHTML = `<strong>🗑️ 削除数字の選定（統計的除外）</strong><br>直近10回で頻出しすぎている数字、および独自の停滞アルゴリズムにより、次回出現率が低いと推測される数字 [${elims.join(", ")}] を除外候補に設定しました。`;
+            document.getElementById('elimText').style.display = 'block';
+        }
+
+        function showExpectations() {
+            const scores = calculateScores();
+            const maxScore = Math.max(...scores);
+            let html = "<strong>📊 数字別期待度ランク（独自スコアリング）</strong><br><div style='margin-top:10px'>";
+            let ranked = [];
+            for(let i=1; i<=43; i++) ranked.push({n: i, s: scores[i]});
+            ranked.sort((a,b) => b.s - a.s);
+            ranked.slice(0, 15).forEach(item => {
+                const pct = Math.round((item.s / maxScore) * 100);
+                html += `<div class="exp-bar-container">
+                    <div class="exp-num">${item.n}</div>
+                    <div class="exp-bar-bg"><div class="exp-bar-fill" style="width:${pct}%; background-color:${getColorCode(item.n)}"></div></div>
+                    <div class="exp-pct">${pct}%</div>
+                </div>`;
+            });
+            html += "</div><p style='font-size:11px; color:#666;'>※直近50回の出現頻度、前回からの引っ張り、左右スライド、川理論等を独自配合して算出。</p>";
+            document.getElementById('expectationText').innerHTML = html;
+            document.getElementById('expectationText').style.display = 'block';
+        }
+
+        function generatePrediction() {
+            const scores = calculateScores();
+            const minSum = parseInt(document.getElementById('minSumInput').value) || 100;
+            const maxSum = parseInt(document.getElementById('maxSumInput').value) || 200;
+            const oddsTarget = document.getElementById('oddsInput').value;
+            const fixed = [
+                parseInt(document.getElementById('fixedNum1').value),
+                parseInt(document.getElementById('fixedNum2').value),
+                parseInt(document.getElementById('fixedNum3').value),
+                parseInt(document.getElementById('fixedNum4').value)
+            ].filter(n => !isNaN(n) && n >= 1 && n <= 43);
+
+            let pool = [];
+            for(let n=1; n<=43; n++) {
+                if(window.eliminatedNumbers.includes(n)) continue;
+                if(fixed.includes(n)) continue;
+                for(let j=0; j<scores[n]; j++) pool.push(n);
+            }
+
+            let bestCombination = [];
+            for(let attempt=0; attempt<5000; attempt++) {
+                let current = [...fixed];
+                let tempPool = [...pool];
+                while(current.length < 6 && tempPool.length > 0) {
+                    let idx = Math.floor(Math.random() * tempPool.length);
+                    let n = tempPool[idx];
+                    if(!current.includes(n)) current.push(n);
+                    tempPool.splice(idx, 1);
+                }
+                current.sort((a,b) => a-b);
+                const sum = current.reduce((a,b) => a+b, 0);
+                if(sum < minSum || sum > maxSum) continue;
+                if(oddsTarget !== "") {
+                    const odds = current.filter(n => n % 2 !== 0).length;
+                    if(odds != parseInt(oddsTarget)) continue;
+                }
+                bestCombination = current;
+                break;
+            }
+
+            if(bestCombination.length < 6) {
+                alert("指定された条件下で組み合わせが見つかりませんでした。条件を緩めてください。");
+                return;
+            }
+
+            const container = document.getElementById('predictBallsContainer');
+            container.innerHTML = bestCombination.map(n => `<div class="predict-ball" style="background-color:${getColorCode(n)}">${n}</div>`).join("");
+            document.getElementById('predictResultRow').style.display = 'flex';
+            document.getElementById('predictText').innerHTML = `<strong>🎯 次回予想の根拠</strong><br>合計値:${bestCombination.reduce((a,b)=>a+b,0)}、奇偶比 ${bestCombination.filter(n=>n%2!=0).length}:${bestCombination.filter(n=>n%2==0).length}。期待度スコアの高い数字を中心に、統計的に最も出現率が高いバランスで構成しました。`;
+            document.getElementById('predictText').style.display = 'block';
+        }
+
+        window.onload = () => { if(lotoData.length > 0) renderBoard(); };
+    </script>
+</body>
+</html>

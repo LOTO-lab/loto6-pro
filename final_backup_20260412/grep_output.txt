@@ -1,0 +1,2 @@
+279:                             <tr id="headerRow1"></tr>
+295:             const h1 = document.getElementById('headerRow1');

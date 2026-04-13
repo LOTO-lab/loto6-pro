@@ -330,7 +330,7 @@
                     <span class="stat-value" id="stat-viewing">-</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-label" id="label-predictions">🚀 総予想実行数</span>
+                    <span class="stat-label">🚀 総予想実行数</span>
                     <span class="stat-value" id="stat-predictions">-</span>
                     <button class="btn" id="btn-sync" style="width: auto; padding: 4px 8px; font-size: 11px; margin-top: 5px;" onclick="syncCounter()">実数に同期</button>
                 </div>
@@ -346,14 +346,6 @@
                         <input type="checkbox" id="maint-checkbox" onchange="toggleMaintenance(this.checked)">
                         <span class="slider"></span>
                     </label>
-                </div>
-            </div>
-
-            <h3 class="section-title">🛡️ システム整合性チェック</h3>
-            <div class="stats-grid" id="integrity-grid">
-                <!-- 診断カードがここに生成されます -->
-                <div class="stat-card" style="align-items: center; justify-content: center; min-height: 120px; grid-column: 1 / -1;">
-                    <span class="stat-label">システム診断中...</span>
                 </div>
             </div>
 
@@ -543,38 +535,22 @@
                 document.getElementById('stat-viewing').innerText = count.toLocaleString();
             }, (err) => console.error("Presence Read Error:", err));
             
-            // 2. 総予想実行数
+            // 2. 総予想実行数 (同期済みの値があれば優先、なければ履歴から集計)
             const fetchTotal = async () => {
                 try {
-                    const lotoRes = await fetch('lotoData.json');
-                    const ld = await lotoRes.json();
-                    const latestId = parseInt(ld[0].id.replace(/[^0-9]/g, ""));
-                    
-                    const now = new Date();
-                    const day = now.getDay();
-                    const hours = now.getHours();
-                    const mins = now.getMinutes();
-                    const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
-                    
-                    const nextId = isDrawTime ? latestId + 2 : latestId + 1;
-                    const labelEl = document.getElementById('label-predictions');
-                    const statEl = document.getElementById('stat-predictions');
-
-                    if (isDrawTime) {
-                        labelEl.innerText = `🔮 第${nextId}回 予想実行数`;
-                        onValue(ref(db, `stats/predictions/draw_${nextId}`), (snap) => {
-                            const val = snap.val() || 0;
-                            statEl.innerText = val.toLocaleString();
-                        });
+                    const snapFixed = await get(ref(db, "stats/total_predictions_fixed"));
+                    if (snapFixed.exists()) {
+                        document.getElementById('stat-predictions').innerText = snapFixed.val().toLocaleString();
                     } else {
-                        labelEl.innerText = "🚀 総予想実行数 (累計)";
-                        const snapFixed = await get(ref(db, "stats/total_predictions_fixed"));
-                        if (snapFixed.exists()) {
-                            statEl.innerText = snapFixed.val().toLocaleString();
+                        const s = await get(ref(db, "site_predictions"));
+                        let total = 0;
+                        if (s.exists()) {
+                            s.forEach(d => {
+                                const val = d.val();
+                                if (val) total += Object.keys(val).length;
+                            });
                         }
-                        onValue(ref(db, "stats/total_predictions_fixed"), (snap) => {
-                            if (snap.exists()) statEl.innerText = snap.val().toLocaleString();
-                        });
+                        document.getElementById('stat-predictions').innerText = total.toLocaleString();
                     }
                 } catch (err) {
                     console.error("Total Prediction Load Error:", err);
@@ -582,6 +558,13 @@
                 }
             };
             fetchTotal();
+            
+            // 定期的に最新値を監視
+            onValue(ref(db, "stats/total_predictions_fixed"), (snap) => {
+                if (snap.exists()) {
+                    document.getElementById('stat-predictions').innerText = snap.val().toLocaleString();
+                }
+            });
 
             // 3. Maintenance Toggle
             onValue(ref(db, "settings/maintenance"), (snap) => {
@@ -622,162 +605,10 @@
                 </tr>
             `);
 
-            // 5. Prediction History (抽選時間中は次回分に絞り込む)
-            const handlePredictionHistory = async () => {
-                const lotoRes = await fetch('lotoData.json');
-                const ld = await lotoRes.json();
-                const latestId = parseInt(ld[0].id.replace(/[^0-9]/g, ""));
-                
-                const now = new Date();
-                const day = now.getDay();
-                const hours = now.getHours();
-                const mins = now.getMinutes();
-                const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
-                
-                const targetId = isDrawTime ? latestId + 2 : latestId + 1;
-                
-                // 抽選時間中は特定の回号ノードのみを監視
-                if (isDrawTime) {
-                    onValue(ref(db, `site_predictions/${targetId}`), (snap) => {
-                        renderPredictionsSingleRound(snap, targetId);
-                    }, (err) => console.error("Round History Read Error:", err));
-                } else {
-                    // 通常時は全件から直近を表示
-                    onValue(query(ref(db, "site_predictions"), limitToLast(3)), (snap) => {
-                        renderPredictions(snap);
-                    }, (err) => console.error("Global History Read Error:", err));
-                }
-            };
-            handlePredictionHistory();
-
-            // 6. System Integrity Check
-            runIntegrityCheck();
-        }
-
-        async function runIntegrityCheck() {
-            const grid = document.getElementById('integrity-grid');
-            const checks = [
-                { id: 'check-predictions', label: '予測カウントのリセット' },
-                { id: 'check-winners', label: '当選実績の確定' },
-                { id: 'check-history', label: '予想履歴の切り替え' },
-                { id: 'check-setball', label: 'セット球分析 (50回)' },
-                { id: 'check-trends', label: '出現傾向の同期' },
-                { id: 'check-table', label: 'テーブルデータの整合性' }
-            ];
-
-            grid.innerHTML = checks.map(c => `
-                <div class="stat-card" id="${c.id}">
-                    <span class="stat-label">${c.label}</span>
-                    <span class="stat-value" style="font-size: 14px; color: var(--text-muted);">検証中...</span>
-                </div>
-            `).join('') + `
-                <div class="stat-card" id="check-auto-update" style="grid-column: 1 / -1;">
-                    <span class="stat-label">🤖 自動更新・照合ステータス</span>
-                    <span class="stat-value" style="font-size: 14px; color: var(--text-muted);">検証中...</span>
-                </div>
-            `;
-
-            try {
-                // 1. Fetch lotoData.json
-                const response = await fetch('lotoData.json');
-                if (!response.ok) throw new Error("lotoData.json の読み込みに失敗しました");
-                const lotoData = await response.json();
-                
-                if (!lotoData || lotoData.length === 0) throw new Error("データが空です");
-                
-                const latest = lotoData[0];
-                const latestRound = parseInt(latest.id.replace(/[^0-9]/g, ""));
-                const nextRound = latestRound + 1;
-
-                // 2. Perform Checks
-                
-                // Check 1: Predictions Counter Reset
-                const nowStatus = new Date();
-                const isDT = (nowStatus.getDay() === 1 || nowStatus.getDay() === 4) && (nowStatus.getHours() > 18 || (nowStatus.getHours() === 18 && nowStatus.getMinutes() >= 20));
-                const targetId = isDT ? latestRound + 2 : latestRound + 1;
-                const predSnap = await get(ref(db, `stats/predictions/draw_${targetId}`));
-                updateCheck('check-predictions', predSnap.exists() || isDT, `次回(第${targetId}回) 準備完了`);
-
-                // Check 2: Latest Winners Sync
-                const winnersSnap = await get(ref(db, "stats/winners"));
-                const fireWinner = winnersSnap.val();
-                const winnersOk = fireWinner && fireWinner.round === latestRound;
-                updateCheck('check-winners', winnersOk, winnersOk ? `第${latestRound}回 同期済` : `待機中 (当:${latestRound}/次:${latestRound+1})`);
-
-                // Check 3: Global History Reset
-                const histSnap = await get(ref(db, `site_predictions/${targetId}`));
-                updateCheck('check-history', true, `第${targetId}回 受付中`);
-
-                // Check 4: Set Ball Stats
-                const hasSetBall = latest.set_ball && latest.set_ball !== "";
-                updateCheck('check-setball', hasSetBall, hasSetBall ? `セット球 ${latest.set_ball} 反映済` : "未反映");
-
-                // Check 5: Trends Sync
-                const hasNumbers = latest.numbers && latest.numbers.length === 6 && latest.numbers[0] !== 0;
-                updateCheck('check-trends', hasNumbers, hasNumbers ? `${latest.date} 同期済` : "データ不備");
-
-                // Check 6: Table Integrity
-                updateCheck('check-table', hasNumbers, hasNumbers ? `第${latestRound}回 正常保存` : "異常データ検知");
-
-                // Check 7: Auto-Update Status
-                const autoOk = fireWinner && fireWinner.prizes && fireWinner.status === "success";
-                const autoMsg = autoOk ? 
-                    `第${fireWinner.round}回 照合完了 (1等:${fireWinner.prizes[1]}口 / Carryover:¥${parseInt(fireWinner.carryover).toLocaleString()})` : 
-                    (fireWinner && fireWinner.status === "updating" ? "現在照合処理中..." : "次回結果待ち");
-                updateCheck('check-auto-update', autoOk || (fireWinner && fireWinner.status === "updating"), autoMsg);
-
-            } catch (err) {
-                console.error("Integrity Check Error:", err);
-                grid.innerHTML = `<div class="stat-card" style="grid-column: 1/-1; border: 1px solid var(--danger);">
-                    <span class="stat-label" style="color:var(--danger);">診断エラー</span>
-                    <span class="stat-value" style="font-size: 14px;">${err.message}</span>
-                </div>`;
-            }
-        }
-
-        function updateCheck(id, isOk, message) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const valEl = el.querySelector('.stat-value');
-            valEl.innerHTML = `${isOk ? '✅' : '⏳'} <span style="font-size: 13px;">${message}</span>`;
-            if (isOk) {
-                el.style.borderLeft = "4px solid var(--success)";
-            } else {
-                el.style.borderLeft = "4px solid #f59e0b"; // Warning amber
-            }
-        }
-
-        function renderPredictionsSingleRound(snap, drawId) {
-            const tbody = document.getElementById('history-table-body');
-            const countLabel = document.getElementById('history-count');
-            let items = [];
-            
-            if (snap.exists()) {
-                const data = snap.val();
-                Object.keys(data).forEach(key => {
-                    items.push({
-                        drawId: drawId,
-                        ...data[key]
-                    });
-                });
-                items.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
-                
-                tbody.innerHTML = items.map(item => `
-                    <tr>
-                        <td style="color:var(--text-muted);">${formatDate(item.timestamp)}</td>
-                        <td>第${item.drawId}回</td>
-                        <td>
-                            <div style="display:flex; gap:4px; flex-wrap:wrap;">
-                                ${(item.nums || []).map(n => `<span class="tag">${n}</span>`).join('')}
-                            </div>
-                        </td>
-                    </tr>
-                `).join('');
-                countLabel.innerText = `(第${drawId}回 : ${items.length}件)`;
-            } else {
-                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#94a3b8;">今週の初予想を待機中...</td></tr>';
-                countLabel.innerText = `(第${drawId}回 : 0件)`;
-            }
+            // 5. Prediction History (初期は直近3回分の回号データを表示)
+            onValue(query(ref(db, "site_predictions"), limitToLast(3)), (snap) => {
+                renderPredictions(snap);
+            }, (err) => console.error("Global History Read Error:", err));
         }
 
         function renderPredictions(snap, isFull = false) {
