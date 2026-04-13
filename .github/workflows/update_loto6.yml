@@ -9,6 +9,10 @@ on:
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    # 【ここを追加】ファイルを書き換えて保存するための許可設定
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
