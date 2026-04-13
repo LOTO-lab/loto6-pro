@@ -997,36 +997,46 @@
 
             // 3. 総予想実行数 & みんなの予想履歴リスナー
             window.setupPredictionCounter = () => {
-                const nextId = parseInt(lotoData[0].id.replace(/[^0-9]/g, "")) + 1;
+                const now = new Date();
+                const day = now.getDay();
+                const hours = now.getHours();
+                const mins = now.getMinutes();
+                const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
+
+                const latestId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+                // 抽選時間中（18:20以降）なら、受付対象は「最新履歴+2」（次回分）
+                const nextId = isDrawTime ? latestId + 2 : latestId + 1;
                 
-                // 実行数カウント用 (同期済みの値を優先表示)
+                // 実行数カウント用
                 if (currentPredListener) off(currentPredListener);
                 const totalFixedRef = ref(db, "stats/total_predictions_fixed");
                 const predRef = ref(db, `stats/predictions/draw_${nextId}`);
                 
-                onValue(totalFixedRef, (snap) => {
-                    if (snap.exists()) {
-                        const val = snap.val();
+                // 抽選時間中（18:20以降）は累計ではなく「今回の受付数」を優先表示
+                if (isDrawTime) {
+                    onValue(predRef, (s) => {
+                        const val = s.val();
+                        const formatted = (val !== null) ? val.toLocaleString() : "0";
                         const el = document.getElementById('statPredictions');
                         if (el) {
                             el.classList.remove('skeleton', 'skeleton-val');
-                            el.innerText = val.toLocaleString();
+                            el.innerText = formatted;
                             el.style.fontSize = "20px"; el.style.fontWeight = "800";
                         }
-                    } else {
-                        // 同期データがない場合はこれまでの回号別カウント
-                        onValue(predRef, (s) => {
-                            const val = s.val();
-                            const formatted = (val !== null) ? val.toLocaleString() : "0";
+                    });
+                } else {
+                    onValue(totalFixedRef, (snap) => {
+                        if (snap.exists()) {
+                            const val = snap.val();
                             const el = document.getElementById('statPredictions');
                             if (el) {
                                 el.classList.remove('skeleton', 'skeleton-val');
-                                el.innerText = formatted;
+                                el.innerText = val.toLocaleString();
                                 el.style.fontSize = "20px"; el.style.fontWeight = "800";
                             }
-                        }, { onlyOnce: true });
-                    }
-                });
+                        }
+                    });
+                }
 
                 // みんなの予想履歴（グローバル）リスナー
                 const globalHistRef = query(ref(db, `site_predictions/${nextId}`), limitToLast(5));
@@ -1066,6 +1076,13 @@
             onValue(ref(db, "stats/winners"), (snap) => {
                 const data = snap.val();
                 if (data) {
+                    // 現在のヒストリーデータから期待される最新回号を算出
+                    const latestHistId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+                    // Firebaseの回号がヒストリー（前回結果）より進んでいれば更新
+                    if (data.round > latestHistId) {
+                        window.isWinnerUpdatedForNext = true;
+                    }
+
                     const isUpdating = data.status === "updating";
                     const hasPrizes = data.prizes && Object.keys(data.prizes).length > 0;
                     
@@ -1175,8 +1192,12 @@
             let h = JSON.parse(localStorage.getItem('loto6_history') || "[]");
             const now = new Date();
             const dateStr = (now.getMonth()+1).toString().padStart(2, '0') + "/" + now.getDate().toString().padStart(2, '0') + " " + now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
-            const nextId = parseInt(lotoData[0].id.replace(/[^0-9]/g, "")) + 1;
-            
+            const latestId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+            const nowTime = new Date();
+            const day = nowTime.getDay();
+            const isDrawTime = (day === 1 || day === 4) && (nowTime.getHours() > 18 || (nowTime.getHours() === 18 && nowTime.getMinutes() >= 20));
+            const nextId = isDrawTime ? latestId + 2 : latestId + 1;
+
             h.unshift({ nums, date: dateStr, targetDraw: nextId });
             if(h.length > 100) h.pop();
             localStorage.setItem('loto6_history', JSON.stringify(h));
@@ -1229,68 +1250,83 @@
             const hours = now.getHours();
             const mins = now.getMinutes();
 
-            // 月・木の18:20にリセット実行
-            if ((day === 1 || day === 4) && hours === 18 && mins === 20) {
-                if (!window.hasResetToday) {
+            // 抽選時間（月・木の18:20以降）かどうかの判定
+            const isAfterReset = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
+
+            if (isAfterReset) {
+                // 18:20ちょうどならリセット実行
+                if (hours === 18 && mins === 20 && !window.hasResetToday) {
                     performDrawReset();
                     window.hasResetToday = true;
+                } else {
+                    // 18:20過ぎにリフレッシュなどして開いた場合もステータスを適用
+                    applyDrawPendingUI();
                 }
             } else {
                 window.hasResetToday = false;
             }
         }
 
-        function performDrawReset() {
-            const currentRound = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
-            const nextRound = currentRound + 1;
+        function applyDrawPendingUI() {
+            if (!window.lotoData || window.lotoData.length === 0) return;
+            const latestId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+            const todayRound = latestId + 1;  // 今から結果が出る回
+            const nextRound = latestId + 2;   // 次回の受付回
             
             // UI上の回号表示を更新
-            document.getElementById('latestRoundInfo').innerText = `🔮 第${nextRound}回 予想受付中`;
-            
-            // 予想実行数を一時的に0に表示
-            document.getElementById('statPredictions').innerText = "0";
-            
+            const roundEl = document.getElementById('latestRoundInfo');
+            if (roundEl) roundEl.innerText = `🔮 第${nextRound}回 予想受付中`;
+
             // 抽選結果エリアを受付終了ステータスにする
             const winnerEl = document.getElementById('winnerNumbersInfo');
-            winnerEl.innerHTML = `
-                <div style="text-align:center; padding:20px; color:#64748b;">
-                    <div style="font-size:24px; margin-bottom:10px;">⏳</div>
-                    <div style="font-size:13px; font-weight:bold;">第${currentRound}回 受付終了</div>
-                    <div style="font-size:11px; margin-top:5px;">現在 抽せん結果の公開を待機しています...</div>
-                </div>
-            `;
+            if (!window.isWinnerUpdatedForNext) {
+                winnerEl.innerHTML = `
+                    <div style="text-align:center; padding:20px; color:#64748b;">
+                        <div style="font-size:24px; margin-bottom:10px;">⏳</div>
+                        <div style="font-size:13px; font-weight:bold;">第${todayRound}回 受付終了</div>
+                        <div style="font-size:11px; margin-top:5px;">現在 抽せん結果の公開を待機しています...</div>
+                    </div>
+                `;
+            }
+        }
+
+        function performDrawReset() {
+            applyDrawPendingUI();
 
             if(window.setupPredictionCounter) window.setupPredictionCounter();
             
-            // 履歴の特定回号以外をクリア
+            // 履歴の特定回号（次回以降）以外をクリア
+            const latestId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+            const nextRound = latestId + 2;
             let h = JSON.parse(localStorage.getItem('loto6_history') || "[]");
             h = h.filter(item => item.draw >= nextRound);
             localStorage.setItem('loto6_history', JSON.stringify(h));
             renderHistory();
         }
 
-        // 初期化
         // アプリ起動
         async function initApp() {
             // 即座にキャッシュデータを適用（"---"表示を防ぐ）
             applyCachedData();
 
-            // データの読み込みを待機
-            await fetchLotoData();
-            
-            // データが読み込めなかった場合の保険（ボード描画をスキップ）
-            if (!window.lotoData || window.lotoData.length === 0) {
-                console.warn('lotoData was not loaded correctly.');
-                return;
-            }
-
-            // ボードと履歴の初期描画（静的データ）
-            renderBoard();
-            checkDrawTiming();
-            renderLatestTrends();
-
-            // Firebase読み込み（非ブロッキング）
+            // 1. Firebase読み込みを最優先で開始
             loadFirebase();
+
+            // 2. データの読み込みを試行（並行して実行）
+            try {
+                await fetchLotoData();
+            } catch (e) {
+                console.error('Fetch error:', e);
+            }
+            
+            // データが読み込めた場合のみボード等を描画
+            if (window.lotoData && window.lotoData.length > 0) {
+                renderBoard();
+                checkDrawTiming();
+                renderLatestTrends();
+            } else {
+                console.warn('lotoData could not be loaded. Some features will be limited.');
+            }
 
             // タイマー開始
             setInterval(checkDrawTiming, 60000);
