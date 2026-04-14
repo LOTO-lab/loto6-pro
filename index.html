@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOTO6 分析プラットフォーム (v20260413-0955)</title>
+    <title>LOTO6 PRO</title>
     <!-- Version: 20260413-0955 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,7 +150,7 @@
                     <div id="statViewing" class="skeleton skeleton-val"></div>
                 </div>
                 <div style="margin-bottom: 30px; padding-left: 5px;">
-                    <div style="font-size: 13px; color: #1e293b; margin-bottom: 2px; font-weight: 600;" id="latestRoundInfo">総予想実行数 (v2.02)</div>
+                    <div style="font-size: 13px; color: #1e293b; margin-bottom: 2px; font-weight: 600;" id="latestRoundInfo">回別の予想実行数</div>
                     <div id="statPredictions" class="skeleton skeleton-val"></div>
                 </div>
 
@@ -188,14 +188,10 @@
 
 
         <section class="top-layout">
-            <div style="background: #ef4444; color: white; text-align: center; font-size: 12px; padding: 4px; font-weight: bold; position: sticky; top: 0; z-index: 999999;">
-            LOTO6 PRO 修正適用済み v2.03 - カウンター不具合を解消しました
-        </div>
             <div class="top-header">
                 <h1 style="margin:0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;">
                     <button class="btn-toggle" onclick="toggleSidebar()">☰ 履歴等</button>
-                    <img src="logo_loto6pro.png" alt="LOTO6 PRO" style="height: 32px; background: white; padding: 2px; border-radius: 4px;">
-                    LOTO6 PRO <span style="background: #ef4444; color: white; font-size: 10px; padding: 2px 6px; border-radius: 99px; vertical-align: middle;">v2.03</span>
+                    LOTO6検索分析プラットフォーム
                 </h1>
             </div>
 
@@ -1026,7 +1022,8 @@
                     if (el) {
                         el.classList.remove('skeleton', 'skeleton-val');
                         el.innerText = formatted;
-                        localStorage.setItem('cache_predictions', formatted);
+                        el.style.fontSize = "20px"; el.style.fontWeight = "800";
+                        localStorage.setItem('cache_predictions_v2', formatted);
                     }
                 });
             };
