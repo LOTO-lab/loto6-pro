@@ -74,16 +74,16 @@
         .num-cell.bonus-cell { background-color: #ffffff !important; color: #000000 !important; border: 2px solid #000 !important; }
 
         /* 本数字カラークラス */
-        .col-1 { background-color: #1a9c2a !important; color: #fff !important; } 
-        .col-2 { background-color: #00d0e0 !important; color: #fff !important; } 
-        .col-3 { background-color: #f79c11 !important; color: #fff !important; }
-        .col-4 { background-color: #8c8c11 !important; color: #fff !important; } 
-        .col-5 { background-color: #11d911 !important; color: #fff !important; } 
-        .col-6 { background-color: #fce803 !important; color: #000 !important; }
-        .col-7 { background-color: #881c88 !important; color: #fff !important; } 
-        .col-8 { background-color: #198080 !important; color: #fff !important; } 
-        .col-9 { background-color: #1133e6 !important; color: #fff !important; }
-        .col-0 { background-color: #828282 !important; color: #fff !important; }
+        .col-1 { background-color: #ef4444 !important; color: #fff !important; } 
+        .col-2 { background-color: #3b82f6 !important; color: #fff !important; } 
+        .col-3 { background-color: #10b981 !important; color: #fff !important; }
+        .col-4 { background-color: #f97316 !important; color: #fff !important; } 
+        .col-5 { background-color: #8b5cf6 !important; color: #fff !important; } 
+        .col-6 { background-color: #facc15 !important; color: #000 !important; }
+        .col-7 { background-color: #ec4899 !important; color: #fff !important; } 
+        .col-8 { background-color: #06b6d4 !important; color: #fff !important; } 
+        .col-9 { background-color: #6366f1 !important; color: #fff !important; }
+        .col-0 { background-color: #64748b !important; color: #fff !important; }
 
         /* 除外ヘッダー: header-num要素に対して×をかぶせる */
         th.eliminated-header .header-num { position: relative; }
@@ -1217,7 +1217,7 @@
                         ${item.nums.map(n => {
                             const num = parseInt(n);
                             const lastDigit = num % 10;
-                            return `<span class="col-${lastDigit}" style="width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; color:#fff; text-shadow:0 1px 1px rgba(0,0,0,0.2);">${num}</span>`;
+                            return `<span class="col-${lastDigit}" style="width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; text-shadow:0 1px 1px rgba(0,0,0,0.1);">${num}</span>`;
                         }).join("")}
                     </div>
                 </div>
