@@ -1074,9 +1074,11 @@
                     
                     let prizesHtml = '';
                     if (hasPrizes) {
+                        const totalPreds = data.total_predictions ? `<div style="font-size:11px; color:#64748b; margin-bottom:8px;">総予想実行数: <span style="font-weight:800; color:#1e293b;">${data.total_predictions.toLocaleString()}</span> 回</div>` : '';
                         prizesHtml = `
                             <div style="margin-top:12px; padding-top:12px; border-top:1px dashed #e2e8f0;">
                                 <div style="font-size:11px; color:#64748b; margin-bottom:6px; font-weight:bold;">当サイト予想からの当選成果:</div>
+                                ${totalPreds}
                                 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; font-size:11px;">
                                     <div style="background:#fff7ed; padding:4px; border-radius:4px; border:1px solid #ffedd5;">1等: <span style="font-weight:800; color:#c2410c;">${data.prizes[1] || 0}</span> 口</div>
                                     <div style="background:#f0f9ff; padding:4px; border-radius:4px; border:1px solid #0369a1;">2等: <span style="font-weight:800; color:#0369a1;">${data.prizes[2] || 0}</span> 口</div>

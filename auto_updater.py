@@ -269,8 +269,9 @@ def run_update_process():
     update_firebase("stats/winners", {"status": "updating"}, method="patch")
     
     # 照合
-    prizes = calculate_site_prizes(latest["round"], latest["numbers"], latest["bonus"])
+    prizes, total_preds = calculate_site_prizes(latest["round"], latest["numbers"], latest["bonus"])
     latest["prizes"] = prizes
+    latest["total_predictions"] = total_preds
     latest["status"] = "success"
     latest["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
