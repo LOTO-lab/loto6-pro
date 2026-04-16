@@ -55,7 +55,7 @@ def scrape_latest_result():
     
     try:
         response = requests.get(TARGET_URL, headers=headers, timeout=15, verify=False)
-        response.encoding = 'utf-8'
+        response.encoding = response.apparent_encoding
         if response.status_code != 200:
             return None
         
@@ -63,7 +63,7 @@ def scrape_latest_result():
         
         # ロト6専用のエリアを特定
         main_content = soup.find("div", id="main") or soup.find("article") or soup
-        h3_title = main_content.find("h3", string=re.compile(r"第\d+回ロト６(抽選結果|当選番号)速報"))
+        h3_title = main_content.find("h3", string=re.compile(r"ロト６(抽選結果|当選番号)速報"))
         if not h3_title:
             for h3 in main_content.find_all("h3"):
                 if "ロト６" in h3.get_text() and "速報" in h3.get_text():
@@ -74,26 +74,36 @@ def scrape_latest_result():
             print("Target H3 title not found.")
             return None
         
-        # 回号と日付の取得 (より厳密に)
+        # 回号と日付の取得 (H3または直後のテーブルから取得)
         round_match = re.search(r"第(\d+)回", h3_title.get_text())
-        if not round_match: return None
-        round_id = round_match.group(1)
-        
         info_table = h3_title.find_next("table")
-        rows = info_table.find_all("tr")
+        
+        if not round_match and info_table:
+            round_match = re.search(r"第(\d+)回", info_table.get_text())
+            
+        if not round_match:
+            print("Round ID (第XXX回) not found.")
+            return None
+            
+        round_id = round_match.group(1)
         
         # 日付とセット球の取得
         date_str = ""
         set_ball = ""
-        for row in rows:
-            text = row.get_text()
-            if "抽選日" in text:
-                date_match = re.search(r"(\d{4})年(\d{2})月(\d{2})日", text)
-                if date_match:
-                    date_str = f"{date_match.group(1)}/{date_match.group(2)}/{date_match.group(3)}"
-            if "セット球" in text:
-                set_match = re.search(r"([A-J])セット", text)
-                if set_match: set_ball = set_match.group(1)
+        
+        # テーブル全体のテキストから日付を探す
+        table_text = info_table.get_text()
+        date_match = re.search(r"(\d{4})年(\d{2})月(\d{2})日", table_text)
+        if date_match:
+            date_str = f"{date_match.group(1)}/{date_match.group(2)}/{date_match.group(3)}"
+        
+        # セット球を探す (テーブルのtdを順番にチェック)
+        for td in info_table.find_all(["td", "th"]):
+            t = td.get_text().strip()
+            # セット球は通常 A-J の1文字、または "Aセット" のような形式
+            if re.match(r"^[A-J](\u30bb\u30c3\u30c8)?$", t):
+                set_ball = t[0]
+                break
         
         # 当選番号の取得 (専用テーブルを探す)
         num_table = h3_title.find_next("table", class_="winning-numbers") or info_table.find_next("table")
@@ -118,10 +128,10 @@ def scrape_latest_result():
 
         # キャリーオーバー
         carry_over = "0"
-        carry_section = soup.find(string=re.compile("キャリーオーバー"))
+        carry_section = soup.find(string=re.compile("\u30ad\u30e3\u30ea\u30fc\u30aa\u30fc\u30d0\u30fc"))
         if carry_section:
             parent = carry_section.find_parent(["td", "tr", "div"])
-            val_match = re.search(r"([\d,]+)円", parent.get_text()) if parent else None
+            val_match = re.search(r"([\d,]+)\u5186", parent.get_text()) if parent else None
             if val_match:
                 carry_over = val_match.group(1).replace(",", "")
 
@@ -167,10 +177,18 @@ def update_local_files(result):
                 reader = list(csv.reader(f))
                 rows = reader[1:]
             last_round = int(rows[-1][0]) if rows else 0
+            new_row = [result["round"], result["date"]] + result["numbers"] + [result["bonus"]] + ["0"]*11 + [result["set_ball"]]
             if result["round"] > last_round:
-                new_row = [result["round"], result["date"]] + result["numbers"] + [result["bonus"]] + ["0"]*11 + [result["set_ball"]]
                 with open(CSV_PATH, "a", encoding="utf-8-sig", newline="") as f:
                     csv.writer(f).writerow(new_row)
+            elif result["round"] == last_round:
+                # 既存の最終行を更新
+                all_rows = []
+                with open(CSV_PATH, "r", encoding="utf-8-sig") as f:
+                    all_rows = list(csv.reader(f))
+                all_rows[-1] = new_row
+                with open(CSV_PATH, "w", encoding="utf-8-sig", newline="") as f:
+                    csv.writer(f).writerows(all_rows)
         
         data = []
         with open(CSV_PATH, "r", encoding="utf-8-sig") as f:
@@ -195,17 +213,58 @@ def update_local_files(result):
         print("Local files updated (UTF-8-SIG).")
     except Exception as e: print(f"File Update Error: {e}")
 
+def calculate_set_ball_stats(data):
+    stats_map = {}
+    balls = ['A','B','C','D','E','F','G','H','I','J']
+    for b in balls:
+        filtered = [d for d in data if d.get("set_ball") == b]
+        total_count = len(filtered)
+        if total_count == 0:
+            stats_map[b] = []
+            continue
+        counts = {}
+        for d in filtered:
+            for n in d["numbers"]:
+                counts[n] = counts.get(n, 0) + 1
+        # 出現回数降順、数字昇順でソート
+        sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
+        top5 = []
+        for n, c in sorted_counts[:5]:
+            top5.append({
+                "n": n,
+                "c": c,
+                "p": round((c / total_count) * 100, 1) if total_count > 0 else 0
+            })
+        stats_map[b] = top5
+    return stats_map
+
+def patch_index_html(set_ball_stats):
+    html_path = "index.html"
+    if not os.path.exists(html_path): return False
+    try:
+        with open(html_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            
+        # バージョン情報の更新 (YYYYMMDD-HHMM)
+        version_str = datetime.datetime.now().strftime("%Y%m%d-%H%M")
+        content = re.sub(r"<!-- Version: \d{8}-\d{4} -->", f"<!-- Version: {version_str} -->", content)
+        
+        # setBallStats オブジェクトの更新
+        stats_json = json.dumps(set_ball_stats, ensure_ascii=False)
+        content = re.sub(r"const setBallStats = \{.*?\};", f"const setBallStats = {stats_json};", content, flags=re.DOTALL)
+        
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        print("index.html patched with latest stats and version.")
+        return True
+    except Exception as e:
+        print(f"Error patching index.html: {e}")
+        return False
+
 def run_update_process():
     latest = scrape_latest_result()
     if not latest: return False
     
-    # 既に当選データに prizes があるかチェック (完了済みの証)
-    # ※push失敗時のリカバリのため、一時的に常に実行するようにガードをコメントアウトします
-    # current_winners = fetch_from_firebase("stats/winners")
-    # if current_winners and current_winners.get("round") == latest["round"] and "prizes" in current_winners and current_winners.get("status") != "updating":
-    #     print(f"Round {latest['round']} is ALREADY updated.")
-    #     return True
-
     # 更新中フラグ
     update_firebase("stats/winners", {"status": "updating"}, method="patch")
     
@@ -218,6 +277,15 @@ def run_update_process():
     # Firebase反映
     if update_firebase("stats/winners", latest):
         update_local_files(latest)
+        
+        # 統計データの再計算とHTMLパッチ
+        # 最新のJSONを読み込み直して計算
+        if os.path.exists(JSON_DATA_PATH):
+            with open(JSON_DATA_PATH, "r", encoding="utf-8-sig") as f:
+                full_data = json.load(f)
+                sb_stats = calculate_set_ball_stats(full_data)
+                patch_index_html(sb_stats)
+
         # 照合済みデータの削除
         update_firebase(f"site_predictions/{latest['round']}", None, method="delete")
         return True
@@ -228,7 +296,7 @@ if __name__ == "__main__":
     MAX_RETRIES = 8
     RETRY_INTERVAL = 1800 # 30分
     
-    print("=== LOTO6PRO Auto Updater (GitHub Actions Mode) ===")
+    print("=== LOTO6PRO Auto Updater (Full Sync Mode) ===")
     for i in range(MAX_RETRIES):
         print(f"\nAttempt {i+1}/{MAX_RETRIES}...")
         if run_update_process():
@@ -240,4 +308,4 @@ if __name__ == "__main__":
             time.sleep(RETRY_INTERVAL)
     
     print("Reached maximum retries. Exiting for now.")
-    exit(0) # エラーにせず終了 (GitHub Actionsのステータスを正常に保つ)
+    exit(0)
