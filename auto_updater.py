@@ -152,7 +152,8 @@ def calculate_site_prizes(draw_id, win_nums, bonus_num):
     print(f"Calculating prizes for Draw {draw_id}...")
     predictions = fetch_from_firebase(f"site_predictions/{draw_id}")
     prizes = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
-    if not predictions: return prizes
+    total_preds = len(predictions) if predictions else 0
+    if not predictions: return prizes, total_preds
     
     win_set = set(win_nums)
     for push_id, pred in predictions.items():
@@ -166,7 +167,7 @@ def calculate_site_prizes(draw_id, win_nums, bonus_num):
         elif match_count == 5: prizes[3] += 1
         elif match_count == 4: prizes[4] += 1
         elif match_count == 3: prizes[5] += 1
-    return prizes
+    return prizes, total_preds
 
 def update_local_files(result):
     try:
@@ -300,13 +301,16 @@ if __name__ == "__main__":
     print("=== LOTO6PRO Auto Updater (Full Sync Mode) ===")
     for i in range(MAX_RETRIES):
         print(f"\nAttempt {i+1}/{MAX_RETRIES}...")
-        if run_update_process():
-            print("Successfully finished update process.")
-            exit(0) # 正常終了
+        try:
+            if run_update_process():
+                print("Successfully finished update process.")
+                exit(0) # 正常終了
+        except Exception as e:
+            print(f"Error during update process: {e}")
         
         if i < MAX_RETRIES - 1:
-            print(f"Data not ready. Waiting {RETRY_INTERVAL/60} minutes for next attempt...")
+            print(f"Data not ready or error occurred. Waiting {RETRY_INTERVAL/60} minutes for next attempt...")
             time.sleep(RETRY_INTERVAL)
     
-    print("Reached maximum retries. Exiting for now.")
+    print("Reached maximum retries or terminating.")
     exit(0)
