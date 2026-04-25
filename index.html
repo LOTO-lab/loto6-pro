@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOTO6 PRO</title>
-    <!-- Version: 20260423-1621 -->
+    <!-- Version: 20260416-2155 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <style>
         :root {
             --sidebar-bg: #0f172a;
-            --main-bg: #f8fafc;
+            --main-bg: #f0f9ff;
             --accent-blue: #38bdf8;
             --accent-green: #22c55e;
             --accent-orange: #f59e0b;
@@ -32,7 +32,7 @@
         .sidebar { width: 280px; background: #fff; border-right: 1px solid #e2e8f0; padding: 30px 20px 150px 20px; display: flex; flex-direction: column; overflow-y: auto; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; box-shadow: 2px 0 10px rgba(0,0,0,0.02); height: 100vh; position: sticky; top: 0; box-sizing: border-box; }
         .sidebar.hidden { margin-left: -320px; opacity: 0; pointer-events: none; }
         
-        .top-layout { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: #f1f5f9; }
+        .top-layout { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--main-bg); }
         .top-header { background: white; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 15px; }
         .top-header h1 { font-size: 20px; font-weight: 800; color: #1e3a8a; margin: 0; line-height: 1; }
         .btn-toggle { background: transparent; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 10px; cursor: pointer; color: #475569; font-size: 14px; font-weight: bold; transition: 0.2s; }
@@ -55,35 +55,44 @@
         input[type="number"], select { width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; box-sizing: border-box; }
 
         /* テーブル (loto6_board.htmlに合わせたデザイン) */
-        .board-container { background: white; border-radius: 12px; overflow-x: auto; flex: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .board-container { background: white; border-radius: 12px; overflow-x: auto; flex: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box; }
         table { width: 100%; border-collapse: collapse; text-align: center; }
-        th, td { border: 1px solid #e0e0e0; padding: 2px 1px; font-size: 11px; }
-        th { background-color: #ccddec; position: sticky; top: 0; z-index: 10; font-weight: bold; color: #2e3e59; padding: 4px 1px; transition: background-color 0.3s, color 0.3s; }
-        
-        .id-col { background-color: #e8eef1 !important; width: 54px; min-width: 54px; position: sticky; left: 0; z-index: 11; font-weight: bold; color: #2e3e59; padding: 2px 0; }
-        th.id-col { z-index: 12; background-color: #b3cdd9 !important; }
-        .sb-col { display: none !important; }
+        th, td { border: 1px solid #e0e0e0; padding: 0; font-size: 13px; width: 20px; height: 22px; box-sizing: border-box; }
+        th { background-color: #ccddec; position: sticky; top: 0; z-index: 10; font-weight: bold; color: #2e3e59; transition: background-color 0.3s, color 0.3s; line-height: 22px; }
+        th.predicted-header-cell, th.predicted-header-cell .header-num { color: #ffffff !important; }
+        th.predicted-header-cell.col-6, th.predicted-header-cell.col-6 .header-num { color: #000000 !important; }
 
-        .num-cell, .header-num { width: 22px; height: 22px; border-radius: 3px; margin: 0; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: bold; box-sizing: border-box; }
+        .id-col { background-color: #e8eef1 !important; width: 42px; min-width: 42px; position: sticky; left: 0; z-index: 11; font-weight: bold; color: #2e3e59; padding: 0; font-size: 10px; }
+        th.id-col { z-index: 12; background-color: #b3cdd9 !important; }
+        
+        .sb-col { width: 26px; border-left: 2px solid #cbd5e1; }
+        .sum-col { width: 30px; }
+        .oe-col { width: 30px; }
+        th.sb-col, th.sum-col, th.oe-col { background-color: #b3cdd9 !important; }
+
+        .num-cell, .header-num { width: 18px; height: 18px; border-radius: 3px; margin: 0; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: bold; box-sizing: border-box; }
         .header-num { color: #334155; background: transparent; }
         
-        td { background: #ffffff; cursor: cell; transition: 0.1s; }
-        td:hover { background: #f8fafc; }
+        td { background: #ffffff; cursor: cell; transition: 0.1s; line-height: 22px; vertical-align: middle; }
+        tr:hover td { background-color: #f1f5f9; }
+        tr:hover td.id-col { background-color: #d1dbe5 !important; }
+        tr:hover td.sb-col, tr:hover td.sum-col, tr:hover td.oe-col { background-color: #f1f5f9 !important; }
         
-        /* ボーナス数字：黒枠・白背景・黒文字（最優先） */
-        .num-cell.bonus-cell { background-color: #ffffff !important; color: #000000 !important; border: 2px solid #000 !important; }
+        /* ボーナス数字：白背景・黒枠・黒文字 */
+        .bonus-cell, td.is-bonus { background-color: #ffffff !important; color: #000000 !important; border: 2px solid #000 !important; font-weight: 900; }
 
-        /* 本数字カラークラス */
-        .col-1 { background-color: #1a9c2a !important; color: #fff !important; } 
-        .col-2 { background-color: #00d0e0 !important; color: #fff !important; } 
-        .col-3 { background-color: #f79c11 !important; color: #fff !important; }
-        .col-4 { background-color: #8c8c11 !important; color: #fff !important; } 
-        .col-5 { background-color: #11d911 !important; color: #fff !important; } 
+        /* 本数字カラークラス (共通) */
+        .col-1 { background-color: #00d0e0 !important; color: #fff !important; } 
+        .col-2 { background-color: #1a9c2a !important; color: #fff !important; } 
+        .col-3 { background-color: #828282 !important; color: #fff !important; }
+        .col-4 { background-color: #881c88 !important; color: #fff !important; } 
+        .col-5 { background-color: #1133e6 !important; color: #fff !important; } 
         .col-6 { background-color: #fce803 !important; color: #000 !important; }
-        .col-7 { background-color: #881c88 !important; color: #fff !important; } 
-        .col-8 { background-color: #198080 !important; color: #fff !important; } 
-        .col-9 { background-color: #1133e6 !important; color: #fff !important; }
-        .col-0 { background-color: #828282 !important; color: #fff !important; }
+        .col-7 { background-color: #198080 !important; color: #fff !important; } 
+        .col-8 { background-color: #f79c11 !important; color: #fff !important; } 
+        .col-9 { background-color: #11d911 !important; color: #fff !important; }
+        .col-0 { background-color: #8c8c11 !important; color: #fff !important; }
+        td.active { font-weight: bold; }
 
         /* 除外ヘッダー: header-num要素に対して×をかぶせる */
         th.eliminated-header .header-num { position: relative; }
@@ -123,6 +132,102 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        
+        /* ===== スマホ対応 (レスポンシブ) ===== */
+        @media (max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 15px;
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                box-shadow: none;
+            }
+            .sidebar.hidden {
+                margin-left: 0;
+                display: none; /* スマホでは完全に非表示にする */
+            }
+            .top-header {
+                padding: 10px 15px;
+            }
+            .top-header h1 {
+                font-size: 16px;
+                flex-wrap: wrap;
+            }
+            .content-wrapper {
+                padding: 10px;
+            }
+            .main-controls-wrapper {
+                padding: 15px;
+            }
+            .controls-flex {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .controls-flex > div {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+            /* ボタンを押しやすくする */
+            .predict-btn, .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            .btn-toggle {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+            /* 予測結果のボールのサイズ調整 */
+            .result-ball {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            .prediction-result-display {
+                flex-wrap: wrap;
+            }
+            /* テーブルのスクロール対応は既存の .board-container でカバーされますが、少し余白を詰めます */
+            th, td {
+                padding: 1px;
+            }
+            .num-cell, .header-num {
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+            }
+            .circle-cell {
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+            }
+        }
+
+        /* ===== フッター (権利表記) ===== */
+        .site-footer {
+            margin-top: 20px;
+            padding: 30px 20px;
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -4px 6px rgba(0,0,0,0.02);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .site-footer p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.025em;
         }
     </style>
 </head>
@@ -203,73 +308,125 @@
                     </div>
 
                     <div class="controls-flex">
-                        <div style="display: flex; align-items: center;">
-                            <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 合計値の範囲:</label>
-                            <input type="number" id="minSumInput" placeholder="21" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="21" max="243" value="60"> 
-                            <span style="font-weight: bold; color: #666; margin: 0 5px;">〜</span>
-                            <input type="number" id="maxSumInput" placeholder="243" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="21" max="243" value="200">
-                        </div>
-                        
-                        <div style="display: flex; align-items: center;">
-                            <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 奇数:偶数の比率:</label>
-                            <span style="font-size: 14px; color: #444;">奇数</span>
-                            <select id="oddsInput" onchange="updateEvens()" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-left: 5px;">
-                                <option value="">任意</option>
-                                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
-                            </select> 
-                            <span style="font-weight: bold; color: #666; margin: 0 5px;">:</span>
-                            <span style="font-size: 14px; color: #444;">偶数</span>
-                            <span id="evensDisplay" style="display:inline-block; width: 40px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center; background-color: #f5f5f5; margin-left: 5px; font-size:14px;">-</span>
-                        </div>
-
-                        <div style="display: flex; align-items: center;">
-                            <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 固定数字 (最大5つ):</label>
-                            <input type="number" id="f1" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
-                            <input type="number" id="f2" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
-                            <input type="number" id="f3" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
-                            <input type="number" id="f4" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;" min="1" max="43"> 
-                            <input type="number" id="f5" placeholder="-" style="width: 45px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="1" max="43"> 
-                        </div>
-                        
-                        <div style="display: flex; align-items: center;">
-                            <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 セット球:</label>
-                            <select id="setBallSelect" onchange="onSetBallChange()" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;">
-                                <option value="">-- 指定なし --</option>
-                                <option value="A">Aセット</option><option value="B">Bセット</option><option value="C">Cセット</option><option value="D">Dセット</option><option value="E">Eセット</option><option value="F">Fセット</option><option value="G">Gセット</option><option value="H">Hセット</option><option value="I">Iセット</option><option value="J">Jセット</option>
-                            </select>
-                            <span id="predictedSetBallSpan" style="font-size: 14px; font-weight: bold; color: var(--accent-blue);"></span>
-                        </div>
-
-                        <div style="display: flex; align-items: center;">
-                            <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 連番数:</label>
-                            <select id="consecutiveInput" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;">
-                                <option value="">設定なし</option>
-                                <option value="0">0組</option><option value="1">1組</option><option value="2">2組</option><option value="3">3組</option>
-                            </select>
-                        </div>
-
-                        <div style="display: flex; align-items: center;">
-                            <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 下一桁同数:</label>
-                            <select id="lastDigitInput" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 5px;">
-                                <option value="">設定なし</option>
-                                <option value="0">0組</option><option value="1">1組</option><option value="2">2組</option><option value="3">3組</option>
-                            </select>
-                        </div>
-
-                        <!-- 設定ボタン行 (セット球の下の段) -->
-                        <div style="display: flex; gap: 10px; align-items: center; width: 100%; box-sizing: border-box; margin: 10px 0; flex-wrap: wrap; flex-basis: 100%;">
-                            <button class="btn river-btn" id="btnRiver" onclick="toggleRiverTheory()" style="font-size: 13px; padding: 10px 15px;" title="【数字の川理論】前回出現した数字を基準に関連性の高い数字の出現確率を高める理論です。">🌊 数字の川理論を適用</button>
-                            
-                            <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 0 15px; border-radius: 8px; border: 1px solid #ddd; height: 38px;">
-                                 <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="elim_mode" value="auto" onchange="toggleElimModeUI()" checked> 自動除外</label>
-                                 <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="elim_mode" value="manual" onchange="toggleElimModeUI()"> 手動除外 (数字を表から選択)</label>
+                        <!-- 1段目: 合計値・奇数偶数・固定数字 -->
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 4px;">
+                            <div style="display: flex; align-items: center;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 合計値の範囲:</label>
+                                <input type="number" id="minSumInput" placeholder="21" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="21" max="243" value="60"> 
+                                <span style="font-weight: bold; color: #666; margin: 0 5px;">〜</span>
+                                <input type="number" id="maxSumInput" placeholder="243" style="width: 60px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="21" max="243" value="200">
                             </div>
-                            <button class="btn eliminate-btn" onclick="calculateEliminations()" style="font-size: 13px; padding: 10px 15px;">🥚 削除数字を選定</button>
+                            
+                            <div style="display: flex; align-items: center;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 奇数:偶数:</label>
+                                <span style="font-size: 14px; color: #444;">奇</span>
+                                <select id="oddsInput" onchange="updateEvens()" style="width: 50px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-left: 5px;">
+                                    <option value="">任意</option>
+                                    <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                </select> 
+                                <span style="font-weight: bold; color: #666; margin: 0 5px;">:</span>
+                                <span style="font-size: 14px; color: #444;">偶</span>
+                                <span id="evensDisplay" style="display:inline-block; width: 35px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; text-align: center; background-color: #f5f5f5; margin-left: 5px; font-size:14px;">-</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 固定数字:</label>
+                                <input type="number" id="f1" placeholder="-" style="width: 40px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 3px;" min="1" max="43"> 
+                                <input type="number" id="f2" placeholder="-" style="width: 40px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 3px;" min="1" max="43"> 
+                                <input type="number" id="f3" placeholder="-" style="width: 40px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 3px;" min="1" max="43"> 
+                                <input type="number" id="f4" placeholder="-" style="width: 40px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center; margin-right: 3px;" min="1" max="43"> 
+                                <input type="number" id="f5" placeholder="-" style="width: 40px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" min="1" max="43"> 
+                            </div>
+                        </div>
+
+                        <!-- 2段目: 連番・下一桁・引っ張り・削除数字 -->
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
+                            <div style="display: flex; align-items: center;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 連番数:</label>
+                                <select id="consecutiveInput" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;">
+                                    <option value="">設定なし</option>
+                                    <option value="0">0組</option><option value="1">1組</option><option value="2">2組</option><option value="3">3組</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 下一桁同数:</label>
+                                <select id="lastDigitInput" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;">
+                                    <option value="">設定なし</option>
+                                    <option value="0">0組</option><option value="1">1組</option><option value="2">2組</option><option value="3">3組</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444; margin-right: 8px;">🎯 引っ張り数字:</label>
+                                <select id="repeatInput" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;">
+                                    <option value="">設定なし</option>
+                                    <option value="0">0個</option><option value="1">1個</option><option value="2">2個</option><option value="3">3個</option><option value="4">4個</option><option value="5">5個</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                 <label style="font-size: 14px; font-weight: bold; color: #444;">🎯 削除数字:</label>
+                                 <div style="display: flex; align-items: center; gap: 10px; background: #fff; padding: 0 10px; border-radius: 8px; border: 1px solid #ddd; height: 38px;">
+                                     <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="elim_mode" value="none" onchange="toggleElimModeUI()" checked> なし</label>
+                                     <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="elim_mode" value="auto" onchange="toggleElimModeUI()"> 自動</label>
+                                     <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="elim_mode" value="manual" onchange="toggleElimModeUI()"> 手動（表から直接選択）</label>
+                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- 3段目: セット球・予測セット球 -->
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444;">🎯 セット球:</label>
+                                <select id="setBallSelect" style="width: 100px; padding: 6px; border: 1px solid #aaa; border-radius: 4px; text-align: center;" onchange="onSetBallChange()">
+                                    <option value="">指定なし</option>
+                                    <option value="A">Aセット</option><option value="B">Bセット</option><option value="C">Cセット</option><option value="D">Dセット</option><option value="E">Eセット</option><option value="F">Fセット</option><option value="G">Gセット</option><option value="H">Hセット</option><option value="I">Iセット</option><option value="J">Jセット</option>
+                                </select>
+                            </div>
+                            <span id="predictedSetBallSpan" style="font-size: 13px; font-weight: bold; color: var(--accent-blue);"></span>
+                        </div>
+
+                        <!-- 4段目: 各桁の数・川理論・条件リセット -->
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 10px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444;">🎯 各桁の数:</label>
+                                <div style="display: flex; align-items: center; gap: 5px; background: #fff; padding: 0 10px; border-radius: 8px; border: 1px solid #ddd; height: 38px;">
+                                    <label style="font-size: 12px; font-weight: bold; color: #444; margin-right: 5px;"><input type="radio" name="range_mode" value="none" checked onchange="toggleRangeModeUI()"> なし</label>
+                                    <label style="font-size: 12px; font-weight: bold; color: #444; margin-right: 10px;"><input type="radio" name="range_mode" value="apply" onchange="toggleRangeModeUI()"> 指定</label>
+                                    
+                                    <div id="rangeInputsWrapper" style="display: flex; align-items: center; gap: 5px; opacity: 0.5; pointer-events: none;">
+                                        <span style="font-size:12px; font-weight: bold; color: #444;">1桁台:</span>
+                                        <select id="range_1_9" style="width:50px; font-size:12px; border:none; background:transparent;">
+                                            <option value="">任意</option>
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                        </select>
+                                        <span style="font-size:12px; font-weight: bold; color: #444;">10台:</span>
+                                        <select id="range_10_19" style="width:50px; font-size:12px; border:none; background:transparent;">
+                                            <option value="">任意</option>
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                        </select>
+                                        <span style="font-size:12px; font-weight: bold; color: #444;">20台:</span>
+                                        <select id="range_20_29" style="width:50px; font-size:12px; border:none; background:transparent;">
+                                            <option value="">任意</option>
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                        </select>
+                                        <span style="font-size:12px; font-weight: bold; color: #444;">30台:</span>
+                                        <select id="range_30_39" style="width:50px; font-size:12px; border:none; background:transparent;">
+                                            <option value="">任意</option>
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                        </select>
+                                        <span style="font-size:12px; font-weight: bold; color: #444;">40台:</span>
+                                        <select id="range_40_43" style="width:50px; font-size:12px; border:none; background:transparent;">
+                                            <option value="">任意</option>
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn river-btn" id="btnRiver" onclick="toggleRiverTheory()" style="font-size: 13px; padding: 10px 15px;" title="【数字の川理論】前回出現した数字を基準に関連性の高い数字の出現確率を高める理論です。">🌊 数字の川理論を適用</button>
                             
                             <button class="btn" onclick="resetConditions()" style="margin-left: auto; background:#f1f5f9; color:#475569; font-size:13px; box-shadow:none; padding:10px 15px; border: 1px solid #cbd5e1;">♻️ 条件リセット</button>
                         </div>
-
-                        <div style="font-size: 12px; color: #888; flex-basis: 100%;">※各項目とも空欄の場合は過去傾向が自動適用されます。固定数字は指定した数字を必ず含めます。</div>
+                        
+                        <div style="font-size: 12px; color: #888; margin-bottom: 10px;">※各項目とも空欄の場合は過去傾向が自動適用されます。固定数字は指定した数字を必ず含めます。</div>
                     </div>
 
                     <div style="display: flex; gap: 20px; justify-content: center; margin: 10px 0 20px 0;">
@@ -286,7 +443,6 @@
                     <div id="latestTrendBox" style="display: none; background: #fffdf5; border: 1px solid #ffe082; border-top: none; border-radius: 0 0 8px 8px; padding: 12px 15px; margin-bottom: 15px; font-size: 13px; line-height: 1.6; color: #5c4d04; margin-top: -10px;"></div>
                     
                     <div id="riverText" class="info-panel" style="background: #e3f2fd; color: #0d47a1; border-left: 5px solid #2196F3;"></div>
-                    <div id="elimText" class="info-panel" style="background: #fff; color: #444; border-left: 5px solid #6c757d;"></div>
                     <div id="predictText" class="info-panel" style="background: #fdfdfd; color: #444; border-left: 5px solid #1fa331;"></div>
                 </div>
 
@@ -295,8 +451,10 @@
                         <thead>
                             <tr>
                                 <th class="id-col" rowspan="2">回別</th>
-                                <th class="sb-col" rowspan="2">球</th>
                                 <th colspan="43" style="font-size: 14px; font-weight: bold; color: #1e3a8a; background: #ccddec; padding: 4px 0;">本数字（ボーナス数字含む）</th>
+                                <th class="sb-col" rowspan="2">球</th>
+                                <th id="th-sum" class="sum-col" rowspan="2">合計</th>
+                                <th id="th-oe" class="oe-col" rowspan="2">奇:偶</th>
                             </tr>
                             <tr id="headerRow1"></tr>
                         </thead>
@@ -304,6 +462,13 @@
                     </table>
                 </div>
             </div>
+
+            <!-- 権利表記フッター -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <p>© 2026 LOTO6 PRO. All Rights Reserved.</p>
+                </div>
+            </footer>
         </section>
     </div>
 
@@ -344,39 +509,45 @@
             }
         }
 
-        const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.1}, {"n": 23, "c": 37, "p": 17.7}, {"n": 24, "c": 37, "p": 17.7}, {"n": 2, "c": 34, "p": 16.3}, {"n": 3, "c": 34, "p": 16.3}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 38, "p": 19.2}, {"n": 28, "c": 37, "p": 18.7}, {"n": 24, "c": 36, "p": 18.2}, {"n": 14, "c": 35, "p": 17.7}, {"n": 37, "c": 35, "p": 17.7}], "E": [{"n": 5, "c": 39, "p": 18.2}, {"n": 21, "c": 39, "p": 18.2}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 38, "p": 17.8}, {"n": 41, "c": 37, "p": 17.3}], "F": [{"n": 20, "c": 43, "p": 20.5}, {"n": 2, "c": 42, "p": 20.0}, {"n": 27, "c": 38, "p": 18.1}, {"n": 38, "c": 37, "p": 17.6}, {"n": 5, "c": 36, "p": 17.1}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 25, "c": 40, "p": 19.7}, {"n": 26, "c": 40, "p": 19.7}, {"n": 6, "c": 39, "p": 19.2}, {"n": 32, "c": 36, "p": 17.7}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.6}, {"n": 20, "c": 37, "p": 18.1}, {"n": 6, "c": 36, "p": 17.6}, {"n": 35, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.2}]};
+        const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.1}, {"n": 23, "c": 37, "p": 17.7}, {"n": 24, "c": 37, "p": 17.7}, {"n": 2, "c": 34, "p": 16.3}, {"n": 3, "c": 34, "p": 16.3}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 38, "p": 19.2}, {"n": 28, "c": 37, "p": 18.7}, {"n": 24, "c": 36, "p": 18.2}, {"n": 14, "c": 35, "p": 17.7}, {"n": 37, "c": 35, "p": 17.7}], "E": [{"n": 5, "c": 39, "p": 18.3}, {"n": 21, "c": 39, "p": 18.3}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 37, "p": 17.4}, {"n": 41, "c": 37, "p": 17.4}], "F": [{"n": 20, "c": 43, "p": 20.6}, {"n": 2, "c": 42, "p": 20.1}, {"n": 27, "c": 38, "p": 18.2}, {"n": 38, "c": 37, "p": 17.7}, {"n": 5, "c": 36, "p": 17.2}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 25, "c": 40, "p": 19.7}, {"n": 26, "c": 40, "p": 19.7}, {"n": 6, "c": 39, "p": 19.2}, {"n": 32, "c": 36, "p": 17.7}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.6}, {"n": 20, "c": 37, "p": 18.1}, {"n": 6, "c": 36, "p": 17.6}, {"n": 35, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.2}]};
         window.eliminatedNumbers = [];
         window.riverRocks = [];
 
         function renderBoard() {
             const h1 = document.getElementById('headerRow1');
-            let h1Html = '';
+            let h = '';
             for(let i=1; i<=43; i++) {
-                h1Html += `<th id="th-${i}" onclick="handleCellClick(this, ${i})" style="cursor: pointer;"><div id="hnum-${i}" class="header-num">${i < 10 ? '0'+i : i}</div></th>`;
+                h += `<th id="th-${i}" class="header-num-cell" data-num="${i}" onclick="handleCellClick(this, ${i})" style="cursor: pointer;">
+                        <div id="hnum-${i}" class="header-num">${i}</div>
+                      </th>`;
             }
-            h1.innerHTML = h1Html;
+            h1.innerHTML = h;
 
             const tb = document.getElementById('tableBody');
             let b = "";
             lotoData.forEach(d => {
-                b += `<tr><td class="id-col" style="white-space:nowrap; font-size:11px;">${d.id}</td><td class="sb-col">${d.set_ball}</td>`;
+                const oddCount = d.numbers.filter(n => n % 2 !== 0).length;
+                const evenCount = 6 - oddCount;
+                b += `<tr><td class="id-col" style="white-space:nowrap;">${d.id}</td>`;
                 for(let i=1; i<=43; i++) {
                     const isBonus = (d.bonus === i);
                     const isActive = d.numbers.includes(i);
-                    const cellClass = (isActive ? 'active' : '') + (isBonus ? ' is-bonus' : '');
-                    
+                    let cellClass = "";
                     let innerContent = "";
-                    if (isActive || isBonus) {
-                        const colClass = isActive ? ` col-${i%10}` : '';
-                        const innerClass = `num-cell${colClass}${isBonus ? ' bonus-cell' : ''}`;
-                        innerContent = `<div class="${innerClass}">${i}</div>`;
+                    
+                    if (isActive) {
+                        cellClass = `active col-${i%10}`;
+                        innerContent = i;
+                    } else if (isBonus) {
+                        cellClass = "is-bonus";
+                        innerContent = i;
                     }
                     
                     b += `<td class="${cellClass}" data-num="${i}" onclick="handleCellClick(this, ${i})">
                             ${innerContent}
                           </td>`;
                 }
-                b += `</tr>`;
+                b += `<td class="sb-col">${d.set_ball}</td><td class="sum-col">${d.sum}</td><td class="oe-col">${oddCount}:${evenCount}</td></tr>`;
             });
             tb.innerHTML = b;
             
@@ -384,7 +555,8 @@
         }
 
         function handleCellClick(el, n) {
-            const mode = document.querySelector('input[name="elim_mode"]:checked').value;
+            const modeEl = document.querySelector('input[name="elim_mode"]:checked');
+            const mode = modeEl ? modeEl.value : 'none';
             if (mode !== 'manual') return;
             if (window.eliminatedNumbers.includes(n)) { window.eliminatedNumbers = window.eliminatedNumbers.filter(x => x !== n); } 
             else { window.eliminatedNumbers.push(n); }
@@ -392,6 +564,10 @@
         }
 
         function refreshAllElimCells() {
+            const modeEl = document.querySelector('input[name="elim_mode"]:checked');
+            const mode = modeEl ? modeEl.value : 'none';
+            const label = mode === 'auto' ? '自動除外' : (mode === 'manual' ? '手動除外' : '設定なし');
+
             for(let i=1; i<=43; i++) {
                 const th = document.getElementById('th-'+i);
                 if (!th) continue;
@@ -401,34 +577,78 @@
                     th.classList.remove('eliminated-header');
                 }
             }
-            document.getElementById('elimText').innerText = `手動除外: [ ${window.eliminatedNumbers.join(", ")} ]`;
-            document.getElementById('elimText').style.display = 'block';
+
             if (window.currentPrediction && window.currentPrediction.length === 6) {
                 renderPredictionOnHeader(window.currentPrediction);
             }
         }
 
         function renderPredictionOnHeader(selection) {
+            const thSum = document.getElementById('th-sum');
+            const thOE = document.getElementById('th-oe');
+
             for(let i=1; i<=43; i++) {
-                const inner = document.getElementById('hnum-'+i);
-                if (!inner) continue;
+                const th = document.getElementById('th-'+i);
+                if (!th) continue;
                 
-                // クラスを一旦リセット
-                inner.className = 'header-num';
+                // 既存のカラークラスとハイライトクラスを削除
+                th.classList.remove('predicted-header-cell');
+                for(let j=0; j<=9; j++) th.classList.remove(`col-${j}`);
                 
-                if (selection.includes(i)) {
-                    inner.classList.add(`col-${i%10}`);
+                if (selection && selection.includes(i)) {
+                    th.classList.add(`col-${i%10}`, 'predicted-header-cell');
+                }
+            }
+
+            if (selection && selection.length === 6) {
+                const sum = selection.reduce((a,b)=>a+b, 0);
+                const odds = selection.filter(n=>n%2!==0).length;
+                const evens = 6 - odds;
+                if(thSum) {
+                    thSum.innerHTML = `合計<br><span style="color:#000; font-weight:bold; font-size:12px;">${sum}</span>`;
+                }
+                if(thOE) {
+                    thOE.innerHTML = `奇:偶<br><span style="color:#000; font-weight:bold; font-size:12px;">${odds}:${evens}</span>`;
+                }
+            } else {
+                if(thSum) {
+                    thSum.innerText = "合計";
+                }
+                if(thOE) {
+                    thOE.innerText = "奇:偶";
                 }
             }
         }
 
         function generatePrediction() {
+            // 自動除外が選択されている場合、最新データに基づいて削除数字を自動選定
+            const modeEl = document.querySelector('input[name="elim_mode"]:checked');
+            if (modeEl && modeEl.value === 'auto') {
+                calculateEliminations();
+            }
 
             const minS = parseInt(document.getElementById('minSumInput').value) || 60;
             const maxS = parseInt(document.getElementById('maxSumInput').value) || 200;
             const oddsT = document.getElementById('oddsInput').value !== "" ? parseInt(document.getElementById('oddsInput').value) : null;
             const consecutiveT = document.getElementById('consecutiveInput').value !== "" ? parseInt(document.getElementById('consecutiveInput').value) : null;
             const lastDigitT = document.getElementById('lastDigitInput').value !== "" ? parseInt(document.getElementById('lastDigitInput').value) : null;
+            const repeatT = document.getElementById('repeatInput').value !== "" ? parseInt(document.getElementById('repeatInput').value) : null;
+            
+            // 各桁の構成設定の取得
+            const rangeMode = document.querySelector('input[name="range_mode"]:checked').value;
+            const r1 = rangeMode === 'apply' && document.getElementById('range_1_9').value !== "" ? parseInt(document.getElementById('range_1_9').value) : null;
+            const r10 = rangeMode === 'apply' && document.getElementById('range_10_19').value !== "" ? parseInt(document.getElementById('range_10_19').value) : null;
+            const r20 = rangeMode === 'apply' && document.getElementById('range_20_29').value !== "" ? parseInt(document.getElementById('range_20_29').value) : null;
+            const r30 = rangeMode === 'apply' && document.getElementById('range_30_39').value !== "" ? parseInt(document.getElementById('range_30_39').value) : null;
+            const r40 = rangeMode === 'apply' && document.getElementById('range_40_43').value !== "" ? parseInt(document.getElementById('range_40_43').value) : null;
+
+            // 合計値のバリデーション
+            let totalAssigned = (r1||0) + (r10||0) + (r20||0) + (r30||0) + (r40||0);
+            if (totalAssigned > 6) {
+                alert("各桁の合計が6個を超えています。設定を見直してください。");
+                return;
+            }
+            
             let fixed = [];
             for(let i=1; i<=5; i++) { let v = document.getElementById('f'+i).value; if(v) fixed.push(parseInt(v)); }
             
@@ -465,9 +685,9 @@
                         else if (idx < 15) scores[s.num] += 5;
                     });
                     
-                    // 推奨数字の強制選定 (1〜2個)
+                    // 軸候補として1つのみ抽出
                     let pands = setBallStats.filter(s => !fixed.includes(s.num) && !window.eliminatedNumbers.includes(s.num));
-                    let forceCount = Math.min(2, 6 - fixed.length);
+                    let forceCount = Math.min(1, pands.length);
                     for(let i=0; i<forceCount; i++) {
                         if(pands[i]) {
                             forcedBySetBall.push(pands[i].num);
@@ -479,7 +699,7 @@
             }
 
             let best = [];
-            for (let t=0; t<8000; t++) {
+            for (let t=0; t<50000; t++) {
                 let avail = Array.from({length:43}, (_,i)=>i+1).filter(n => !window.eliminatedNumbers.includes(n) && !fixed.includes(n) && !forcedBySetBall.includes(n));
                 let res = [...fixed, ...forcedBySetBall];
                 while(res.length < 6) {
@@ -510,10 +730,27 @@
                     res.forEach(n => { let d = n % 10; dCounts[d] = (dCounts[d] || 0) + 1; });
                     let ldGroups = Object.values(dCounts).filter(v => v > 1).length;
 
+                    // パターンB: 引っ張り数字の算出
+                    const lastNumbers = lotoData[0].numbers;
+                    let rCount = res.filter(n => lastNumbers.includes(n)).length;
+
+                    // パターンB: 各桁の構成チェック
+                    let c1 = res.filter(n => n >= 1 && n <= 9).length;
+                    let c10 = res.filter(n => n >= 10 && n <= 19).length;
+                    let c20 = res.filter(n => n >= 20 && n <= 29).length;
+                    let c30 = res.filter(n => n >= 30 && n <= 39).length;
+                    let c40 = res.filter(n => n >= 40 && n <= 43).length;
+
                     if(s>=minS && s<=maxS && 
                        (oddsT===null || o===oddsT) && 
                        (consecutiveT===null || cGroups===consecutiveT) &&
-                       (lastDigitT===null || ldGroups===lastDigitT)) { 
+                       (lastDigitT===null || ldGroups===lastDigitT) &&
+                       (repeatT===null || rCount===repeatT) &&
+                       (r1 === null || c1 === r1) && 
+                       (r10 === null || c10 === r10) && 
+                       (r20 === null || c20 === r20) && 
+                       (r30 === null || c30 === r30) && 
+                       (r40 === null || c40 === r40)) { 
                         best = res; break; 
                     }
                 }
@@ -529,9 +766,36 @@
                 let low = best.filter(x => x <= 21).length;
                 let high = 6 - low;
                 
+                // 解説用の詳細データ作成
+                let consecutiveDetails = [];
+                for(let i=0; i<best.length-1; i++) {
+                    if(best[i+1] - best[i] === 1) consecutiveDetails.push(`${best[i]}・${best[i+1]}`);
+                }
+                let cTxt = consecutiveDetails.length > 0 ? `（${consecutiveDetails.join(", ")}）` : "";
+
+                let lastDigitDetails = [];
+                let dMap = {};
+                best.forEach(n => { let d = n % 10; if(!dMap[d]) dMap[d]=[]; dMap[d].push(n); });
+                for(let d in dMap) { if(dMap[d].length > 1) lastDigitDetails.push(dMap[d].join("・")); }
+                let ldTxt = lastDigitDetails.length > 0 ? `（${lastDigitDetails.join(", ")}）` : "";
+
+                const lastNumbers = lotoData[0].numbers;
+                let repeatDetails = best.filter(n => lastNumbers.includes(n));
+                let rTxt = repeatDetails.length > 0 ? `（${repeatDetails.join(", ")}）` : "";
+
                 let theTxt = window.riverMode ? `<li><strong style="color:#e65100;">🌊 数字の川理論を適用</strong>: 出現確率の高い「連番」、「末尾一致」、および「引っ張りの岩（前回の当選数字）」の条件で構成。</li>` : "";
                 let setBallTxt = setBallReasonHTML ? `<li><strong style="color:var(--accent-blue);">🎯 ${selectedSet}セット分析</strong>: 内部ランキングを精査し、 ${setBallReasonHTML} を軸候補として選出。</li>` : "";
-                let elimTxt = window.eliminatedNumbers.length > 0 ? `<li><strong>削除数字の連携</strong>: ${window.eliminatedNumbers.length}個の削除数字（表ヘッダの✖印）を回避しました。</li>` : "";
+                let elimReason = "";
+                if (window.eliminatedNumbers.length > 0) {
+                    const modeEl = document.querySelector('input[name="elim_mode"]:checked');
+                    const mode = modeEl ? modeEl.value : 'auto';
+                    if (mode === 'auto') {
+                        elimReason = `最近の出現傾向（${window.eliminatedNumbers.length}個の停滞数字）を分析し、出現確率が極めて低いと判断された数字（${window.eliminatedNumbers.join(", ")}）を自動的に回避しました。`;
+                    } else {
+                        elimReason = `ユーザー指定された${window.eliminatedNumbers.length}個の除外数字（${window.eliminatedNumbers.join(", ")}）を予測から排除しました。`;
+                    }
+                }
+                let elimTxt = elimReason ? `<li><strong>削除数字の連携</strong>: ${elimReason}</li>` : "";
                 let oddsTxtInfo = (oddsT !== null) ? `（ユーザー指定 ${oddsT}:${6-oddsT}）` : `（バランス重視）`;
                 let fixedTxtInfo = fixed.length > 0 ? `<li><strong>固定数字の設定</strong>: 指定された ${fixed.length}個の数字（${fixed.join(", ")}）を最優先で組み込みました。</li>` : "";
 
@@ -542,6 +806,14 @@
                         ${setBallTxt}
                         ${theTxt}
                         ${elimTxt}
+                        <li><strong>各桁の数</strong>：
+                            1桁台 <b>${best.filter(n => n >= 1 && n <= 9).length}個</b> (${best.filter(n => n >= 1 && n <= 9).join(", ")}), 
+                            10台 <b>${best.filter(n => n >= 10 && n <= 19).length}個</b> (${best.filter(n => n >= 10 && n <= 19).join(", ")}), 
+                            20台 <b>${best.filter(n => n >= 20 && n <= 29).length}個</b> (${best.filter(n => n >= 20 && n <= 29).join(", ")}), 
+                            30台 <b>${best.filter(n => n >= 30 && n <= 39).length}個</b> (${best.filter(n => n >= 30 && n <= 39).join(", ")}), 
+                            40台 <b>${best.filter(n => n >= 40 && n <= 43).length}個</b> (${best.filter(n => n >= 40 && n <= 43).join(", ")})。
+                        </li>
+                        <li><strong>連番・特殊構成</strong>：連番 <b>${consecutiveDetails.length}組</b> ${cTxt}、下一桁同数 <b>${lastDigitDetails.length}組</b> ${ldTxt}、引っ張り数字 <b>${repeatDetails.length}個</b> ${rTxt} を組み込み。</li>
                         <li><strong>バランス調整（奇数偶数・高低）</strong>：奇数 <b>${odds}</b> : 偶数 <b>${evens}</b> ${oddsTxtInfo}、低い数字(1-21) <b>${low}</b> : 高い数字(22-43) <b>${high}</b> のバランスで構成。</li>
                         <li><strong>合計値の最適化</strong>：合計値 <b>${sum}</b>（指定範囲 ${minS}〜${maxS}）の条件を満たす組み合わせを抽出。</li>
                         <li><strong>当せん金最大化の戦略</strong>：誕生日目当ての構成（1〜31だけ）などによる当せん金の目減りを防ぐため、32以上の数字が選ばれるよう調整されています。</li>
@@ -550,9 +822,8 @@
                         ${best.map(n => `<div class="result-ball col-${n%10}">${n < 10 ? '0'+n : n}</div>`).join("")}
                     </div>`;
                 pText.style.display = 'block';
-
             } else { 
-                let msg = `条件に合う組み合わせが8000回の試行内で見つかりませんでした。
+                let msg = `条件に合う組み合わせが50,000回の試行内で見つかりませんでした。
 以下の条件が厳しすぎる、もしくは互いに矛盾している可能性があります：
 `;
                 msg += `・合計値: ${minS}〜${maxS}
@@ -562,6 +833,8 @@
                 if(consecutiveT !== null) msg += `・連番数: ${consecutiveT}組
 `;
                 if(lastDigitT !== null) msg += `・下一桁同数: ${lastDigitT}組
+`;
+                if(repeatT !== null) msg += `・引っ張り数字: ${repeatT}個
 `;
                 if(fixed.length > 0) msg += `・固定数字: ${fixed.join(",")}
 `;
@@ -604,6 +877,18 @@
             window.eliminatedNumbers = [];
             refreshAllElimCells();
             document.getElementById('elimText').style.display = 'none';
+        }
+
+        function toggleRangeModeUI() {
+            const mode = document.querySelector('input[name="range_mode"]:checked').value;
+            const wrapper = document.getElementById('rangeInputsWrapper');
+            if (mode === 'none') {
+                wrapper.style.opacity = '0.5';
+                wrapper.style.pointerEvents = 'none';
+            } else {
+                wrapper.style.opacity = '1';
+                wrapper.style.pointerEvents = 'auto';
+            }
         }
 
         function calculateEliminations() {
@@ -661,6 +946,32 @@
             span.innerHTML = `🏆 <b>${ball}セット 直近${latest50.length}回 ベスト5:</b> <span style="margin-left:5px;">${topStr}</span>`;
         }
 
+        function adjustRangeCounts(changedEl) {
+            let ids = ['range_1_9', 'range_10_19', 'range_20_29', 'range_30_39', 'range_40_43'];
+            let val = parseInt(changedEl.value) || 0;
+            if (val > 6) { val = 6; changedEl.value = 6; }
+            if (val < 0) { val = 0; changedEl.value = 0; }
+            
+            let otherIds = ids.filter(id => id !== changedEl.id);
+            let total = val;
+            
+            // 他の値を順番に調整して合計6にする
+            otherIds.forEach(id => {
+                let el = document.getElementById(id);
+                let cur = parseInt(el.value) || 0;
+                if (total + cur > 6) {
+                    el.value = Math.max(0, 6 - total);
+                }
+                total += parseInt(el.value) || 0;
+            });
+            
+            // まだ6に足りない場合は、適当なところ（とりあえず10sなど）に足す
+            if (total < 6) {
+                let el = document.getElementById(otherIds[0]);
+                el.value = parseInt(el.value) + (6 - total);
+            }
+        }
+
         function resetConditions() {
             document.getElementById('minSumInput').value = 60;
             document.getElementById('maxSumInput').value = 200;
@@ -670,7 +981,18 @@
             document.getElementById('setBallSelect').value = "";
             document.getElementById('consecutiveInput').value = "";
             document.getElementById('lastDigitInput').value = "";
-            document.querySelector('input[name="elim_mode"][value="auto"]').checked = true;
+            document.getElementById('repeatInput').value = "";
+            
+            // 構成のリセット (なしに設定)
+            document.querySelector('input[name="range_mode"][value="none"]').checked = true;
+            toggleRangeModeUI();
+            document.getElementById('range_1_9').value = "";
+            document.getElementById('range_10_19').value = "";
+            document.getElementById('range_20_29').value = "";
+            document.getElementById('range_30_39').value = "";
+            document.getElementById('range_40_43').value = "";
+
+            document.querySelector('input[name="elim_mode"][value="none"]').checked = true;
             window.eliminatedNumbers = [];
             refreshAllElimCells();
             document.getElementById('predictText').style.display = 'none';
