@@ -247,9 +247,14 @@ def patch_index_html(set_ball_stats):
             content = f.read()
             
         # バージョン情報の更新 (YYYYMMDD-HHMM)
-        version_str = datetime.datetime.now().strftime("%Y%m%d-%H%M")
+        now = datetime.datetime.now()
+        version_str = now.strftime("%Y%m%d-%H%M")
         content = re.sub(r"<!-- Version: \d{8}-\d{4} -->", f"<!-- Version: {version_str} -->", content)
         
+        # 最終更新日の表示を更新 (YYYY/MM/DD)
+        date_str = now.strftime("%Y/%m/d") # 例: 2026/04/26
+        content = re.sub(r'<span id="update-date".*?>最終更新日: .*?</span>', f'<span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: {date_str}</span>', content)
+
         # setBallStats オブジェクトの更新
         stats_json = json.dumps(set_ball_stats, ensure_ascii=False)
         content = re.sub(r"const setBallStats = \{.*?\};", f"const setBallStats = {stats_json};", content, flags=re.DOTALL)
