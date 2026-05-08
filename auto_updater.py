@@ -252,7 +252,7 @@ def patch_index_html(set_ball_stats):
         content = re.sub(r"<!-- Version: \d{8}-\d{4} -->", f"<!-- Version: {version_str} -->", content)
         
         # 最終更新日の表示を更新 (YYYY/MM/DD)
-        date_str = now.strftime("%Y/%m/d") # 例: 2026/04/26
+        date_str = now.strftime("%Y/%m/%d") # 例: 2026/04/26
         content = re.sub(r'<span id="update-date".*?>最終更新日: .*?</span>', f'<span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: {date_str}</span>', content)
 
         # setBallStats オブジェクトの更新
