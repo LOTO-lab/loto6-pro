@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+
+backup/
+backup_*/
+final_backup_*/
+artifacts/
+artifacts_media/
+scratch/
+
+index_backup_*.html
+*.bak
+robocopy_log.txt
