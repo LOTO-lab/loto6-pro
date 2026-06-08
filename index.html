@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOTO6 PRO | ロト6検索分析プラットフォーム v1.0</title>
-    <!-- Version: 20260608-1210 -->
+    <!-- Version: 20260508-1759 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -298,7 +298,7 @@
                     <button class="btn-toggle" onclick="toggleSidebar()">☰ 履歴等</button>
                     LOTO6 PRO | ロト6検索分析プラットフォーム v1.0
                 </h1>
-                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/06/08</span>
+                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/05/08</span>
             </div>
 
             <div class="content-wrapper">
@@ -485,9 +485,9 @@
             const hours = now.getHours();
             const mins = now.getMinutes();
             const isDrawTime = (day === 1 || day === 4) && (hours > 18 || (hours === 18 && mins >= 20));
-            const todayStr = now.getFullYear() + "/" + (now.getMonth()+1).toString().padStart(2,'0') + "/" + now.getDate().toString().padStart(2,'0');
+            const todayStr = dateKeyFromDate(now);
 
-            if (latestDraw.date === todayStr) {
+            if (normalizeDateKey(latestDraw.date) === todayStr) {
                 return latestId + 1;
             } else if (isDrawTime) {
                 return latestId + 2;
@@ -510,7 +510,103 @@
             }
         }
 
-        const setBallStats = {"A": [{"n": 32, "c": 44, "p": 18.7}, {"n": 37, "c": 43, "p": 18.3}, {"n": 15, "c": 42, "p": 17.9}, {"n": 43, "c": 40, "p": 17.0}, {"n": 14, "c": 39, "p": 16.6}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.0}, {"n": 23, "c": 37, "p": 17.5}, {"n": 3, "c": 35, "p": 16.6}, {"n": 6, "c": 35, "p": 16.6}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 30, "c": 38, "p": 17.0}, {"n": 43, "c": 38, "p": 17.0}, {"n": 1, "c": 37, "p": 16.5}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 40, "p": 18.6}, {"n": 2, "c": 39, "p": 18.1}, {"n": 21, "c": 39, "p": 18.1}, {"n": 22, "c": 38, "p": 17.7}, {"n": 41, "c": 37, "p": 17.2}], "F": [{"n": 2, "c": 43, "p": 20.4}, {"n": 20, "c": 43, "p": 20.4}, {"n": 27, "c": 38, "p": 18.0}, {"n": 38, "c": 38, "p": 18.0}, {"n": 5, "c": 37, "p": 17.5}], "G": [{"n": 19, "c": 38, "p": 18.9}, {"n": 36, "c": 38, "p": 18.9}, {"n": 6, "c": 36, "p": 17.9}, {"n": 10, "c": 34, "p": 16.9}, {"n": 31, "c": 34, "p": 16.9}], "H": [{"n": 13, "c": 42, "p": 20.7}, {"n": 32, "c": 36, "p": 17.7}, {"n": 4, "c": 35, "p": 17.2}, {"n": 29, "c": 35, "p": 17.2}, {"n": 43, "c": 35, "p": 17.2}], "I": [{"n": 6, "c": 41, "p": 20.0}, {"n": 25, "c": 40, "p": 19.5}, {"n": 26, "c": 40, "p": 19.5}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.1}], "J": [{"n": 30, "c": 38, "p": 18.5}, {"n": 20, "c": 37, "p": 18.0}, {"n": 35, "c": 37, "p": 18.0}, {"n": 6, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.1}]};
+        function getDrawId(draw) {
+            if (!draw || !draw.id) return 0;
+            const value = parseInt(String(draw.id).replace(/[^0-9]/g, ""), 10);
+            return Number.isFinite(value) ? value : 0;
+        }
+
+        function parseAmount(value) {
+            if (value === null || value === undefined || value === "") return null;
+            const amount = parseInt(String(value).replace(/[^0-9]/g, ""), 10);
+            return Number.isFinite(amount) ? amount : null;
+        }
+
+        function normalizeDateKey(value) {
+            const match = String(value || "").match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+            if (!match) return "";
+            return `${match[1]}/${match[2].padStart(2, "0")}/${match[3].padStart(2, "0")}`;
+        }
+
+        function dateKeyFromDate(date) {
+            return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}`;
+        }
+
+        function normalizeWinnerDraw(data) {
+            if (!data || !data.round || !Array.isArray(data.numbers) || data.numbers.length < 6) return null;
+            const round = parseInt(data.round, 10);
+            const numbers = data.numbers
+                .slice(0, 6)
+                .map(n => parseInt(n, 10))
+                .filter(Number.isFinite)
+                .sort((a, b) => a - b);
+            const bonus = parseInt(data.bonus, 10);
+            if (!Number.isFinite(round) || numbers.length !== 6 || !Number.isFinite(bonus)) return null;
+            const sum = Number.isFinite(parseInt(data.sum, 10))
+                ? parseInt(data.sum, 10)
+                : numbers.reduce((acc, n) => acc + n, 0);
+
+            return {
+                id: `\u7b2c${round}\u56de`,
+                date: data.date || "",
+                numbers,
+                bonus,
+                set_ball: data.set_ball ? String(data.set_ball).trim().charAt(0) : "",
+                sum
+            };
+        }
+
+        function syncLatestWinnerData(data) {
+            const incoming = normalizeWinnerDraw(data);
+            if (!incoming) return false;
+            if (!window.lotoData) window.lotoData = [];
+
+            const incomingId = getDrawId(incoming);
+            const latestId = window.lotoData.length ? getDrawId(window.lotoData[0]) : 0;
+            const existingIndex = window.lotoData.findIndex(d => getDrawId(d) === incomingId);
+            const comparableIncoming = {
+                date: incoming.date,
+                numbers: incoming.numbers,
+                bonus: incoming.bonus,
+                set_ball: incoming.set_ball,
+                sum: incoming.sum
+            };
+
+            let changed = false;
+            if (existingIndex >= 0) {
+                const existing = window.lotoData[existingIndex];
+                const comparableExisting = {
+                    date: existing.date,
+                    numbers: existing.numbers,
+                    bonus: existing.bonus,
+                    set_ball: existing.set_ball,
+                    sum: existing.sum
+                };
+                if (JSON.stringify(comparableExisting) !== JSON.stringify(comparableIncoming)) {
+                    window.lotoData[existingIndex] = { ...existing, ...incoming };
+                    changed = true;
+                }
+            } else if (incomingId > latestId || window.lotoData.length === 0) {
+                window.lotoData.unshift(incoming);
+                changed = true;
+            }
+
+            if (!changed) return false;
+
+            window.lotoData.sort((a, b) => getDrawId(b) - getDrawId(a));
+            renderBoard();
+            renderLatestTrends();
+            if (typeof onSetBallChange === "function") onSetBallChange();
+            if (typeof renderPredictionOnHeader === "function") {
+                renderPredictionOnHeader(window.currentPrediction || []);
+            }
+            if (typeof window.reloadPredictionRealtime === "function") {
+                window.reloadPredictionRealtime();
+            }
+            return true;
+        }
+
+        const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.1}, {"n": 23, "c": 37, "p": 17.6}, {"n": 3, "c": 35, "p": 16.7}, {"n": 27, "c": 35, "p": 16.7}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 39, "p": 18.2}, {"n": 21, "c": 39, "p": 18.2}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 38, "p": 17.8}, {"n": 41, "c": 37, "p": 17.3}], "F": [{"n": 20, "c": 43, "p": 20.5}, {"n": 2, "c": 42, "p": 20.0}, {"n": 27, "c": 38, "p": 18.1}, {"n": 38, "c": 37, "p": 17.6}, {"n": 5, "c": 36, "p": 17.1}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 6, "c": 40, "p": 19.6}, {"n": 25, "c": 40, "p": 19.6}, {"n": 26, "c": 40, "p": 19.6}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.5}, {"n": 20, "c": 37, "p": 18.0}, {"n": 35, "c": 37, "p": 18.0}, {"n": 6, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.1}]};
         window.eliminatedNumbers = [];
         window.riverRocks = [];
 
@@ -1335,14 +1431,20 @@
             updateVisitorCount();
 
             // 3. 総予想実行数 & 履歴の初期化
-            const nextId = calculateNextDrawId();
-
-            const predRef = ref(db, `stats/predictions/draw_${nextId}`);
             const totalFixedRef = ref(db, "stats/total_predictions_fixed");
+            let currentPredictionRef = null;
+            let currentGlobalHistRef = null;
 
             window.setupPredictionCounter = () => {
-                if (window.currentPredListener) off(window.currentPredListener);
-                onValue(predRef, (s) => {
+                const nextId = calculateNextDrawId();
+                const roundEl = document.getElementById('latestRoundInfo');
+                if (roundEl) roundEl.innerText = `\u7b2c${nextId}\u56de\u306e\u4e88\u60f3\u5b9f\u884c\u6570`;
+
+                if (currentPredictionRef) off(currentPredictionRef);
+                if (currentGlobalHistRef) off(currentGlobalHistRef);
+
+                currentPredictionRef = ref(db, `stats/predictions/draw_${nextId}`);
+                onValue(currentPredictionRef, (s) => {
                     const val = s.val();
                     const formatted = (val !== null) ? val.toLocaleString() : "0";
                     const el = document.getElementById('statPredictions');
@@ -1353,28 +1455,30 @@
                         localStorage.setItem('cache_predictions_v2', formatted);
                     }
                 });
+
+                currentGlobalHistRef = query(ref(db, `site_predictions/${nextId}`), limitToLast(5));
+                onValue(currentGlobalHistRef, (snap) => {
+                    const data = snap.val();
+                    const globalItems = [];
+                    if (data) {
+                        Object.keys(data).forEach(key => {
+                            globalItems.unshift({
+                                draw: nextId,
+                                nums: data[key].nums,
+                                timestamp: data[key].timestamp
+                            });
+                        });
+                    }
+                    renderGlobalHistory(globalItems);
+                });
             };
+            window.reloadPredictionRealtime = window.setupPredictionCounter;
             window.setupPredictionCounter();
 
             // みんなの予想履歴（グローバル）リスナー
-            const globalHistRef = query(ref(db, `site_predictions/${nextId}`), limitToLast(5));
-            onValue(globalHistRef, (snap) => {
-                const data = snap.val();
-                const globalItems = [];
-                if (data) {
-                    Object.keys(data).forEach(key => {
-                        globalItems.unshift({
-                            draw: nextId,
-                            nums: data[key].nums,
-                            timestamp: data[key].timestamp
-                        });
-                    });
-                }
-                renderGlobalHistory(globalItems);
-            });
-
             window.incrementPredictionCount = () => {
-                runTransaction(predRef, (current) => (current || 0) + 1);
+                const nextId = calculateNextDrawId();
+                runTransaction(ref(db, `stats/predictions/draw_${nextId}`), (current) => (current || 0) + 1);
                 runTransaction(totalFixedRef, (current) => (current || 0) + 1);
             };
 
@@ -1388,12 +1492,15 @@
             // 4. 最新当選実績
             onValue(ref(db, "stats/winners"), (snap) => {
                 const data = snap.val();
-                if (data && window.lotoData && window.lotoData.length > 0) {
+                if (data && Array.isArray(data.numbers) && window.lotoData && window.lotoData.length > 0) {
                     // 現在のヒストリーデータから期待される最新回号を算出
-                    const latestHistId = parseInt(window.lotoData[0].id.replace(/[^0-9]/g, ""));
+                    const dataRound = parseInt(data.round, 10);
+                    const latestHistId = getDrawId(window.lotoData[0]);
+                    const winnerDataSynced = syncLatestWinnerData(data);
+                    if (Number.isFinite(dataRound)) window.latestWinnerRound = dataRound;
                     // Firebaseの回号がヒストリー（前回結果）より進んでいれば更新
-                    if (data.round > latestHistId) {
-                        window.isWinnerUpdatedForNext = true;
+                    if (winnerDataSynced || dataRound > latestHistId) {
+                        checkDrawTiming();
                     }
 
                     const isUpdating = data.status === "updating";
@@ -1417,10 +1524,11 @@
                         `;
                     }
 
-                    const carryoverHtml = data.carryover ? `
+                    const carryoverAmount = parseAmount(data.carryover ?? data.next_carryover ?? data.nextCarryover);
+                    const carryoverHtml = carryoverAmount !== null ? `
                         <div style="margin-top:10px; background:#1e3a8a; color:white; padding:6px 10px; border-radius:6px; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-weight:bold;">次回キャリーオーバー</span>
-                            <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:14px;">¥${parseInt(data.carryover).toLocaleString()}</span>
+                            <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:14px;">&yen;${carryoverAmount.toLocaleString()}</span>
                         </div>
                     ` : '';
 
@@ -1452,7 +1560,6 @@
                     localStorage.setItem('cache_winners_html', html);
                     
                     // Firebaseにデータが届いたら、即座にフラグをONにする
-                    window.isWinnerUpdatedForNext = true;
                 }
             });
 
@@ -1584,12 +1691,13 @@
 
         function applyDrawPendingUI() {
             if (!window.lotoData || window.lotoData.length === 0) return;
-            const latestId = parseInt(lotoData[0].id.replace(/[^0-9]/g, ""));
+            const latestId = getDrawId(lotoData[0]);
+            if (normalizeDateKey(lotoData[0].date) === dateKeyFromDate(new Date())) return;
             const todayRound = latestId + 1;  // 今から結果が出る回
             const nextRound = latestId + 2;   // 次回の受付回
             
             // Firebase側ですでに今日の結果が届いている（またはファイルが更新済み）なら、待機UIをスキップ
-            if (window.isWinnerUpdatedForNext) return;
+            if ((window.latestWinnerRound || 0) >= todayRound) return;
 
             // UI上の回号表示を更新
             const roundEl = document.getElementById('latestRoundInfo');
@@ -1597,7 +1705,7 @@
 
             // 抽選結果エリアを受付終了ステータスにする
             const winnerEl = document.getElementById('winnerNumbersInfo');
-            if (!window.isWinnerUpdatedForNext) {
+            if ((window.latestWinnerRound || 0) < todayRound) {
                 winnerEl.innerHTML = `
                     <div style="text-align:center; padding:20px; color:#64748b;">
                         <div style="font-size:24px; margin-bottom:10px;">⏳</div>

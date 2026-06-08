@@ -23,7 +23,7 @@ def update_local_files():
                 data.append({
                     "id": round_label, "date": row[1],
                     "numbers": [int(row[i]) for i in range(2, 8)],
-                    "bonus": int(row[8]), "set_ball": row[20],
+                    "bonus": int(row[8]), "carryover": row[19], "set_ball": row[20],
                     "sum": sum([int(row[i]) for i in range(2, 8)])
                 })
         data.reverse() # 最新が上

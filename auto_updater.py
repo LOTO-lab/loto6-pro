@@ -130,10 +130,22 @@ def scrape_latest_result():
         carry_over = "0"
         carry_section = soup.find(string=re.compile("\u30ad\u30e3\u30ea\u30fc\u30aa\u30fc\u30d0\u30fc"))
         if carry_section:
-            parent = carry_section.find_parent(["td", "tr", "div"])
-            val_match = re.search(r"([\d,]+)\u5186", parent.get_text()) if parent else None
-            if val_match:
-                carry_over = val_match.group(1).replace(",", "")
+            candidates = []
+            parent = carry_section.find_parent(["td", "th", "tr", "div"])
+            if parent:
+                candidates.append(parent.get_text(" ", strip=True))
+                row_parent = parent.find_parent("tr")
+                if row_parent:
+                    candidates.append(row_parent.get_text(" ", strip=True))
+                next_cell = parent.find_next(["td", "th", "div"])
+                if next_cell:
+                    candidates.append(next_cell.get_text(" ", strip=True))
+
+            for text in candidates:
+                val_match = re.search(r"([\d,]+)\s*\u5186", text)
+                if val_match:
+                    carry_over = val_match.group(1).replace(",", "")
+                    break
 
         return {
             "round": int(round_id),
@@ -178,7 +190,8 @@ def update_local_files(result):
                 reader = list(csv.reader(f))
                 rows = reader[1:]
             last_round = int(rows[-1][0]) if rows else 0
-            new_row = [result["round"], result["date"]] + result["numbers"] + [result["bonus"]] + ["0"]*11 + [result["set_ball"]]
+            carryover = re.sub(r"\D", "", str(result.get("carryover", "0"))) or "0"
+            new_row = [result["round"], result["date"]] + result["numbers"] + [result["bonus"]] + ["0"]*10 + [carryover, result["set_ball"]]
             if result["round"] > last_round:
                 with open(CSV_PATH, "a", encoding="utf-8-sig", newline="") as f:
                     csv.writer(f).writerow(new_row)
@@ -203,7 +216,7 @@ def update_local_files(result):
                 data.append({
                     "id": round_label, "date": row[1],
                     "numbers": [int(row[i]) for i in range(2, 8)],
-                    "bonus": int(row[8]), "set_ball": row[20],
+                    "bonus": int(row[8]), "carryover": row[19], "set_ball": row[20],
                     "sum": sum([int(row[i]) for i in range(2, 8)])
                 })
         data.reverse()
