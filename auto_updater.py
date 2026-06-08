@@ -15,7 +15,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 CSV_PATH = "loto6_data_with_setball.csv"
 JSON_DATA_PATH = "lotoData.json"
 JS_DATA_PATH = "loto6_data.js"
-TARGET_URL = "http://sougaku.com/loto6/"
+TARGET_URL = os.environ.get("LOTO6_SOURCE_URL", "").strip()
 FIREBASE_BASE_URL = "https://loto6-analytics-default-rtdb.firebaseio.com"
 
 def fetch_from_firebase(path):
@@ -48,7 +48,10 @@ def update_firebase(path, data, method="put"):
     return False
 
 def scrape_latest_result():
-    print(f"[{datetime.datetime.now()}] Scraping from {TARGET_URL}...")
+    if not TARGET_URL:
+        raise RuntimeError("LOTO6_SOURCE_URL is not configured.")
+
+    print(f"[{datetime.datetime.now()}] Scraping latest result...")
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
@@ -119,7 +122,7 @@ def scrape_latest_result():
                 raw_nums.append(int(val))
         
         if len(raw_nums) >= 7:
-            # sougaku.comの構造: 本数字6個、その後にボーナス
+            # 譛ｬ謨ｰ蟄・蛟九√◎縺ｮ蠕後↓繝懊・繝翫せ
             win_nums = sorted(raw_nums[:6])
             bonus_num = raw_nums[6]
         else:
