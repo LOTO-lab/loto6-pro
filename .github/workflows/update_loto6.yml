@@ -23,6 +23,8 @@ jobs:
           pip install requests beautifulsoup4
 
       - name: Run update script
+        env:
+          LOTO6_SOURCE_URL: ${{ secrets.LOTO6_SOURCE_URL }}
         run: |
           python auto_updater.py
 
