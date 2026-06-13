@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOTO6 PRO | ロト6検索分析プラットフォーム v1.0</title>
-    <!-- Version: 20260614-0225 -->
+    <!-- Version: 20260508-1759 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -298,7 +298,7 @@
                     <button class="btn-toggle" onclick="toggleSidebar()">☰ 履歴等</button>
                     LOTO6 PRO | ロト6検索分析プラットフォーム v1.0
                 </h1>
-                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/06/14</span>
+                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/05/08</span>
             </div>
 
             <div class="content-wrapper">
@@ -420,6 +420,13 @@
                                             <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <label style="font-size: 14px; font-weight: bold; color: #444;">当せん金最大化:</label>
+                                <div style="display: flex; align-items: center; gap: 8px; background: #fff; padding: 0 10px; border-radius: 8px; border: 1px solid #ddd; height: 38px;">
+                                    <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="prize_mode" value="on"> ON</label>
+                                    <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="prize_mode" value="off" checked> OFF</label>
                                 </div>
                             </div>
                             <button class="btn river-btn" id="btnRiver" onclick="toggleRiverTheory()" style="font-size: 13px; padding: 10px 15px;" title="【数字の川理論】前回出現した数字を基準に関連性の高い数字の出現確率を高める理論です。">🌊 数字の川理論を適用</button>
@@ -606,7 +613,7 @@
             return true;
         }
 
-        const setBallStats = {"A": [{"n": 32, "c": 44, "p": 18.7}, {"n": 37, "c": 43, "p": 18.3}, {"n": 15, "c": 42, "p": 17.9}, {"n": 43, "c": 40, "p": 17.0}, {"n": 14, "c": 39, "p": 16.6}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.0}, {"n": 23, "c": 37, "p": 17.5}, {"n": 3, "c": 35, "p": 16.6}, {"n": 6, "c": 35, "p": 16.6}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 30, "c": 38, "p": 17.0}, {"n": 43, "c": 38, "p": 17.0}, {"n": 1, "c": 37, "p": 16.5}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 40, "p": 18.6}, {"n": 2, "c": 39, "p": 18.1}, {"n": 21, "c": 39, "p": 18.1}, {"n": 22, "c": 38, "p": 17.7}, {"n": 41, "c": 37, "p": 17.2}], "F": [{"n": 2, "c": 43, "p": 20.4}, {"n": 20, "c": 43, "p": 20.4}, {"n": 27, "c": 38, "p": 18.0}, {"n": 38, "c": 38, "p": 18.0}, {"n": 5, "c": 37, "p": 17.5}], "G": [{"n": 19, "c": 38, "p": 18.9}, {"n": 36, "c": 38, "p": 18.9}, {"n": 6, "c": 36, "p": 17.9}, {"n": 10, "c": 34, "p": 16.9}, {"n": 31, "c": 34, "p": 16.9}], "H": [{"n": 13, "c": 42, "p": 20.7}, {"n": 32, "c": 36, "p": 17.7}, {"n": 4, "c": 35, "p": 17.2}, {"n": 29, "c": 35, "p": 17.2}, {"n": 43, "c": 35, "p": 17.2}], "I": [{"n": 6, "c": 41, "p": 20.0}, {"n": 25, "c": 40, "p": 19.5}, {"n": 26, "c": 40, "p": 19.5}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.1}], "J": [{"n": 30, "c": 38, "p": 18.4}, {"n": 35, "c": 38, "p": 18.4}, {"n": 20, "c": 37, "p": 18.0}, {"n": 3, "c": 36, "p": 17.5}, {"n": 6, "c": 36, "p": 17.5}]};
+        const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.1}, {"n": 23, "c": 37, "p": 17.6}, {"n": 3, "c": 35, "p": 16.7}, {"n": 27, "c": 35, "p": 16.7}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 39, "p": 18.2}, {"n": 21, "c": 39, "p": 18.2}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 38, "p": 17.8}, {"n": 41, "c": 37, "p": 17.3}], "F": [{"n": 20, "c": 43, "p": 20.5}, {"n": 2, "c": 42, "p": 20.0}, {"n": 27, "c": 38, "p": 18.1}, {"n": 38, "c": 37, "p": 17.6}, {"n": 5, "c": 36, "p": 17.1}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 6, "c": 40, "p": 19.6}, {"n": 25, "c": 40, "p": 19.6}, {"n": 26, "c": 40, "p": 19.6}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.5}, {"n": 20, "c": 37, "p": 18.0}, {"n": 35, "c": 37, "p": 18.0}, {"n": 6, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.1}]};
         window.eliminatedNumbers = [];
         window.riverRocks = [];
 
@@ -733,6 +740,8 @@
             
             // 各桁の構成設定の取得
             const rangeMode = document.querySelector('input[name="range_mode"]:checked').value;
+            const prizeModeEl = document.querySelector('input[name="prize_mode"]:checked');
+            const prizeMaxEnabled = !prizeModeEl || prizeModeEl.value === 'on';
             const r1 = rangeMode === 'apply' && document.getElementById('range_1_9').value !== "" ? parseInt(document.getElementById('range_1_9').value) : null;
             const r10 = rangeMode === 'apply' && document.getElementById('range_10_19').value !== "" ? parseInt(document.getElementById('range_10_19').value) : null;
             const r20 = rangeMode === 'apply' && document.getElementById('range_20_29').value !== "" ? parseInt(document.getElementById('range_20_29').value) : null;
@@ -837,12 +846,14 @@
                     let c20 = res.filter(n => n >= 20 && n <= 29).length;
                     let c30 = res.filter(n => n >= 30 && n <= 39).length;
                     let c40 = res.filter(n => n >= 40 && n <= 43).length;
+                    let hasPrizeMaxNumber = res.some(n => n >= 32);
 
                     if(s>=minS && s<=maxS && 
                        (oddsT===null || o===oddsT) && 
                        (consecutiveT===null || cGroups===consecutiveT) &&
                        (lastDigitT===null || ldGroups===lastDigitT) &&
                        (repeatT===null || rCount===repeatT) &&
+                       (!prizeMaxEnabled || hasPrizeMaxNumber) &&
                        (r1 === null || c1 === r1) && 
                        (r10 === null || c10 === r10) && 
                        (r20 === null || c20 === r20) && 
@@ -895,6 +906,7 @@
                 let elimTxt = elimReason ? `<li><strong>削除数字の連携</strong>: ${elimReason}</li>` : "";
                 let oddsTxtInfo = (oddsT !== null) ? `（ユーザー指定 ${oddsT}:${6-oddsT}）` : `（バランス重視）`;
                 let fixedTxtInfo = fixed.length > 0 ? `<li><strong>固定数字の設定</strong>: 指定された ${fixed.length}個の数字（${fixed.join(", ")}）を最優先で組み込みました。</li>` : "";
+                let prizeMaxTxt = prizeMaxEnabled ? `<li><strong>当せん金最大化の戦略</strong>：誕生日目当ての構成（1〜31だけ）などによる当せん金の目減りを防ぐため、32以上の数字が選ばれるよう調整されています。</li>` : "";
 
                 const pText = document.getElementById('predictText');
                 pText.innerHTML = `<strong>【予測ロジック解説】</strong><br>
@@ -913,7 +925,7 @@
                         <li><strong>連番・特殊構成</strong>：連番 <b>${consecutiveDetails.length}組</b> ${cTxt}、下一桁同数 <b>${lastDigitDetails.length}組</b> ${ldTxt}、引っ張り数字 <b>${repeatDetails.length}個</b> ${rTxt} を組み込み。</li>
                         <li><strong>バランス調整（奇数偶数・高低）</strong>：奇数 <b>${odds}</b> : 偶数 <b>${evens}</b> ${oddsTxtInfo}、低い数字(1-21) <b>${low}</b> : 高い数字(22-43) <b>${high}</b> のバランスで構成。</li>
                         <li><strong>合計値の最適化</strong>：合計値 <b>${sum}</b>（指定範囲 ${minS}〜${maxS}）の条件を満たす組み合わせを抽出。</li>
-                        <li><strong>当せん金最大化の戦略</strong>：誕生日目当ての構成（1〜31だけ）などによる当せん金の目減りを防ぐため、32以上の数字が選ばれるよう調整されています。</li>
+                        ${prizeMaxTxt}
                     </ul>
                     <div class="prediction-result-display">
                         ${best.map(n => `<div class="result-ball col-${n%10}">${n < 10 ? '0'+n : n}</div>`).join("")}
@@ -932,6 +944,8 @@
                 if(lastDigitT !== null) msg += `・下一桁同数: ${lastDigitT}組
 `;
                 if(repeatT !== null) msg += `・引っ張り数字: ${repeatT}個
+`;
+                if(prizeMaxEnabled) msg += `・当せん金最大化: 32以上を最低1個
 `;
                 if(fixed.length > 0) msg += `・固定数字: ${fixed.join(",")}
 `;
@@ -1088,6 +1102,7 @@
             document.getElementById('range_20_29').value = "";
             document.getElementById('range_30_39').value = "";
             document.getElementById('range_40_43').value = "";
+            document.querySelector('input[name="prize_mode"][value="off"]').checked = true;
 
             document.querySelector('input[name="elim_mode"][value="none"]').checked = true;
             window.eliminatedNumbers = [];
