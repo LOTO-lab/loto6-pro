@@ -1,7 +1,7 @@
-﻿[
+[
   {
     "id": "第2110回",
-    "date": "2026/06/11",
+    "date": "2026/6/11",
     "numbers": [
       3,
       9,
@@ -17,7 +17,7 @@
   },
   {
     "id": "第2109回",
-    "date": "2026/06/08",
+    "date": "2026/6/8",
     "numbers": [
       6,
       11,
@@ -27,13 +27,13 @@
       41
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "17268406",
     "set_ball": "B",
     "sum": 146
   },
   {
     "id": "第2108回",
-    "date": "2026/06/04",
+    "date": "2026/6/4",
     "numbers": [
       2,
       5,
@@ -49,7 +49,7 @@
   },
   {
     "id": "第2107回",
-    "date": "2026/06/01",
+    "date": "2026/6/1",
     "numbers": [
       5,
       8,
@@ -59,13 +59,13 @@
       39
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "33399525",
     "set_ball": "A",
     "sum": 147
   },
   {
     "id": "第2106回",
-    "date": "2026/05/28",
+    "date": "2026/5/28",
     "numbers": [
       1,
       6,
@@ -81,7 +81,7 @@
   },
   {
     "id": "第2105回",
-    "date": "2026/05/25",
+    "date": "2026/5/25",
     "numbers": [
       5,
       26,
@@ -91,13 +91,13 @@
       40
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "267091381",
     "set_ball": "G",
     "sum": 165
   },
   {
     "id": "第2104回",
-    "date": "2026/05/21",
+    "date": "2026/5/21",
     "numbers": [
       18,
       19,
@@ -107,13 +107,13 @@
       34
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "15845051",
     "set_ball": "A",
     "sum": 145
   },
   {
     "id": "第2103回",
-    "date": "2026/05/18",
+    "date": "2026/5/18",
     "numbers": [
       1,
       2,
@@ -129,7 +129,7 @@
   },
   {
     "id": "第2102回",
-    "date": "2026/05/14",
+    "date": "2026/5/14",
     "numbers": [
       18,
       21,
@@ -139,13 +139,13 @@
       43
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "23538243",
     "set_ball": "C",
     "sum": 165
   },
   {
     "id": "第2101回",
-    "date": "2026/05/11",
+    "date": "2026/5/11",
     "numbers": [
       1,
       17,
@@ -161,7 +161,7 @@
   },
   {
     "id": "第2100回",
-    "date": "2026/05/07",
+    "date": "2026/5/7",
     "numbers": [
       8,
       17,
@@ -177,7 +177,7 @@
   },
   {
     "id": "第2099回",
-    "date": "2026/05/04",
+    "date": "2026/5/4",
     "numbers": [
       19,
       21,
@@ -187,13 +187,13 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "245719871",
     "set_ball": "D",
     "sum": 191
   },
   {
     "id": "第2098回",
-    "date": "2026/04/30",
+    "date": "2026/4/30",
     "numbers": [
       1,
       6,
@@ -209,7 +209,7 @@
   },
   {
     "id": "第2097回",
-    "date": "2026/04/27",
+    "date": "2026/4/27",
     "numbers": [
       3,
       20,
@@ -219,13 +219,13 @@
       42
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "785838686",
     "set_ball": "B",
     "sum": 150
   },
   {
     "id": "第2096回",
-    "date": "2026/04/23",
+    "date": "2026/4/23",
     "numbers": [
       8,
       15,
@@ -235,13 +235,13 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "493922051",
     "set_ball": "F",
     "sum": 138
   },
   {
     "id": "第2095回",
-    "date": "2026/04/20",
+    "date": "2026/4/20",
     "numbers": [
       13,
       20,
@@ -251,13 +251,13 @@
       30
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "242447428",
     "set_ball": "E",
     "sum": 136
   },
   {
     "id": "第2094回",
-    "date": "2026/04/16",
+    "date": "2026/4/16",
     "numbers": [
       3,
       4,
@@ -273,7 +273,7 @@
   },
   {
     "id": "第2093回",
-    "date": "2026/04/13",
+    "date": "2026/4/13",
     "numbers": [
       2,
       10,
@@ -283,13 +283,13 @@
       38
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "751519994",
     "set_ball": "H",
     "sum": 126
   },
   {
     "id": "第2092回",
-    "date": "2026/04/09",
+    "date": "2026/4/9",
     "numbers": [
       8,
       13,
@@ -299,13 +299,13 @@
       43
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "480712171",
     "set_ball": "A",
     "sum": 164
   },
   {
     "id": "第2091回",
-    "date": "2026/04/06",
+    "date": "2026/4/6",
     "numbers": [
       6,
       16,
@@ -315,13 +315,13 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "227840393",
     "set_ball": "G",
     "sum": 139
   },
   {
     "id": "第2090回",
-    "date": "2026/04/02",
+    "date": "2026/4/2",
     "numbers": [
       2,
       3,
@@ -337,7 +337,7 @@
   },
   {
     "id": "第2089回",
-    "date": "-",
+    "date": "2026/3/30",
     "numbers": [
       9,
       16,
@@ -347,13 +347,13 @@
       43
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "236800230",
     "set_ball": "D",
     "sum": 155
   },
   {
     "id": "第2088回",
-    "date": "-",
+    "date": "2026/3/26",
     "numbers": [
       8,
       16,
@@ -369,7 +369,7 @@
   },
   {
     "id": "第2087回",
-    "date": "-",
+    "date": "2026/3/23",
     "numbers": [
       7,
       10,
@@ -379,13 +379,13 @@
       39
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "31193795",
     "set_ball": "E",
     "sum": 115
   },
   {
     "id": "第2086回",
-    "date": "-",
+    "date": "2026/3/19",
     "numbers": [
       4,
       11,
@@ -395,7 +395,7 @@
       40
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "377168743",
     "set_ball": "J",
     "sum": 141
   },
@@ -411,7 +411,7 @@
       43
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "131403738",
     "set_ball": "H",
     "sum": 131
   },
@@ -427,7 +427,7 @@
       39
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "462516068",
     "set_ball": "B",
     "sum": 131
   },
@@ -443,7 +443,7 @@
       29
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "210243220",
     "set_ball": "I",
     "sum": 103
   },
@@ -475,7 +475,7 @@
       42
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "247024989",
     "set_ball": "A",
     "sum": 197
   },
@@ -507,7 +507,7 @@
       39
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "207185202",
     "set_ball": "G",
     "sum": 111
   },
@@ -539,7 +539,7 @@
       43
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "238876055",
     "set_ball": "F",
     "sum": 151
   },
@@ -571,7 +571,7 @@
       37
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "222215112",
     "set_ball": "B",
     "sum": 119
   },
@@ -603,7 +603,7 @@
       29
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "826984918",
     "set_ball": "J",
     "sum": 107
   },
@@ -619,7 +619,7 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "538049454",
     "set_ball": "D",
     "sum": 168
   },
@@ -635,7 +635,7 @@
       35
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "273871384",
     "set_ball": "H",
     "sum": 168
   },
@@ -651,7 +651,7 @@
       36
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "21907185",
     "set_ball": "A",
     "sum": 141
   },
@@ -683,7 +683,7 @@
       33
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "484491749",
     "set_ball": "F",
     "sum": 101
   },
@@ -699,7 +699,7 @@
       42
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "221877669",
     "set_ball": "I",
     "sum": 108
   },
@@ -731,7 +731,7 @@
       40
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "259218384",
     "set_ball": "J",
     "sum": 153
   },
@@ -747,7 +747,7 @@
       41
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "5920512",
     "set_ball": "I",
     "sum": 150
   },
@@ -763,7 +763,7 @@
       42
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "313298859",
     "set_ball": "B",
     "sum": 171
   },
@@ -779,7 +779,7 @@
       42
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "48674501",
     "set_ball": "E",
     "sum": 129
   },
@@ -811,7 +811,7 @@
       42
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "43279462",
     "set_ball": "A",
     "sum": 169
   },
@@ -875,7 +875,7 @@
       30
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "386535047",
     "set_ball": "J",
     "sum": 91
   },
@@ -891,7 +891,7 @@
       26
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "693711520",
     "set_ball": "I",
     "sum": 101
   },
@@ -907,7 +907,7 @@
       37
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "429996617",
     "set_ball": "B",
     "sum": 142
   },
@@ -923,7 +923,7 @@
       41
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "724468616",
     "set_ball": "G",
     "sum": 192
   },
@@ -939,7 +939,7 @@
       34
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "437181358",
     "set_ball": "A",
     "sum": 111
   },
@@ -955,7 +955,7 @@
       39
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "176502270",
     "set_ball": "E",
     "sum": 143
   },
@@ -971,7 +971,7 @@
       32
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "1053519923",
     "set_ball": "H",
     "sum": 110
   },
@@ -987,7 +987,7 @@
       42
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "753434862",
     "set_ball": "D",
     "sum": 180
   },
@@ -1003,7 +1003,7 @@
       43
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "468334806",
     "set_ball": "C",
     "sum": 151
   },
@@ -1019,7 +1019,7 @@
       39
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "210723088",
     "set_ball": "F",
     "sum": 132
   },
@@ -1067,7 +1067,7 @@
       40
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "484403623",
     "set_ball": "C",
     "sum": 117
   },
@@ -1083,7 +1083,7 @@
       42
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "223699102",
     "set_ball": "I",
     "sum": 168
   },
@@ -1115,7 +1115,7 @@
       38
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "209502018",
     "set_ball": "G",
     "sum": 139
   },
@@ -1147,7 +1147,7 @@
       42
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "215395177",
     "set_ball": "J",
     "sum": 149
   },
@@ -1179,7 +1179,7 @@
       29
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "195374667",
     "set_ball": "F",
     "sum": 118
   },
@@ -1211,7 +1211,7 @@
       35
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "196961791",
     "set_ball": "A",
     "sum": 100
   },
@@ -1259,7 +1259,7 @@
       39
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "23188375",
     "set_ball": "B",
     "sum": 159
   },
@@ -1291,7 +1291,7 @@
       36
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "324569514",
     "set_ball": "I",
     "sum": 135
   },
@@ -1307,7 +1307,7 @@
       43
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "81535997",
     "set_ball": "G",
     "sum": 178
   },
@@ -1323,7 +1323,7 @@
       42
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "216271318",
     "set_ball": "A",
     "sum": 110
   },
@@ -1339,7 +1339,7 @@
       39
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "1142580",
     "set_ball": "H",
     "sum": 131
   },
@@ -1371,7 +1371,7 @@
       43
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "208136262",
     "set_ball": "D",
     "sum": 168
   },
@@ -1403,7 +1403,7 @@
       43
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "25586133",
     "set_ball": "C",
     "sum": 152
   },
@@ -1435,7 +1435,7 @@
       43
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "473732119",
     "set_ball": "E",
     "sum": 143
   },
@@ -1451,7 +1451,7 @@
       39
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "222163139",
     "set_ball": "F",
     "sum": 154
   },
@@ -1515,7 +1515,7 @@
       42
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "229213996",
     "set_ball": "A",
     "sum": 163
   },
@@ -1547,7 +1547,7 @@
       34
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "18491184",
     "set_ball": "D",
     "sum": 126
   },
@@ -1579,7 +1579,7 @@
       41
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "50715673",
     "set_ball": "C",
     "sum": 150
   },
@@ -1611,7 +1611,7 @@
       40
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "228495598",
     "set_ball": "B",
     "sum": 148
   },
@@ -1659,7 +1659,7 @@
       35
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "2290785",
     "set_ball": "C",
     "sum": 136
   },
@@ -1691,7 +1691,7 @@
       34
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "480117370",
     "set_ball": "H",
     "sum": 122
   },
@@ -1707,7 +1707,7 @@
       36
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "237113181",
     "set_ball": "G",
     "sum": 153
   },
@@ -1739,7 +1739,7 @@
       42
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "1059361065",
     "set_ball": "J",
     "sum": 138
   },
@@ -1755,7 +1755,7 @@
       36
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "755578703",
     "set_ball": "D",
     "sum": 154
   },
@@ -1771,7 +1771,7 @@
       35
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "1053097181",
     "set_ball": "E",
     "sum": 100
   },
@@ -1787,7 +1787,7 @@
       38
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "756752052",
     "set_ball": "B",
     "sum": 191
   },
@@ -1803,7 +1803,7 @@
       43
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "468895009",
     "set_ball": "A",
     "sum": 83
   },
@@ -1819,7 +1819,7 @@
       40
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "216449935",
     "set_ball": "H",
     "sum": 142
   },
@@ -1883,7 +1883,7 @@
       42
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "14616653",
     "set_ball": "F",
     "sum": 146
   },
@@ -1931,7 +1931,7 @@
       40
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "400711088",
     "set_ball": "D",
     "sum": 113
   },
@@ -1947,7 +1947,7 @@
       43
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "721346489",
     "set_ball": "C",
     "sum": 162
   },
@@ -1963,7 +1963,7 @@
       35
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "447886685",
     "set_ball": "B",
     "sum": 141
   },
@@ -1979,7 +1979,7 @@
       42
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "753645824",
     "set_ball": "A",
     "sum": 147
   },
@@ -1995,7 +1995,7 @@
       42
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "1057592440",
     "set_ball": "I",
     "sum": 177
   },
@@ -2011,7 +2011,7 @@
       43
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "745827333",
     "set_ball": "J",
     "sum": 188
   },
@@ -2027,7 +2027,7 @@
       40
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "456522723",
     "set_ball": "H",
     "sum": 154
   },
@@ -2043,7 +2043,7 @@
       40
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "747824533",
     "set_ball": "E",
     "sum": 165
   },
@@ -2059,7 +2059,7 @@
       34
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "477710057",
     "set_ball": "G",
     "sum": 158
   },
@@ -2075,7 +2075,7 @@
       41
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "208586608",
     "set_ball": "F",
     "sum": 117
   },
@@ -2107,7 +2107,7 @@
       40
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "283712254",
     "set_ball": "C",
     "sum": 150
   },
@@ -2123,7 +2123,7 @@
       35
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "46177490",
     "set_ball": "D",
     "sum": 173
   },
@@ -2155,7 +2155,7 @@
       36
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "15625957",
     "set_ball": "I",
     "sum": 131
   },
@@ -2187,7 +2187,7 @@
       30
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "469420123",
     "set_ball": "B",
     "sum": 96
   },
@@ -2203,7 +2203,7 @@
       32
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "205147427",
     "set_ball": "A",
     "sum": 118
   },
@@ -2235,7 +2235,7 @@
       36
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "204356057",
     "set_ball": "I",
     "sum": 111
   },
@@ -2267,7 +2267,7 @@
       38
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "201148825",
     "set_ball": "C",
     "sum": 108
   },
@@ -2299,7 +2299,7 @@
       35
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "208541317",
     "set_ball": "F",
     "sum": 119
   },
@@ -2331,7 +2331,7 @@
       43
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "226335385",
     "set_ball": "E",
     "sum": 154
   },
@@ -2363,7 +2363,7 @@
       38
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "485899223",
     "set_ball": "B",
     "sum": 129
   },
@@ -2379,7 +2379,7 @@
       37
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "221083304",
     "set_ball": "I",
     "sum": 122
   },
@@ -2411,7 +2411,7 @@
       32
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "51986189",
     "set_ball": "A",
     "sum": 150
   },
@@ -2443,7 +2443,7 @@
       25
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "161134078",
     "set_ball": "C",
     "sum": 98
   },
@@ -2459,7 +2459,7 @@
       42
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "466973777",
     "set_ball": "G",
     "sum": 101
   },
@@ -2475,7 +2475,7 @@
       42
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "740760596",
     "set_ball": "F",
     "sum": 143
   },
@@ -2491,7 +2491,7 @@
       36
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "463287000",
     "set_ball": "D",
     "sum": 149
   },
@@ -2507,7 +2507,7 @@
       37
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "209893841",
     "set_ball": "B",
     "sum": 124
   },
@@ -2539,7 +2539,7 @@
       40
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "27389705",
     "set_ball": "I",
     "sum": 186
   },
@@ -2571,7 +2571,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "257432231",
     "set_ball": "H",
     "sum": 155
   },
@@ -2587,7 +2587,7 @@
       43
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "23903437",
     "set_ball": "C",
     "sum": 150
   },
@@ -2619,7 +2619,7 @@
       41
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "462806084",
     "set_ball": "G",
     "sum": 178
   },
@@ -2635,7 +2635,7 @@
       38
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "196432716",
     "set_ball": "F",
     "sum": 129
   },
@@ -2699,7 +2699,7 @@
       35
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "217209902",
     "set_ball": "J",
     "sum": 123
   },
@@ -2731,7 +2731,7 @@
       42
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "16939059",
     "set_ball": "C",
     "sum": 124
   },
@@ -2763,7 +2763,7 @@
       41
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "18953720",
     "set_ball": "I",
     "sum": 140
   },
@@ -2795,7 +2795,7 @@
       35
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "496665863",
     "set_ball": "F",
     "sum": 123
   },
@@ -2811,7 +2811,7 @@
       40
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "246101056",
     "set_ball": "A",
     "sum": 94
   },
@@ -2827,7 +2827,7 @@
       41
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "22613429",
     "set_ball": "F",
     "sum": 123
   },
@@ -2875,7 +2875,7 @@
       41
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "19052827",
     "set_ball": "B",
     "sum": 163
   },
@@ -2907,7 +2907,7 @@
       43
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "667019502",
     "set_ball": "J",
     "sum": 132
   },
@@ -2923,7 +2923,7 @@
       29
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "379755871",
     "set_ball": "E",
     "sum": 119
   },
@@ -2939,7 +2939,7 @@
       36
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "132813201",
     "set_ball": "D",
     "sum": 125
   },
@@ -2955,7 +2955,7 @@
       37
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "453132589",
     "set_ball": "C",
     "sum": 136
   },
@@ -2971,7 +2971,7 @@
       37
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "211853722",
     "set_ball": "G",
     "sum": 114
   },
@@ -3003,7 +3003,7 @@
       37
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "462281689",
     "set_ball": "F",
     "sum": 132
   },
@@ -3019,7 +3019,7 @@
       35
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "212329390",
     "set_ball": "B",
     "sum": 135
   },
@@ -3035,7 +3035,7 @@
       41
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "3992505",
     "set_ball": "H",
     "sum": 115
   },
@@ -3099,7 +3099,7 @@
       33
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "21305800",
     "set_ball": "D",
     "sum": 121
   },
@@ -3131,7 +3131,7 @@
       40
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "212916545",
     "set_ball": "H",
     "sum": 111
   },
@@ -3179,7 +3179,7 @@
       34
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "454629017",
     "set_ball": "A",
     "sum": 132
   },
@@ -3195,7 +3195,7 @@
       41
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "212398251",
     "set_ball": "B",
     "sum": 92
   },
@@ -3227,7 +3227,7 @@
       27
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "101308807",
     "set_ball": "J",
     "sum": 72
   },
@@ -3243,7 +3243,7 @@
       43
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "472876951",
     "set_ball": "A",
     "sum": 143
   },
@@ -3259,7 +3259,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "226835269",
     "set_ball": "F",
     "sum": 132
   },
@@ -3307,7 +3307,7 @@
       36
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "212054878",
     "set_ball": "D",
     "sum": 146
   },
@@ -3355,7 +3355,7 @@
       37
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "132921531",
     "set_ball": "H",
     "sum": 153
   },
@@ -3371,7 +3371,7 @@
       42
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "463390688",
     "set_ball": "C",
     "sum": 152
   },
@@ -3387,7 +3387,7 @@
       36
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "214862563",
     "set_ball": "E",
     "sum": 103
   },
@@ -3419,7 +3419,7 @@
       36
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "467565603",
     "set_ball": "J",
     "sum": 157
   },
@@ -3435,7 +3435,7 @@
       40
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "211609968",
     "set_ball": "F",
     "sum": 116
   },
@@ -3467,7 +3467,7 @@
       42
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "235032541",
     "set_ball": "D",
     "sum": 204
   },
@@ -3499,7 +3499,7 @@
       38
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "345879883",
     "set_ball": "B",
     "sum": 103
   },
@@ -3515,7 +3515,7 @@
       43
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "677231175",
     "set_ball": "C",
     "sum": 162
   },
@@ -3531,7 +3531,7 @@
       42
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "405444399",
     "set_ball": "J",
     "sum": 184
   },
@@ -3547,7 +3547,7 @@
       32
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "142399180",
     "set_ball": "G",
     "sum": 130
   },
@@ -3563,7 +3563,7 @@
       39
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "466861903",
     "set_ball": "H",
     "sum": 111
   },
@@ -3579,7 +3579,7 @@
       37
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "216067328",
     "set_ball": "E",
     "sum": 118
   },
@@ -3627,7 +3627,7 @@
       42
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "234245366",
     "set_ball": "D",
     "sum": 190
   },
@@ -3659,7 +3659,7 @@
       43
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "4226616",
     "set_ball": "I",
     "sum": 124
   },
@@ -3691,7 +3691,7 @@
       43
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "280690425",
     "set_ball": "C",
     "sum": 151
   },
@@ -3707,7 +3707,7 @@
       37
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "34749329",
     "set_ball": "D",
     "sum": 116
   },
@@ -3739,7 +3739,7 @@
       37
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "482832946",
     "set_ball": "J",
     "sum": 99
   },
@@ -3755,7 +3755,7 @@
       43
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "221891680",
     "set_ball": "G",
     "sum": 140
   },
@@ -3787,7 +3787,7 @@
       43
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "238677746",
     "set_ball": "A",
     "sum": 197
   },
@@ -3819,7 +3819,7 @@
       40
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "29345751",
     "set_ball": "I",
     "sum": 140
   },
@@ -3851,7 +3851,7 @@
       40
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "245047218",
     "set_ball": "J",
     "sum": 115
   },
@@ -3867,7 +3867,7 @@
       37
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "16177185",
     "set_ball": "C",
     "sum": 132
   },
@@ -3915,7 +3915,7 @@
       40
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "233273334",
     "set_ball": "G",
     "sum": 155
   },
@@ -3963,7 +3963,7 @@
       39
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "300299055",
     "set_ball": "C",
     "sum": 173
   },
@@ -3979,7 +3979,7 @@
       43
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "40435498",
     "set_ball": "I",
     "sum": 203
   },
@@ -4011,7 +4011,7 @@
       34
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "281262616",
     "set_ball": "B",
     "sum": 129
   },
@@ -4027,7 +4027,7 @@
       39
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "1134064954",
     "set_ball": "D",
     "sum": 120
   },
@@ -4043,7 +4043,7 @@
       40
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "822109563",
     "set_ball": "H",
     "sum": 139
   },
@@ -4059,7 +4059,7 @@
       41
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "531364755",
     "set_ball": "J",
     "sum": 149
   },
@@ -4075,7 +4075,7 @@
       35
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "242890729",
     "set_ball": "D",
     "sum": 133
   },
@@ -4091,7 +4091,7 @@
       38
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "513633078",
     "set_ball": "B",
     "sum": 170
   },
@@ -4107,7 +4107,7 @@
       32
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "220323037",
     "set_ball": "G",
     "sum": 114
   },
@@ -4139,7 +4139,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "792979562",
     "set_ball": "A",
     "sum": 159
   },
@@ -4155,7 +4155,7 @@
       39
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "486750428",
     "set_ball": "C",
     "sum": 99
   },
@@ -4171,7 +4171,7 @@
       41
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "236682846",
     "set_ball": "F",
     "sum": 139
   },
@@ -4203,7 +4203,7 @@
       35
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "26989766",
     "set_ball": "H",
     "sum": 145
   },
@@ -4235,7 +4235,7 @@
       37
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "251687935",
     "set_ball": "I",
     "sum": 115
   },
@@ -4251,7 +4251,7 @@
       39
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "22390898",
     "set_ball": "E",
     "sum": 157
   },
@@ -4283,7 +4283,7 @@
       37
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "201702992",
     "set_ball": "B",
     "sum": 101
   },
@@ -4315,7 +4315,7 @@
       38
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "135376643",
     "set_ball": "A",
     "sum": 136
   },
@@ -4331,7 +4331,7 @@
       33
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "468003679",
     "set_ball": "J",
     "sum": 108
   },
@@ -4347,7 +4347,7 @@
       40
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "217376707",
     "set_ball": "I",
     "sum": 139
   },
@@ -4379,7 +4379,7 @@
       42
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "230820246",
     "set_ball": "H",
     "sum": 174
   },
@@ -4411,7 +4411,7 @@
       33
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "517135946",
     "set_ball": "F",
     "sum": 142
   },
@@ -4427,7 +4427,7 @@
       42
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "266974272",
     "set_ball": "C",
     "sum": 185
   },
@@ -4443,7 +4443,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "26740704",
     "set_ball": "E",
     "sum": 176
   },
@@ -4491,7 +4491,7 @@
       36
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "229479469",
     "set_ball": "C",
     "sum": 133
   },
@@ -4523,7 +4523,7 @@
       22
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "112124781",
     "set_ball": "I",
     "sum": 72
   },
@@ -4539,7 +4539,7 @@
       41
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "466330270",
     "set_ball": "H",
     "sum": 134
   },
@@ -4555,7 +4555,7 @@
       25
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "212235063",
     "set_ball": "G",
     "sum": 105
   },
@@ -4603,7 +4603,7 @@
       38
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "252636681",
     "set_ball": "B",
     "sum": 129
   },
@@ -4619,7 +4619,7 @@
       42
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "21290207",
     "set_ball": "E",
     "sum": 134
   },
@@ -4651,7 +4651,7 @@
       41
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "485149304",
     "set_ball": "A",
     "sum": 157
   },
@@ -4667,7 +4667,7 @@
       34
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "213428141",
     "set_ball": "J",
     "sum": 109
   },
@@ -4699,7 +4699,7 @@
       38
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "745117766",
     "set_ball": "C",
     "sum": 168
   },
@@ -4715,7 +4715,7 @@
       40
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "477568650",
     "set_ball": "H",
     "sum": 157
   },
@@ -4731,7 +4731,7 @@
       29
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "192885681",
     "set_ball": "C",
     "sum": 101
   },
@@ -4763,7 +4763,7 @@
       42
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "220726195",
     "set_ball": "I",
     "sum": 168
   },
@@ -4795,7 +4795,7 @@
       38
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "463972886",
     "set_ball": "J",
     "sum": 83
   },
@@ -4811,7 +4811,7 @@
       43
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "222620640",
     "set_ball": "D",
     "sum": 151
   },
@@ -4843,7 +4843,7 @@
       41
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "38718308",
     "set_ball": "A",
     "sum": 158
   },
@@ -4875,7 +4875,7 @@
       43
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "829360116",
     "set_ball": "H",
     "sum": 197
   },
@@ -4891,7 +4891,7 @@
       40
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "513627388",
     "set_ball": "C",
     "sum": 156
   },
@@ -4907,7 +4907,7 @@
       42
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "237908208",
     "set_ball": "E",
     "sum": 147
   },
@@ -4939,7 +4939,7 @@
       42
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "495654725",
     "set_ball": "B",
     "sum": 160
   },
@@ -4955,7 +4955,7 @@
       43
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "771504813",
     "set_ball": "J",
     "sum": 188
   },
@@ -4971,7 +4971,7 @@
       41
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "488656494",
     "set_ball": "I",
     "sum": 104
   },
@@ -4987,7 +4987,7 @@
       42
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "233865642",
     "set_ball": "D",
     "sum": 186
   },
@@ -5019,7 +5019,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "270107659",
     "set_ball": "A",
     "sum": 182
   },
@@ -5035,7 +5035,7 @@
       26
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "19076924",
     "set_ball": "F",
     "sum": 87
   },
@@ -5051,7 +5051,7 @@
       43
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "382474902",
     "set_ball": "H",
     "sum": 206
   },
@@ -5067,7 +5067,7 @@
       40
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "120468915",
     "set_ball": "B",
     "sum": 196
   },
@@ -5099,7 +5099,7 @@
       41
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "232706901",
     "set_ball": "C",
     "sum": 125
   },
@@ -5131,7 +5131,7 @@
       30
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "25920957",
     "set_ball": "E",
     "sum": 119
   },
@@ -5179,7 +5179,7 @@
       43
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "40173376",
     "set_ball": "B",
     "sum": 135
   },
@@ -5227,7 +5227,7 @@
       40
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "254293846",
     "set_ball": "J",
     "sum": 160
   },
@@ -5259,7 +5259,7 @@
       42
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "893217003",
     "set_ball": "H",
     "sum": 187
   },
@@ -5275,7 +5275,7 @@
       42
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "585354422",
     "set_ball": "C",
     "sum": 182
   },
@@ -5291,7 +5291,7 @@
       37
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "858029577",
     "set_ball": "E",
     "sum": 123
   },
@@ -5307,7 +5307,7 @@
       40
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "563477875",
     "set_ball": "A",
     "sum": 152
   },
@@ -5323,7 +5323,7 @@
       39
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "283213972",
     "set_ball": "I",
     "sum": 142
   },
@@ -5339,7 +5339,7 @@
       35
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "39914722",
     "set_ball": "D",
     "sum": 126
   },
@@ -5371,7 +5371,7 @@
       29
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "523302617",
     "set_ball": "B",
     "sum": 100
   },
@@ -5387,7 +5387,7 @@
       40
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "844604763",
     "set_ball": "J",
     "sum": 167
   },
@@ -5403,7 +5403,7 @@
       32
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "535087487",
     "set_ball": "F",
     "sum": 145
   },
@@ -5419,7 +5419,7 @@
       36
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "267706152",
     "set_ball": "H",
     "sum": 146
   },
@@ -5435,7 +5435,7 @@
       42
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "15485862",
     "set_ball": "C",
     "sum": 110
   },
@@ -5467,7 +5467,7 @@
       32
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "500442562",
     "set_ball": "A",
     "sum": 109
   },
@@ -5483,7 +5483,7 @@
       40
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "253456544",
     "set_ball": "A",
     "sum": 168
   },
@@ -5515,7 +5515,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "539361496",
     "set_ball": "H",
     "sum": 164
   },
@@ -5531,7 +5531,7 @@
       32
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "809588526",
     "set_ball": "J",
     "sum": 97
   },
@@ -5547,7 +5547,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "523127255",
     "set_ball": "D",
     "sum": 175
   },
@@ -5563,7 +5563,7 @@
       41
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "236001349",
     "set_ball": "G",
     "sum": 130
   },
@@ -5595,7 +5595,7 @@
       30
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "155247670",
     "set_ball": "F",
     "sum": 99
   },
@@ -5611,7 +5611,7 @@
       42
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "498062325",
     "set_ball": "C",
     "sum": 159
   },
@@ -5627,7 +5627,7 @@
       33
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "222368506",
     "set_ball": "I",
     "sum": 124
   },
@@ -5659,7 +5659,7 @@
       39
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "30940310",
     "set_ball": "A",
     "sum": 143
   },
@@ -5707,7 +5707,7 @@
       39
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "226358966",
     "set_ball": "D",
     "sum": 109
   },
@@ -5739,7 +5739,7 @@
       36
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "223452511",
     "set_ball": "A",
     "sum": 100
   },
@@ -5771,7 +5771,7 @@
       40
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "41084530",
     "set_ball": "B",
     "sum": 131
   },
@@ -5803,7 +5803,7 @@
       39
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "202218000",
     "set_ball": "I",
     "sum": 145
   },
@@ -5819,7 +5819,7 @@
       40
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "1080044049",
     "set_ball": "D",
     "sum": 90
   },
@@ -5835,7 +5835,7 @@
       32
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "760000989",
     "set_ball": "E",
     "sum": 109
   },
@@ -5851,7 +5851,7 @@
       40
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "492325906",
     "set_ball": "C",
     "sum": 126
   },
@@ -5867,7 +5867,7 @@
       35
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "217695740",
     "set_ball": "F",
     "sum": 116
   },
@@ -5899,7 +5899,7 @@
       40
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "242964451",
     "set_ball": "A",
     "sum": 160
   },
@@ -5931,7 +5931,7 @@
       38
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "290024789",
     "set_ball": "G",
     "sum": 155
   },
@@ -5947,7 +5947,7 @@
       39
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "45299092",
     "set_ball": "D",
     "sum": 132
   },
@@ -5979,7 +5979,7 @@
       33
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "228993138",
     "set_ball": "B",
     "sum": 134
   },
@@ -6011,7 +6011,7 @@
       41
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "246009338",
     "set_ball": "F",
     "sum": 160
   },
@@ -6059,7 +6059,7 @@
       42
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "228477301",
     "set_ball": "A",
     "sum": 154
   },
@@ -6107,7 +6107,7 @@
       31
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "225468042",
     "set_ball": "G",
     "sum": 134
   },
@@ -6155,7 +6155,7 @@
       43
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "245150001",
     "set_ball": "H",
     "sum": 130
   },
@@ -6171,7 +6171,7 @@
       28
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "7084941",
     "set_ball": "C",
     "sum": 93
   },
@@ -6203,7 +6203,7 @@
       38
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "224760293",
     "set_ball": "F",
     "sum": 115
   },
@@ -6283,7 +6283,7 @@
       38
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "215678318",
     "set_ball": "D",
     "sum": 87
   },
@@ -6315,7 +6315,7 @@
       42
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "225178871",
     "set_ball": "G",
     "sum": 167
   },
@@ -6347,7 +6347,7 @@
       42
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "1398751276",
     "set_ball": "B",
     "sum": 147
   },
@@ -6363,7 +6363,7 @@
       42
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "1089824702",
     "set_ball": "A",
     "sum": 197
   },
@@ -6379,7 +6379,7 @@
       28
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "765874905",
     "set_ball": "C",
     "sum": 98
   },
@@ -6395,7 +6395,7 @@
       40
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "505198420",
     "set_ball": "J",
     "sum": 177
   },
@@ -6411,7 +6411,7 @@
       37
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "216230165",
     "set_ball": "E",
     "sum": 120
   },
@@ -6443,7 +6443,7 @@
       41
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "241800268",
     "set_ball": "F",
     "sum": 166
   },
@@ -6475,7 +6475,7 @@
       38
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "227711765",
     "set_ball": "C",
     "sum": 170
   },
@@ -6507,7 +6507,7 @@
       40
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "292451884",
     "set_ball": "A",
     "sum": 129
   },
@@ -6523,7 +6523,7 @@
       38
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "46576051",
     "set_ball": "G",
     "sum": 160
   },
@@ -6571,7 +6571,7 @@
       35
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "237776885",
     "set_ball": "C",
     "sum": 143
   },
@@ -6603,7 +6603,7 @@
       43
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "235526810",
     "set_ball": "B",
     "sum": 158
   },
@@ -6635,7 +6635,7 @@
       35
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "255992308",
     "set_ball": "A",
     "sum": 104
   },
@@ -6651,7 +6651,7 @@
       37
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "16122806",
     "set_ball": "F",
     "sum": 108
   },
@@ -6683,7 +6683,7 @@
       36
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "27866964",
     "set_ball": "G",
     "sum": 129
   },
@@ -6715,7 +6715,7 @@
       41
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "242381810",
     "set_ball": "H",
     "sum": 150
   },
@@ -6779,7 +6779,7 @@
       35
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "256069713",
     "set_ball": "F",
     "sum": 154
   },
@@ -6827,7 +6827,7 @@
       40
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "52910000",
     "set_ball": "I",
     "sum": 145
   },
@@ -6859,7 +6859,7 @@
       41
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "1179068911",
     "set_ball": "C",
     "sum": 120
   },
@@ -6875,7 +6875,7 @@
       42
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "840491202",
     "set_ball": "F",
     "sum": 89
   },
@@ -6891,7 +6891,7 @@
       42
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "521914281",
     "set_ball": "E",
     "sum": 161
   },
@@ -6907,7 +6907,7 @@
       41
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "244518910",
     "set_ball": "H",
     "sum": 128
   },
@@ -6955,7 +6955,7 @@
       36
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "310308997",
     "set_ball": "D",
     "sum": 133
   },
@@ -6971,7 +6971,7 @@
       34
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "56467348",
     "set_ball": "B",
     "sum": 111
   },
@@ -7003,7 +7003,7 @@
       43
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "245050874",
     "set_ball": "E",
     "sum": 212
   },
@@ -7051,7 +7051,7 @@
       37
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "245483960",
     "set_ball": "C",
     "sum": 129
   },
@@ -7083,7 +7083,7 @@
       34
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "331915902",
     "set_ball": "E",
     "sum": 131
   },
@@ -7099,7 +7099,7 @@
       43
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "600583728",
     "set_ball": "A",
     "sum": 139
   },
@@ -7115,7 +7115,7 @@
       43
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "311283430",
     "set_ball": "J",
     "sum": 177
   },
@@ -7131,7 +7131,7 @@
       41
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "47590471",
     "set_ball": "F",
     "sum": 169
   },
@@ -7163,7 +7163,7 @@
       39
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "228097048",
     "set_ball": "D",
     "sum": 113
   },
@@ -7195,7 +7195,7 @@
       43
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "260015227",
     "set_ball": "I",
     "sum": 167
   },
@@ -7227,7 +7227,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "49073733",
     "set_ball": "H",
     "sum": 141
   },
@@ -7259,7 +7259,7 @@
       38
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "57866369",
     "set_ball": "F",
     "sum": 117
   },
@@ -7291,7 +7291,7 @@
       43
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "606988061",
     "set_ball": "J",
     "sum": 198
   },
@@ -7307,7 +7307,7 @@
       33
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "285849238",
     "set_ball": "G",
     "sum": 109
   },
@@ -7323,7 +7323,7 @@
       36
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "23285229",
     "set_ball": "D",
     "sum": 96
   },
@@ -7387,7 +7387,7 @@
       41
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "236315434",
     "set_ball": "I",
     "sum": 136
   },
@@ -7419,7 +7419,7 @@
       35
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "514883908",
     "set_ball": "F",
     "sum": 94
   },
@@ -7435,7 +7435,7 @@
       43
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "246698413",
     "set_ball": "J",
     "sum": 154
   },
@@ -7467,7 +7467,7 @@
       40
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "47978103",
     "set_ball": "A",
     "sum": 124
   },
@@ -7499,7 +7499,7 @@
       39
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "38749670",
     "set_ball": "B",
     "sum": 133
   },
@@ -7547,7 +7547,7 @@
       32
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "524812177",
     "set_ball": "H",
     "sum": 105
   },
@@ -7563,7 +7563,7 @@
       40
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "263064473",
     "set_ball": "I",
     "sum": 186
   },
@@ -7627,7 +7627,7 @@
       35
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "519489077",
     "set_ball": "J",
     "sum": 144
   },
@@ -7643,7 +7643,7 @@
       36
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "227231251",
     "set_ball": "C",
     "sum": 116
   },
@@ -7707,7 +7707,7 @@
       40
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "252051095",
     "set_ball": "B",
     "sum": 175
   },
@@ -7739,7 +7739,7 @@
       38
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "817414530",
     "set_ball": "F",
     "sum": 166
   },
@@ -7755,7 +7755,7 @@
       43
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "501647043",
     "set_ball": "I",
     "sum": 135
   },
@@ -7771,7 +7771,7 @@
       42
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "220819031",
     "set_ball": "C",
     "sum": 96
   },
@@ -7819,7 +7819,7 @@
       41
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "253752770",
     "set_ball": "F",
     "sum": 195
   },
@@ -7851,7 +7851,7 @@
       28
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "236227979",
     "set_ball": "A",
     "sum": 118
   },
@@ -7883,7 +7883,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "309939596",
     "set_ball": "G",
     "sum": 123
   },
@@ -7899,7 +7899,7 @@
       41
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "45144696",
     "set_ball": "B",
     "sum": 133
   },
@@ -7931,7 +7931,7 @@
       29
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "192257783",
     "set_ball": "F",
     "sum": 74
   },
@@ -7947,7 +7947,7 @@
       43
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "521307271",
     "set_ball": "H",
     "sum": 141
   },
@@ -7963,7 +7963,7 @@
       41
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "228496717",
     "set_ball": "J",
     "sum": 144
   },
@@ -8011,7 +8011,7 @@
       42
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "266800327",
     "set_ball": "D",
     "sum": 127
   },
@@ -8027,7 +8027,7 @@
       41
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "31561885",
     "set_ball": "G",
     "sum": 142
   },
@@ -8059,7 +8059,7 @@
       22
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "231585365",
     "set_ball": "A",
     "sum": 91
   },
@@ -8091,7 +8091,7 @@
       40
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "224721445",
     "set_ball": "F",
     "sum": 104
   },
@@ -8123,7 +8123,7 @@
       42
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "891835621",
     "set_ball": "J",
     "sum": 159
   },
@@ -8139,7 +8139,7 @@
       42
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "577560631",
     "set_ball": "D",
     "sum": 98
   },
@@ -8155,7 +8155,7 @@
       41
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "298461714",
     "set_ball": "C",
     "sum": 116
   },
@@ -8171,7 +8171,7 @@
       39
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "52913916",
     "set_ball": "C",
     "sum": 154
   },
@@ -8203,7 +8203,7 @@
       43
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "64156365",
     "set_ball": "E",
     "sum": 156
   },
@@ -8235,7 +8235,7 @@
       43
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "1065679551",
     "set_ball": "A",
     "sum": 175
   },
@@ -8251,7 +8251,7 @@
       43
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "722046804",
     "set_ball": "H",
     "sum": 182
   },
@@ -8267,7 +8267,7 @@
       36
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "951269641",
     "set_ball": "F",
     "sum": 95
   },
@@ -8283,7 +8283,7 @@
       38
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "1220647866",
     "set_ball": "J",
     "sum": 151
   },
@@ -8299,7 +8299,7 @@
       43
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "915087669",
     "set_ball": "D",
     "sum": 154
   },
@@ -8315,7 +8315,7 @@
       43
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "1170178009",
     "set_ball": "I",
     "sum": 124
   },
@@ -8331,7 +8331,7 @@
       42
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "1433672168",
     "set_ball": "B",
     "sum": 141
   },
@@ -8347,7 +8347,7 @@
       39
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "1674674315",
     "set_ball": "C",
     "sum": 163
   },
@@ -8363,7 +8363,7 @@
       34
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "1884619690",
     "set_ball": "G",
     "sum": 146
   },
@@ -8379,7 +8379,7 @@
       43
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "1519263024",
     "set_ball": "A",
     "sum": 165
   },
@@ -8395,7 +8395,7 @@
       42
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "1165623025",
     "set_ball": "F",
     "sum": 143
   },
@@ -8411,7 +8411,7 @@
       32
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "838477235",
     "set_ball": "E",
     "sum": 79
   },
@@ -8427,7 +8427,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "560297731",
     "set_ball": "H",
     "sum": 156
   },
@@ -8443,7 +8443,7 @@
       41
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "815104198",
     "set_ball": "J",
     "sum": 142
   },
@@ -8459,7 +8459,7 @@
       41
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "518260405",
     "set_ball": "F",
     "sum": 201
   },
@@ -8475,7 +8475,7 @@
       43
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "230344081",
     "set_ball": "D",
     "sum": 163
   },
@@ -8507,7 +8507,7 @@
       42
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "250321018",
     "set_ball": "I",
     "sum": 196
   },
@@ -8539,7 +8539,7 @@
       39
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "268942151",
     "set_ball": "C",
     "sum": 146
   },
@@ -8555,7 +8555,7 @@
       32
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "20753880",
     "set_ball": "G",
     "sum": 100
   },
@@ -8603,7 +8603,7 @@
       43
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "68970442",
     "set_ball": "H",
     "sum": 148
   },
@@ -8651,7 +8651,7 @@
       36
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "183123869",
     "set_ball": "B",
     "sum": 132
   },
@@ -8667,7 +8667,7 @@
       33
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "490783276",
     "set_ball": "I",
     "sum": 135
   },
@@ -8683,7 +8683,7 @@
       34
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "221755287",
     "set_ball": "A",
     "sum": 74
   },
@@ -8731,7 +8731,7 @@
       37
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "20374543",
     "set_ball": "D",
     "sum": 126
   },
@@ -8763,7 +8763,7 @@
       37
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "512240826",
     "set_ball": "C",
     "sum": 131
   },
@@ -8779,7 +8779,7 @@
       33
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "235538502",
     "set_ball": "E",
     "sum": 96
   },
@@ -8811,7 +8811,7 @@
       42
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "43496170",
     "set_ball": "H",
     "sum": 164
   },
@@ -8843,7 +8843,7 @@
       42
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "213722015",
     "set_ball": "I",
     "sum": 146
   },
@@ -8859,7 +8859,7 @@
       39
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "522290979",
     "set_ball": "G",
     "sum": 136
   },
@@ -8875,7 +8875,7 @@
       42
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "257093373",
     "set_ball": "C",
     "sum": 167
   },
@@ -8939,7 +8939,7 @@
       39
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "56849793",
     "set_ball": "E",
     "sum": 130
   },
@@ -8971,7 +8971,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "277893021",
     "set_ball": "H",
     "sum": 152
   },
@@ -8987,7 +8987,7 @@
       41
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "589229311",
     "set_ball": "B",
     "sum": 140
   },
@@ -9003,7 +9003,7 @@
       42
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "315786518",
     "set_ball": "J",
     "sum": 184
   },
@@ -9019,7 +9019,7 @@
       39
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "50556777",
     "set_ball": "I",
     "sum": 107
   },
@@ -9051,7 +9051,7 @@
       43
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "255503255",
     "set_ball": "E",
     "sum": 143
   },
@@ -9067,7 +9067,7 @@
       42
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "546688277",
     "set_ball": "G",
     "sum": 146
   },
@@ -9083,7 +9083,7 @@
       38
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "829184615",
     "set_ball": "F",
     "sum": 171
   },
@@ -9099,7 +9099,7 @@
       36
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "512809029",
     "set_ball": "D",
     "sum": 112
   },
@@ -9115,7 +9115,7 @@
       35
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "241455786",
     "set_ball": "C",
     "sum": 166
   },
@@ -9163,7 +9163,7 @@
       40
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "240048771",
     "set_ball": "A",
     "sum": 149
   },
@@ -9195,7 +9195,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "23089269",
     "set_ball": "I",
     "sum": 123
   },
@@ -9227,7 +9227,7 @@
       43
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "228058535",
     "set_ball": "F",
     "sum": 117
   },
@@ -9275,7 +9275,7 @@
       33
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "222085941",
     "set_ball": "B",
     "sum": 88
   },
@@ -9307,7 +9307,7 @@
       40
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "237713916",
     "set_ball": "J",
     "sum": 149
   },
@@ -9387,7 +9387,7 @@
       43
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "778802175",
     "set_ball": "E",
     "sum": 117
   },
@@ -9403,7 +9403,7 @@
       38
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "504644081",
     "set_ball": "A",
     "sum": 131
   },
@@ -9419,7 +9419,7 @@
       35
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "231115292",
     "set_ball": "I",
     "sum": 132
   },
@@ -9467,7 +9467,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "216940381",
     "set_ball": "B",
     "sum": 124
   },
@@ -9499,7 +9499,7 @@
       41
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "46170569",
     "set_ball": "J",
     "sum": 176
   },
@@ -9531,7 +9531,7 @@
       29
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "212989888",
     "set_ball": "D",
     "sum": 108
   },
@@ -9563,7 +9563,7 @@
       42
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "45111996",
     "set_ball": "E",
     "sum": 131
   },
@@ -9595,7 +9595,7 @@
       40
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "41449124",
     "set_ball": "C",
     "sum": 151
   },
@@ -9627,7 +9627,7 @@
       41
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "35299545",
     "set_ball": "H",
     "sum": 140
   },
@@ -9659,7 +9659,7 @@
       43
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "499358563",
     "set_ball": "J",
     "sum": 169
   },
@@ -9675,7 +9675,7 @@
       41
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "221608616",
     "set_ball": "F",
     "sum": 145
   },
@@ -9707,7 +9707,7 @@
       43
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "25327438",
     "set_ball": "E",
     "sum": 127
   },
@@ -9739,7 +9739,7 @@
       42
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "234010543",
     "set_ball": "D",
     "sum": 145
   },
@@ -9771,7 +9771,7 @@
       30
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "251664236",
     "set_ball": "I",
     "sum": 149
   },
@@ -9803,7 +9803,7 @@
       37
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "274581523",
     "set_ball": "A",
     "sum": 91
   },
@@ -9819,7 +9819,7 @@
       37
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "44163408",
     "set_ball": "B",
     "sum": 158
   },
@@ -9851,7 +9851,7 @@
       41
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "245538914",
     "set_ball": "F",
     "sum": 186
   },
@@ -9883,7 +9883,7 @@
       38
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "34161074",
     "set_ball": "E",
     "sum": 155
   },
@@ -9915,7 +9915,7 @@
       37
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "102612262",
     "set_ball": "G",
     "sum": 144
   },
@@ -9947,7 +9947,7 @@
       32
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "448916617",
     "set_ball": "H",
     "sum": 89
   },
@@ -9963,7 +9963,7 @@
       37
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "207118226",
     "set_ball": "J",
     "sum": 113
   },
@@ -9995,7 +9995,7 @@
       42
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "24543661",
     "set_ball": "J",
     "sum": 185
   },
@@ -10027,7 +10027,7 @@
       41
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "641899336",
     "set_ball": "F",
     "sum": 115
   },
@@ -10043,7 +10043,7 @@
       43
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "398389709",
     "set_ball": "A",
     "sum": 128
   },
@@ -10059,7 +10059,7 @@
       43
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "182198254",
     "set_ball": "D",
     "sum": 178
   },
@@ -10091,7 +10091,7 @@
       34
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "126404430",
     "set_ball": "I",
     "sum": 75
   },
@@ -10123,7 +10123,7 @@
       42
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "155729584",
     "set_ball": "J",
     "sum": 137
   },
@@ -10155,7 +10155,7 @@
       42
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "187502802",
     "set_ball": "E",
     "sum": 189
   },
@@ -10251,7 +10251,7 @@
       40
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "222671139",
     "set_ball": "J",
     "sum": 121
   },
@@ -10283,7 +10283,7 @@
       31
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "2729175",
     "set_ball": "D",
     "sum": 107
   },
@@ -10315,7 +10315,7 @@
       40
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "229144920",
     "set_ball": "G",
     "sum": 121
   },
@@ -10363,7 +10363,7 @@
       39
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "248323703",
     "set_ball": "E",
     "sum": 187
   },
@@ -10395,7 +10395,7 @@
       26
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "204490218",
     "set_ball": "C",
     "sum": 86
   },
@@ -10443,7 +10443,7 @@
       29
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "220041336",
     "set_ball": "H",
     "sum": 116
   },
@@ -10475,7 +10475,7 @@
       31
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "209202625",
     "set_ball": "J",
     "sum": 123
   },
@@ -10507,7 +10507,7 @@
       40
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "37752571",
     "set_ball": "A",
     "sum": 148
   },
@@ -10539,7 +10539,7 @@
       39
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "40243754",
     "set_ball": "F",
     "sum": 172
   },
@@ -10667,7 +10667,7 @@
       37
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "234554381",
     "set_ball": "J",
     "sum": 147
   },
@@ -10731,7 +10731,7 @@
       42
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "235230661",
     "set_ball": "F",
     "sum": 142
   },
@@ -10779,7 +10779,7 @@
       40
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "645738163",
     "set_ball": "A",
     "sum": 140
   },
@@ -10795,7 +10795,7 @@
       36
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "386599935",
     "set_ball": "C",
     "sum": 111
   },
@@ -10811,7 +10811,7 @@
       40
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "156510465",
     "set_ball": "B",
     "sum": 105
   },
@@ -10827,7 +10827,7 @@
       40
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "476923544",
     "set_ball": "A",
     "sum": 169
   },
@@ -10843,7 +10843,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "209498189",
     "set_ball": "H",
     "sum": 116
   },
@@ -10875,7 +10875,7 @@
       40
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "37840016",
     "set_ball": "E",
     "sum": 168
   },
@@ -10923,7 +10923,7 @@
       36
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "277952941",
     "set_ball": "I",
     "sum": 158
   },
@@ -10939,7 +10939,7 @@
       41
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "26224638",
     "set_ball": "C",
     "sum": 138
   },
@@ -10971,7 +10971,7 @@
       42
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "233326132",
     "set_ball": "J",
     "sum": 163
   },
@@ -11003,7 +11003,7 @@
       42
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "4742987",
     "set_ball": "B",
     "sum": 179
   },
@@ -11051,7 +11051,7 @@
       28
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "209138253",
     "set_ball": "E",
     "sum": 83
   },
@@ -11083,7 +11083,7 @@
       43
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "242100541",
     "set_ball": "A",
     "sum": 177
   },
@@ -11131,7 +11131,7 @@
       40
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "226201717",
     "set_ball": "F",
     "sum": 124
   },
@@ -11163,7 +11163,7 @@
       26
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "226026624",
     "set_ball": "I",
     "sum": 108
   },
@@ -11243,7 +11243,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "803644212",
     "set_ball": "G",
     "sum": 146
   },
@@ -11259,7 +11259,7 @@
       39
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "497291867",
     "set_ball": "B",
     "sum": 142
   },
@@ -11275,7 +11275,7 @@
       35
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "225206073",
     "set_ball": "F",
     "sum": 169
   },
@@ -11307,7 +11307,7 @@
       39
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "191352294",
     "set_ball": "D",
     "sum": 162
   },
@@ -11323,7 +11323,7 @@
       41
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "499352964",
     "set_ball": "I",
     "sum": 116
   },
@@ -11339,7 +11339,7 @@
       42
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "233801199",
     "set_ball": "C",
     "sum": 171
   },
@@ -11371,7 +11371,7 @@
       39
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "499923455",
     "set_ball": "E",
     "sum": 148
   },
@@ -11387,7 +11387,7 @@
       43
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "235603525",
     "set_ball": "A",
     "sum": 165
   },
@@ -11419,7 +11419,7 @@
       26
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "15896750",
     "set_ball": "G",
     "sum": 118
   },
@@ -11451,7 +11451,7 @@
       43
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "47022904",
     "set_ball": "C",
     "sum": 139
   },
@@ -11483,7 +11483,7 @@
       43
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "525782104",
     "set_ball": "I",
     "sum": 161
   },
@@ -11499,7 +11499,7 @@
       42
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "234558536",
     "set_ball": "G",
     "sum": 128
   },
@@ -11531,7 +11531,7 @@
       39
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "506516251",
     "set_ball": "D",
     "sum": 135
   },
@@ -11547,7 +11547,7 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "240241160",
     "set_ball": "E",
     "sum": 134
   },
@@ -11595,7 +11595,7 @@
       38
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "221098245",
     "set_ball": "B",
     "sum": 102
   },
@@ -11643,7 +11643,7 @@
       39
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "10661970",
     "set_ball": "A",
     "sum": 87
   },
@@ -11675,7 +11675,7 @@
       38
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "7685086",
     "set_ball": "C",
     "sum": 84
   },
@@ -11707,7 +11707,7 @@
       37
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "34282495",
     "set_ball": "A",
     "sum": 104
   },
@@ -11755,7 +11755,7 @@
       43
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "507783386",
     "set_ball": "B",
     "sum": 135
   },
@@ -11771,7 +11771,7 @@
       38
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "249197830",
     "set_ball": "E",
     "sum": 119
   },
@@ -11787,7 +11787,7 @@
       35
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "19116746",
     "set_ball": "G",
     "sum": 87
   },
@@ -11819,7 +11819,7 @@
       39
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "227218151",
     "set_ball": "H",
     "sum": 111
   },
@@ -11851,7 +11851,7 @@
       41
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "630223174",
     "set_ball": "F",
     "sum": 165
   },
@@ -11867,7 +11867,7 @@
       43
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "345502969",
     "set_ball": "C",
     "sum": 168
   },
@@ -11883,7 +11883,7 @@
       35
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "80052792",
     "set_ball": "I",
     "sum": 123
   },
@@ -11899,7 +11899,7 @@
       41
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "149454317",
     "set_ball": "A",
     "sum": 99
   },
@@ -11915,7 +11915,7 @@
       39
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "484539363",
     "set_ball": "D",
     "sum": 145
   },
@@ -11931,7 +11931,7 @@
       41
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "768425970",
     "set_ball": "B",
     "sum": 117
   },
@@ -11947,7 +11947,7 @@
       27
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "474085347",
     "set_ball": "E",
     "sum": 100
   },
@@ -11963,7 +11963,7 @@
       41
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "234838859",
     "set_ball": "G",
     "sum": 144
   },
@@ -11995,7 +11995,7 @@
       38
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "211345060",
     "set_ball": "G",
     "sum": 103
   },
@@ -12027,7 +12027,7 @@
       41
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "215007459",
     "set_ball": "H",
     "sum": 112
   },
@@ -12107,7 +12107,7 @@
       41
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "25842518",
     "set_ball": "A",
     "sum": 157
   },
@@ -12139,7 +12139,7 @@
       36
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "232713045",
     "set_ball": "B",
     "sum": 90
   },
@@ -12155,7 +12155,7 @@
       29
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "24096183",
     "set_ball": "C",
     "sum": 119
   },
@@ -12187,7 +12187,7 @@
       42
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "243115607",
     "set_ball": "G",
     "sum": 145
   },
@@ -12251,7 +12251,7 @@
       33
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "282612734",
     "set_ball": "A",
     "sum": 131
   },
@@ -12267,7 +12267,7 @@
       43
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "44945823",
     "set_ball": "J",
     "sum": 152
   },
@@ -12299,7 +12299,7 @@
       31
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "34812633",
     "set_ball": "F",
     "sum": 84
   },
@@ -12331,7 +12331,7 @@
       29
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "233121796",
     "set_ball": "G",
     "sum": 114
   },
@@ -12363,7 +12363,7 @@
       31
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "10886363",
     "set_ball": "B",
     "sum": 117
   },
@@ -12443,7 +12443,7 @@
       35
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "24132387",
     "set_ball": "A",
     "sum": 109
   },
@@ -12475,7 +12475,7 @@
       39
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "240912284",
     "set_ball": "C",
     "sum": 154
   },
@@ -12507,7 +12507,7 @@
       42
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "30846620",
     "set_ball": "D",
     "sum": 145
   },
@@ -12571,7 +12571,7 @@
       38
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "227968303",
     "set_ball": "H",
     "sum": 146
   },
@@ -12603,7 +12603,7 @@
       40
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "256661111",
     "set_ball": "F",
     "sum": 114
   },
@@ -12619,7 +12619,7 @@
       37
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "27111518",
     "set_ball": "C",
     "sum": 115
   },
@@ -12667,7 +12667,7 @@
       30
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "212501736",
     "set_ball": "D",
     "sum": 117
   },
@@ -12699,7 +12699,7 @@
       43
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "235054490",
     "set_ball": "J",
     "sum": 123
   },
@@ -12731,7 +12731,7 @@
       40
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "27238834",
     "set_ball": "H",
     "sum": 136
   },
@@ -12763,7 +12763,7 @@
       43
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "38309977",
     "set_ball": "F",
     "sum": 148
   },
@@ -12811,7 +12811,7 @@
       36
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "696692533",
     "set_ball": "G",
     "sum": 155
   },
@@ -12827,7 +12827,7 @@
       43
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "420789350",
     "set_ball": "A",
     "sum": 210
   },
@@ -12843,7 +12843,7 @@
       39
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "662062930",
     "set_ball": "F",
     "sum": 113
   },
@@ -12859,7 +12859,7 @@
       43
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "372026796",
     "set_ball": "C",
     "sum": 159
   },
@@ -12875,7 +12875,7 @@
       41
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "641663268",
     "set_ball": "D",
     "sum": 156
   },
@@ -12891,7 +12891,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "907562919",
     "set_ball": "B",
     "sum": 143
   },
@@ -12907,7 +12907,7 @@
       42
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "576512858",
     "set_ball": "E",
     "sum": 181
   },
@@ -12923,7 +12923,7 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "821019464",
     "set_ball": "J",
     "sum": 151
   },
@@ -12939,7 +12939,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "526484438",
     "set_ball": "H",
     "sum": 143
   },
@@ -12955,7 +12955,7 @@
       41
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "253175343",
     "set_ball": "J",
     "sum": 109
   },
@@ -12971,7 +12971,7 @@
       33
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "18410686",
     "set_ball": "I",
     "sum": 137
   },
@@ -13003,7 +13003,7 @@
       42
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "266282024",
     "set_ball": "F",
     "sum": 119
   },
@@ -13019,7 +13019,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "32618983",
     "set_ball": "A",
     "sum": 115
   },
@@ -13051,7 +13051,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "30396782",
     "set_ball": "H",
     "sum": 187
   },
@@ -13083,7 +13083,7 @@
       35
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "28310786",
     "set_ball": "H",
     "sum": 114
   },
@@ -13131,7 +13131,7 @@
       41
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "249693798",
     "set_ball": "E",
     "sum": 177
   },
@@ -13163,7 +13163,7 @@
       43
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "243576796",
     "set_ball": "A",
     "sum": 138
   },
@@ -13195,7 +13195,7 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "52525496",
     "set_ball": "G",
     "sum": 202
   },
@@ -13227,7 +13227,7 @@
       39
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "532698735",
     "set_ball": "F",
     "sum": 119
   },
@@ -13243,7 +13243,7 @@
       38
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "258168830",
     "set_ball": "J",
     "sum": 159
   },
@@ -13291,7 +13291,7 @@
       36
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "285586726",
     "set_ball": "J",
     "sum": 107
   },
@@ -13307,7 +13307,7 @@
       24
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "578991991",
     "set_ball": "D",
     "sum": 91
   },
@@ -13323,7 +13323,7 @@
       36
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "295949279",
     "set_ball": "B",
     "sum": 123
   },
@@ -13339,7 +13339,7 @@
       43
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "53416511",
     "set_ball": "E",
     "sum": 144
   },
@@ -13371,7 +13371,7 @@
       41
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "45432652",
     "set_ball": "I",
     "sum": 156
   },
@@ -13403,7 +13403,7 @@
       37
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "1486043254",
     "set_ball": "F",
     "sum": 157
   },
@@ -13419,7 +13419,7 @@
       38
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "1091655132",
     "set_ball": "H",
     "sum": 133
   },
@@ -13435,7 +13435,7 @@
       42
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "748766205",
     "set_ball": "C",
     "sum": 134
   },
@@ -13451,7 +13451,7 @@
       40
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "950514135",
     "set_ball": "J",
     "sum": 148
   },
@@ -13467,7 +13467,7 @@
       42
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "598482491",
     "set_ball": "D",
     "sum": 144
   },
@@ -13483,7 +13483,7 @@
       36
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "288938801",
     "set_ball": "G",
     "sum": 127
   },
@@ -13499,7 +13499,7 @@
       41
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "56267219",
     "set_ball": "B",
     "sum": 161
   },
@@ -13531,7 +13531,7 @@
       33
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "258748125",
     "set_ball": "I",
     "sum": 139
   },
@@ -13547,7 +13547,7 @@
       43
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "530695336",
     "set_ball": "A",
     "sum": 145
   },
@@ -13563,7 +13563,7 @@
       37
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "239194456",
     "set_ball": "H",
     "sum": 106
   },
@@ -13579,7 +13579,7 @@
       43
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "518679054",
     "set_ball": "D",
     "sum": 117
   },
@@ -13595,7 +13595,7 @@
       34
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "248268877",
     "set_ball": "F",
     "sum": 148
   },
@@ -13627,7 +13627,7 @@
       36
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "298888606",
     "set_ball": "G",
     "sum": 141
   },
@@ -13643,7 +13643,7 @@
       41
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "28795810",
     "set_ball": "E",
     "sum": 139
   },
@@ -13675,7 +13675,7 @@
       41
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "310655473",
     "set_ball": "G",
     "sum": 131
   },
@@ -13691,7 +13691,7 @@
       43
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "51204253",
     "set_ball": "A",
     "sum": 141
   },
@@ -13723,7 +13723,7 @@
       37
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "276426216",
     "set_ball": "I",
     "sum": 121
   },
@@ -13739,7 +13739,7 @@
       29
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "545633736",
     "set_ball": "J",
     "sum": 107
   },
@@ -13755,7 +13755,7 @@
       40
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "270607267",
     "set_ball": "H",
     "sum": 187
   },
@@ -13771,7 +13771,7 @@
       40
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "17958783",
     "set_ball": "A",
     "sum": 116
   },
@@ -13803,7 +13803,7 @@
       37
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "20547536",
     "set_ball": "F",
     "sum": 121
   },
@@ -13851,7 +13851,7 @@
       39
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "529670483",
     "set_ball": "E",
     "sum": 155
   },
@@ -13867,7 +13867,7 @@
       41
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "246625579",
     "set_ball": "G",
     "sum": 121
   },
@@ -13899,7 +13899,7 @@
       42
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "48567751",
     "set_ball": "I",
     "sum": 175
   },
@@ -13931,7 +13931,7 @@
       39
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "300217992",
     "set_ball": "A",
     "sum": 167
   },
@@ -13947,7 +13947,7 @@
       38
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "54348251",
     "set_ball": "F",
     "sum": 144
   },
@@ -13979,7 +13979,7 @@
       40
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "249870372",
     "set_ball": "B",
     "sum": 124
   },
@@ -14011,7 +14011,7 @@
       42
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "498064563",
     "set_ball": "C",
     "sum": 161
   },
@@ -14027,7 +14027,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "236022484",
     "set_ball": "E",
     "sum": 124
   },
@@ -14059,7 +14059,7 @@
       38
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "44676530",
     "set_ball": "H",
     "sum": 133
   },
@@ -14091,7 +14091,7 @@
       38
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "216124593",
     "set_ball": "J",
     "sum": 73
   },
@@ -14107,7 +14107,7 @@
       43
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "514233131",
     "set_ball": "A",
     "sum": 192
   },
@@ -14123,7 +14123,7 @@
       40
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "233219529",
     "set_ball": "F",
     "sum": 136
   },
@@ -14155,7 +14155,7 @@
       41
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "303835637",
     "set_ball": "D",
     "sum": 155
   },
@@ -14171,7 +14171,7 @@
       34
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "572312467",
     "set_ball": "C",
     "sum": 163
   },
@@ -14187,7 +14187,7 @@
       43
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "285167109",
     "set_ball": "E",
     "sum": 178
   },
@@ -14203,7 +14203,7 @@
       43
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "29120372",
     "set_ball": "G",
     "sum": 171
   },
@@ -14267,7 +14267,7 @@
       42
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "25387956",
     "set_ball": "J",
     "sum": 177
   },
@@ -14315,7 +14315,7 @@
       43
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "23416379",
     "set_ball": "I",
     "sum": 171
   },
@@ -14379,7 +14379,7 @@
       42
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "50621917",
     "set_ball": "H",
     "sum": 162
   },
@@ -14427,7 +14427,7 @@
       40
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "235396540",
     "set_ball": "D",
     "sum": 157
   },
@@ -14459,7 +14459,7 @@
       43
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "250367098",
     "set_ball": "C",
     "sum": 124
   },
@@ -14491,7 +14491,7 @@
       42
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "554757354",
     "set_ball": "F",
     "sum": 172
   },
@@ -14507,7 +14507,7 @@
       43
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "259874500",
     "set_ball": "C",
     "sum": 157
   },
@@ -14523,7 +14523,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "519058296",
     "set_ball": "H",
     "sum": 130
   },
@@ -14539,7 +14539,7 @@
       39
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "251516681",
     "set_ball": "E",
     "sum": 120
   },
@@ -14555,7 +14555,7 @@
       28
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "22509741",
     "set_ball": "I",
     "sum": 111
   },
@@ -14603,7 +14603,7 @@
       34
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "22635058",
     "set_ball": "D",
     "sum": 122
   },
@@ -14635,7 +14635,7 @@
       41
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "28830082",
     "set_ball": "F",
     "sum": 143
   },
@@ -14683,7 +14683,7 @@
       42
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "481440653",
     "set_ball": "G",
     "sum": 70
   },
@@ -14699,7 +14699,7 @@
       39
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "230401766",
     "set_ball": "A",
     "sum": 141
   },
@@ -14731,7 +14731,7 @@
       39
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "313139337",
     "set_ball": "H",
     "sum": 123
   },
@@ -14747,7 +14747,7 @@
       41
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "50631101",
     "set_ball": "E",
     "sum": 169
   },
@@ -14779,7 +14779,7 @@
       31
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "229279477",
     "set_ball": "J",
     "sum": 109
   },
@@ -14795,7 +14795,7 @@
       43
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "516480549",
     "set_ball": "B",
     "sum": 144
   },
@@ -14811,7 +14811,7 @@
       31
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "223304816",
     "set_ball": "I",
     "sum": 123
   },
@@ -14827,7 +14827,7 @@
       36
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "522947436",
     "set_ball": "C",
     "sum": 126
   },
@@ -14843,7 +14843,7 @@
       36
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "239586911",
     "set_ball": "H",
     "sum": 136
   },
@@ -14891,7 +14891,7 @@
       21
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "829773653",
     "set_ball": "J",
     "sum": 63
   },
@@ -14907,7 +14907,7 @@
       40
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "540321223",
     "set_ball": "G",
     "sum": 159
   },
@@ -14923,7 +14923,7 @@
       40
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "271353304",
     "set_ball": "E",
     "sum": 144
   },
@@ -14939,7 +14939,7 @@
       38
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "14553105",
     "set_ball": "A",
     "sum": 111
   },
@@ -14987,7 +14987,7 @@
       31
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "222811225",
     "set_ball": "I",
     "sum": 109
   },
@@ -15019,7 +15019,7 @@
       39
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "244061225",
     "set_ball": "B",
     "sum": 153
   },
@@ -15083,7 +15083,7 @@
       39
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "235042467",
     "set_ball": "H",
     "sum": 100
   },
@@ -15115,7 +15115,7 @@
       41
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "38069652",
     "set_ball": "I",
     "sum": 119
   },
@@ -15147,7 +15147,7 @@
       37
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "29513853",
     "set_ball": "A",
     "sum": 126
   },
@@ -15179,7 +15179,7 @@
       37
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "247187990",
     "set_ball": "B",
     "sum": 88
   },
@@ -15195,7 +15195,7 @@
       40
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "35766902",
     "set_ball": "I",
     "sum": 90
   },
@@ -15227,7 +15227,7 @@
       30
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "15299173",
     "set_ball": "J",
     "sum": 89
   },
@@ -15259,7 +15259,7 @@
       42
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "256373097",
     "set_ball": "F",
     "sum": 151
   },
@@ -15275,7 +15275,7 @@
       40
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "532309257",
     "set_ball": "H",
     "sum": 134
   },
@@ -15291,7 +15291,7 @@
       43
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "238123706",
     "set_ball": "G",
     "sum": 149
   },
@@ -15323,7 +15323,7 @@
       30
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "601316116",
     "set_ball": "H",
     "sum": 119
   },
@@ -15339,7 +15339,7 @@
       43
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "309349226",
     "set_ball": "G",
     "sum": 135
   },
@@ -15355,7 +15355,7 @@
       31
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "37547727",
     "set_ball": "E",
     "sum": 139
   },
@@ -15387,7 +15387,7 @@
       43
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "520980964",
     "set_ball": "B",
     "sum": 139
   },
@@ -15403,7 +15403,7 @@
       43
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "232357669",
     "set_ball": "I",
     "sum": 121
   },
@@ -15451,7 +15451,7 @@
       28
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "112787035",
     "set_ball": "F",
     "sum": 91
   },
@@ -15547,7 +15547,7 @@
       33
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "189401711",
     "set_ball": "D",
     "sum": 97
   },
@@ -15563,7 +15563,7 @@
       38
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "440962245",
     "set_ball": "E",
     "sum": 141
   },
@@ -15579,7 +15579,7 @@
       41
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "299920710",
     "set_ball": "F",
     "sum": 149
   },
@@ -15595,7 +15595,7 @@
       33
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "151792210",
     "set_ball": "J",
     "sum": 77
   },
@@ -15611,7 +15611,7 @@
       41
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "405320947",
     "set_ball": "I",
     "sum": 172
   },
@@ -15627,7 +15627,7 @@
       38
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "242429091",
     "set_ball": "C",
     "sum": 105
   },
@@ -15643,7 +15643,7 @@
       38
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "121360932",
     "set_ball": "A",
     "sum": 135
   },
@@ -15723,7 +15723,7 @@
       35
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "244865806",
     "set_ball": "E",
     "sum": 133
   },
@@ -15739,7 +15739,7 @@
       42
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "114591920",
     "set_ball": "B",
     "sum": 127
   },
@@ -15771,7 +15771,7 @@
       36
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "116587730",
     "set_ball": "H",
     "sum": 117
   },
@@ -15819,7 +15819,7 @@
       34
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "399629190",
     "set_ball": "A",
     "sum": 172
   },
@@ -15835,7 +15835,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "249302847",
     "set_ball": "H",
     "sum": 161
   },
@@ -15851,7 +15851,7 @@
       39
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "111220831",
     "set_ball": "F",
     "sum": 138
   },
@@ -15883,7 +15883,7 @@
       36
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "116917626",
     "set_ball": "E",
     "sum": 128
   },
@@ -15915,7 +15915,7 @@
       38
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "225823223",
     "set_ball": "B",
     "sum": 152
   },
@@ -15947,7 +15947,7 @@
       39
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "106492819",
     "set_ball": "F",
     "sum": 123
   },
@@ -15979,7 +15979,7 @@
       42
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "109217758",
     "set_ball": "H",
     "sum": 130
   },
@@ -16043,7 +16043,7 @@
       43
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "109562711",
     "set_ball": "A",
     "sum": 179
   },
@@ -16123,7 +16123,7 @@
       38
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "108656081",
     "set_ball": "B",
     "sum": 115
   },
@@ -16203,7 +16203,7 @@
       43
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "123428429",
     "set_ball": "B",
     "sum": 162
   },
@@ -16235,7 +16235,7 @@
       41
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "107452884",
     "set_ball": "F",
     "sum": 156
   },
@@ -16283,7 +16283,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "119201119",
     "set_ball": "I",
     "sum": 174
   },
@@ -16395,7 +16395,7 @@
       43
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "114640897",
     "set_ball": "A",
     "sum": 131
   },
@@ -16475,7 +16475,7 @@
       20
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "112885276",
     "set_ball": "D",
     "sum": 82
   },
@@ -16555,7 +16555,7 @@
       43
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "254791972",
     "set_ball": "F",
     "sum": 171
   },
@@ -16571,7 +16571,7 @@
       42
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "114154317",
     "set_ball": "I",
     "sum": 136
   },
@@ -16603,7 +16603,7 @@
       39
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "108246759",
     "set_ball": "J",
     "sum": 76
   },
@@ -16651,7 +16651,7 @@
       36
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "121834155",
     "set_ball": "D",
     "sum": 162
   },
@@ -16779,7 +16779,7 @@
       43
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "119316010",
     "set_ball": "D",
     "sum": 161
   },
@@ -16875,7 +16875,7 @@
       37
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "239117105",
     "set_ball": "F",
     "sum": 147
   },
@@ -16891,7 +16891,7 @@
       32
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "104806984",
     "set_ball": "C",
     "sum": 119
   },
@@ -16939,7 +16939,7 @@
       43
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "124574314",
     "set_ball": "B",
     "sum": 188
   },
@@ -17003,7 +17003,7 @@
       40
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "131928303",
     "set_ball": "J",
     "sum": 188
   },
@@ -17035,7 +17035,7 @@
       43
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "117943963",
     "set_ball": "D",
     "sum": 124
   },
@@ -17147,7 +17147,7 @@
       41
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "125051453",
     "set_ball": "E",
     "sum": 147
   },
@@ -17211,7 +17211,7 @@
       33
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "113855362",
     "set_ball": "A",
     "sum": 120
   },
@@ -17259,7 +17259,7 @@
       43
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "412952008",
     "set_ball": "H",
     "sum": 161
   },
@@ -17275,7 +17275,7 @@
       35
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "252531046",
     "set_ball": "D",
     "sum": 102
   },
@@ -17291,7 +17291,7 @@
       42
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "117518400",
     "set_ball": "F",
     "sum": 115
   },
@@ -17339,7 +17339,7 @@
       38
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "120966218",
     "set_ball": "C",
     "sum": 123
   },
@@ -17387,7 +17387,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "122143275",
     "set_ball": "E",
     "sum": 111
   },
@@ -17435,7 +17435,7 @@
       39
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "125601483",
     "set_ball": "C",
     "sum": 171
   },
@@ -17467,7 +17467,7 @@
       40
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "251095228",
     "set_ball": "G",
     "sum": 124
   },
@@ -17483,7 +17483,7 @@
       39
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "116514121",
     "set_ball": "E",
     "sum": 149
   },
@@ -17515,7 +17515,7 @@
       42
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "160113420",
     "set_ball": "H",
     "sum": 159
   },
@@ -17531,7 +17531,7 @@
       32
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "18724752",
     "set_ball": "A",
     "sum": 125
   },
@@ -17547,7 +17547,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "268322168",
     "set_ball": "D",
     "sum": 115
   },
@@ -17563,7 +17563,7 @@
       41
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "129106482",
     "set_ball": "F",
     "sum": 177
   },
@@ -17627,7 +17627,7 @@
       43
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "271108458",
     "set_ball": "J",
     "sum": 175
   },
@@ -17643,7 +17643,7 @@
       39
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "123911966",
     "set_ball": "E",
     "sum": 125
   },
@@ -17739,7 +17739,7 @@
       41
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "130866503",
     "set_ball": "I",
     "sum": 137
   },
@@ -17755,7 +17755,7 @@
       35
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "7153015",
     "set_ball": "D",
     "sum": 105
   },
@@ -17771,7 +17771,7 @@
       29
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "268345233",
     "set_ball": "B",
     "sum": 114
   },
@@ -17787,7 +17787,7 @@
       36
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "125615901",
     "set_ball": "C",
     "sum": 138
   },
@@ -17819,7 +17819,7 @@
       43
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "108513197",
     "set_ball": "J",
     "sum": 103
   },
@@ -17835,7 +17835,7 @@
       42
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "370501171",
     "set_ball": "A",
     "sum": 113
   },
@@ -17851,7 +17851,7 @@
       39
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "234031537",
     "set_ball": "E",
     "sum": 132
   },
@@ -17867,7 +17867,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "484104446",
     "set_ball": "F",
     "sum": 182
   },
@@ -17883,7 +17883,7 @@
       40
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "330330282",
     "set_ball": "D",
     "sum": 126
   },
@@ -17899,7 +17899,7 @@
       38
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "95753342",
     "set_ball": "H",
     "sum": 105
   },
@@ -17963,7 +17963,7 @@
       41
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "114443128",
     "set_ball": "E",
     "sum": 118
   },
@@ -18027,7 +18027,7 @@
       38
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "115684719",
     "set_ball": "D",
     "sum": 164
   },
@@ -18059,7 +18059,7 @@
       40
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "128218058",
     "set_ball": "F",
     "sum": 146
   },
@@ -18107,7 +18107,7 @@
       38
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "78776205",
     "set_ball": "H",
     "sum": 120
   },
@@ -18123,7 +18123,7 @@
       42
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "338273733",
     "set_ball": "A",
     "sum": 143
   },
@@ -18139,7 +18139,7 @@
       43
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "560007047",
     "set_ball": "I",
     "sum": 154
   },
@@ -18155,7 +18155,7 @@
       43
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "391731490",
     "set_ball": "J",
     "sum": 154
   },
@@ -18171,7 +18171,7 @@
       36
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "241737086",
     "set_ball": "E",
     "sum": 119
   },
@@ -18187,7 +18187,7 @@
       43
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "118666833",
     "set_ball": "G",
     "sum": 139
   },
@@ -18347,7 +18347,7 @@
       43
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "118835741",
     "set_ball": "B",
     "sum": 148
   },
@@ -18475,7 +18475,7 @@
       38
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "115912032",
     "set_ball": "H",
     "sum": 95
   },
@@ -18507,7 +18507,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "124385476",
     "set_ball": "B",
     "sum": 149
   },
@@ -18555,7 +18555,7 @@
       30
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "144123227",
     "set_ball": "G",
     "sum": 127
   },
@@ -18571,7 +18571,7 @@
       41
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "19624312",
     "set_ball": "C",
     "sum": 119
   },
@@ -18587,7 +18587,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "266741384",
     "set_ball": "A",
     "sum": 168
   },
@@ -18603,7 +18603,7 @@
       43
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "121896967",
     "set_ball": "I",
     "sum": 150
   },
@@ -18699,7 +18699,7 @@
       38
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "116366306",
     "set_ball": "F",
     "sum": 112
   },
@@ -18747,7 +18747,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "119231853",
     "set_ball": "A",
     "sum": 120
   },
@@ -18795,7 +18795,7 @@
       35
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "125707844",
     "set_ball": "B",
     "sum": 87
   },
@@ -18875,7 +18875,7 @@
       33
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "124860306",
     "set_ball": "F",
     "sum": 133
   },
@@ -18923,7 +18923,7 @@
       33
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "70404713",
     "set_ball": "D",
     "sum": 135
   },
@@ -18939,7 +18939,7 @@
       34
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "296706788",
     "set_ball": "A",
     "sum": 159
   },
@@ -18955,7 +18955,7 @@
       39
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "133838035",
     "set_ball": "G",
     "sum": 185
   },
@@ -18987,7 +18987,7 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "137446611",
     "set_ball": "H",
     "sum": 166
   },
@@ -19035,7 +19035,7 @@
       39
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "523276110",
     "set_ball": "B",
     "sum": 151
   },
@@ -19051,7 +19051,7 @@
       38
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "735700073",
     "set_ball": "A",
     "sum": 156
   },
@@ -19067,7 +19067,7 @@
       42
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "555673063",
     "set_ball": "F",
     "sum": 115
   },
@@ -19083,7 +19083,7 @@
       36
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "400925200",
     "set_ball": "D",
     "sum": 149
   },
@@ -19099,7 +19099,7 @@
       42
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "121608804",
     "set_ball": "I",
     "sum": 142
   },
@@ -19147,7 +19147,7 @@
       40
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "244632508",
     "set_ball": "B",
     "sum": 140
   },
@@ -19275,7 +19275,7 @@
       40
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "121447115",
     "set_ball": "I",
     "sum": 110
   },
@@ -19307,7 +19307,7 @@
       41
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "118584306",
     "set_ball": "J",
     "sum": 89
   },
@@ -19355,7 +19355,7 @@
       37
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "119387020",
     "set_ball": "A",
     "sum": 135
   },
@@ -19435,7 +19435,7 @@
       38
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "126641809",
     "set_ball": "I",
     "sum": 129
   },
@@ -19483,7 +19483,7 @@
       37
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "287576167",
     "set_ball": "A",
     "sum": 142
   },
@@ -19499,7 +19499,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "140036758",
     "set_ball": "H",
     "sum": 182
   },
@@ -19531,7 +19531,7 @@
       31
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "252988536",
     "set_ball": "G",
     "sum": 84
   },
@@ -19547,7 +19547,7 @@
       43
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "122268699",
     "set_ball": "C",
     "sum": 145
   },
@@ -19627,7 +19627,7 @@
       42
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "119838550",
     "set_ball": "B",
     "sum": 140
   },
@@ -19675,7 +19675,7 @@
       41
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "116551216",
     "set_ball": "J",
     "sum": 109
   },
@@ -19707,7 +19707,7 @@
       43
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "138812697",
     "set_ball": "G",
     "sum": 199
   },
@@ -19739,7 +19739,7 @@
       43
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "138378499",
     "set_ball": "A",
     "sum": 144
   },
@@ -19787,7 +19787,7 @@
       37
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "124955572",
     "set_ball": "J",
     "sum": 128
   },
@@ -19883,7 +19883,7 @@
       43
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "447951484",
     "set_ball": "G",
     "sum": 142
   },
@@ -19899,7 +19899,7 @@
       38
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "273626115",
     "set_ball": "F",
     "sum": 138
   },
@@ -19915,7 +19915,7 @@
       43
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "128576326",
     "set_ball": "I",
     "sum": 107
   },
@@ -19979,7 +19979,7 @@
       39
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "135355967",
     "set_ball": "D",
     "sum": 140
   },
@@ -20027,7 +20027,7 @@
       36
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "136413520",
     "set_ball": "C",
     "sum": 102
   },
@@ -20091,7 +20091,7 @@
       42
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "134397657",
     "set_ball": "A",
     "sum": 142
   },
@@ -20123,7 +20123,7 @@
       35
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "132939440",
     "set_ball": "F",
     "sum": 125
   },
@@ -20171,7 +20171,7 @@
       41
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "140296289",
     "set_ball": "D",
     "sum": 154
   },
@@ -20219,7 +20219,7 @@
       36
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "294769911",
     "set_ball": "I",
     "sum": 144
   },
@@ -20235,7 +20235,7 @@
       33
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "132037455",
     "set_ball": "G",
     "sum": 132
   },
@@ -20267,7 +20267,7 @@
       38
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "126319769",
     "set_ball": "F",
     "sum": 125
   },
@@ -20315,7 +20315,7 @@
       36
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "130444902",
     "set_ball": "H",
     "sum": 149
   },
@@ -20379,7 +20379,7 @@
       42
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "135019275",
     "set_ball": "E",
     "sum": 174
   },
@@ -20427,7 +20427,7 @@
       42
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "143432919",
     "set_ball": "F",
     "sum": 170
   },
@@ -20539,7 +20539,7 @@
       41
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "134993898",
     "set_ball": "E",
     "sum": 127
   },
@@ -20587,7 +20587,7 @@
       32
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "135848970",
     "set_ball": "G",
     "sum": 149
   },
@@ -20683,7 +20683,7 @@
       38
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "139600060",
     "set_ball": "B",
     "sum": 159
   },
@@ -20779,7 +20779,7 @@
       40
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "141628660",
     "set_ball": "C",
     "sum": 128
   },
@@ -20843,7 +20843,7 @@
       42
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "146270097",
     "set_ball": "D",
     "sum": 164
   },
@@ -20875,7 +20875,7 @@
       40
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "138833615",
     "set_ball": "B",
     "sum": 142
   },
@@ -20923,7 +20923,7 @@
       41
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "148970728",
     "set_ball": "C",
     "sum": 181
   },
@@ -21003,7 +21003,7 @@
       41
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "248463449",
     "set_ball": "E",
     "sum": 114
   },
@@ -21067,7 +21067,7 @@
       42
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "318626275",
     "set_ball": "F",
     "sum": 167
   },
@@ -21083,7 +21083,7 @@
       43
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "142217329",
     "set_ball": "C",
     "sum": 125
   },
@@ -21147,7 +21147,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "145597887",
     "set_ball": "J",
     "sum": 168
   },
@@ -21211,7 +21211,7 @@
       29
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "139918477",
     "set_ball": "H",
     "sum": 101
   },
@@ -21387,7 +21387,7 @@
       33
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "147716863",
     "set_ball": "H",
     "sum": 77
   },
@@ -21419,7 +21419,7 @@
       23
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "319366210",
     "set_ball": "F",
     "sum": 96
   },
@@ -21435,7 +21435,7 @@
       34
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "155599643",
     "set_ball": "D",
     "sum": 166
   },
@@ -21499,7 +21499,7 @@
       37
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "305421962",
     "set_ball": "E",
     "sum": 112
   },
@@ -21515,7 +21515,7 @@
       39
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "142769195",
     "set_ball": "A",
     "sum": 136
   },
@@ -21707,7 +21707,7 @@
       41
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "158293668",
     "set_ball": "F",
     "sum": 191
   },
@@ -21771,7 +21771,7 @@
       39
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "148850413",
     "set_ball": "H",
     "sum": 96
   },
@@ -22155,7 +22155,7 @@
       40
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "186599329",
     "set_ball": "D",
     "sum": 172
   },
@@ -22187,7 +22187,7 @@
       39
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "129168839",
     "set_ball": "I",
     "sum": 159
   },
@@ -22203,7 +22203,7 @@
       42
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "210243965",
     "set_ball": "G",
     "sum": 188
   },
@@ -22235,7 +22235,7 @@
       40
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "444138139",
     "set_ball": "B",
     "sum": 129
   },
@@ -22251,7 +22251,7 @@
       38
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "194961175",
     "set_ball": "F",
     "sum": 179
   },
@@ -22283,7 +22283,7 @@
       43
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "187554507",
     "set_ball": "H",
     "sum": 167
   },
@@ -22395,7 +22395,7 @@
       39
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "323524855",
     "set_ball": "C",
     "sum": 128
   },
@@ -22411,7 +22411,7 @@
       37
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "429810925",
     "set_ball": "A",
     "sum": 108
   },
@@ -22427,7 +22427,7 @@
       39
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "191167589",
     "set_ball": "B",
     "sum": 130
   },
@@ -22491,7 +22491,7 @@
       33
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "197459384",
     "set_ball": "A",
     "sum": 116
   },
@@ -22539,7 +22539,7 @@
       40
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "36172490",
     "set_ball": "G",
     "sum": 159
   },
@@ -22555,7 +22555,7 @@
       39
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "194434345",
     "set_ball": "E",
     "sum": 173
   },
@@ -22683,7 +22683,7 @@
       35
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "191637654",
     "set_ball": "D",
     "sum": 125
   },
@@ -22731,7 +22731,7 @@
       38
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "182194767",
     "set_ball": "B",
     "sum": 118
   },
@@ -22875,7 +22875,7 @@
       41
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "186530099",
     "set_ball": "D",
     "sum": 133
   },
@@ -22907,7 +22907,7 @@
       42
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "17453239",
     "set_ball": "G",
     "sum": 136
   },
@@ -22923,7 +22923,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "183123113",
     "set_ball": "I",
     "sum": 158
   },
@@ -23019,7 +23019,7 @@
       43
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "199965654",
     "set_ball": "B",
     "sum": 132
   },
@@ -23067,7 +23067,7 @@
       33
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "180372714",
     "set_ball": "B",
     "sum": 94
   },
@@ -23115,7 +23115,7 @@
       41
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "187758302",
     "set_ball": "D",
     "sum": 138
   },
@@ -23227,7 +23227,7 @@
       42
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "106692039",
     "set_ball": "H",
     "sum": 208
   },
@@ -23243,7 +23243,7 @@
       42
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "234586287",
     "set_ball": "D",
     "sum": 193
   },
@@ -23259,7 +23259,7 @@
       40
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "13405435",
     "set_ball": "B",
     "sum": 159
   },
@@ -23323,7 +23323,7 @@
       36
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "10955557",
     "set_ball": "J",
     "sum": 147
   },
@@ -23371,7 +23371,7 @@
       43
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "406949113",
     "set_ball": "J",
     "sum": 201
   },
@@ -23387,7 +23387,7 @@
       40
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "461680353",
     "set_ball": "G",
     "sum": 174
   },
@@ -23403,7 +23403,7 @@
       43
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "205827665",
     "set_ball": "H",
     "sum": 182
   },
@@ -23483,7 +23483,7 @@
       37
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "203432373",
     "set_ball": "F",
     "sum": 132
   },
@@ -23515,7 +23515,7 @@
       29
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "199596984",
     "set_ball": "I",
     "sum": 117
   },
@@ -23595,7 +23595,7 @@
       26
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "428409654",
     "set_ball": "D",
     "sum": 108
   },
@@ -23611,7 +23611,7 @@
       43
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "194658716",
     "set_ball": "C",
     "sum": 130
   },
@@ -23675,7 +23675,7 @@
       40
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "207747957",
     "set_ball": "I",
     "sum": 100
   },
@@ -23707,7 +23707,7 @@
       43
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "14218330",
     "set_ball": "B",
     "sum": 150
   },
@@ -23739,7 +23739,7 @@
       42
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "10424389",
     "set_ball": "J",
     "sum": 108
   },
@@ -23803,7 +23803,7 @@
       42
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "210483046",
     "set_ball": "H",
     "sum": 147
   },
@@ -23851,7 +23851,7 @@
       38
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "85310686",
     "set_ball": "I",
     "sum": 118
   },
@@ -23867,7 +23867,7 @@
       38
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "204786165",
     "set_ball": "C",
     "sum": 144
   },
@@ -23915,7 +23915,7 @@
       35
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "7179695",
     "set_ball": "G",
     "sum": 107
   },
@@ -23979,7 +23979,7 @@
       40
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "218722379",
     "set_ball": "B",
     "sum": 167
   },
@@ -24027,7 +24027,7 @@
       41
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "196369972",
     "set_ball": "E",
     "sum": 195
   },
@@ -24139,7 +24139,7 @@
       41
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "391868219",
     "set_ball": "A",
     "sum": 119
   },
@@ -24155,7 +24155,7 @@
       39
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "458553485",
     "set_ball": "J",
     "sum": 148
   },
@@ -24171,7 +24171,7 @@
       35
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "205182997",
     "set_ball": "E",
     "sum": 133
   },
@@ -24203,7 +24203,7 @@
       41
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "199108103",
     "set_ball": "G",
     "sum": 129
   },
@@ -24267,7 +24267,7 @@
       38
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "212375624",
     "set_ball": "I",
     "sum": 126
   },
@@ -24331,7 +24331,7 @@
       37
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "24741779",
     "set_ball": "F",
     "sum": 165
   },
@@ -24363,7 +24363,7 @@
       36
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "20985545",
     "set_ball": "A",
     "sum": 142
   },
@@ -24411,7 +24411,7 @@
       42
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "212812345",
     "set_ball": "D",
     "sum": 178
   },
@@ -24443,7 +24443,7 @@
       43
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "197194180",
     "set_ball": "B",
     "sum": 132
   },
@@ -24491,7 +24491,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "1053505",
     "set_ball": "I",
     "sum": 147
   },
@@ -24523,7 +24523,7 @@
       37
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "202161370",
     "set_ball": "A",
     "sum": 158
   },
@@ -24555,7 +24555,7 @@
       37
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "15342210",
     "set_ball": "D",
     "sum": 128
   },
@@ -24587,7 +24587,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "28280571",
     "set_ball": "J",
     "sum": 120
   },
@@ -24603,7 +24603,7 @@
       38
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "178729671",
     "set_ball": "B",
     "sum": 134
   },
@@ -24667,7 +24667,7 @@
       40
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "204274190",
     "set_ball": "I",
     "sum": 137
   },
@@ -24699,7 +24699,7 @@
       34
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "225606974",
     "set_ball": "A",
     "sum": 122
   },
@@ -24715,7 +24715,7 @@
       41
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "13672968",
     "set_ball": "H",
     "sum": 145
   },
@@ -24811,7 +24811,7 @@
       42
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "21887100",
     "set_ball": "I",
     "sum": 158
   },
@@ -24923,7 +24923,7 @@
       37
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "187430365",
     "set_ball": "J",
     "sum": 102
   },
@@ -25019,7 +25019,7 @@
       39
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "128575535",
     "set_ball": "H",
     "sum": 128
   },
@@ -25035,7 +25035,7 @@
       43
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "252398526",
     "set_ball": "D",
     "sum": 162
   },
@@ -25083,7 +25083,7 @@
       31
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "16529901",
     "set_ball": "A",
     "sum": 122
   },
@@ -25243,7 +25243,7 @@
       43
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "338087603",
     "set_ball": "H",
     "sum": 161
   },
@@ -25419,7 +25419,7 @@
       43
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "115546724",
     "set_ball": "A",
     "sum": 116
   },
@@ -25467,7 +25467,7 @@
       33
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "370281518",
     "set_ball": "J",
     "sum": 131
   },
@@ -25483,7 +25483,7 @@
       42
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "350353170",
     "set_ball": "B",
     "sum": 196
   },
@@ -25563,7 +25563,7 @@
       19
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "225321048",
     "set_ball": "F",
     "sum": 67
   },
@@ -25579,7 +25579,7 @@
       39
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "521203478",
     "set_ball": "A",
     "sum": 154
   },
@@ -25595,7 +25595,7 @@
       43
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "129522708",
     "set_ball": "J",
     "sum": 157
   },
@@ -25675,7 +25675,7 @@
       39
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "105233732",
     "set_ball": "G",
     "sum": 140
   },
@@ -25723,7 +25723,7 @@
       39
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "338627846",
     "set_ball": "F",
     "sum": 138
   },
@@ -25771,7 +25771,7 @@
       38
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "329751773",
     "set_ball": "J",
     "sum": 157
   },
@@ -25883,7 +25883,7 @@
       42
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "162923672",
     "set_ball": "E",
     "sum": 183
   },
@@ -25979,7 +25979,7 @@
       34
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "142982442",
     "set_ball": "J",
     "sum": 91
   },
@@ -26027,7 +26027,7 @@
       35
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "366827066",
     "set_ball": "E",
     "sum": 153
   },
@@ -26059,7 +26059,7 @@
       38
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "185205326",
     "set_ball": "G",
     "sum": 176
   },
@@ -26107,7 +26107,7 @@
       27
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "334091926",
     "set_ball": "H",
     "sum": 90
   },
@@ -26235,7 +26235,7 @@
       32
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "148143871",
     "set_ball": "C",
     "sum": 106
   },
@@ -26267,7 +26267,7 @@
       43
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "155586703",
     "set_ball": "H",
     "sum": 160
   },
@@ -26299,7 +26299,7 @@
       43
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "161707398",
     "set_ball": "I",
     "sum": 156
   },
@@ -26331,7 +26331,7 @@
       38
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "153752840",
     "set_ball": "F",
     "sum": 157
   },
@@ -26379,7 +26379,7 @@
       33
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "170002065",
     "set_ball": "E",
     "sum": 92
   },
@@ -26395,7 +26395,7 @@
       42
     ],
     "bonus": 12,
-    "carryover": "0",
+    "carryover": "155487414",
     "set_ball": "G",
     "sum": 135
   },
@@ -26459,7 +26459,7 @@
       43
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "356528307",
     "set_ball": "I",
     "sum": 158
   },
@@ -26491,7 +26491,7 @@
       43
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "344887602",
     "set_ball": "C",
     "sum": 158
   },
@@ -26539,7 +26539,7 @@
       40
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "154890181",
     "set_ball": "E",
     "sum": 127
   },
@@ -26603,7 +26603,7 @@
       42
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "342760382",
     "set_ball": "D",
     "sum": 180
   },
@@ -26715,7 +26715,7 @@
       41
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "182760744",
     "set_ball": "C",
     "sum": 175
   },
@@ -26747,7 +26747,7 @@
       41
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "174128470",
     "set_ball": "A",
     "sum": 146
   },
@@ -26779,7 +26779,7 @@
       43
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "150092785",
     "set_ball": "B",
     "sum": 105
   },
@@ -26859,7 +26859,7 @@
       43
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "196225409",
     "set_ball": "F",
     "sum": 160
   },
@@ -26923,7 +26923,7 @@
       43
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "260645829",
     "set_ball": "H",
     "sum": 162
   },
@@ -26939,7 +26939,7 @@
       42
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "501345283",
     "set_ball": "B",
     "sum": 144
   },
@@ -26955,7 +26955,7 @@
       37
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "379846586",
     "set_ball": "D",
     "sum": 121
   },
@@ -27035,7 +27035,7 @@
       34
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "557769048",
     "set_ball": "C",
     "sum": 85
   },
@@ -27051,7 +27051,7 @@
       31
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "158669748",
     "set_ball": "A",
     "sum": 142
   },
@@ -27211,7 +27211,7 @@
       43
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "199416745",
     "set_ball": "F",
     "sum": 135
   },
@@ -27243,7 +27243,7 @@
       32
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "143879862",
     "set_ball": "C",
     "sum": 146
   },
@@ -27275,7 +27275,7 @@
       37
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "349343178",
     "set_ball": "B",
     "sum": 96
   },
@@ -27323,7 +27323,7 @@
       33
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "161098341",
     "set_ball": "F",
     "sum": 108
   },
@@ -27403,7 +27403,7 @@
       43
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "214752039",
     "set_ball": "J",
     "sum": 188
   },
@@ -27419,7 +27419,7 @@
       43
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "160074643",
     "set_ball": "C",
     "sum": 166
   },
@@ -27451,7 +27451,7 @@
       43
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "812785066",
     "set_ball": "F",
     "sum": 175
   },
@@ -27467,7 +27467,7 @@
       40
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "360112917",
     "set_ball": "I",
     "sum": 177
   },
@@ -27611,7 +27611,7 @@
       40
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "215450404",
     "set_ball": "D",
     "sum": 183
   },
@@ -27643,7 +27643,7 @@
       28
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "157062818",
     "set_ball": "I",
     "sum": 106
   },
@@ -27675,7 +27675,7 @@
       41
     ],
     "bonus": 30,
-    "carryover": "0",
+    "carryover": "216556788",
     "set_ball": "E",
     "sum": 134
   },
@@ -27691,7 +27691,7 @@
       43
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "154457620",
     "set_ball": "C",
     "sum": 160
   },
@@ -27707,7 +27707,7 @@
       34
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "83541865",
     "set_ball": "G",
     "sum": 124
   },
@@ -27723,7 +27723,7 @@
       43
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "373680466",
     "set_ball": "H",
     "sum": 148
   },
@@ -27755,7 +27755,7 @@
       38
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "229208996",
     "set_ball": "D",
     "sum": 165
   },
@@ -27787,7 +27787,7 @@
       34
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "173275826",
     "set_ball": "I",
     "sum": 140
   },
@@ -27899,7 +27899,7 @@
       43
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "573641861",
     "set_ball": "H",
     "sum": 162
   },
@@ -27915,7 +27915,7 @@
       41
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "149473061",
     "set_ball": "F",
     "sum": 129
   },
@@ -27947,7 +27947,7 @@
       42
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "123559186",
     "set_ball": "D",
     "sum": 124
   },
@@ -27979,7 +27979,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "155988946",
     "set_ball": "G",
     "sum": 129
   },
@@ -27995,7 +27995,7 @@
       43
     ],
     "bonus": 31,
-    "carryover": "0",
+    "carryover": "155254196",
     "set_ball": "J",
     "sum": 160
   },
@@ -28091,7 +28091,7 @@
       37
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "129310297",
     "set_ball": "A",
     "sum": 135
   },
@@ -28187,7 +28187,7 @@
       30
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "156226705",
     "set_ball": "A",
     "sum": 105
   },
@@ -28251,7 +28251,7 @@
       37
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "161031732",
     "set_ball": "C",
     "sum": 150
   },
@@ -28363,7 +28363,7 @@
       40
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "158712142",
     "set_ball": "A",
     "sum": 153
   },
@@ -28395,7 +28395,7 @@
       29
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "142382016",
     "set_ball": "C",
     "sum": 88
   },
@@ -28443,7 +28443,7 @@
       42
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "193805491",
     "set_ball": "B",
     "sum": 111
   },
@@ -28459,7 +28459,7 @@
       34
     ],
     "bonus": 19,
-    "carryover": "0",
+    "carryover": "166985277",
     "set_ball": "A",
     "sum": 115
   },
@@ -28635,7 +28635,7 @@
       41
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "4972560",
     "set_ball": "A",
     "sum": 196
   },
@@ -28683,7 +28683,7 @@
       37
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "351468038",
     "set_ball": "C",
     "sum": 111
   },
@@ -28795,7 +28795,7 @@
       42
     ],
     "bonus": 34,
-    "carryover": "0",
+    "carryover": "373090476",
     "set_ball": "I",
     "sum": 154
   },
@@ -28811,7 +28811,7 @@
       37
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "236306765",
     "set_ball": "F",
     "sum": 95
   },
@@ -28827,7 +28827,7 @@
       42
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "183009018",
     "set_ball": "A",
     "sum": 150
   },
@@ -28843,7 +28843,7 @@
       28
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "393902973",
     "set_ball": "E",
     "sum": 105
   },
@@ -28875,7 +28875,7 @@
       42
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "621967283",
     "set_ball": "A",
     "sum": 147
   },
@@ -28891,7 +28891,7 @@
       34
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "156982123",
     "set_ball": "J",
     "sum": 96
   },
@@ -28923,7 +28923,7 @@
       39
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "341285528",
     "set_ball": "D",
     "sum": 170
   },
@@ -28971,7 +28971,7 @@
       39
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "148357187",
     "set_ball": "E",
     "sum": 148
   },
@@ -28987,7 +28987,7 @@
       41
     ],
     "bonus": 18,
-    "carryover": "0",
+    "carryover": "151330859",
     "set_ball": "I",
     "sum": 104
   },
@@ -29019,7 +29019,7 @@
       40
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "345952300",
     "set_ball": "C",
     "sum": 121
   },
@@ -29083,7 +29083,7 @@
       43
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "150000456",
     "set_ball": "B",
     "sum": 125
   },
@@ -29131,7 +29131,7 @@
       43
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "165935026",
     "set_ball": "J",
     "sum": 121
   },
@@ -29179,7 +29179,7 @@
       39
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "396114792",
     "set_ball": "A",
     "sum": 132
   },
@@ -29243,7 +29243,7 @@
       37
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "569155297",
     "set_ball": "C",
     "sum": 117
   },
@@ -29259,7 +29259,7 @@
       43
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "171519931",
     "set_ball": "A",
     "sum": 142
   },
@@ -29291,7 +29291,7 @@
       39
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "149238699",
     "set_ball": "D",
     "sum": 158
   },
@@ -29339,7 +29339,7 @@
       38
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "155943073",
     "set_ball": "I",
     "sum": 122
   },
@@ -29419,7 +29419,7 @@
       26
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "262959262",
     "set_ball": "H",
     "sum": 101
   },
@@ -29547,7 +29547,7 @@
       27
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "511391329",
     "set_ball": "F",
     "sum": 68
   },
@@ -29563,7 +29563,7 @@
       41
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "120489556",
     "set_ball": "C",
     "sum": 121
   },
@@ -29643,7 +29643,7 @@
       31
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "98183285",
     "set_ball": "I",
     "sum": 107
   },
@@ -29723,7 +29723,7 @@
       43
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "125134321",
     "set_ball": "G",
     "sum": 151
   },
@@ -29883,7 +29883,7 @@
       43
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "3380993",
     "set_ball": "B",
     "sum": 197
   },
@@ -29899,7 +29899,7 @@
       32
     ],
     "bonus": 38,
-    "carryover": "0",
+    "carryover": "314953610",
     "set_ball": "A",
     "sum": 107
   },
@@ -30059,7 +30059,7 @@
       43
     ],
     "bonus": 32,
-    "carryover": "0",
+    "carryover": "321250560",
     "set_ball": "E",
     "sum": 121
   },
@@ -30155,7 +30155,7 @@
       43
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "158668297",
     "set_ball": "J",
     "sum": 195
   },
@@ -30187,7 +30187,7 @@
       35
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "121214401",
     "set_ball": "E",
     "sum": 131
   },
@@ -30251,7 +30251,7 @@
       37
     ],
     "bonus": 40,
-    "carryover": "0",
+    "carryover": "428004419",
     "set_ball": "A",
     "sum": 173
   },
@@ -30267,7 +30267,7 @@
       39
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "122412467",
     "set_ball": "B",
     "sum": 192
   },
@@ -30363,7 +30363,7 @@
       43
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "118533875",
     "set_ball": "D",
     "sum": 127
   },
@@ -30395,7 +30395,7 @@
       36
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "105864743",
     "set_ball": "I",
     "sum": 142
   },
@@ -30427,7 +30427,7 @@
       41
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "314141705",
     "set_ball": "B",
     "sum": 181
   },
@@ -30459,7 +30459,7 @@
       34
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "283282291",
     "set_ball": "J",
     "sum": 156
   },
@@ -30555,7 +30555,7 @@
       39
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "93913560",
     "set_ball": "F",
     "sum": 119
   },
@@ -30603,7 +30603,7 @@
       42
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "92471147",
     "set_ball": "G",
     "sum": 94
   },
@@ -30683,7 +30683,7 @@
       43
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "333510049",
     "set_ball": "D",
     "sum": 139
   },
@@ -30715,7 +30715,7 @@
       43
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "402133773",
     "set_ball": "C",
     "sum": 140
   },
@@ -30731,7 +30731,7 @@
       43
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "58390423",
     "set_ball": "I",
     "sum": 183
   },
@@ -30747,7 +30747,7 @@
       40
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "124632575",
     "set_ball": "F",
     "sum": 185
   },
@@ -30795,7 +30795,7 @@
       41
     ],
     "bonus": 4,
-    "carryover": "0",
+    "carryover": "104420387",
     "set_ball": "I",
     "sum": 151
   },
@@ -30843,7 +30843,7 @@
       40
     ],
     "bonus": 33,
-    "carryover": "0",
+    "carryover": "327385446",
     "set_ball": "C",
     "sum": 188
   },
@@ -30987,7 +30987,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "125385155",
     "set_ball": "F",
     "sum": 143
   },
@@ -31083,7 +31083,7 @@
       39
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "176352642",
     "set_ball": "B",
     "sum": 145
   },
@@ -31115,7 +31115,7 @@
       38
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "133626797",
     "set_ball": "H",
     "sum": 152
   },
@@ -31179,7 +31179,7 @@
       37
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "301796845",
     "set_ball": "A",
     "sum": 150
   },
@@ -31227,7 +31227,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "324533948",
     "set_ball": "I",
     "sum": 176
   },
@@ -31259,7 +31259,7 @@
       27
     ],
     "bonus": 21,
-    "carryover": "0",
+    "carryover": "250912445",
     "set_ball": "D",
     "sum": 101
   },
@@ -31275,7 +31275,7 @@
       35
     ],
     "bonus": 39,
-    "carryover": "0",
+    "carryover": "291019816",
     "set_ball": "B",
     "sum": 142
   },
@@ -31419,7 +31419,7 @@
       38
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "85463241",
     "set_ball": "E",
     "sum": 151
   },
@@ -31467,7 +31467,7 @@
       41
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "315860676",
     "set_ball": "G",
     "sum": 148
   },
@@ -31643,7 +31643,7 @@
       41
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "128284143",
     "set_ball": "C",
     "sum": 183
   },
@@ -31675,7 +31675,7 @@
       43
     ],
     "bonus": 1,
-    "carryover": "0",
+    "carryover": "481310551",
     "set_ball": "H",
     "sum": 186
   },
@@ -31691,7 +31691,7 @@
       39
     ],
     "bonus": 2,
-    "carryover": "0",
+    "carryover": "96226445",
     "set_ball": "B",
     "sum": 194
   },
@@ -31707,7 +31707,7 @@
       42
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "107379873",
     "set_ball": "G",
     "sum": 147
   },
@@ -31739,7 +31739,7 @@
       40
     ],
     "bonus": 3,
-    "carryover": "0",
+    "carryover": "69664311",
     "set_ball": "F",
     "sum": 154
   },
@@ -31755,7 +31755,7 @@
       38
     ],
     "bonus": 20,
-    "carryover": "0",
+    "carryover": "115172879",
     "set_ball": "A",
     "sum": 89
   },
@@ -31787,7 +31787,7 @@
       40
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "321968723",
     "set_ball": "C",
     "sum": 153
   },
@@ -31819,7 +31819,7 @@
       42
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "301170783",
     "set_ball": "B",
     "sum": 160
   },
@@ -31835,7 +31835,7 @@
       41
     ],
     "bonus": 35,
-    "carryover": "0",
+    "carryover": "285431235",
     "set_ball": "E",
     "sum": 112
   },
@@ -31915,7 +31915,7 @@
       31
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "97738341",
     "set_ball": "J",
     "sum": 106
   },
@@ -31963,7 +31963,7 @@
       42
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "1913571",
     "set_ball": "B",
     "sum": 148
   },
@@ -31979,7 +31979,7 @@
       30
     ],
     "bonus": 41,
-    "carryover": "0",
+    "carryover": "90468272",
     "set_ball": "D",
     "sum": 141
   },
@@ -32011,7 +32011,7 @@
       41
     ],
     "bonus": 9,
-    "carryover": "0",
+    "carryover": "381315724",
     "set_ball": "E",
     "sum": 116
   },
@@ -32027,7 +32027,7 @@
       41
     ],
     "bonus": 24,
-    "carryover": "0",
+    "carryover": "71918699",
     "set_ball": "A",
     "sum": 108
   },
@@ -32059,7 +32059,7 @@
       32
     ],
     "bonus": 37,
-    "carryover": "0",
+    "carryover": "48191186",
     "set_ball": "I",
     "sum": 92
   },
@@ -32155,7 +32155,7 @@
       40
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "114154706",
     "set_ball": "A",
     "sum": 183
   },
@@ -32187,7 +32187,7 @@
       39
     ],
     "bonus": 27,
-    "carryover": "0",
+    "carryover": "104053862",
     "set_ball": "F",
     "sum": 122
   },
@@ -32203,7 +32203,7 @@
       39
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "189047171",
     "set_ball": "A",
     "sum": 171
   },
@@ -32219,7 +32219,7 @@
       42
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "236692230",
     "set_ball": "E",
     "sum": 142
   },
@@ -32283,7 +32283,7 @@
       41
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "90824312",
     "set_ball": "C",
     "sum": 180
   },
@@ -32315,7 +32315,7 @@
       43
     ],
     "bonus": 6,
-    "carryover": "0",
+    "carryover": "272652637",
     "set_ball": "E",
     "sum": 155
   },
@@ -32411,7 +32411,7 @@
       32
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "245818952",
     "set_ball": "I",
     "sum": 113
   },
@@ -32459,7 +32459,7 @@
       39
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "54432400",
     "set_ball": "E",
     "sum": 131
   },
@@ -32507,7 +32507,7 @@
       43
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "85172896",
     "set_ball": "G",
     "sum": 180
   },
@@ -32603,7 +32603,7 @@
       36
     ],
     "bonus": 25,
-    "carryover": "0",
+    "carryover": "267385456",
     "set_ball": "A",
     "sum": 104
   },
@@ -32667,7 +32667,7 @@
       41
     ],
     "bonus": 14,
-    "carryover": "0",
+    "carryover": "78145012",
     "set_ball": "J",
     "sum": 157
   },
@@ -32811,7 +32811,7 @@
       42
     ],
     "bonus": 29,
-    "carryover": "0",
+    "carryover": "76297998",
     "set_ball": "F",
     "sum": 164
   },
@@ -32891,7 +32891,7 @@
       39
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "256384594",
     "set_ball": "B",
     "sum": 126
   },
@@ -32907,7 +32907,7 @@
       42
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "17333248",
     "set_ball": "A",
     "sum": 175
   },
@@ -33051,7 +33051,7 @@
       38
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "14489512",
     "set_ball": "J",
     "sum": 150
   },
@@ -33115,7 +33115,7 @@
       38
     ],
     "bonus": 23,
-    "carryover": "0",
+    "carryover": "36197335",
     "set_ball": "I",
     "sum": 173
   },
@@ -33163,7 +33163,7 @@
       43
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "246032418",
     "set_ball": "F",
     "sum": 141
   },
@@ -33195,7 +33195,7 @@
       40
     ],
     "bonus": 17,
-    "carryover": "0",
+    "carryover": "36788358",
     "set_ball": "A",
     "sum": 130
   },
@@ -33227,7 +33227,7 @@
       40
     ],
     "bonus": 10,
-    "carryover": "0",
+    "carryover": "41176145",
     "set_ball": "D",
     "sum": 154
   },
@@ -33291,7 +33291,7 @@
       37
     ],
     "bonus": 8,
-    "carryover": "0",
+    "carryover": "258064512",
     "set_ball": "B",
     "sum": 119
   },
@@ -33323,7 +33323,7 @@
       41
     ],
     "bonus": 7,
-    "carryover": "0",
+    "carryover": "238045160",
     "set_ball": "F",
     "sum": 124
   },
@@ -33355,7 +33355,7 @@
       43
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "31090737",
     "set_ball": "G",
     "sum": 86
   },
@@ -33387,7 +33387,7 @@
       38
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "35077560",
     "set_ball": "C",
     "sum": 156
   },
@@ -33435,7 +33435,7 @@
       41
     ],
     "bonus": 42,
-    "carryover": "0",
+    "carryover": "224948364",
     "set_ball": "C",
     "sum": 123
   },
@@ -33499,7 +33499,7 @@
       36
     ],
     "bonus": 11,
-    "carryover": "0",
+    "carryover": "249208924",
     "set_ball": "G",
     "sum": 164
   },
@@ -33531,7 +33531,7 @@
       28
     ],
     "bonus": 36,
-    "carryover": "0",
+    "carryover": "202524583",
     "set_ball": "I",
     "sum": 90
   },
@@ -33579,7 +33579,7 @@
       39
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "26830542",
     "set_ball": "E",
     "sum": 160
   },
@@ -33595,7 +33595,7 @@
       42
     ],
     "bonus": 16,
-    "carryover": "0",
+    "carryover": "184889411",
     "set_ball": "D",
     "sum": 189
   },
@@ -33611,7 +33611,7 @@
       39
     ],
     "bonus": 26,
-    "carryover": "0",
+    "carryover": "296543942",
     "set_ball": "J",
     "sum": 118
   },
@@ -33627,7 +33627,7 @@
       42
     ],
     "bonus": 15,
-    "carryover": "0",
+    "carryover": "56524796",
     "set_ball": "C",
     "sum": 172
   },
@@ -33643,7 +33643,7 @@
       43
     ],
     "bonus": 28,
-    "carryover": "0",
+    "carryover": "206832135",
     "set_ball": "B",
     "sum": 150
   },
@@ -33675,7 +33675,7 @@
       38
     ],
     "bonus": 22,
-    "carryover": "0",
+    "carryover": "124672751",
     "set_ball": "I",
     "sum": 132
   },
@@ -33691,7 +33691,7 @@
       28
     ],
     "bonus": 43,
-    "carryover": "0",
+    "carryover": "263982587",
     "set_ball": "F",
     "sum": 123
   },
@@ -33707,7 +33707,7 @@
       40
     ],
     "bonus": 13,
-    "carryover": "0",
+    "carryover": "128819603",
     "set_ball": "H",
     "sum": 161
   },
@@ -33739,7 +33739,7 @@
       43
     ],
     "bonus": 5,
-    "carryover": "0",
+    "carryover": "102580607",
     "set_ball": "G",
     "sum": 110
   },

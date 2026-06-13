@@ -409,10 +409,10 @@
                                     <option value="A">Aセット</option><option value="B">Bセット</option><option value="C">Cセット</option><option value="D">Dセット</option><option value="E">Eセット</option><option value="F">Fセット</option><option value="G">Gセット</option><option value="H">Hセット</option><option value="I">Iセット</option><option value="J">Jセット</option>
                                 </select>
                             </div>
-                            <span id="predictedSetBallSpan" style="font-size: 13px; font-weight: bold; color: var(--accent-blue);"></span>
+                            <div id="predictedSetBallSpan" style="font-size: 13px; font-weight: bold; color: var(--accent-blue); display: flex; flex-direction: column; gap: 4px;"></div>
                         </div>
 
-                        <!-- 4段目: 各桁の数・川理論・条件リセット -->
+                        <!-- 4段目: 各桁の数・前回数字派生分析・条件リセット -->
                         <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 10px;">
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <label style="font-size: 14px; font-weight: bold; color: #444;">🎯 各桁の数:</label>
@@ -456,7 +456,7 @@
                                     <label style="font-size: 12px; font-weight: bold; color: #444;"><input type="radio" name="prize_mode" value="off" checked> OFF</label>
                                 </div>
                             </div>
-                            <button class="btn river-btn" id="btnRiver" onclick="toggleRiverTheory()" style="font-size: 13px; padding: 10px 15px;" title="【数字の川理論】前回出現した数字を基準に関連性の高い数字の出現確率を高める理論です。">🌊 数字の川理論を適用</button>
+                            <button class="btn river-btn" id="btnPrevDerived" onclick="togglePreviousDerivedAnalysis()" style="font-size: 13px; padding: 10px 15px;" title="【前回数字派生分析】最新回の本数字・ボーナスを起点に、引っ張り、隣接、下一桁、次出現傾向を加点します。">前回数字派生分析を適用</button>
                             
                             <button class="btn" onclick="resetConditions()" style="margin-left: auto; background:#f1f5f9; color:#475569; font-size:13px; box-shadow:none; padding:10px 15px; border: 1px solid #cbd5e1;">♻️ 条件リセット</button>
                         </div>
@@ -477,7 +477,7 @@
                     </div>
                     <div id="latestTrendBox" style="display: none; background: #fffdf5; border: 1px solid #ffe082; border-top: none; border-radius: 0 0 8px 8px; padding: 12px 15px; margin-bottom: 15px; font-size: 13px; line-height: 1.6; color: #5c4d04; margin-top: -10px;"></div>
                     
-                    <div id="riverText" class="info-panel" style="background: #e3f2fd; color: #0d47a1; border-left: 5px solid #2196F3;"></div>
+                    <div id="prevDerivedText" class="info-panel" style="background: #e3f2fd; color: #0d47a1; border-left: 5px solid #2196F3;"></div>
                     <div id="predictText" class="info-panel" style="background: #fdfdfd; color: #444; border-left: 5px solid #1fa331;"></div>
                 </div>
 
@@ -652,7 +652,9 @@
 
         const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.1}, {"n": 23, "c": 37, "p": 17.6}, {"n": 3, "c": 35, "p": 16.7}, {"n": 27, "c": 35, "p": 16.7}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 39, "p": 18.2}, {"n": 21, "c": 39, "p": 18.2}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 38, "p": 17.8}, {"n": 41, "c": 37, "p": 17.3}], "F": [{"n": 20, "c": 43, "p": 20.5}, {"n": 2, "c": 42, "p": 20.0}, {"n": 27, "c": 38, "p": 18.1}, {"n": 38, "c": 37, "p": 17.6}, {"n": 5, "c": 36, "p": 17.1}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 6, "c": 40, "p": 19.6}, {"n": 25, "c": 40, "p": 19.6}, {"n": 26, "c": 40, "p": 19.6}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.5}, {"n": 20, "c": 37, "p": 18.0}, {"n": 35, "c": 37, "p": 18.0}, {"n": 6, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.1}]};
         window.eliminatedNumbers = [];
-        window.riverRocks = [];
+        window.previousDerivedMode = false;
+        window.previousDerivedWeights = {};
+        window.previousDerivedAnalysis = null;
 
         function renderBoard() {
             const h1 = document.getElementById('headerRow1');
@@ -799,7 +801,11 @@
             // 基本スコア: 全セット直近50回の出現頻度
             lotoData.slice(0, 50).forEach(d => d.numbers.forEach(n => scores[n] += 2));
             
-            if(window.riverRocks.length) window.riverRocks.forEach(n => scores[n] += 15);
+            if(window.previousDerivedMode) {
+                window.previousDerivedAnalysis = buildPreviousDerivedAnalysis();
+                window.previousDerivedWeights = window.previousDerivedAnalysis.weights;
+                Object.entries(window.previousDerivedWeights).forEach(([n, weight]) => { scores[parseInt(n)] += weight; });
+            }
 
             // セット球モーメンタム分析（内部ランキング）
             let forcedBySetBall = [];
@@ -813,9 +819,9 @@
                 if(latest50.length > 0) {
                     let setBallStats = [];
                     for(let i=1; i<=43; i++) {
-                        let count50 = latest50.filter(d => d.numbers.includes(i)).length;
-                        let count10 = latest10.filter(d => d.numbers.includes(i)).length;
-                        // 内部スコア: 長期(50回) x 2 + 短期(10回) x 5
+                        let count50 = latest50.filter(d => d.numbers.includes(i) || d.bonus === i).length;
+                        let count10 = latest10.filter(d => d.numbers.includes(i) || d.bonus === i).length;
+                        // 内部スコア: 選択セット球だけの直近50/10回を対象、本数字＋ボーナスで評価
                         let momentumScore = (count50 * 2) + (count10 * 5);
                         setBallStats.push({num: i, score: momentumScore, count50, count10});
                     }
@@ -928,7 +934,7 @@
                 let repeatDetails = best.filter(n => lastNumbers.includes(n));
                 let rTxt = repeatDetails.length > 0 ? `（${repeatDetails.join(", ")}）` : "";
 
-                let theTxt = window.riverMode ? `<li><strong style="color:#e65100;">🌊 数字の川理論を適用</strong>: 出現確率の高い「連番」、「末尾一致」、および「引っ張りの岩（前回の当選数字）」の条件で構成。</li>` : "";
+                let theTxt = window.previousDerivedMode ? `<li><strong style="color:#e65100;">前回数字派生分析を適用</strong>: 最新回の本数字・ボーナスを起点に、引っ張り、隣接、下一桁、次出現傾向を加点。強化数字: ${(window.previousDerivedAnalysis?.strongNumbers || []).join(", ")}</li>` : "";
                 let setBallTxt = setBallReasonHTML ? `<li><strong style="color:var(--accent-blue);">🎯 ${selectedSet}セット分析</strong>: 内部ランキングを精査し、 ${setBallReasonHTML} を軸候補として選出。</li>` : "";
                 let elimReason = "";
                 if (window.eliminatedNumbers.length > 0) {
@@ -1006,18 +1012,98 @@
             document.getElementById('predictedSetBallSpan').innerText = `💡 予測セット球: ${cand} (推奨理由: 過去${maxG}回出現なし)`;
         }
 
-        function toggleRiverTheory() {
-            window.riverMode = !window.riverMode;
-            const btn = document.getElementById('btnRiver');
-            btn.classList.toggle('active', window.riverMode);
-            if(window.riverMode) {
-                const rocks = lotoData[0].numbers.filter(n => lotoData[1].numbers.includes(n));
-                window.riverRocks = rocks.length ? rocks : [lotoData[0].numbers[0]];
-                document.getElementById('riverText').innerHTML = `🌊 <b>川理論 適用中:</b><br><span style="font-size:12px; color:#555;">過去の連続性を分析し予測スコアを強化しています。今回の「引っ張りの岩（前回当選数字に基づく軸）」は <b>[ ${window.riverRocks.join(", ")} ]</b> であり、これらを引数として関連数字の出現確率を大幅に引き上げました。</span>`;
-                document.getElementById('riverText').style.display = 'block';
+        function addDerivedWeight(weights, num, weight) {
+            if (num < 1 || num > 43) return;
+            weights[num] = (weights[num] || 0) + weight;
+        }
+
+        function buildPreviousDerivedAnalysis() {
+            const latest = lotoData[0];
+            const previous = lotoData[1];
+            const weights = {};
+            if (!latest || !Array.isArray(latest.numbers)) {
+                return { weights, baseNumbers: [], carryNumbers: [], neighborNumbers: [], lastDigitNumbers: [], trendNumbers: [], strongNumbers: [] };
+            }
+
+            const baseNumbers = [...latest.numbers];
+            if (latest.bonus >= 1 && latest.bonus <= 43 && !baseNumbers.includes(latest.bonus)) baseNumbers.push(latest.bonus);
+            baseNumbers.forEach(n => addDerivedWeight(weights, n, latest.numbers.includes(n) ? 6 : 4));
+
+            const carryNumbers = previous && Array.isArray(previous.numbers)
+                ? latest.numbers.filter(n => previous.numbers.includes(n))
+                : [];
+            carryNumbers.forEach(n => addDerivedWeight(weights, n, 10));
+
+            const neighborSet = new Set();
+            baseNumbers.forEach(n => {
+                if (n > 1) neighborSet.add(n - 1);
+                if (n < 43) neighborSet.add(n + 1);
+            });
+            const neighborNumbers = [...neighborSet].sort((a, b) => a - b);
+            neighborNumbers.forEach(n => addDerivedWeight(weights, n, 3));
+
+            const digitSet = new Set(baseNumbers.map(n => n % 10));
+            const lastDigitNumbers = [];
+            for (let n = 1; n <= 43; n++) {
+                if (digitSet.has(n % 10) && !baseNumbers.includes(n)) lastDigitNumbers.push(n);
+            }
+            lastDigitNumbers.forEach(n => addDerivedWeight(weights, n, 2));
+
+            const trendScores = {};
+            const limit = Math.min(lotoData.length, 51);
+            baseNumbers.forEach(base => {
+                const counts = Array(44).fill(0);
+                for (let i = 1; i < limit; i++) {
+                    const draw = lotoData[i];
+                    const nextDraw = lotoData[i - 1];
+                    if (draw.numbers.includes(base) || draw.bonus === base) {
+                        nextDraw.numbers.forEach(n => { counts[n]++; });
+                    }
+                }
+                const top = [];
+                for (let n = 1; n <= 43; n++) {
+                    if (counts[n] > 0) top.push({ num: n, count: counts[n] });
+                }
+                top.sort((a, b) => b.count - a.count || a.num - b.num).slice(0, 3).forEach((item, idx) => {
+                    const weight = [8, 6, 4][idx];
+                    trendScores[item.num] = (trendScores[item.num] || 0) + weight;
+                    addDerivedWeight(weights, item.num, weight);
+                });
+            });
+            const trendNumbers = Object.entries(trendScores)
+                .map(([num, score]) => ({ num: parseInt(num), score }))
+                .sort((a, b) => b.score - a.score || a.num - b.num)
+                .slice(0, 8)
+                .map(item => item.num);
+            const strongNumbers = Object.entries(weights)
+                .map(([num, score]) => ({ num: parseInt(num), score }))
+                .sort((a, b) => b.score - a.score || a.num - b.num)
+                .slice(0, 8)
+                .map(item => item.num);
+
+            return { weights, baseNumbers, carryNumbers, neighborNumbers, lastDigitNumbers, trendNumbers, strongNumbers };
+        }
+
+        function formatDerivedList(values, limit = 12) {
+            if (!values || values.length === 0) return "なし";
+            const shown = values.slice(0, limit).join(", ");
+            return values.length > limit ? `${shown} ほか` : shown;
+        }
+
+        function togglePreviousDerivedAnalysis() {
+            window.previousDerivedMode = !window.previousDerivedMode;
+            const btn = document.getElementById('btnPrevDerived');
+            btn.classList.toggle("active", window.previousDerivedMode);
+            if(window.previousDerivedMode) {
+                const analysis = buildPreviousDerivedAnalysis();
+                window.previousDerivedAnalysis = analysis;
+                window.previousDerivedWeights = analysis.weights;
+                document.getElementById('prevDerivedText').innerHTML = `<b>前回数字派生分析 適用中:</b><br><span style="font-size:12px; color:#555;">最新回の本数字・ボーナスを起点に、本流・引っ張り・隣接・下一桁・次出現傾向を加点します。<br>本流: <b>[ ${formatDerivedList(analysis.baseNumbers)} ]</b><br>引っ張り: <b>[ ${formatDerivedList(analysis.carryNumbers)} ]</b><br>次出現流: <b>[ ${formatDerivedList(analysis.trendNumbers, 8)} ]</b><br>強化上位: <b>[ ${formatDerivedList(analysis.strongNumbers, 8)} ]</b></span>`;
+                document.getElementById('prevDerivedText').style.display = 'block';
             } else {
-                window.riverRocks = [];
-                document.getElementById('riverText').style.display = 'none';
+                window.previousDerivedWeights = {};
+                window.previousDerivedAnalysis = null;
+                document.getElementById('prevDerivedText').style.display = 'none';
             }
         }
 
@@ -1066,32 +1152,37 @@
                 return;
             }
             
-            // 選択されたセット球に該当する抽選を抽出（最新順なので上位から取得）
-            const filtered = lotoData.filter(d => d.set_ball === ball);
-            // 直近50回分を取得
-            const latest50 = filtered.slice(0, 50);
+            const recent50All = lotoData.slice(0, 50);
+            const usageDraws = recent50All.filter(d => d.set_ball === ball);
+            const setOnly50 = lotoData.filter(d => d.set_ball === ball).slice(0, 50);
             
-            if (latest50.length === 0) {
-                span.innerHTML = `🏆 <b>${ball}セット:</b> データなし`;
+            if (setOnly50.length === 0) {
+                span.innerHTML = `<span>🎯 <b>${ball}セット:</b> データなし</span>`;
                 return;
             }
 
-            // 各数字の出現回数をカウント
             const counts = {};
-            latest50.forEach(d => {
+            setOnly50.forEach(d => {
                 d.numbers.forEach(n => {
                     counts[n] = (counts[n] || 0) + 1;
                 });
+                if (d.bonus >= 1 && d.bonus <= 43) {
+                    counts[d.bonus] = (counts[d.bonus] || 0) + 1;
+                }
             });
 
-            // 回数順にソートして上位5件を取得
             const tops = Object.keys(counts).map(n => ({
                 num: parseInt(n),
                 count: counts[n]
             })).sort((a, b) => b.count - a.count || a.num - b.num).slice(0, 5);
 
+            const usageRate = recent50All.length ? ((usageDraws.length / recent50All.length) * 100).toFixed(1) : "0.0";
+            const usageIds = usageDraws.slice(0, 5).map(d => d.id).join(" / ");
             let topStr = tops.map(t => `<strong style="color:var(--accent-blue);">[${t.num.toString().padStart(2, '0')}]</strong> ${t.count}回`).join(" / ");
-            span.innerHTML = `🏆 <b>${ball}セット 直近${latest50.length}回 ベスト5:</b> <span style="margin-left:5px;">${topStr}</span>`;
+            span.innerHTML = `
+                <span style="display:block; color:#334155;">🎯 <b>${ball}セット使用状況:</b> 全抽選直近${recent50All.length}回中 ${usageDraws.length}回（${usageRate}%）${usageIds ? ` <span style="font-size:11px; color:#64748b;">対象: ${usageIds}</span>` : ""}</span>
+                <span style="display:block;">🏆 <b>${ball}セット数字傾向:</b> ${ball}セット直近${setOnly50.length}回 ベスト5: <span style="margin-left:5px;">${topStr}</span> <span style="font-size:11px; color:#64748b;">※集計: 本数字＋ボーナス数字</span></span>
+            `;
         }
 
         function adjustRangeCounts(changedEl) {
@@ -1145,9 +1236,11 @@
             window.eliminatedNumbers = [];
             refreshAllElimCells();
             document.getElementById('predictText').style.display = 'none';
-            document.getElementById('riverText').style.display = 'none';
-            window.riverMode = false;
-            document.getElementById('btnRiver').classList.remove('active');
+            document.getElementById('prevDerivedText').style.display = 'none';
+            window.previousDerivedMode = false;
+            window.previousDerivedWeights = {};
+            window.previousDerivedAnalysis = null;
+            document.getElementById('btnPrevDerived').classList.remove('active');
             onSetBallChange();
             renderPredictionOnHeader([]);
         }
@@ -1197,10 +1290,11 @@
                 }
             }
 
-            let html = `<div style="font-size:11px; color:#666; margin-top:2px;">※今回複数の数字から重複してTOP5にランクインした有望数字は、同色マーカーで強調しています。</div>
+            let html = `<div style="font-size:11px; color:#666; margin-top:2px;">※基準数字は最新回の本数字＋ボーナス数字です。過去直近50回内で、その数字が本数字またはボーナスとして出た次回の「本数字」を集計しています（次回側のボーナス数字は含みません）。</div>
+                        <div style="font-size:11px; color:#666; margin-top:2px;">※今回複数の数字から重複してTOP5にランクインした有望数字は、同色マーカーで強調しています。</div>
                         <div style="display:flex; flex-wrap:wrap; gap: 8px 15px; margin-top: 8px;">`;
 
-            document.getElementById('trendHeaderTitle').innerText = `📊 最新回（${latest.id}）からの次出現傾向（直近50回集計内 TOP5）`;
+            document.getElementById('trendHeaderTitle').innerText = `📊 最新回（${latest.id}）からの次出現傾向（直近50回内 TOP5 / 基準: 本数字＋ボーナス）`;
 
             allFreqs.forEach(f => {
                 let n = f.target;
