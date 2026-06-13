@@ -319,6 +319,11 @@ if __name__ == "__main__":
     MAX_RETRIES = 8
     RETRY_INTERVAL = 1800 # 30分
     
+    if not TARGET_URL:
+        print("ERROR: LOTO6_SOURCE_URL is not configured.")
+        print("Add LOTO6_SOURCE_URL in GitHub repository Secrets, then run this workflow again.")
+        exit(1)
+
     print("=== LOTO6PRO Auto Updater (Full Sync Mode) ===")
     for i in range(MAX_RETRIES):
         print(f"\nAttempt {i+1}/{MAX_RETRIES}...")
