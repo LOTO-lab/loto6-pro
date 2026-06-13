@@ -17,6 +17,10 @@ JSON_DATA_PATH = "lotoData.json"
 JS_DATA_PATH = "loto6_data.js"
 TARGET_URL = os.environ.get("LOTO6_SOURCE_URL", "").strip()
 FIREBASE_BASE_URL = "https://loto6-analytics-default-rtdb.firebaseio.com"
+JST = datetime.timezone(datetime.timedelta(hours=9))
+
+def now_jst():
+    return datetime.datetime.now(JST)
 
 def fetch_from_firebase(path):
     url = f"{FIREBASE_BASE_URL}/{path}.json"
@@ -51,7 +55,7 @@ def scrape_latest_result():
     if not TARGET_URL:
         raise RuntimeError("LOTO6_SOURCE_URL is not configured.")
 
-    print(f"[{datetime.datetime.now()}] Scraping latest result...")
+    print(f"[{now_jst().strftime('%Y-%m-%d %H:%M:%S JST')}] Scraping latest result...")
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
@@ -263,7 +267,7 @@ def patch_index_html(set_ball_stats):
             content = f.read()
             
         # バージョン情報の更新 (YYYYMMDD-HHMM)
-        now = datetime.datetime.now()
+        now = now_jst()
         version_str = now.strftime("%Y%m%d-%H%M")
         content = re.sub(r"<!-- Version: \d{8}-\d{4} -->", f"<!-- Version: {version_str} -->", content)
         
@@ -295,7 +299,7 @@ def run_update_process():
     latest["prizes"] = prizes
     latest["total_predictions"] = total_preds
     latest["status"] = "success"
-    latest["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    latest["last_updated"] = now_jst().strftime("%Y-%m-%d %H:%M:%S JST")
     
     # Firebase反映
     if update_firebase("stats/winners", latest):

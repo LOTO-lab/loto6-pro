@@ -8,6 +8,10 @@ import datetime
 CSV_PATH = "loto6_data_with_setball.csv"
 JSON_DATA_PATH = "lotoData.json"
 JS_DATA_PATH = "loto6_data.js"
+JST = datetime.timezone(datetime.timedelta(hours=9))
+
+def now_jst():
+    return datetime.datetime.now(JST)
 
 def update_local_files():
     try:
@@ -70,7 +74,7 @@ def patch_index_html(set_ball_stats):
             content = f.read()
             
         # バージョン情報の更新 (YYYYMMDD-HHMM)
-        now = datetime.datetime.now()
+        now = now_jst()
         version_str = now.strftime("%Y%m%d-%H%M")
         content = re.sub(r"<!-- Version: \d{8}-\d{4} -->", f"<!-- Version: {version_str} -->", content)
         
