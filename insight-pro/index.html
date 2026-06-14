@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-C1YDjzUv.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DiREI7Zi.css">
+  <script type="module" crossorigin src="./assets/index-CkvJQdvx.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-OgvVwZQQ.css">
 </head>
 <body>
     <div id="app">
@@ -49,6 +49,7 @@
                     <button class="tab-btn" data-target="ai-section">⑬ 総合AI分析</button>
                     <button class="tab-btn" data-target="spreadsheet-section">⑭ 全データ一覧表</button>
                     <button class="tab-btn" data-target="prediction-ledger-section">⑮ 個人予想検証ログ</button>
+                    <button class="tab-btn" data-target="prediction-calendar-section">⑯ 過去ログカレンダー</button>
                 </div>
             </nav>
 
@@ -796,6 +797,39 @@
 
                     <div id="ledger-list" class="ledger-list">
                         <!-- Ledger rows injected here -->
+                    </div>
+                </section>
+
+                <!-- Prediction Log Calendar Section -->
+                <section id="prediction-calendar-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>⑯ 過去ログカレンダー</h2>
+                        <p>個人予想検証ログを抽選日と回号ごとにカレンダー形式で整理し、過去に出した予想と照合結果を後から見直せます。</p>
+                    </div>
+
+                    <div class="calendar-toolbar card">
+                        <div>
+                            <h3 id="calendar-current-month">--年--月</h3>
+                            <p id="calendar-summary">抽選ログ 0日 / 個人予想 0件</p>
+                        </div>
+                        <div class="calendar-actions">
+                            <button id="calendar-prev-month" class="btn secondary" type="button">前月</button>
+                            <button id="calendar-latest-month" class="btn secondary" type="button">最新ログ月</button>
+                            <button id="calendar-next-month" class="btn secondary" type="button">翌月</button>
+                        </div>
+                    </div>
+
+                    <div class="prediction-calendar card">
+                        <div id="prediction-calendar-weekdays" class="calendar-weekdays">
+                            <!-- Weekday headers injected here -->
+                        </div>
+                        <div id="prediction-calendar-grid" class="calendar-grid">
+                            <!-- Calendar days injected here -->
+                        </div>
+                    </div>
+
+                    <div id="prediction-calendar-detail" class="calendar-detail">
+                        <!-- Selected draw logs injected here -->
                     </div>
                 </section>
             </div>

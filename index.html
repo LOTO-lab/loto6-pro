@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOTO6 PRO | 過去データ条件検索分析</title>
-    <!-- Version: 20260615-0113 -->
+    <!-- Version: 20260508-1759 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -251,6 +251,27 @@
             font-weight: 500;
             letter-spacing: 0.025em;
         }
+        /* Public prediction trends */
+        .prediction-trends-panel { display: flex; flex-direction: column; gap: 10px; }
+        .trend-summary-chip { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 999px; padding: 7px 10px; font-size: 12px; font-weight: 900; text-align: center; }
+        .trend-block { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px; }
+        .trend-block-title { font-size: 12px; color: #334155; font-weight: 900; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+        .trend-number-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+        .trend-number-row { display: grid; grid-template-columns: 18px 24px 1fr; align-items: center; gap: 4px; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 5px; }
+        .trend-rank { color: #64748b; font-size: 11px; font-weight: 900; text-align: center; }
+        .trend-count { color: #0f172a; font-size: 11px; font-weight: 800; white-space: nowrap; }
+        .trend-combo-row, .trend-recent-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; margin-bottom: 6px; }
+        .trend-combo-row { display: grid; gap: 6px; text-align: center; color: #334155; font-size: 11px; font-weight: 800; }
+        .trend-recent-row { display: grid; gap: 6px; }
+        .trend-recent-title { color: #1e3a8a; font-size: 12px; font-weight: 900; }
+        .trend-recent-title span { color: #64748b; font-size: 11px; font-weight: 600; }
+        .trend-empty-mini { color: #94a3b8; font-size: 12px; line-height: 1.6; text-align: center; padding: 10px 6px; }
+        .trend-note { color: #64748b; font-size: 11px; line-height: 1.5; padding: 0 4px; }
+        .prediction-share-panel { margin-top: 14px; padding: 12px; border: 1px solid #bfdbfe; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .prediction-share-btn { border: none; border-radius: 999px; background: #2563eb; color: white; padding: 8px 16px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 10px rgba(37,99,235,0.24); }
+        .prediction-share-btn:hover:not(:disabled) { background: #1d4ed8; transform: translateY(-1px); }
+        .prediction-share-btn:disabled { background: #94a3b8; cursor: default; box-shadow: none; }
+        #predictionShareStatus { color: #334155; font-size: 12px; font-weight: 700; line-height: 1.5; }
     </style>
 </head>
 <body>
@@ -294,7 +315,7 @@
                 </div>
             </div>
             
-            <div style="font-size: 15px; font-weight: 800; margin-bottom: 12px; margin-top: 10px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🕰️ みんなの予想履歴</div>
+            <div style="font-size: 15px; font-weight: 800; margin-bottom: 12px; margin-top: 10px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">📊 みんなの予想傾向</div>
             <div id="predictionHistory" style="padding: 4px; margin-bottom: 15px; transition: opacity 0.3s ease;">
                 <div class="skeleton skeleton-text" style="height: 40px; margin-bottom: 10px;"></div>
                 <div class="skeleton skeleton-text" style="height: 40px; margin-bottom: 10px;"></div>
@@ -321,7 +342,7 @@
                     LOTO6 PRO | 過去データ条件検索分析
                 </h1>
                 <button type="button" class="site-switch-tab" onclick="openUnifiedEngine()">統合予測分析エンジン</button>
-                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/06/15</span>
+                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/05/08</span>
             </div>
 
             <div class="content-wrapper">
@@ -658,7 +679,7 @@
             return true;
         }
 
-        const setBallStats = {"A": [{"n": 32, "c": 44, "p": 18.7}, {"n": 37, "c": 43, "p": 18.3}, {"n": 15, "c": 42, "p": 17.9}, {"n": 43, "c": 40, "p": 17.0}, {"n": 14, "c": 39, "p": 16.6}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.0}, {"n": 23, "c": 37, "p": 17.5}, {"n": 3, "c": 35, "p": 16.6}, {"n": 6, "c": 35, "p": 16.6}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 30, "c": 38, "p": 17.0}, {"n": 43, "c": 38, "p": 17.0}, {"n": 1, "c": 37, "p": 16.5}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 40, "p": 18.6}, {"n": 2, "c": 39, "p": 18.1}, {"n": 21, "c": 39, "p": 18.1}, {"n": 22, "c": 38, "p": 17.7}, {"n": 41, "c": 37, "p": 17.2}], "F": [{"n": 2, "c": 43, "p": 20.4}, {"n": 20, "c": 43, "p": 20.4}, {"n": 27, "c": 38, "p": 18.0}, {"n": 38, "c": 38, "p": 18.0}, {"n": 5, "c": 37, "p": 17.5}], "G": [{"n": 19, "c": 38, "p": 18.9}, {"n": 36, "c": 38, "p": 18.9}, {"n": 6, "c": 36, "p": 17.9}, {"n": 10, "c": 34, "p": 16.9}, {"n": 31, "c": 34, "p": 16.9}], "H": [{"n": 13, "c": 42, "p": 20.7}, {"n": 32, "c": 36, "p": 17.7}, {"n": 4, "c": 35, "p": 17.2}, {"n": 29, "c": 35, "p": 17.2}, {"n": 43, "c": 35, "p": 17.2}], "I": [{"n": 6, "c": 41, "p": 20.0}, {"n": 25, "c": 40, "p": 19.5}, {"n": 26, "c": 40, "p": 19.5}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.1}], "J": [{"n": 30, "c": 38, "p": 18.4}, {"n": 35, "c": 38, "p": 18.4}, {"n": 20, "c": 37, "p": 18.0}, {"n": 3, "c": 36, "p": 17.5}, {"n": 6, "c": 36, "p": 17.5}]};
+        const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.1}, {"n": 23, "c": 37, "p": 17.6}, {"n": 3, "c": 35, "p": 16.7}, {"n": 27, "c": 35, "p": 16.7}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 39, "p": 18.2}, {"n": 21, "c": 39, "p": 18.2}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 38, "p": 17.8}, {"n": 41, "c": 37, "p": 17.3}], "F": [{"n": 20, "c": 43, "p": 20.5}, {"n": 2, "c": 42, "p": 20.0}, {"n": 27, "c": 38, "p": 18.1}, {"n": 38, "c": 37, "p": 17.6}, {"n": 5, "c": 36, "p": 17.1}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 6, "c": 40, "p": 19.6}, {"n": 25, "c": 40, "p": 19.6}, {"n": 26, "c": 40, "p": 19.6}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.5}, {"n": 20, "c": 37, "p": 18.0}, {"n": 35, "c": 37, "p": 18.0}, {"n": 6, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.1}]};
         window.eliminatedNumbers = [];
         window.previousDerivedMode = false;
         window.previousDerivedWeights = {};
@@ -979,6 +1000,10 @@
                     </ul>
                     <div class="prediction-result-display">
                         ${best.map(n => `<div class="result-ball col-${n%10}">${n < 10 ? '0'+n : n}</div>`).join("")}
+                    </div>
+                    <div class="prediction-share-panel" id="predictionSharePanel">
+                        <button type="button" class="prediction-share-btn" id="btnPublishPrediction" onclick="publishCurrentPrediction()">公開する</button>
+                        <span id="predictionShareStatus">公開すると匿名集計に反映されます。直近集計の個別表示は約30分後です。</span>
                     </div>`;
                 pText.style.display = 'block';
             } else { 
@@ -1479,6 +1504,13 @@
     
         let currentPredListener = null;
 
+        const PUBLIC_PREDICTION_DELAY_MS = 30 * 60 * 1000;
+        const PUBLIC_PREDICTION_RECENT_QUERY_LIMIT = 60;
+        const PUBLIC_PREDICTION_RECENT_MAX = 80;
+        const PUBLIC_PREDICTION_RETENTION_DRAWS = 12;
+        window.publicTrendState = { drawId: null, stats: null, recent: [] };
+        window.currentPredictionSharePayload = null;
+        window.currentPredictionPublished = false;
         const fbConfig = {
             apiKey: "AIzaSyDBnj20MDvNTnYzZpuEiu3gcTJxZJdP-Rc",
             authDomain: "loto6-analytics.firebaseapp.com",
@@ -1495,7 +1527,7 @@
             const viewing = localStorage.getItem('cache_viewing');
             const predictions = localStorage.getItem('cache_predictions_v2');
             const winnersHtml = localStorage.getItem('cache_winners_html');
-            const historyHtml = localStorage.getItem('cache_history_html');
+            const historyHtml = localStorage.getItem('cache_prediction_trends_html');
 
             const updateEl = (id, val, isHtml = false) => {
                 const el = document.getElementById(id);
@@ -1518,7 +1550,7 @@
 
         const loadFirebase = async () => {
             const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
-            const { getDatabase, ref, onValue, set, off, onDisconnect, serverTimestamp, runTransaction, push, query, limitToLast } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js");
+            const { getDatabase, ref, onValue, set, off, onDisconnect, serverTimestamp, runTransaction, push, query, limitToLast, get, remove } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js");
 
             const app = initializeApp(fbConfig);
             const db = getDatabase(app);
@@ -1578,16 +1610,18 @@
 
             // 3. 総予想実行数 & 履歴の初期化
             const totalFixedRef = ref(db, "stats/total_predictions_fixed");
-            let currentPredictionRef = null;
-            let currentGlobalHistRef = null;
+                        let currentPredictionRef = null;
+            let currentTrendStatsRef = null;
+            let currentTrendRecentRef = null;
 
             window.setupPredictionCounter = () => {
                 const nextId = calculateNextDrawId();
                 const roundEl = document.getElementById('latestRoundInfo');
-                if (roundEl) roundEl.innerText = `\u7b2c${nextId}\u56de\u306e\u4e88\u60f3\u5b9f\u884c\u6570`;
+                if (roundEl) roundEl.innerText = `第${nextId}回の予想実行数`;
 
                 if (currentPredictionRef) off(currentPredictionRef);
-                if (currentGlobalHistRef) off(currentGlobalHistRef);
+                if (currentTrendStatsRef) off(currentTrendStatsRef);
+                if (currentTrendRecentRef) off(currentTrendRecentRef);
 
                 currentPredictionRef = ref(db, `stats/predictions/draw_${nextId}`);
                 onValue(currentPredictionRef, (s) => {
@@ -1602,20 +1636,29 @@
                     }
                 });
 
-                currentGlobalHistRef = query(ref(db, `site_predictions/${nextId}`), limitToLast(5));
-                onValue(currentGlobalHistRef, (snap) => {
-                    const data = snap.val();
-                    const globalItems = [];
-                    if (data) {
-                        Object.keys(data).forEach(key => {
-                            globalItems.unshift({
-                                draw: nextId,
-                                nums: data[key].nums,
-                                timestamp: data[key].timestamp
-                            });
-                        });
-                    }
-                    renderGlobalHistory(globalItems);
+                window.publicTrendState = { drawId: nextId, stats: null, recent: [] };
+                renderPredictionTrends();
+
+                currentTrendStatsRef = ref(db, `stats/public_prediction_trends/draw_${nextId}`);
+                onValue(currentTrendStatsRef, (snap) => {
+                    window.publicTrendState = {
+                        ...(window.publicTrendState || {}),
+                        drawId: nextId,
+                        stats: snap.val() || null
+                    };
+                    renderPredictionTrends();
+                });
+
+                currentTrendRecentRef = query(ref(db, `public_prediction_recent/${nextId}`), limitToLast(PUBLIC_PREDICTION_RECENT_QUERY_LIMIT));
+                onValue(currentTrendRecentRef, (snap) => {
+                    const data = snap.val() || {};
+                    const recent = Object.keys(data).map(key => ({ id: key, draw: nextId, ...data[key] }));
+                    window.publicTrendState = {
+                        ...(window.publicTrendState || {}),
+                        drawId: nextId,
+                        recent
+                    };
+                    renderPredictionTrends();
                 });
             };
             window.reloadPredictionRealtime = window.setupPredictionCounter;
@@ -1628,11 +1671,57 @@
                 runTransaction(totalFixedRef, (current) => (current || 0) + 1);
             };
 
-            window.pushGlobalPrediction = (drawId, nums) => {
-                push(ref(db, `site_predictions/${drawId}`), {
-                    nums: nums,
+                        async function cleanupPublicPredictionStorage(drawId) {
+                try {
+                    const recentPath = `public_prediction_recent/${drawId}`;
+                    const snap = await get(ref(db, recentPath));
+                    const entries = Object.entries(snap.val() || {})
+                        .sort((a, b) => (b[1].clientTimestamp || 0) - (a[1].clientTimestamp || 0));
+
+                    await Promise.all(entries.slice(PUBLIC_PREDICTION_RECENT_MAX).map(([key]) =>
+                        remove(ref(db, `${recentPath}/${key}`))
+                    ));
+
+                    const oldDraw = drawId - PUBLIC_PREDICTION_RETENTION_DRAWS - 1;
+                    if (oldDraw > 0) {
+                        remove(ref(db, `public_prediction_recent/${oldDraw}`)).catch(() => {});
+                        remove(ref(db, `stats/public_prediction_trends/draw_${oldDraw}`)).catch(() => {});
+                    }
+                } catch (error) {
+                    console.warn('公開予想ログの整理をスキップしました', error);
+                }
+            }
+
+            window.pushGlobalPrediction = async (drawId, nums) => {
+                const cleanNums = (Array.isArray(nums) ? nums : [])
+                    .map(n => parseInt(n, 10))
+                    .filter(n => Number.isFinite(n) && n >= 1 && n <= 43)
+                    .slice(0, 6)
+                    .sort((a, b) => a - b);
+                if (cleanNums.length !== 6) return false;
+
+                const targetDraw = parseInt(drawId, 10) || calculateNextDrawId();
+                const clientTimestamp = Date.now();
+                const visibleAfter = clientTimestamp + PUBLIC_PREDICTION_DELAY_MS;
+                await push(ref(db, `public_prediction_recent/${targetDraw}`), {
+                    nums: cleanNums,
+                    public: true,
+                    clientTimestamp,
+                    visibleAfter,
                     timestamp: serverTimestamp()
                 });
+
+                const trendBase = `stats/public_prediction_trends/draw_${targetDraw}`;
+                const writes = [
+                    runTransaction(ref(db, `${trendBase}/total`), current => (current || 0) + 1)
+                ];
+                cleanNums.forEach(num => {
+                    writes.push(runTransaction(ref(db, `${trendBase}/numbers/${num}`), current => (current || 0) + 1));
+                });
+                await Promise.all(writes);
+
+                cleanupPublicPredictionStorage(targetDraw);
+                return true;
             };
 
             // 4. 最新当選実績
@@ -1819,42 +1908,196 @@
             if(h.length > 100) h.pop();
             localStorage.setItem('loto6_history', JSON.stringify(h));
             window.currentPredictionLedgerId = saveUnifiedPredictionLedger(nums, nextId, dateStr);
+            window.currentPredictionSharePayload = {
+                nums: [...nums].sort((a, b) => a - b),
+                targetDraw: nextId,
+                date: dateStr,
+                ledgerId: window.currentPredictionLedgerId || ''
+            };
+            window.currentPredictionPublished = false;
             
             if(window.incrementPredictionCount) window.incrementPredictionCount();
-            if(window.pushGlobalPrediction) window.pushGlobalPrediction(nextId, nums);
+            updatePredictionSharePanel('ready');
             renderHistory();
         }
 
-        function renderGlobalHistory(items) {
-            const sideContainer = document.getElementById('predictionHistory');
-            
-            if(!items || items.length === 0) {
-                sideContainer.innerHTML = '<div style="font-size:13px; color:#94a3b8; text-align:center; padding:12px;">予想履歴なし</div>';
+
+        function updatePredictionSharePanel(state = 'ready', message = '') {
+            const panel = document.getElementById('predictionSharePanel');
+            const btn = document.getElementById('btnPublishPrediction');
+            const status = document.getElementById('predictionShareStatus');
+            if (!panel || !btn || !status) return;
+
+            if (state === 'published') {
+                btn.disabled = true;
+                btn.innerText = '公開済み';
+                status.innerText = message || 'みんなの予想傾向へ匿名で反映しました。直近集計は約30分後に表示されます。';
+            } else if (state === 'publishing') {
+                btn.disabled = true;
+                btn.innerText = '公開中...';
+                status.innerText = message || 'Firebaseへ公開データを送信しています。';
+            } else if (state === 'error') {
+                btn.disabled = false;
+                btn.innerText = '公開する';
+                status.innerText = message || '公開に失敗しました。時間をおいて再度お試しください。';
+            } else {
+                btn.disabled = false;
+                btn.innerText = '公開する';
+                status.innerText = '公開すると匿名集計に反映されます。直近集計の個別表示は約30分後です。';
+            }
+        }
+
+        async function publishCurrentPrediction() {
+            if (!window.currentPredictionSharePayload || window.currentPredictionPublished) return;
+            if (!window.pushGlobalPrediction) {
+                updatePredictionSharePanel('error', 'Firebase接続後に公開できます。少し待ってから再度お試しください。');
                 return;
             }
 
-            // アイテムのHTML生成
-            const itemsHtml = items.map(item => {
-                const dateObj = item.timestamp ? new Date(item.timestamp) : new Date();
-                const timeStr = dateObj.getHours().toString().padStart(2, '0') + ":" + dateObj.getMinutes().toString().padStart(2, '0');
-                const dateStr = (dateObj.getMonth()+1).toString().padStart(2, '0') + "/" + dateObj.getDate().toString().padStart(2, '0') + " " + timeStr;
-                
-                return `
-                <div style="background:#f8fafc; padding:10px; border-radius:8px; margin-bottom:10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.01);">
-                    <div style="color:#1e3a8a; margin-bottom: 6px; font-size: 13px; font-weight: 800;">第${item.draw}回 <span style="color:#64748b; font-weight:normal; font-size:11px;">(${dateStr})</span></div>
-                    <div style="display:flex; gap:4px; justify-content:center;">
-                        ${item.nums.map(n => {
-                            const num = parseInt(n);
-                            const lastDigit = num % 10;
-                            return `<span class="col-${lastDigit}" style="width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; text-shadow:0 1px 1px rgba(0,0,0,0.1);">${num}</span>`;
-                        }).join("")}
-                    </div>
-                </div>
-                `;
-            }).join("");
+            updatePredictionSharePanel('publishing');
+            try {
+                const payload = window.currentPredictionSharePayload;
+                const ok = await window.pushGlobalPrediction(payload.targetDraw, payload.nums);
+                if (!ok) throw new Error('invalid prediction payload');
+                window.currentPredictionPublished = true;
+                updatePredictionSharePanel('published');
+            } catch (error) {
+                console.warn('公開予想の保存に失敗しました', error);
+                updatePredictionSharePanel('error');
+            }
+        }
+        function normalizeTrendNums(nums) {
+            return (Array.isArray(nums) ? nums : [])
+                .map(n => parseInt(n, 10))
+                .filter(n => Number.isFinite(n) && n >= 1 && n <= 43)
+                .slice(0, 6)
+                .sort((a, b) => a - b);
+        }
 
-            sideContainer.innerHTML = `<div style="display:flex; flex-direction:column;">${itemsHtml}</div>`;
-            localStorage.setItem('cache_history_html', sideContainer.innerHTML);
+        function formatPublicPredictionDate(timestamp) {
+            const dateObj = timestamp ? new Date(timestamp) : new Date();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            const hour = dateObj.getHours().toString().padStart(2, '0');
+            const minute = dateObj.getMinutes().toString().padStart(2, '0');
+            return `${month}/${day} ${hour}:${minute}`;
+        }
+
+        function renderTrendBalls(nums, size = 22) {
+            return normalizeTrendNums(nums).map(n => {
+                const lastDigit = n % 10;
+                return `<span class="col-${lastDigit}" style="width:${size}px; height:${size}px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:${size <= 20 ? 11 : 12}px; font-weight:900; text-shadow:0 1px 1px rgba(0,0,0,0.1);">${n}</span>`;
+            }).join('');
+        }
+
+        function renderNumberTrendRanking(numberCounts) {
+            const rows = Object.entries(numberCounts || {})
+                .map(([num, count]) => ({ num: parseInt(num, 10), count: Number(count) || 0 }))
+                .filter(item => item.num >= 1 && item.num <= 43 && item.count > 0)
+                .sort((a, b) => b.count - a.count || a.num - b.num)
+                .slice(0, 6);
+
+            if (rows.length === 0) {
+                return '<div class="trend-empty-mini">公開集計待ち</div>';
+            }
+
+            return `<div class="trend-number-grid">${rows.map((item, index) => `
+                <div class="trend-number-row">
+                    <span class="trend-rank">${index + 1}</span>
+                    ${renderTrendBalls([item.num], 22)}
+                    <span class="trend-count">${item.count}回</span>
+                </div>
+            `).join('')}</div>`;
+        }
+
+        function renderCombinationTrendRanking(combinations) {
+            const rows = Object.entries(combinations || {})
+                .map(([key, count]) => ({ nums: normalizeTrendNums(key.split('-')), count: Number(count) || 0 }))
+                .filter(item => item.nums.length === 6 && item.count > 0)
+                .sort((a, b) => b.count - a.count || a.nums.join('-').localeCompare(b.nums.join('-')))
+                .slice(0, 3);
+
+            if (rows.length === 0) {
+                return '<div class="trend-empty-mini">組み合わせ集計待ち</div>';
+            }
+
+            return rows.map((item, index) => `
+                <div class="trend-combo-row">
+                    <div style="display:flex; gap:3px; justify-content:center;">${renderTrendBalls(item.nums, 18)}</div>
+                    <span>${item.count}回</span>
+                </div>
+            `).join('');
+        }
+
+        function renderRecentTrendList(items, hiddenCount) {
+            if (!items.length) {
+                const text = hiddenCount > 0
+                    ? '公開予想は集計中です。一定時間後に直近集計へ表示されます。'
+                    : '公開された予想はまだありません。';
+                return `<div class="trend-empty-mini">${text}</div>`;
+            }
+
+            return items.slice(0, 5).map(item => {
+                const nums = normalizeTrendNums(item.nums);
+                return `
+                    <div class="trend-recent-row">
+                        <div class="trend-recent-title">第${item.draw}回 <span>(${formatPublicPredictionDate(item.clientTimestamp || item.timestamp)})</span></div>
+                        <div style="display:flex; gap:4px; justify-content:center;">${renderTrendBalls(nums, 22)}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderPredictionTrends() {
+            const sideContainer = document.getElementById('predictionHistory');
+            if (!sideContainer) return;
+
+            const state = window.publicTrendState || {};
+            const drawId = state.drawId || calculateNextDrawId();
+            const stats = state.stats || {};
+            const total = Number(stats.total || 0);
+            const now = Date.now();
+            const publicRecent = (Array.isArray(state.recent) ? state.recent : [])
+                .filter(item => item && item.public === true && normalizeTrendNums(item.nums).length === 6)
+                .sort((a, b) => (b.clientTimestamp || 0) - (a.clientTimestamp || 0));
+            const visibleRecent = publicRecent.filter(item => !item.visibleAfter || Number(item.visibleAfter) <= now);
+            const hiddenCount = publicRecent.length - visibleRecent.length;
+            const recentComboCounts = {};
+            publicRecent.forEach(item => {
+                const key = normalizeTrendNums(item.nums).join('-');
+                if (key) recentComboCounts[key] = (recentComboCounts[key] || 0) + 1;
+            });
+
+            const html = `
+                <div class="prediction-trends-panel">
+                    <div class="trend-summary-chip">第${drawId}回 公開予想 ${total.toLocaleString()}件</div>
+                    <div class="trend-block">
+                        <div class="trend-block-title">人気数字ランキング</div>
+                        ${renderNumberTrendRanking(stats.numbers || {})}
+                    </div>
+                    <div class="trend-block">
+                        <div class="trend-block-title">選出回数TOP</div>
+                        ${renderCombinationTrendRanking(recentComboCounts)}
+                    </div>
+                    <div class="trend-block">
+                        <div class="trend-block-title">直近集計</div>
+                        ${renderRecentTrendList(visibleRecent, hiddenCount)}
+                    </div>
+                    <div class="trend-note">公開ボタンを押した匿名予想のみ集計。個別表示は約30分遅延。</div>
+                </div>
+            `;
+
+            sideContainer.innerHTML = html;
+            localStorage.setItem('cache_prediction_trends_html', html);
+            localStorage.removeItem('cache_history_html');
+        }
+
+        function renderGlobalHistory(items) {
+            window.publicTrendState = {
+                ...(window.publicTrendState || {}),
+                recent: Array.isArray(items) ? items : []
+            };
+            renderPredictionTrends();
         }
 
         function renderHistory() {
@@ -1977,8 +2220,7 @@
         .ticket-patterns { font-size: 24px; margin: 30px 0; min-height: 120px; font-family: 'Courier New', monospace; font-weight: bold; }
         .ticket-footer { border-top: 2px dashed #cbd5e1; padding-top: 15px; font-size: 13px; color: #64748b; }
         .ticket-amount { font-size: 22px; font-weight: bold; margin-bottom: 8px; color: #1e293b; }
-        .ticket-warning { font-size: 11px; color: #94a3b8; font-style: italic; line-height: 1.4; }
-    </style>
+        .ticket-warning { font-size: 11px; color: #94a3b8; font-style: italic; line-height: 1.4; }</style>
     
     <!-- プライバシーポリシー・モーダル -->
     <div id="ppModal" class="pp-modal-overlay">
