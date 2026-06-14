@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOTO6 PRO | 過去データ条件検索分析</title>
-    <!-- Version: 20260615-0317 -->
+    <!-- Version: 20260508-1759 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@
         .main-controls-wrapper { padding: 25px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-radius: 12px; margin-bottom: 0px; width: 100%; box-sizing: border-box; }
         .notice-box { background: #f9f9f9; border: 1px solid transparent; border-left: 4px solid #aaa; border-radius: 6px; padding: 10px; margin-bottom: 20px; }
         
-        .controls-flex { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px; }
+        .controls-flex { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px; }
         
         .btn { padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; border: none; transition: 0.2s; color: white; display: inline-flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .btn:hover { transform: translateY(-2px); }
@@ -190,7 +190,7 @@
             .controls-flex {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 8px;
             }
             .controls-flex > div {
                 width: 100%;
@@ -337,7 +337,7 @@
                     LOTO6 PRO | 過去データ条件検索分析
                 </h1>
                 <button type="button" class="site-switch-tab" onclick="openUnifiedEngine()">統合予測分析エンジン</button>
-                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/06/15</span>
+                <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/05/08</span>
             </div>
 
             <div class="content-wrapper">
@@ -432,8 +432,8 @@
                             <div id="predictedSetBallSpan" style="font-size: 13px; font-weight: bold; color: var(--accent-blue); display: flex; flex-direction: column; gap: 4px;"></div>
                         </div>
 
-                        <!-- 4段目: 各桁の数・前回数字派生分析・条件リセット -->
-                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 10px;">
+                        <!-- 4段目: 各桁の数・前回数字派生分析 -->
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 0;">
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <label style="font-size: 14px; font-weight: bold; color: #444;">🎯 各桁の数:</label>
                                 <div style="display: flex; align-items: center; gap: 5px; background: #fff; padding: 0 10px; border-radius: 8px; border: 1px solid #ddd; height: 38px;">
@@ -470,12 +470,12 @@
                                 </div>
                             </div>
                             <button class="btn river-btn" id="btnPrevDerived" onclick="togglePreviousDerivedAnalysis()" style="font-size: 13px; padding: 10px 15px;" title="【前回数字派生分析】最新回の本数字・ボーナスを起点に、引っ張り、隣接、下一桁、次出現傾向を加点します。">前回数字派生分析を適用</button>
-                            <div style="margin-left: auto; display: flex; align-items: center; justify-content: flex-end; flex: 1 1 100%;">
-                                <button class="btn" onclick="resetConditions()" style="background:#f1f5f9; color:#475569; font-size:13px; box-shadow:none; padding:10px 15px; border: 1px solid #cbd5e1; width:auto; min-width:128px; margin:0;">♻️ 条件リセット</button>
-                            </div>
                         </div>
                         
-                        <div style="font-size: 12px; color: #888; margin-bottom: 10px;">※各項目とも空欄の場合は過去傾向が自動適用されます。固定数字は指定した数字を必ず含めます。</div>
+                        <div style="font-size: 12px; color: #888; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                            <span style="flex: 1 1 360px; line-height: 1.5;">※各項目とも空欄の場合は過去傾向が自動適用されます。固定数字は指定した数字を必ず含めます。</span>
+                            <button class="btn" onclick="resetConditions()" style="background:#f1f5f9; color:#475569; font-size:13px; box-shadow:none; padding:8px 14px; border: 1px solid #cbd5e1; width:auto; min-width:128px; margin:0;">♻️ 条件リセット</button>
+                        </div>
                     </div>
 
                     <div style="display: flex; gap: 20px; justify-content: center; margin: 10px 0 20px 0;">
@@ -675,7 +675,7 @@
             return true;
         }
 
-        const setBallStats = {"A": [{"n": 32, "c": 44, "p": 18.7}, {"n": 37, "c": 43, "p": 18.3}, {"n": 15, "c": 42, "p": 17.9}, {"n": 43, "c": 40, "p": 17.0}, {"n": 14, "c": 39, "p": 16.6}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.0}, {"n": 23, "c": 37, "p": 17.5}, {"n": 3, "c": 35, "p": 16.6}, {"n": 6, "c": 35, "p": 16.6}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 30, "c": 38, "p": 17.0}, {"n": 43, "c": 38, "p": 17.0}, {"n": 1, "c": 37, "p": 16.5}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 40, "p": 18.6}, {"n": 2, "c": 39, "p": 18.1}, {"n": 21, "c": 39, "p": 18.1}, {"n": 22, "c": 38, "p": 17.7}, {"n": 41, "c": 37, "p": 17.2}], "F": [{"n": 2, "c": 43, "p": 20.4}, {"n": 20, "c": 43, "p": 20.4}, {"n": 27, "c": 38, "p": 18.0}, {"n": 38, "c": 38, "p": 18.0}, {"n": 5, "c": 37, "p": 17.5}], "G": [{"n": 19, "c": 38, "p": 18.9}, {"n": 36, "c": 38, "p": 18.9}, {"n": 6, "c": 36, "p": 17.9}, {"n": 10, "c": 34, "p": 16.9}, {"n": 31, "c": 34, "p": 16.9}], "H": [{"n": 13, "c": 42, "p": 20.7}, {"n": 32, "c": 36, "p": 17.7}, {"n": 4, "c": 35, "p": 17.2}, {"n": 29, "c": 35, "p": 17.2}, {"n": 43, "c": 35, "p": 17.2}], "I": [{"n": 6, "c": 41, "p": 20.0}, {"n": 25, "c": 40, "p": 19.5}, {"n": 26, "c": 40, "p": 19.5}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.1}], "J": [{"n": 30, "c": 38, "p": 18.4}, {"n": 35, "c": 38, "p": 18.4}, {"n": 20, "c": 37, "p": 18.0}, {"n": 3, "c": 36, "p": 17.5}, {"n": 6, "c": 36, "p": 17.5}]};
+        const setBallStats = {"A": [{"n": 32, "c": 43, "p": 18.5}, {"n": 37, "c": 43, "p": 18.5}, {"n": 15, "c": 42, "p": 18.0}, {"n": 43, "c": 40, "p": 17.2}, {"n": 14, "c": 39, "p": 16.7}], "B": [{"n": 4, "c": 40, "p": 19.0}, {"n": 24, "c": 38, "p": 18.1}, {"n": 23, "c": 37, "p": 17.6}, {"n": 3, "c": 35, "p": 16.7}, {"n": 27, "c": 35, "p": 16.7}], "C": [{"n": 16, "c": 42, "p": 18.8}, {"n": 38, "c": 42, "p": 18.8}, {"n": 1, "c": 37, "p": 16.6}, {"n": 10, "c": 37, "p": 16.6}, {"n": 30, "c": 37, "p": 16.6}], "D": [{"n": 42, "c": 39, "p": 19.6}, {"n": 28, "c": 37, "p": 18.6}, {"n": 24, "c": 36, "p": 18.1}, {"n": 14, "c": 35, "p": 17.6}, {"n": 37, "c": 35, "p": 17.6}], "E": [{"n": 5, "c": 39, "p": 18.2}, {"n": 21, "c": 39, "p": 18.2}, {"n": 2, "c": 38, "p": 17.8}, {"n": 22, "c": 38, "p": 17.8}, {"n": 41, "c": 37, "p": 17.3}], "F": [{"n": 20, "c": 43, "p": 20.5}, {"n": 2, "c": 42, "p": 20.0}, {"n": 27, "c": 38, "p": 18.1}, {"n": 38, "c": 37, "p": 17.6}, {"n": 5, "c": 36, "p": 17.1}], "G": [{"n": 19, "c": 38, "p": 19.0}, {"n": 36, "c": 37, "p": 18.5}, {"n": 6, "c": 36, "p": 18.0}, {"n": 10, "c": 34, "p": 17.0}, {"n": 31, "c": 34, "p": 17.0}], "H": [{"n": 13, "c": 42, "p": 20.8}, {"n": 32, "c": 36, "p": 17.8}, {"n": 4, "c": 35, "p": 17.3}, {"n": 43, "c": 35, "p": 17.3}, {"n": 29, "c": 34, "p": 16.8}], "I": [{"n": 6, "c": 40, "p": 19.6}, {"n": 25, "c": 40, "p": 19.6}, {"n": 26, "c": 40, "p": 19.6}, {"n": 32, "c": 36, "p": 17.6}, {"n": 12, "c": 35, "p": 17.2}], "J": [{"n": 30, "c": 38, "p": 18.5}, {"n": 20, "c": 37, "p": 18.0}, {"n": 35, "c": 37, "p": 18.0}, {"n": 6, "c": 36, "p": 17.6}, {"n": 3, "c": 35, "p": 17.1}]};
         window.eliminatedNumbers = [];
         window.previousDerivedMode = false;
         window.previousDerivedWeights = {};
