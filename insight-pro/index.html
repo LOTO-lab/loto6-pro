@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-B6vyKToO.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-09LhGgUz.css">
+  <script type="module" crossorigin src="./assets/index-0wIm-C7Y.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-jeGexLNk.css">
 </head>
 <body>
     <div id="app">
@@ -860,9 +860,80 @@
 
         <footer class="main-footer">
             <div class="container">
+                <div class="footer-legal-links">
+                    <button type="button" data-modal-open="privacy-policy-modal">プライバシーポリシー</button>
+                    <button type="button" data-modal-open="terms-modal">利用規約</button>
+                </div>
                 <p>&copy; 2026 LOTO6 PRO. All Rights Reserved.</p>
             </div>
         </footer>
+
+        <div id="privacy-policy-modal" class="legal-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="privacy-policy-title">
+            <div class="legal-modal-content" role="document">
+                <div class="legal-modal-header">
+                    <h2 id="privacy-policy-title">プライバシーポリシー</h2>
+                    <button type="button" class="legal-modal-close" data-modal-close aria-label="閉じる">&times;</button>
+                </div>
+                <div class="legal-modal-body">
+                    <p>LOTO6 PRO | 統合予測分析エンジン（以下「当サイト」といいます。）は、ロト6の過去データを用いた分析・予測支援を目的として運営されています。当サイトでは、ユーザーが安心して利用できるよう、取り扱う情報の範囲と利用目的を以下の通り定めます。</p>
+
+                    <h3>取得する情報</h3>
+                    <p>当サイトは、ログイン機能を設けておらず、氏名・住所・電話番号など、個人を直接特定する情報の入力を求めません。個人予想検証ログ、AI分析候補履歴、過去ログカレンダー等のデータは、ユーザーのブラウザ内のローカルストレージに保存されます。</p>
+
+                    <h3>情報の利用目的</h3>
+                    <p>保存された情報は、予想履歴の再表示、当選結果との照合、AI分析結果の的中率集計、次回分析の参考表示のために利用されます。これらの情報は、他のユーザーと共有されるものではありません。</p>
+
+                    <h3>外部サービス・Cookie等</h3>
+                    <p>当サイトでは、表示改善、アクセス状況の把握、広告配信等の目的で、将来的にCookie、ローカルストレージ、外部サービスを利用する場合があります。外部サービスが取得する情報は、各サービス提供者のプライバシーポリシーに従って管理されます。</p>
+
+                    <h3>データの削除</h3>
+                    <p>ブラウザに保存された個人予想検証ログ等は、サイト内の削除機能またはブラウザの閲覧データ削除機能により削除できます。ブラウザや端末を変更した場合、保存済みデータは引き継がれない場合があります。</p>
+
+                    <h3>免責事項</h3>
+                    <p>当サイトは、宝くじ受託銀行および公式の宝くじ運営団体とは一切関係のない、個人による分析・予測支援サイトです。当サイトが提供するデータ、分析、予測、AI候補、レポートは、過去データに基づく統計的な参考情報であり、当選を保証するものではありません。最終的な購入判断はユーザーご自身の責任でお願いいたします。</p>
+
+                    <p class="legal-effective-date">制定日：2026年6月15日</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="terms-modal" class="legal-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+            <div class="legal-modal-content" role="document">
+                <div class="legal-modal-header">
+                    <h2 id="terms-title">利用規約</h2>
+                    <button type="button" class="legal-modal-close" data-modal-close aria-label="閉じる">&times;</button>
+                </div>
+                <div class="legal-modal-body">
+                    <p>この利用規約（以下「本規約」といいます。）は、LOTO6 PRO | 統合予測分析エンジン（以下「当サイト」といいます。）が提供する分析・予測支援機能の利用条件を定めるものです。ユーザーは、当サイトを利用することにより、本規約に同意したものとみなされます。</p>
+
+                    <h3>第1条（サービス内容）</h3>
+                    <p>当サイトは、ロト6の過去抽選データをもとに、周期分析、頻度分析、ペア相関分析、セット球分析、総合AI分析、個人予想検証ログ等を提供します。これらは娯楽および分析支援を目的とした参考情報です。</p>
+
+                    <h3>第2条（非保証）</h3>
+                    <p>当サイトは、分析結果、予測数字、AI候補、的中率、各種レポートの正確性、完全性、有用性、継続性、特定目的への適合性を保証しません。また、いかなる分析結果も当選を保証するものではありません。</p>
+
+                    <h3>第3条（自己責任）</h3>
+                    <p>ユーザーは、当サイトの情報を自己の判断と責任で利用するものとします。宝くじの購入、予想、購入金額、購入方法その他一切の判断について、当サイトは責任を負いません。</p>
+
+                    <h3>第4条（禁止事項）</h3>
+                    <p>ユーザーは、当サイトの利用にあたり、法令または公序良俗に違反する行為、当サイトの運営を妨害する行為、データやプログラムを不正に取得・改変する行為、第三者に損害を与える行為、その他当サイトが不適切と判断する行為を行ってはなりません。</p>
+
+                    <h3>第5条（著作権・知的財産権）</h3>
+                    <p>当サイトに掲載される画面構成、分析ロジック、文章、レポート、デザイン、プログラム等に関する権利は、当サイトまたは正当な権利者に帰属します。私的利用の範囲を超えた無断転載、複製、再配布を禁止します。</p>
+
+                    <h3>第6条（サービスの変更・停止）</h3>
+                    <p>当サイトは、事前の通知なく、機能、表示内容、分析方法、保存仕様、データ更新方法を変更、追加、停止することがあります。これによりユーザーに損害が生じた場合でも、当サイトは責任を負いません。</p>
+
+                    <h3>第7条（免責）</h3>
+                    <p>当サイトは、宝くじ受託銀行および公式の宝くじ運営団体とは一切関係ありません。当サイトの利用または利用不能により発生した損害、ブラウザ内に保存されたデータの消失、外部サービスの仕様変更等による影響について、当サイトは一切の責任を負いません。</p>
+
+                    <h3>第8条（規約の変更）</h3>
+                    <p>当サイトは、必要に応じて本規約を変更できるものとします。変更後の規約は、当サイト上に表示された時点で効力を生じるものとします。</p>
+
+                    <p class="legal-effective-date">制定日：2026年6月15日</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
