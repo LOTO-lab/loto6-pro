@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOTO6 PRO | ロト6検索分析プラットフォーム v1.0</title>
+    <title>LOTO6 PRO | 過去データ条件検索分析</title>
     <!-- Version: 20260508-1759 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +36,8 @@
         .top-header { background: white; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 15px; }
         .top-header h1 { font-size: 20px; font-weight: 800; color: #1e3a8a; margin: 0; line-height: 1; }
         .btn-toggle { background: transparent; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 10px; cursor: pointer; color: #475569; font-size: 14px; font-weight: bold; transition: 0.2s; }
+        .site-switch-tab { display: inline-flex; align-items: center; justify-content: center; padding: 8px 13px; border: 1px solid #bfdbfe; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-size: 13px; font-weight: 900; text-decoration: none; cursor: pointer; white-space: nowrap; transition: 0.2s; }
+        .site-switch-tab:hover { background: #dbeafe; transform: translateY(-1px); }
         
         .content-wrapper { max-width: 1680px; margin: 0 auto; width: 100%; padding: 20px 15px; display: flex; flex-direction: column; gap: 20px; }
         .content-ad-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 18px; align-items: start; width: 100%; }
@@ -316,8 +318,9 @@
             <div class="top-header">
                 <h1 style="margin:0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 15px;">
                     <button class="btn-toggle" onclick="toggleSidebar()">☰ 履歴等</button>
-                    LOTO6 PRO | ロト6検索分析プラットフォーム v1.0
+                    LOTO6 PRO | 過去データ条件検索分析
                 </h1>
+                <button type="button" class="site-switch-tab" onclick="openUnifiedEngine()">統合予測分析エンジン</button>
                 <span id="update-date" style="margin-left: auto; font-size: 13px; color: #64748b; font-weight: 600;">最終更新日: 2026/05/08</span>
             </div>
 
@@ -1756,6 +1759,55 @@
         };
 
         // --- 予想履歴管理 ---
+        const LOTO6_PRO_LEDGER_KEY = 'loto6_pro_prediction_ledger';
+        const LOTO6_PRO_ENGINE_URL = window.LOTO6_PRO_ENGINE_URL || './insight-pro/';
+
+        function getUnifiedEngineUrl(nums = [], targetDraw = null, predictionId = '') {
+            const url = new URL(LOTO6_PRO_ENGINE_URL, window.location.href);
+            const cleanNums = (Array.isArray(nums) ? nums : [])
+                .map(n => parseInt(n, 10))
+                .filter(n => Number.isFinite(n) && n >= 1 && n <= 43)
+                .slice(0, 6);
+            if (cleanNums.length === 6) {
+                url.searchParams.set('loto6_prediction', cleanNums.join(','));
+                url.searchParams.set('targetDraw', targetDraw || calculateNextDrawId());
+                url.searchParams.set('source', '旧サイト');
+                if (predictionId) url.searchParams.set('predictionId', predictionId);
+            }
+            return url.toString();
+        }
+
+        function openUnifiedEngine() {
+            const nums = (window.currentPrediction && window.currentPrediction.length === 6) ? window.currentPrediction : [];
+            window.open(getUnifiedEngineUrl(nums, calculateNextDrawId(), window.currentPredictionLedgerId || ''), '_blank');
+        }
+
+        function saveUnifiedPredictionLedger(nums, targetDraw, dateStr) {
+            const cleanNums = (Array.isArray(nums) ? nums : [])
+                .map(n => parseInt(n, 10))
+                .filter(n => Number.isFinite(n) && n >= 1 && n <= 43)
+                .slice(0, 6);
+            if (cleanNums.length !== 6) return;
+
+            const record = {
+                id: `old-site:${targetDraw}:${cleanNums.join('-')}:${Date.now()}`,
+                source: '旧サイト',
+                createdAt: new Date().toISOString(),
+                createdLabel: dateStr,
+                targetDrawId: targetDraw,
+                numbers: cleanNums,
+                note: '旧サイト 次回予想を実行'
+            };
+
+            try {
+                const current = JSON.parse(localStorage.getItem(LOTO6_PRO_LEDGER_KEY) || '[]');
+                current.unshift(record);
+                localStorage.setItem(LOTO6_PRO_LEDGER_KEY, JSON.stringify(current.slice(0, 300)));
+                return record.id;
+            } catch (error) {
+                console.warn('個人予想検証ログへの保存に失敗しました', error);
+            }
+        }
         function savePrediction(nums) {
             let h = JSON.parse(localStorage.getItem('loto6_history') || "[]");
             const now = new Date();
@@ -1766,6 +1818,7 @@
             h.unshift({ nums, date: dateStr, targetDraw: nextId });
             if(h.length > 100) h.pop();
             localStorage.setItem('loto6_history', JSON.stringify(h));
+            window.currentPredictionLedgerId = saveUnifiedPredictionLedger(nums, nextId, dateStr);
             
             if(window.incrementPredictionCount) window.incrementPredictionCount();
             if(window.pushGlobalPrediction) window.pushGlobalPrediction(nextId, nums);

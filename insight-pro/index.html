@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTO6 PRO | 統合予測分析エンジン</title>
+    <meta name="description" content="ロト6の過去データを複数の分析エンジンで統合解析する、LOTO6 PRO 統合予測分析エンジン。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-D3Reljdd.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-NkmHjy5T.css">
+</head>
+<body>
+    <div id="app">
+        <header class="main-header">
+            <div class="container">
+                <div class="brand">
+                    <span class="logo-icon">📊</span>
+                    <h1>LOTO6 PRO <span>| 統合予測分析エンジン</span></h1>
+                </div>
+                <div class="header-meta">
+                    <div id="latest-draw-info" class="meta-item">
+                        <span class="label">最新回:</span>
+                        <span class="value" id="latest-id">読み込み中...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Navigation Tabs -->
+            <nav class="analysis-tabs">
+                <div class="tab-row">
+                    <button class="tab-btn active" data-target="cycle-section">① 周期分析</button>
+                    <button class="tab-btn" data-target="frequency-section">② 波形分析</button>
+                    <button class="tab-btn" data-target="correlation-section">③ ペア相関分析</button>
+                    <button class="tab-btn" data-target="setball-section">④ セット球分析</button>
+                    <button class="tab-btn" data-target="sum-section">⑤ 合計値トレンド分析</button>
+                    <button class="tab-btn" data-target="evenodd-section">⑥ 奇偶流れ分析</button>
+                    <button class="tab-btn" data-target="lastdigit-section">⑦ 下一桁クラスタ分析</button>
+                </div>
+                <div class="tab-row second-row">
+                    <button class="tab-btn" data-target="range-section">⑧ 数字レンジ循環分析</button>
+                    <button class="tab-btn" data-target="carryover-section">⑨ 引継ぎ数字分析</button>
+                    <button class="tab-btn" data-target="consecutive-section">⑩ 連番分析</button>
+                    <button class="tab-btn" data-target="previous-draw-section">⑪ 前回当選数字分析</button>
+                    <button class="tab-btn" data-target="summary-section">⑫ 分析まとめ表</button>
+                    <button class="tab-btn" data-target="ai-section">⑬ 総合AI分析</button>
+                    <button class="tab-btn" data-target="spreadsheet-section">⑭ 全データ一覧表</button>
+                    <button class="tab-btn" data-target="prediction-ledger-section">⑮ 個人予想検証ログ</button>
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                <!-- Cycle Analysis Section -->
+                <section id="cycle-section" class="tab-pane active">
+                    <div class="section-intro">
+                        <h2>周期分析</h2>
+                        <p>各数字が前回の出現から何回経過しているか（周期）を分析し、統計的な傾向から次回の出現期待度を算出します。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group">
+                            <label for="period-select">分析対象期間:</label>
+                            <select id="period-select">
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="200">直近 200回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="sort-select">並び順:</label>
+                            <select id="sort-select">
+                                <option value="number" selected>数字順</option>
+                                <option value="wait-desc">ハマリ傾向 (高→低)</option>
+                                <option value="wait-asc">出現頻度期待 (低→高)</option>
+                            </select>
+                        </div>
+                        <div class="update-checker" id="update-notification">
+                            <!-- Update status will appear here -->
+                        </div>
+                    </section>
+
+                    <section id="cycle-dashboard" class="cycle-grid">
+                        <!-- Cycle cards will be injected here -->
+                    </section>
+                </section>
+
+                <!-- Waveform Analysis Section -->
+                <section id="frequency-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>波形分析</h2>
+                        <p>直近の出現回数を可視化します。本数字とボーナス数字それぞれの「波」を確認し、偏りを見つけ出します。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group">
+                            <label for="freq-period-select">分析対象期間:</label>
+                            <select id="freq-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="freq-sort-select">並び順:</label>
+                            <select id="freq-sort-select">
+                                <option value="number" selected>数字順</option>
+                                <option value="frequency-desc">出現回数 (多→少)</option>
+                                <option value="frequency-asc">出現回数 (少→多)</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    <!-- Frequency Ranking Panel -->
+                    <div class="ranking-container card">
+                        <div class="ranking-header">
+                            <h3>本数字ランキング</h3>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" data-range="10">TOP 10</button>
+                                <button class="toggle-btn" data-range="all">全て表示</button>
+                            </div>
+                        </div>
+                        <div id="frequency-ranking" class="ranking-list">
+                            <!-- Ranking items will be injected here -->
+                        </div>
+                    </div>
+
+                    <div class="chart-container card">
+                        <canvas id="frequency-chart"></canvas>
+                    </div>
+
+                    <div id="frequency-summary" class="summary-grid">
+                        <!-- Hot/Cold summaries -->
+                    </div>
+                </section>
+
+                <!-- Correlation Analysis Section -->
+                <section id="correlation-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>ペア相関分析</h2>
+                        <p>特定の数字と一緒に選ばれやすい数字を分析します。同時出現回数の多い「相性の良い」組み合わせを見つけ出します。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group">
+                            <label for="corr-target-select">ターゲット数字:</label>
+                            <select id="corr-target-select" class="number-picker">
+                                <!-- 1-43 will be injected -->
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="corr-mode-select">分析モード:</label>
+                            <select id="corr-mode-select">
+                                <option value="pair" selected>ペア (2番号)</option>
+                                <option value="triple">トリプル (3番号)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="corr-bonus-select">ボーナス数字:</label>
+                            <select id="corr-bonus-select">
+                                <option value="exclude" selected>抜（含めない）</option>
+                                <option value="include">込（含める）</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="corr-period-select">対象期間:</label>
+                            <select id="corr-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    <div id="correlation-result" class="correlation-grid">
+                        <div class="empty-state">ターゲット数字を選択して分析を開始してください</div>
+                    </div>
+                </section>
+
+                <!-- Set Ball Analysis Section -->
+                <section id="setball-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>セット球分析</h2>
+                        <p>使用されたセット球（A〜J）ごとの出現傾向を分析します。セット球固有の物理的な特性による偏りを見つけ出します。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group">
+                            <label for="setball-period-select">分析対象期間:</label>
+                            <select id="setball-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>セット球を選択:</label>
+                            <div class="setball-selector" id="setball-selector">
+                                <!-- Buttons A-J will be injected here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="setball-container">
+                        <div class="setball-info-panel card">
+                            <div class="panel-header">
+                                <h3 id="selected-setball-label">セット球 A の出現傾向</h3>
+                                <span class="badge" id="setball-usage-count">使用回数: --回</span>
+                            </div>
+                            <div id="setball-ranking" class="setball-ranking-grid">
+                                <!-- Ranking will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sum Trend Analysis Section -->
+                <section id="sum-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>合計値トレンド分析</h2>
+                        <p>各回の本数字の合計値の推移と出現分布を分析します。理論的な中央値は132付近であり、その偏りを確認できます。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group" style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                            <div>
+                                <label for="sum-period-select">分析対象期間:</label>
+                                <select id="sum-period-select">
+                                    <option value="10">直近 10回</option>
+                                    <option value="20">直近 20回</option>
+                                    <option value="50" selected>直近 50回</option>
+                                    <option value="100">直近 100回</option>
+                                    <option value="0">全期間</option>
+                                </select>
+                            </div>
+                            <div id="sum-prediction-box" class="prediction-box">
+                                <span class="predict-label">次回合計値予測:</span>
+                                <span id="sum-prediction-value" class="predict-value">-- 〜 --</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Trend Chart -->
+                    <div class="chart-container card">
+                        <canvas id="sum-trend-chart"></canvas>
+                    </div>
+
+                    <div class="sum-analysis-grid">
+                        <!-- Sum Ranking -->
+                        <div class="sum-ranking-panel card">
+                            <div class="panel-header">
+                                <h3>合計値出現回数 <small style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal; margin-left: 8px;">(理論的中央値132からの差分)</small></h3>
+                                <div class="control-group">
+                                    <select id="sum-rank-sort">
+                                        <option value="count-desc">出現回数順</option>
+                                        <option value="sum-asc">合計値: 昇順</option>
+                                        <option value="sum-desc">合計値: 降順</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="sum-ranking-list" class="sum-rank-list">
+                                <!-- Ranking entries injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Sum History Table -->
+                        <div class="sum-history-panel card">
+                            <div class="panel-header">
+                                <h3>合計値履歴</h3>
+                            </div>
+                            <div class="table-scroll">
+                                <table id="sum-history-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>回号</th>
+                                            <th>日付</th>
+                                            <th>合計値</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- History rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Odd/Even Flow Analysis Section -->
+                <section id="evenodd-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>奇偶流れ分析</h2>
+                        <p>本数字の奇数と偶数の構成比率を分析します。偏りの流れを把握し、次回のバランスを予測します。</p>
+                    </div>
+
+                    <section class="analysis-controls card" style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                        <div>
+                            <label for="evenodd-period-select">分析対象期間:</label>
+                            <select id="evenodd-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div id="evenodd-prediction-box" class="prediction-box accent">
+                            <span class="predict-label">次回奇偶予測:</span>
+                            <span id="evenodd-prediction-value" class="predict-value">-- : --</span>
+                        </div>
+                    </section>
+
+                    <div class="evenodd-analysis-grid">
+                        <!-- Pattern Ranking -->
+                        <div class="evenodd-ranking-panel card">
+                            <div class="panel-header">
+                                <h3>パターン出現頻度</h3>
+                            </div>
+                            <div id="evenodd-ranking-list" class="pattern-rank-grid">
+                                <!-- Ranking cards injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Odd/Even History Table -->
+                        <div class="evenodd-history-panel card">
+                            <div class="panel-header">
+                                <h3>奇偶履歴</h3>
+                                <div class="control-group">
+                                    <select id="evenodd-history-sort">
+                                        <option value="id-desc">回号順</option>
+                                        <option value="ratio-3:3">３：３が出た順</option>
+                                        <option value="ratio-4:2">４：２が出た順</option>
+                                        <option value="ratio-2:4">２：４が出た順</option>
+                                        <option value="ratio-1:5">１：５が出た順</option>
+                                        <option value="ratio-5:1">５：１が出た順</option>
+                                        <option value="ratio-6:0">６：０が出た順</option>
+                                        <option value="ratio-0:6">０：６が出た順</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="table-scroll">
+                                <table id="evenodd-history-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>回号</th>
+                                            <th>日付</th>
+                                            <th>構成</th>
+                                            <th>比率</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- History rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Last Digit Cluster Analysis Section -->
+                <section id="lastdigit-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>下一桁クラスタ分析</h2>
+                        <p>本数字の下一桁（末尾）の偏りと重複（クラスタ）を分析します。特定の末尾数字が重なる傾向を把握できます。</p>
+                    </div>
+
+                    <section class="analysis-controls card" style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                        <div>
+                            <label for="lastdigit-period-select">分析対象期間:</label>
+                            <select id="lastdigit-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div id="lastdigit-prediction-box" class="prediction-box accent" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                            <span class="predict-label">次回末尾予想:</span>
+                            <span id="lastdigit-prediction-value" class="predict-value">-- , -- , --</span>
+                        </div>
+                    </section>
+
+                    <div class="lastdigit-analysis-grid">
+                        <!-- Last Digit Frequency -->
+                        <div class="lastdigit-frequency-panel card">
+                            <div class="panel-header">
+                                <h3>末尾数字出現頻度</h3>
+                            </div>
+                            <div id="lastdigit-frequency-list" class="digit-freq-grid">
+                                <!-- Frequency items injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Last Digit History Table -->
+                        <div class="lastdigit-history-panel card">
+                            <div class="panel-header">
+                                <h3>下一桁履歴</h3>
+                                <div class="control-group">
+                                    <select id="lastdigit-history-sort">
+                                        <option value="id-desc">回号順</option>
+                                        <option value="match-desc">一致数が多い順</option>
+                                        <option value="match-asc">一致数が少ない順</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="table-scroll">
+                                <table id="lastdigit-history-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>回号</th>
+                                            <th>日付</th>
+                                            <th>下一桁リスト</th>
+                                            <th>一致数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- History rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Number Range Cycle Analysis Section -->
+                <section id="range-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>数字レンジ循環分析</h2>
+                        <p>本数字を5つの帯（1-9, 10s, 20s, 30s, 40s）に分け、各帯の勢いと出現傾向を分析します。</p>
+                    </div>
+
+                    <section class="analysis-controls card" style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                        <div>
+                            <label for="range-period-select">分析対象期間:</label>
+                            <select id="range-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div id="range-prediction-box" class="prediction-box accent" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                            <span class="predict-label">次回予想レンジ:</span>
+                            <span id="range-prediction-value" class="predict-value">-- 〜 --</span>
+                        </div>
+                    </section>
+
+                    <div class="range-analysis-grid">
+                        <!-- Range Trend Chart -->
+                        <div class="range-chart-panel card">
+                            <div class="panel-header">
+                                <h3>レンジ出現トレンド（積み上げ）</h3>
+                            </div>
+                            <div class="chart-container" style="height: 350px;">
+                                <canvas id="range-trend-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Range Frequency Info -->
+                        <div class="range-freq-panel card">
+                            <div class="panel-header">
+                                <h3>数値帯別・出現の強さ</h3>
+                            </div>
+                            <div id="range-freq-list" class="range-freq-list">
+                                <!-- Range items injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Carryover (Repeated Number) Analysis Section -->
+                <section id="carryover-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>引継ぎ数字分析</h2>
+                        <p>前回（直前）の当選数字が今回の当選数字にいくつ継続されたかを分析します。出現しやすい引継ぎパターンを特定できます。</p>
+                    </div>
+
+                    <section class="analysis-controls card" style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                        <div>
+                            <label for="carryover-period-select">分析対象期間:</label>
+                            <select id="carryover-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div id="carryover-prediction-box" class="prediction-box accent" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                            <span class="predict-label">次回の予想（引継ぎ個数）:</span>
+                            <span id="carryover-prediction-value" class="predict-value">--個型</span>
+                        </div>
+                    </section>
+
+                    <div class="carryover-analysis-grid">
+                        <!-- Pattern Frequency -->
+                        <div class="carryover-frequency-panel card">
+                            <div class="panel-header">
+                                <h3>引継ぎパターン出現頻度</h3>
+                            </div>
+                            <div id="carryover-frequency-list" class="carryover-pattern-grid">
+                                <!-- Pattern items injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Carryover History Table -->
+                        <div class="carryover-history-panel card">
+                            <div class="panel-header">
+                                <h3>引継ぎ履歴</h3>
+                                <div class="control-group">
+                                    <select id="carryover-history-sort">
+                                        <option value="id-desc">回号順</option>
+                                        <option value="count-desc">引継ぎが多い順</option>
+                                        <option value="count-asc">引継ぎが少ない順</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="table-scroll">
+                                <table id="carryover-history-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>回号</th>
+                                            <th>日付</th>
+                                            <th>引継ぎ数字</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- History rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Consecutive Number Analysis Section -->
+                <section id="consecutive-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>連番分析</h2>
+                        <p>抽せん数字の中に連続した数字（連番）が何組含まれているかを分析します。連番の有無や組数は、出現バランスを判断する重要な指標となります。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group">
+                            <label for="consecutive-period-select">分析対象期間:</label>
+                            <select id="consecutive-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="consecutive-sort-select">並び順:</label>
+                            <select id="consecutive-sort-select">
+                                <option value="id-desc" selected>回号順</option>
+                                <option value="set-1">連番数 1組</option>
+                                <option value="set-2">連番数 2組</option>
+                                <option value="set-3">連番数 3組</option>
+                                <option value="set-desc">連番が多い順</option>
+                            </select>
+                        </div>
+                        <div id="consecutive-prediction-box" class="prediction-box accent" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <span class="predict-label">次回予想:</span>
+                            <span id="consecutive-prediction-value" class="predict-value">分析中...</span>
+                        </div>
+                    </section>
+
+                    <div class="consecutive-analysis-grid">
+                        <!-- Frequency Summary -->
+                        <div class="consecutive-frequency-panel card">
+                            <div class="panel-header">
+                                <h3>連番組数 出現頻度</h3>
+                            </div>
+                            <div id="consecutive-frequency-list" class="consecutive-freq-grid">
+                                <!-- Frequency items injected here -->
+                            </div>
+                        </div>
+
+                        <!-- History Table -->
+                        <div class="consecutive-history-panel card">
+                            <div class="panel-header">
+                                <h3>連番出現履歴</h3>
+                            </div>
+                            <div class="table-scroll">
+                                <table id="consecutive-history-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>回号</th>
+                                            <th>日付</th>
+                                            <th>抽せん数字</th>
+                                            <th>連番の状態</th>
+                                            <th>組数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- History rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Previous Draw Analysis Section -->
+                <section id="previous-draw-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>前回当選数字分析</h2>
+                        <p>最新回（前回）の当選数字6個それぞれについて、過去にその数字が出た「次の回」にどの数字がよく出ているかをランキング表示します。</p>
+                    </div>
+
+                    <section class="analysis-controls card">
+                        <div class="control-group">
+                            <label for="prev-draw-period-select">分析対象期間:</label>
+                            <select id="prev-draw-period-select">
+                                <option value="10">直近 10回</option>
+                                <option value="20">直近 20回</option>
+                                <option value="50" selected>直近 50回</option>
+                                <option value="100">直近 100回</option>
+                                <option value="0">全期間</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="prev-draw-bonus-select">ボーナス数字:</label>
+                            <select id="prev-draw-bonus-select">
+                                <option value="exclude" selected>含めない</option>
+                                <option value="include">含める</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    <div id="prev-draw-dashboard" class="prev-draw-grid">
+                        <!-- AI Prediction will be injected here -->
+                    </div>
+                </section>
+
+                <!-- Full Data Spreadsheet Section -->
+                <section id="spreadsheet-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>⑭ 全データ一覧表</h2>
+                        <p>過去の全抽選データと、各エンジンの分析結果（その抽選時点での指標）を一覧表示します。</p>
+                    </div>
+
+                    <div class="spreadsheet-container">
+                        <table class="spreadsheet-table">
+                            <thead>
+                                <tr class="group-header">
+                                    <th colspan="4" class="bg-basic">基本情報</th>
+                                    <th colspan="2" class="bg-sum">合計・奇遇</th>
+                                    <th colspan="2" class="bg-seq">引継ぎ・連番</th>
+                                    <th class="bg-ld">下一桁</th>
+                                    <th colspan="5" class="bg-range">レンジ分布</th>
+                                    <th colspan="6" class="bg-cycle">各数字の周期（周期待ち回数）</th>
+                                    <th colspan="6" class="bg-freq">各数字の出現数（直近50回）</th>
+                                </tr>
+                                <tr class="col-header">
+                                    <th>回号</th>
+                                    <th>日付</th>
+                                    <th>本数字・B</th>
+                                    <th>セット球</th>
+                                    <th>合計値</th>
+                                    <th>奇偶比</th>
+                                    <th>引継ぎ</th>
+                                    <th>連番</th>
+                                    <th>重複ペア</th>
+                                    <th>1-9</th>
+                                    <th>10-19</th>
+                                    <th>20-29</th>
+                                    <th>30-39</th>
+                                    <th>40-43</th>
+                                    <th>第1</th>
+                                    <th>第2</th>
+                                    <th>第3</th>
+                                    <th>第4</th>
+                                    <th>第5</th>
+                                    <th>第6</th>
+                                    <th>第1</th>
+                                    <th>第2</th>
+                                    <th>第3</th>
+                                    <th>第4</th>
+                                    <th>第5</th>
+                                    <th>第6</th>
+                                </tr>
+                            </thead>
+                            <tbody id="spreadsheet-tbody">
+                                <!-- Data injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Analysis Summary Table Section -->
+                <section id="summary-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>⑫ 分析まとめ表</h2>
+                        <p>①〜⑪の全エンジンの解析結果を一箇所に集約しました。各エンジンの主要指標を横断的に比較し、全体の傾向を俯瞰することができます。</p>
+                    </div>
+
+                    <div class="summary-grid">
+                        <!-- Top Predictions Panel -->
+                        <div class="summary-panel predictions card">
+                            <div class="panel-header summary-predictions-header">
+                                <h3>エンジンの次回予測一覧</h3>
+                                <span id="summary-prediction-period" class="summary-period-badge">集計対象: 直近50回</span>
+                            </div>
+                            <div class="table-scroll">
+                                <table id="summary-predictions-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>分析項目</th>
+                                            <th>予測・推奨値</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Row data injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Comprehensive AI Analysis Section -->
+                <section id="ai-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>⑬ 総合AI分析</h2>
+                        <p>①〜⑪の全分析エンジンの結果をデータ統合し、次回の期待値が最も高い組み合わせと、その詳細な選出理由を提示します。</p>
+                    </div>
+
+                    <div class="ai-analysis-container">
+                        <!-- Main AI Prediction Card -->
+                        <div class="ai-hero-card card">
+                            <div class="ai-badge-top">AI RECOMMENDATION</div>
+                            <h3>次回のAI選出数字</h3>
+                            <div id="ai-prediction-numbers" class="ai-numbers-display">
+                                <div class="ai-num-placeholder">?</div>
+                                <div class="ai-num-placeholder">?</div>
+                                <div class="ai-num-placeholder">?</div>
+                                <div class="ai-num-placeholder">?</div>
+                                <div class="ai-num-placeholder">?</div>
+                                <div class="ai-num-placeholder">?</div>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Breakdown -->
+                        <div class="ai-report-panel">
+                            <div class="panel-title">
+                                <span class="ai-sparkle">✨</span> 各データに基づく選出詳細レポート
+                            </div>
+                            <div id="ai-rationale-list" class="ai-rationale-grid">
+                                <!-- Rationale cards injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Personal Prediction Ledger Section -->
+                <section id="prediction-ledger-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>⑮ 個人予想検証ログ</h2>
+                        <p>旧サイトで実行した次回予想をこのブラウザ内に保存し、抽せん結果が追加されたタイミングで一致度・傾向・次回に活かす視点を検証します。</p>
+                    </div>
+
+                    <div class="ledger-toolbar card">
+                        <div>
+                            <h3>個人用の予想記録</h3>
+                            <p>保存先はこのブラウザのローカル領域です。他のユーザーとは共有されません。</p>
+                        </div>
+                        <div class="ledger-actions">
+                            <button id="ledger-refresh-btn" class="btn primary">再集計</button>
+                            <button id="ledger-clear-btn" class="btn secondary">ログを全削除</button>
+                        </div>
+                    </div>
+
+                    <div id="ledger-summary" class="ledger-summary-grid">
+                        <!-- Ledger summary cards injected here -->
+                    </div>
+
+                    <div id="ledger-recommendation" class="ledger-recommendation card">
+                        <!-- Ledger recommendation injected here -->
+                    </div>
+
+                    <div id="ledger-list" class="ledger-list">
+                        <!-- Ledger rows injected here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <p>&copy; 2026 LOTO6 PRO. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<script>window.onerror = function(msg, url, line, col, error) { document.body.innerHTML = "<div style=\"color:red; font-size:20px; padding:20px; background:white;\">ERROR: " + msg + "<br>" + url + ":" + line + ":" + col + "<br>" + (error && error.stack ? error.stack : "") + "</div>"; }; window.addEventListener("unhandledrejection", function(event) { document.body.innerHTML = "<div style=\"color:red; font-size:20px; padding:20px; background:white;\">PROMISE REJECTION: " + event.reason + "</div>"; });</script>
