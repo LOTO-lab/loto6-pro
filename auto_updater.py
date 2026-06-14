@@ -320,27 +320,28 @@ def run_update_process():
 
 if __name__ == "__main__":
     # GitHub Actions用に最大8回（4時間）のリトライ制限を追加
-    MAX_RETRIES = 8
-    RETRY_INTERVAL = 1800 # 30分
+    MAX_RETRIES = int(os.environ.get("LOTO6_MAX_RETRIES", "8"))
+    RETRY_INTERVAL = int(os.environ.get("LOTO6_RETRY_INTERVAL_SECONDS", "1800"))
     
     if not TARGET_URL:
         print("ERROR: LOTO6_SOURCE_URL is not configured.")
         print("Add LOTO6_SOURCE_URL in GitHub repository Secrets, then run this workflow again.")
         exit(1)
 
-    print("=== LOTO6PRO Auto Updater (Full Sync Mode) ===")
+    print("=== LOTO6PRO Auto Updater (Full Sync Mode) ===", flush=True)
+    print(f"Retry settings: max={MAX_RETRIES}, interval={RETRY_INTERVAL}s", flush=True)
     for i in range(MAX_RETRIES):
-        print(f"\nAttempt {i+1}/{MAX_RETRIES}...")
+        print(f"\nAttempt {i+1}/{MAX_RETRIES}...", flush=True)
         try:
             if run_update_process():
-                print("Successfully finished update process.")
-                exit(0) # 正常終了
+                print("Successfully finished update process.", flush=True)
+                exit(0)
         except Exception as e:
-            print(f"Error during update process: {e}")
+            print(f"Error during update process: {e}", flush=True)
         
         if i < MAX_RETRIES - 1:
-            print(f"Data not ready or error occurred. Waiting {RETRY_INTERVAL/60} minutes for next attempt...")
+            print(f"Data not ready or error occurred. Waiting {RETRY_INTERVAL} seconds for next attempt...", flush=True)
             time.sleep(RETRY_INTERVAL)
     
-    print("Reached maximum retries or terminating.")
-    exit(0)
+    print("Reached maximum retries or terminating.", flush=True)
+    exit(1)
