@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CkvJQdvx.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-OgvVwZQQ.css">
+  <script type="module" crossorigin src="./assets/index-Coz0wxwE.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DxCaHTdO.css">
 </head>
 <body>
     <div id="app">
@@ -47,9 +47,10 @@
                     <button class="tab-btn" data-target="previous-draw-section">⑪ 前回当選数字分析</button>
                     <button class="tab-btn" data-target="summary-section">⑫ 分析まとめ表</button>
                     <button class="tab-btn" data-target="ai-section">⑬ 総合AI分析</button>
-                    <button class="tab-btn" data-target="spreadsheet-section">⑭ 全データ一覧表</button>
-                    <button class="tab-btn" data-target="prediction-ledger-section">⑮ 個人予想検証ログ</button>
-                    <button class="tab-btn" data-target="prediction-calendar-section">⑯ 過去ログカレンダー</button>
+                    <button class="tab-btn" data-target="ai-result-section">⑭ 総合AI分析結果</button>
+                    <button class="tab-btn" data-target="spreadsheet-section">⑮ 全データ一覧表</button>
+                    <button class="tab-btn" data-target="prediction-ledger-section">⑯ 個人予想検証ログ</button>
+                    <button class="tab-btn" data-target="prediction-calendar-section">⑰ 過去ログカレンダー</button>
                 </div>
             </nav>
 
@@ -651,7 +652,7 @@
                 <!-- Full Data Spreadsheet Section -->
                 <section id="spreadsheet-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑭ 全データ一覧表</h2>
+                        <h2>⑮ 全データ一覧表</h2>
                         <p>過去の全抽選データと、各エンジンの分析結果（その抽選時点での指標）を一覧表示します。</p>
                     </div>
 
@@ -769,10 +770,32 @@
                     </div>
                 </section>
 
+                <!-- Comprehensive AI Result Review Section -->
+                <section id="ai-result-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>⑭ 総合AI分析結果</h2>
+                        <p>⑬総合AI分析で提示したTOP5候補をこのブラウザ内に記録し、当選結果データが追加されたタイミングで的中数・総合的中率・次回へ活かす改善ポイントを検証します。</p>
+                    </div>
+
+                    <div class="ai-result-container">
+                        <div id="ai-result-summary" class="ai-result-summary-grid">
+                            <!-- AI result summary injected here -->
+                        </div>
+
+                        <div id="ai-result-latest" class="ai-result-latest">
+                            <!-- Latest AI result review injected here -->
+                        </div>
+
+                        <div id="ai-result-history" class="ai-result-history">
+                            <!-- AI result history injected here -->
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Personal Prediction Ledger Section -->
                 <section id="prediction-ledger-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑮ 個人予想検証ログ</h2>
+                        <h2>⑯ 個人予想検証ログ</h2>
                         <p>過去データ条件検索分析で実行した次回予想をこのブラウザ内に保存し、抽せん結果が追加されたタイミングで一致度・傾向・次回に活かす視点を検証します。</p>
                     </div>
 
@@ -803,7 +826,7 @@
                 <!-- Prediction Log Calendar Section -->
                 <section id="prediction-calendar-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑯ 過去ログカレンダー</h2>
+                        <h2>⑰ 過去ログカレンダー</h2>
                         <p>個人予想検証ログを抽選日と回号ごとにカレンダー形式で整理し、過去に出した予想と照合結果を後から見直せます。</p>
                     </div>
 
