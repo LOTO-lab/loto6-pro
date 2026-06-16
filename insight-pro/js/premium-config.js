@@ -2,7 +2,7 @@ export const premiumConfig = {
   enabled: true,
   firebaseVersion: '10.12.5',
   firebase: {
-    apiKey: 'AIzaSyDAL25s7TZ2-YxChmJFuJkiKzNW084S3g4',
+    apiKey: 'AIzaSyDAl25s7TZ2-YxChmJFuJkiKzNWO84S3g4',
     authDomain: 'loto6-pro-premium.firebaseapp.com',
     projectId: 'loto6-pro-premium',
     appId: '1:709270393170:web:f4ca86eb26c46c7b856a8b',

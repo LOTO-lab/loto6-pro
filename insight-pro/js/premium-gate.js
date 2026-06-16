@@ -21,7 +21,20 @@ function setBodyState(state) {
     'premium-gate-disabled',
     'premium-gate-error'
   );
+  if (state === 'premium-gate-unlocked' || state === 'premium-gate-disabled') {
+    document.body.classList.remove('premium-boot-lock');
+  } else {
+    document.body.classList.add('premium-boot-lock');
+  }
   document.body.classList.add(state);
+}
+
+function isGatewayPage() {
+  return document.body.dataset.premiumMode === 'gateway';
+}
+
+function getPremiumAppUrl() {
+  return new URL('app.html', window.location.href).toString();
 }
 
 function getRoot() {
@@ -184,6 +197,10 @@ function renderPurchase(user, errorMessage = '') {
 }
 
 function unlockPremium(user) {
+  if (isGatewayPage()) {
+    window.location.replace(getPremiumAppUrl());
+    return;
+  }
   setBodyState('premium-gate-unlocked');
   getRoot().innerHTML = '';
   renderAccountChip(user);
