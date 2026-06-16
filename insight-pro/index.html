@@ -8,15 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-DmlTjn3F.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DVcCTJzx.css">
+  <script type="module" crossorigin src="./assets/index-7AvFnJrF.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DImK_rdv.css">
 </head>
 <body>
     <div id="app">
         <header class="main-header">
             <div class="container">
                 <div class="brand">
-                    <span class="logo-icon">📊</span>
+                    <span class="logo-icon" aria-hidden="true">
+                        <span class="logo-bar blue"></span>
+                        <span class="logo-bar green"></span>
+                        <span class="logo-bar red"></span>
+                    </span>
                     <h1>LOTO6 PRO <span>| 統合予測分析エンジン</span></h1>
                 </div>
                 <div class="header-meta">
@@ -24,6 +28,10 @@
                         <span class="label">最新回:</span>
                         <span class="value" id="latest-id">読み込み中...</span>
                     </div>
+                    <button id="page-refresh-btn" class="header-action" type="button">
+                        <span class="header-action-icon" aria-hidden="true">↻</span>
+                        更新
+                    </button>
                 </div>
             </div>
         </header>
@@ -31,26 +39,38 @@
         <main class="container">
             <!-- Navigation Tabs -->
             <nav class="analysis-tabs">
-                <div class="tab-row">
-                    <button class="tab-btn active" data-target="cycle-section">① 周期分析</button>
-                    <button class="tab-btn" data-target="frequency-section">② 波形分析</button>
-                    <button class="tab-btn" data-target="correlation-section">③ ペア相関分析</button>
-                    <button class="tab-btn" data-target="setball-section">④ セット球分析</button>
-                    <button class="tab-btn" data-target="sum-section">⑤ 合計値トレンド分析</button>
-                    <button class="tab-btn" data-target="evenodd-section">⑥ 奇偶流れ分析</button>
-                    <button class="tab-btn" data-target="lastdigit-section">⑦ 下一桁クラスタ分析</button>
+                <div class="nav-group">
+                    <span class="nav-group-label">各種分析</span>
+                    <div class="nav-group-buttons">
+                        <button class="tab-btn active" data-target="cycle-section">周期分析</button>
+                        <button class="tab-btn" data-target="frequency-section">波形分析</button>
+                        <button class="tab-btn" data-target="correlation-section">ペア相関分析</button>
+                        <button class="tab-btn" data-target="setball-section">セット球分析</button>
+                        <button class="tab-btn" data-target="sum-section">合計値トレンド分析</button>
+                        <button class="tab-btn" data-target="evenodd-section">奇偶流れ分析</button>
+                        <button class="tab-btn" data-target="lastdigit-section">下一桁クラスタ分析</button>
+                        <button class="tab-btn" data-target="range-section">数字レンジ循環分析</button>
+                        <button class="tab-btn" data-target="carryover-section">引継ぎ数字分析</button>
+                        <button class="tab-btn" data-target="consecutive-section">連番分析</button>
+                        <button class="tab-btn" data-target="previous-draw-section">前回当選数字分析</button>
+                        <button class="tab-btn" data-target="mirror-pair-section">対称ペアバランス分析</button>
+                    </div>
                 </div>
-                <div class="tab-row second-row">
-                    <button class="tab-btn" data-target="range-section">⑧ 数字レンジ循環分析</button>
-                    <button class="tab-btn" data-target="carryover-section">⑨ 引継ぎ数字分析</button>
-                    <button class="tab-btn" data-target="consecutive-section">⑩ 連番分析</button>
-                    <button class="tab-btn" data-target="previous-draw-section">⑪ 前回当選数字分析</button>
-                    <button class="tab-btn" data-target="summary-section">⑫ 分析まとめ表</button>
-                    <button class="tab-btn" data-target="ai-section">⑬ 総合AI分析</button>
-                    <button class="tab-btn" data-target="ai-result-section">⑭ 総合AI分析結果</button>
-                    <button class="tab-btn" data-target="spreadsheet-section">⑮ 全データ一覧表</button>
-                    <button class="tab-btn" data-target="prediction-ledger-section">⑯ 個人予想検証ログ</button>
-                    <button class="tab-btn" data-target="prediction-calendar-section">⑰ 過去ログカレンダー</button>
+                <div class="nav-group ai-nav-group">
+                    <span class="nav-group-label">AI分析</span>
+                    <div class="nav-group-buttons">
+                        <button class="tab-btn" data-target="ai-score-trend-section">過去AIスコア傾向</button>
+                        <button class="tab-btn" data-target="ai-section">AI分析</button>
+                        <button class="tab-btn" data-target="ai-result-section">AI分析結果</button>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <span class="nav-group-label">データログ</span>
+                    <div class="nav-group-buttons">
+                        <button class="tab-btn" data-target="prediction-ledger-section">個人予想検証ログ</button>
+                        <button class="tab-btn" data-target="prediction-calendar-section">過去ログカレンダー</button>
+                        <button class="tab-btn" data-target="spreadsheet-section">全データ一覧表</button>
+                    </div>
                 </div>
             </nav>
 
@@ -72,7 +92,7 @@
                                 <option value="0">全期間</option>
                             </select>
                         </div>
-                        <div class="control-group">
+                        <div class="control-group control-push-right">
                             <label for="sort-select">並び順:</label>
                             <select id="sort-select">
                                 <option value="number" selected>数字順</option>
@@ -244,7 +264,7 @@
                                     <option value="0">全期間</option>
                                 </select>
                             </div>
-                            <div id="sum-prediction-box" class="prediction-box">
+                            <div id="sum-prediction-box" class="prediction-box control-push-right">
                                 <span class="predict-label">次回合計値予測:</span>
                                 <span id="sum-prediction-value" class="predict-value">-- 〜 --</span>
                             </div>
@@ -565,7 +585,7 @@
                                 <option value="0">全期間</option>
                             </select>
                         </div>
-                        <div class="control-group">
+                        <div class="control-group consecutive-sort-control control-push-right">
                             <label for="consecutive-sort-select">並び順:</label>
                             <select id="consecutive-sort-select">
                                 <option value="id-desc" selected>回号順</option>
@@ -649,10 +669,56 @@
                     </div>
                 </section>
 
+                <!-- Mirror Pair Balance Section -->
+                <section id="mirror-pair-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>対称ペアバランス分析</h2>
+                        <p>当選数字を小さい順に並べたときの外側・中間・中央の対称ペア合計を集計し、44を基準にした高低バランスと直近の流れを確認します。</p>
+                    </div>
+
+                    <div class="mirror-pair-container">
+                        <div id="mirror-pair-summary" class="mirror-pair-summary-grid">
+                            <!-- Summary cards injected here -->
+                        </div>
+
+                        <div class="chart-container card">
+                            <canvas id="mirror-pair-chart"></canvas>
+                        </div>
+
+                        <div class="mirror-pair-table-card card">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>直近50回の対称ペア明細</h3>
+                                    <p>外側ペア合計 = 1枠+6枠、中間ペア合計 = 2枠+5枠、中央ペア合計 = 3枠+4枠。基準値は44です。</p>
+                                </div>
+                            </div>
+                            <div class="table-scroll">
+                                <table class="data-table mirror-pair-table">
+                                    <thead>
+                                        <tr>
+                                            <th>回号</th>
+                                            <th>抽選日</th>
+                                            <th>当選数字</th>
+                                            <th>外側ペア合計</th>
+                                            <th>中間ペア合計</th>
+                                            <th>中央ペア合計</th>
+                                            <th>平均との差</th>
+                                            <th>判定</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mirror-pair-tbody">
+                                        <!-- Rows injected via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Full Data Spreadsheet Section -->
                 <section id="spreadsheet-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑮ 全データ一覧表</h2>
+                        <h2>全データ一覧表</h2>
                         <p>過去の全抽選データと、各エンジンの分析結果（その抽選時点での指標）を一覧表示します。</p>
                     </div>
 
@@ -704,50 +770,98 @@
                     </div>
                 </section>
 
-                <!-- Analysis Summary Table Section -->
-                <section id="summary-section" class="tab-pane">
+                <!-- AI Score Trend Section -->
+                <section id="ai-score-trend-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑫ 分析まとめ表</h2>
-                        <p>①〜⑪の全エンジンの解析結果を一箇所に集約しました。各エンジンの主要指標を横断的に比較し、全体の傾向を俯瞰することができます。</p>
+                        <h2>過去AIスコア傾向</h2>
+                        <p>各抽選回の当選数字について、その回より前のデータだけでAI数字スコアを再計算し、実際に出た数字が高スコア寄りだったのか、低〜中スコア寄りだったのかを検証します。</p>
                     </div>
 
-                    <div class="summary-grid">
-                        <!-- Top Predictions Panel -->
-                        <div class="summary-panel predictions card">
-                            <div class="panel-header summary-predictions-header">
-                                <h3>エンジンの次回予測一覧</h3>
-                                <span id="summary-prediction-period" class="summary-period-badge">集計対象: 直近50回</span>
+                    <div class="ai-score-trend-container">
+                        <div id="ai-score-trend-summary" class="ai-score-trend-summary-grid">
+                            <!-- Summary cards injected here -->
+                        </div>
+
+                        <div class="ai-score-trend-main-grid">
+                            <div class="chart-container card ai-score-trend-chart-card">
+                                <div class="panel-header ai-score-chart-header">
+                                    <div>
+                                        <h3>AIスコア傾向の推移</h3>
+                                        <p>スコア合計、50点未満の個数、TOP10入り個数を同時に比較します。</p>
+                                    </div>
+                                </div>
+                                <canvas id="ai-score-trend-chart"></canvas>
+                            </div>
+
+                            <aside class="ai-score-trend-side">
+                                <div class="card ai-score-distribution-card">
+                                    <div class="panel-header">
+                                        <div>
+                                            <h3>AIスコア分布</h3>
+                                            <p id="ai-score-distribution-note">直近データを集計中...</p>
+                                        </div>
+                                    </div>
+                                    <div id="ai-score-distribution" class="ai-score-distribution">
+                                        <!-- Distribution injected via JS -->
+                                    </div>
+                                </div>
+
+                                <div class="card ai-score-insight-card">
+                                    <div class="panel-header">
+                                        <div>
+                                            <h3>直近の傾向まとめ</h3>
+                                            <p>直近10回とその前10回を比較します。</p>
+                                        </div>
+                                    </div>
+                                    <ul id="ai-score-insight-list" class="ai-score-insight-list">
+                                        <!-- Insight injected via JS -->
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+
+                        <div class="ai-score-trend-table-card card">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>直近50回の当選前スコア明細</h3>
+                                    <p>スコア合計は、当選6数字それぞれのAI数字スコアを足した値です。</p>
+                                </div>
                             </div>
                             <div class="table-scroll">
-                                <table id="summary-predictions-table" class="data-table">
+                                <table class="data-table ai-score-trend-table">
                                     <thead>
                                         <tr>
-                                            <th>分析項目</th>
-                                            <th>予測・推奨値</th>
+                                            <th>回号</th>
+                                            <th>抽選日</th>
+                                            <th>当選数字</th>
+                                            <th>スコア合計</th>
+                                            <th>平均</th>
+                                            <th>50点未満</th>
+                                            <th>TOP10</th>
+                                            <th>各数字のスコア</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <!-- Row data injected here -->
+                                    <tbody id="ai-score-trend-tbody">
+                                        <!-- Rows injected via JS -->
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
                     </div>
                 </section>
 
                 <!-- Comprehensive AI Analysis Section -->
                 <section id="ai-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑬ 総合AI分析</h2>
-                        <p>①〜⑪の全分析エンジンの結果をデータ統合し、次回の期待値が最も高い組み合わせと、その詳細な選出理由を提示します。</p>
+                        <h2>AI分析</h2>
+                        <p>各分析エンジンの結果に、過去AIスコア傾向と対称ペアバランスの実績分布を加味し、次回候補TOP10と詳細な選出理由を提示します。</p>
                     </div>
 
                     <div class="ai-analysis-container">
                         <!-- Main AI Prediction Card -->
                         <div class="ai-hero-card card">
                             <div class="ai-badge-top">AI RECOMMENDATION</div>
-                            <h3>次回のAI選出数字 TOP5</h3>
+                            <h3>次回のAI選出数字 TOP10</h3>
                             <div id="ai-prediction-numbers" class="ai-numbers-display">
                                 <div class="ai-num-placeholder">?</div>
                                 <div class="ai-num-placeholder">?</div>
@@ -773,8 +887,8 @@
                 <!-- Comprehensive AI Result Review Section -->
                 <section id="ai-result-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑭ 総合AI分析結果</h2>
-                        <p>⑬総合AI分析で提示したTOP5候補をこのブラウザ内に記録し、当選結果データが追加されたタイミングで的中数・総合的中率・次回へ活かす改善ポイントを検証します。</p>
+                        <h2>AI分析結果</h2>
+                        <p>AI分析で提示したTOP10候補をこのブラウザ内に記録し、当選結果データが追加されたタイミングで的中数・AI的中率・次回へ活かす改善ポイントを検証します。</p>
                     </div>
 
                     <div class="ai-result-container">
@@ -795,7 +909,7 @@
                 <!-- Personal Prediction Ledger Section -->
                 <section id="prediction-ledger-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑯ 個人予想検証ログ</h2>
+                        <h2>個人予想検証ログ</h2>
                         <p>過去データ条件検索分析で実行した次回予想をこのブラウザ内に保存し、抽せん結果が追加されたタイミングで一致度・傾向・次回に活かす視点を検証します。</p>
                     </div>
 
@@ -826,7 +940,7 @@
                 <!-- Prediction Log Calendar Section -->
                 <section id="prediction-calendar-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>⑰ 過去ログカレンダー</h2>
+                        <h2>過去ログカレンダー</h2>
                         <p>個人予想検証ログを抽選日と回号ごとにカレンダー形式で整理し、過去に出した予想と照合結果を後から見直せます。</p>
                     </div>
 
@@ -907,7 +1021,7 @@
                     <p>この利用規約（以下「本規約」といいます。）は、LOTO6 PRO | 統合予測分析エンジン（以下「当サイト」といいます。）が提供する分析・予測支援機能の利用条件を定めるものです。ユーザーは、当サイトを利用することにより、本規約に同意したものとみなされます。</p>
 
                     <h3>第1条（サービス内容）</h3>
-                    <p>当サイトは、ロト6の過去抽選データをもとに、周期分析、頻度分析、ペア相関分析、セット球分析、総合AI分析、個人予想検証ログ等を提供します。これらは娯楽および分析支援を目的とした参考情報です。</p>
+                    <p>当サイトは、ロト6の過去抽選データをもとに、周期分析、頻度分析、ペア相関分析、セット球分析、AI分析、個人予想検証ログ等を提供します。これらは娯楽および分析支援を目的とした参考情報です。</p>
 
                     <h3>第2条（非保証）</h3>
                     <p>当サイトは、分析結果、予測数字、AI候補、的中率、各種レポートの正確性、完全性、有用性、継続性、特定目的への適合性を保証しません。また、いかなる分析結果も当選を保証するものではありません。</p>
