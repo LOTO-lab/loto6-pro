@@ -7,6 +7,7 @@ let subscriptionUnsubscribe = null;
 let firebaseApi = null;
 let authApi = null;
 let billingApi = null;
+let premiumCheckApi = null;
 
 function validateFirebaseConfig(config) {
   const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'appId'];
@@ -125,6 +126,10 @@ function renderLogin(errorMessage = '') {
       <span>AI分析結果ログ</span>
       <span>個人予想検証ログ</span>
     </div>
+    <div class="premium-gate-cautions">
+      <p>本サービスは過去データをもとに条件検索・傾向分析を行うツールです。</p>
+      <p>当選を保証するものではありません。宝くじの購入は自己判断で行ってください。</p>
+    </div>
     <button id="premium-login-btn" class="premium-gate-primary" type="button">Googleでログイン</button>
   `);
 
@@ -150,6 +155,12 @@ function renderPurchase(user, errorMessage = '') {
     <div class="premium-gate-plan">
       <span>${escapeHtml(premiumConfig.labels.planName)}</span>
       <strong>${escapeHtml(premiumConfig.labels.priceText)}</strong>
+    </div>
+    <div class="premium-gate-cautions">
+      <p>本サービスは過去データをもとに条件検索・傾向分析を行うツールです。</p>
+      <p>当選を保証するものではありません。宝くじの購入は自己判断で行ってください。</p>
+      <p>購入時にログインしたGoogleアカウントにプレミアム権限が付与されます。次回以降も同じGoogleアカウントでログインしてください。</p>
+      <p>別のアカウントでログインした場合、購入情報は引き継がれません。</p>
     </div>
     <div class="premium-gate-actions">
       <button id="premium-checkout-btn" class="premium-gate-primary" type="button">有料版を開始する</button>
@@ -223,7 +234,7 @@ function handleUser(user) {
   }
 
   renderLoading('購読状態を確認しています...');
-  subscriptionUnsubscribe = billingApi.watchSubscription(
+  subscriptionUnsubscribe = premiumCheckApi.watchPremiumSubscription(
     services,
     premiumConfig,
     user.uid,
@@ -241,11 +252,12 @@ function handleUser(user) {
 }
 
 async function loadPremiumModules() {
-  if (firebaseApi && authApi && billingApi) return;
-  [firebaseApi, authApi, billingApi] = await Promise.all([
+  if (firebaseApi && authApi && billingApi && premiumCheckApi) return;
+  [firebaseApi, authApi, billingApi, premiumCheckApi] = await Promise.all([
     import('./firebase-init.js'),
     import('./auth.js'),
     import('./billing.js'),
+    import('./premium-check.js'),
   ]);
 }
 
