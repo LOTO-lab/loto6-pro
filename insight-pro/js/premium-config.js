@@ -1,14 +1,14 @@
 export const premiumConfig = {
-  enabled: false,
+  enabled: true,
   firebaseVersion: '10.12.5',
   firebase: {
-    apiKey: '',
-    authDomain: '',
-    projectId: '',
-    appId: '',
+    apiKey: 'AIzaSyDAL25s7TZ2-YxChmJFuJkiKzNW084S3g4',
+    authDomain: 'loto6-pro-premium.firebaseapp.com',
+    projectId: 'loto6-pro-premium',
+    appId: '1:709270393170:web:f4ca86eb26c46c7b856a8b',
   },
   stripe: {
-    priceId: '',
+    priceId: 'price_1Tj27jJ5bfMYeiGy0MFfgEdu',
     allowPromotionCodes: true,
   },
   firestore: {
@@ -25,6 +25,6 @@ export const premiumConfig = {
   labels: {
     productName: 'LOTO6 PRO 統合予測分析エンジン',
     planName: '月額プラン',
-    priceText: '初回680円 / 2か月目以降980円',
+    priceText: '初回500円 / 2か月目以降680円',
   },
 };
