@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記 | LOTO6 PRO</title>
+    <meta name="description" content="LOTO6 PROの特定商取引法に基づく表記です。">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --border: #dbe3ee;
+            --primary: #0369a1;
+            --notice-bg: #f0f9ff;
+            --notice-border: #bae6fd;
+            --warn-bg: #fffbeb;
+            --warn-border: #fde68a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.75;
+        }
+
+        .legal-page {
+            width: min(980px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 40px 0 56px;
+        }
+
+        .legal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: 0;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: end;
+            gap: 4px;
+            padding: 7px;
+            border-radius: 8px;
+            background: #eef6ff;
+            border: 1px solid #c7d8ea;
+        }
+
+        .logo span {
+            display: block;
+            width: 6px;
+            border-radius: 999px;
+        }
+
+        .logo span:nth-child(1) {
+            height: 19px;
+            background: #38bdf8;
+        }
+
+        .logo span:nth-child(2) {
+            height: 25px;
+            background: #22c55e;
+        }
+
+        .logo span:nth-child(3) {
+            height: 15px;
+            background: #fb7185;
+        }
+
+        .back-link {
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .legal-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+        }
+
+        .hero {
+            padding: 32px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, #ffffff 0%, #eef8ff 100%);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(1.55rem, 4vw, 2.2rem);
+            line-height: 1.3;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            margin: 0;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .notice,
+        .caution {
+            margin: 24px 32px 0;
+            padding: 14px 16px;
+            border-radius: 8px;
+            font-size: 0.94rem;
+        }
+
+        .notice {
+            border: 1px solid var(--notice-border);
+            background: var(--notice-bg);
+            color: #075985;
+        }
+
+        .caution {
+            border: 1px solid var(--warn-border);
+            background: var(--warn-bg);
+            color: #78350f;
+        }
+
+        .legal-table {
+            width: calc(100% - 64px);
+            margin: 24px 32px 32px;
+            border-collapse: collapse;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        .legal-table th,
+        .legal-table td {
+            padding: 15px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .legal-table th {
+            width: 30%;
+            min-width: 190px;
+            background: #f8fafc;
+            color: #334155;
+            text-align: left;
+            font-weight: 900;
+        }
+
+        .legal-table td {
+            color: var(--muted);
+        }
+
+        .legal-table tr:last-child th,
+        .legal-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .legal-table p {
+            margin: 0;
+        }
+
+        .legal-table p + p {
+            margin-top: 8px;
+        }
+
+        .legal-table a {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .effective-date {
+            margin: 0 32px 32px;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 720px) {
+            .legal-page {
+                width: min(100% - 20px, 980px);
+                padding-top: 22px;
+            }
+
+            .legal-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero,
+            .notice,
+            .caution,
+            .effective-date {
+                margin-left: 18px;
+                margin-right: 18px;
+            }
+
+            .hero {
+                margin: 0;
+                padding: 24px 18px;
+            }
+
+            .legal-table {
+                width: calc(100% - 36px);
+                margin: 20px 18px 26px;
+                border: 0;
+            }
+
+            .legal-table,
+            .legal-table tbody,
+            .legal-table tr,
+            .legal-table th,
+            .legal-table td {
+                display: block;
+            }
+
+            .legal-table tr {
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .legal-table tr + tr {
+                margin-top: 12px;
+            }
+
+            .legal-table th {
+                width: 100%;
+                min-width: 0;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="legal-page">
+        <header class="legal-header">
+            <a class="brand" href="../">
+                <span class="logo" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span>LOTO6 PRO</span>
+            </a>
+            <a class="back-link" href="../">サービスへ戻る</a>
+        </header>
+
+        <section class="legal-card" aria-labelledby="page-title">
+            <div class="hero">
+                <h1 id="page-title">特定商取引法に基づく表記</h1>
+                <p class="lead">LOTO6 PROの月額サブスクリプションに関する販売条件です。</p>
+            </div>
+
+            <div class="notice">
+                住所、電話番号、運営責任者名については、個人情報保護の観点から本ページでは省略しています。請求があった場合には、取引に先立って遅滞なく電子メールにて開示します。
+            </div>
+
+            <table class="legal-table">
+                <tbody>
+                    <tr>
+                        <th scope="row">販売事業者</th>
+                        <td>LOTO6 PRO 運営</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">運営責任者</th>
+                        <td>請求があった場合、遅滞なく開示します。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">所在地</th>
+                        <td>請求があった場合、遅滞なく開示します。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">電話番号</th>
+                        <td>
+                            <p>請求があった場合、遅滞なく開示します。</p>
+                            <p>お問い合わせは原則として下記メールアドレスよりお願いいたします。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">メールアドレス</th>
+                        <td><a href="mailto:loto6pro.contact@gmail.com">loto6pro.contact@gmail.com</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">販売URL</th>
+                        <td><a href="https://www.loto6pro.com/insight-pro/">https://www.loto6pro.com/insight-pro/</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">販売価格</th>
+                        <td>
+                            <p>月額680円（税込）</p>
+                            <p>初回割引の対象アカウントは初月500円（税込）、2か月目以降は月額680円（税込）です。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">商品代金以外の必要料金</th>
+                        <td>インターネット接続料金、通信料金等はユーザーの負担となります。デジタルサービスのため送料は発生しません。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">支払方法</th>
+                        <td>Stripe Checkout上で表示される決済方法（クレジットカード等）</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">支払時期</th>
+                        <td>申込み時に初回料金が決済され、その後は毎月自動更新により請求されます。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">サービス提供時期</th>
+                        <td>決済完了後、購読状態の確認が完了し次第、ログイン中のGoogleアカウントに有料機能へのアクセス権が付与されます。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">解約方法</th>
+                        <td>
+                            <p>ログイン後、サイト上部の「支払い管理」からStripeの管理ページを開き、サブスクリプションを解約できます。</p>
+                            <p>次回更新日前までに解約した場合、以後の請求は発生しません。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">返品・キャンセル・返金</th>
+                        <td>デジタルサービスの性質上、決済完了後の返金は原則として受け付けていません。ただし、重複決済、システム不具合、その他当サイトが必要と判断した場合は個別に対応します。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">動作環境</th>
+                        <td>最新版のGoogle Chrome、Microsoft Edge、Safari、Firefox等の主要ブラウザ。JavaScriptとインターネット接続が必要です。</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">サービス内容に関する注意</th>
+                        <td>本サービスはロト6の過去データをもとに統計分析、条件検索、傾向分析、AIスコア表示、予想記録管理を提供する分析ツールです。宝くじ券の販売、賭け金の受付、抽選の実施、当選保証、払戻し、賞金の提供は行いません。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="caution">
+                掲載内容はサービス仕様の変更に応じて更新される場合があります。購入前に最新の表示内容をご確認ください。
+            </div>
+
+            <p class="effective-date">制定日：2026年6月18日</p>
+        </section>
+    </main>
+</body>
+</html>

@@ -103,6 +103,7 @@ function renderShell(content) {
       ${content}
       <div class="premium-gate-footer">
         <a href="${escapeHtml(premiumConfig.urls.freeSiteUrl)}">無料版へ戻る</a>
+        <a href="./legal/tokushoho.html" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
         <span>予想・分析結果は当選を保証するものではありません。</span>
       </div>
     </div>
