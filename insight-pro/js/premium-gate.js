@@ -256,7 +256,7 @@ function renderAccountChip(user) {
     <span class="premium-account-email">${escapeHtml(user.email || 'ログイン中')}</span>
     <button id="premium-portal-btn" type="button">支払い管理</button>
     <button id="premium-chip-logout-btn" type="button">ログアウト</button>
-    <span id="premium-chip-message" class="premium-chip-message" hidden></span>
+    <span id="premium-chip-message" class="premium-chip-message" hidden aria-live="polite"></span>
   `;
 
   document.getElementById('premium-portal-btn')?.addEventListener('click', async () => {
@@ -265,11 +265,13 @@ function renderAccountChip(user) {
     if (!button || button.disabled) return;
 
     button.disabled = true;
-    button.textContent = '開いています...';
+    button.classList.add('is-loading');
+    button.setAttribute('aria-busy', 'true');
+    button.title = '支払い管理ページを準備しています。';
     if (message) {
-      message.hidden = false;
+      message.hidden = true;
       message.className = 'premium-chip-message';
-      message.textContent = '支払い管理ページを準備しています。';
+      message.textContent = '';
     }
 
     try {
@@ -282,7 +284,9 @@ function renderAccountChip(user) {
         message.textContent = error.message || '支払い管理ページを開けませんでした。';
       }
       button.disabled = false;
-      button.textContent = '支払い管理';
+      button.classList.remove('is-loading');
+      button.removeAttribute('aria-busy');
+      button.removeAttribute('title');
     }
   });
 
