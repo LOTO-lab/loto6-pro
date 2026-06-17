@@ -10,6 +10,7 @@ import {
 import {
   addDoc,
   collection,
+  getDocs,
   getFirestore,
   onSnapshot,
 } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
@@ -43,6 +44,7 @@ export function getFirebaseServices(firebaseConfig) {
     signOut,
     addDoc,
     collection,
+    getDocs,
     onSnapshot,
   };
 

@@ -9,13 +9,19 @@ export const premiumConfig = {
   },
   stripe: {
     priceId: 'price_1Tj27jJ5bfMYeiGy0MFfgEdu',
-    allowPromotionCodes: true,
+    allowPromotionCodes: false,
+    firstCheckoutDiscount: {
+      enabled: true,
+      couponId: '6Kpf5KMh',
+      promotionCodeId: '',
+    },
   },
   firestore: {
     customersCollection: 'customers',
     subscriptionsCollection: 'subscriptions',
     checkoutSessionsCollection: 'checkout_sessions',
     portalSessionsCollection: 'portal_sessions',
+    paymentsCollection: 'payments',
   },
   urls: {
     freeSiteUrl: '../',
@@ -25,6 +31,8 @@ export const premiumConfig = {
   labels: {
     productName: 'LOTO6 PRO 統合予測分析エンジン',
     planName: '月額プラン',
-    priceText: '初回500円 / 2か月目以降680円',
+    priceText: '月額680円',
+    promoText: '初回月は自動割引で500円、2か月目以降は月額680円',
+    promoCode: 'FIRST500',
   },
 };

@@ -169,6 +169,10 @@ function renderPurchase(user, errorMessage = '') {
       <span>${escapeHtml(premiumConfig.labels.planName)}</span>
       <strong>${escapeHtml(premiumConfig.labels.priceText)}</strong>
     </div>
+    <div class="premium-gate-promo">
+      <strong>${escapeHtml(premiumConfig.labels.promoText)}</strong>
+      <span>対象アカウントにはStripe決済ページで自動適用されます。再契約時は通常価格になります。</span>
+    </div>
     <div class="premium-gate-cautions">
       <p>本サービスは過去データをもとに条件検索・傾向分析を行うツールです。</p>
       <p>当選を保証するものではありません。宝くじの購入は自己判断で行ってください。</p>

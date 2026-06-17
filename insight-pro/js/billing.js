@@ -13,6 +13,49 @@ function getCustomerCollection(services, config, uid, subcollectionName) {
   );
 }
 
+function getConfiguredFirstCheckoutDiscount(config) {
+  const discount = config.stripe.firstCheckoutDiscount;
+  if (!discount?.enabled) return null;
+  if (discount.promotionCodeId) {
+    return { promotion_code: discount.promotionCodeId };
+  }
+  if (discount.couponId) {
+    return { coupon: discount.couponId };
+  }
+  return null;
+}
+
+function isPriorSubscription(subscription) {
+  const status = String(subscription.status || '').toLowerCase();
+  return status !== 'incomplete' && status !== 'incomplete_expired';
+}
+
+async function hasPriorPaidHistory(services, config, uid) {
+  const subscriptionsRef = getCustomerCollection(
+    services,
+    config,
+    uid,
+    config.firestore.subscriptionsCollection
+  );
+  const paymentsRef = getCustomerCollection(
+    services,
+    config,
+    uid,
+    config.firestore.paymentsCollection
+  );
+
+  const [subscriptionsSnapshot, paymentsSnapshot] = await Promise.all([
+    services.getDocs(subscriptionsRef),
+    services.getDocs(paymentsRef),
+  ]);
+
+  const hasPriorSubscription = subscriptionsSnapshot.docs.some(doc => {
+    return isPriorSubscription({ id: doc.id, ...doc.data() });
+  });
+
+  return hasPriorSubscription || !paymentsSnapshot.empty;
+}
+
 export function watchSubscription(services, config, uid, callback, onError) {
   const subscriptionsRef = getCustomerCollection(
     services,
@@ -54,15 +97,26 @@ export async function createCheckoutSession(services, config, user) {
     config.firestore.checkoutSessionsCollection
   );
 
-  const docRef = await services.addDoc(checkoutSessionsRef, {
+  const configuredDiscount = getConfiguredFirstCheckoutDiscount(config);
+  const canUseFirstCheckoutDiscount =
+    configuredDiscount && !(await hasPriorPaidHistory(services, config, user.uid));
+
+  const checkoutSession = {
     price: config.stripe.priceId,
-    allow_promotion_codes: Boolean(config.stripe.allowPromotionCodes),
+    allow_promotion_codes: Boolean(config.stripe.allowPromotionCodes) && !canUseFirstCheckoutDiscount,
     success_url: makeReturnUrl(config.urls.successParam),
     cancel_url: makeReturnUrl(config.urls.cancelParam),
     metadata: {
       product: 'loto6-pro-insight',
+      first_checkout_discount: canUseFirstCheckoutDiscount ? 'applied' : 'not_applied',
     },
-  });
+  };
+
+  if (canUseFirstCheckoutDiscount) {
+    checkoutSession.discounts = [configuredDiscount];
+  }
+
+  const docRef = await services.addDoc(checkoutSessionsRef, checkoutSession);
 
   return new Promise((resolve, reject) => {
     const unsubscribe = services.onSnapshot(
