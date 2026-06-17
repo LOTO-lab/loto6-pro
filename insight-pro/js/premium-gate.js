@@ -8,6 +8,7 @@ let firebaseApi = null;
 let authApi = null;
 let billingApi = null;
 let premiumCheckApi = null;
+let premiumReturnStatus = null;
 
 function validateFirebaseConfig(config) {
   const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'appId'];
@@ -66,15 +67,19 @@ function cleanPremiumReturnParam() {
   window.history.replaceState({}, document.title, url);
 }
 
-function getReturnNotice() {
+function capturePremiumReturnParam() {
   const params = new URLSearchParams(window.location.search);
   const value = params.get('premium');
-  if (value === 'success') {
-    cleanPremiumReturnParam();
-    return '<div class="premium-gate-notice success">決済が完了しました。購読状態を確認しています。</div>';
+  if (value !== 'success' && value !== 'cancel') return;
+  premiumReturnStatus = value;
+  cleanPremiumReturnParam();
+}
+
+function getReturnNotice() {
+  if (premiumReturnStatus === 'success') {
+    return '<div class="premium-gate-notice success">申込みが完了しました。購読状態を確認しています。反映まで少し時間がかかる場合があります。</div>';
   }
-  if (value === 'cancel') {
-    cleanPremiumReturnParam();
+  if (premiumReturnStatus === 'cancel') {
     return '<div class="premium-gate-notice">決済がキャンセルされました。必要なタイミングで再開できます。</div>';
   }
   return '';
@@ -157,13 +162,17 @@ function renderLogin(errorMessage = '') {
 }
 
 function renderPurchase(user, errorMessage = '') {
+  const isCheckoutPending = premiumReturnStatus === 'success' && !errorMessage;
   setBodyState('premium-gate-active');
   renderShell(`
+    ${getReturnNotice()}
     ${errorMessage ? `<div class="premium-gate-notice error">${escapeHtml(errorMessage)}</div>` : ''}
-    <div class="premium-gate-status">購読が必要です</div>
+    <div class="premium-gate-status">${isCheckoutPending ? '購読状態を反映中です' : '購読が必要です'}</div>
     <p class="premium-gate-lead">
-      ${escapeHtml(user.email || 'ログイン中のアカウント')} は現在、有料プランが確認できません。
-      Stripeの決済ページで購読を開始すると、確認後に有料機能が開きます。
+      ${isCheckoutPending
+        ? `${escapeHtml(user.email || 'ログイン中のアカウント')} の申込みは完了しています。確認後に有料機能が自動で開きます。`
+        : `${escapeHtml(user.email || 'ログイン中のアカウント')} は現在、有料プランが確認できません。
+      Stripeの決済ページで購読を開始すると、確認後に有料機能が開きます。`}
     </p>
     <div class="premium-gate-plan">
       <span>${escapeHtml(premiumConfig.labels.planName)}</span>
@@ -180,12 +189,15 @@ function renderPurchase(user, errorMessage = '') {
       <p>別のアカウントでログインした場合、購入情報は引き継がれません。</p>
     </div>
     <div class="premium-gate-actions">
-      <button id="premium-checkout-btn" class="premium-gate-primary" type="button">有料版を開始する</button>
+      <button id="premium-checkout-btn" class="premium-gate-primary" type="button" ${isCheckoutPending ? 'disabled' : ''}>
+        ${isCheckoutPending ? '購読状態を確認中' : '有料版を開始する'}
+      </button>
       <button id="premium-logout-btn" class="premium-gate-secondary" type="button">ログアウト</button>
     </div>
   `);
 
   document.getElementById('premium-checkout-btn')?.addEventListener('click', async () => {
+    if (isCheckoutPending) return;
     renderLoading('決済ページを準備しています...');
     try {
       const url = await billingApi.createCheckoutSession(services, premiumConfig, user);
@@ -287,6 +299,8 @@ async function initPremiumGate() {
     setBodyState('premium-gate-disabled');
     return;
   }
+
+  capturePremiumReturnParam();
 
   if (!validateFirebaseConfig(premiumConfig.firebase)) {
     renderConfigError();
