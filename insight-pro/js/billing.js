@@ -13,14 +13,11 @@ function getCustomerCollection(services, config, uid, subcollectionName) {
   );
 }
 
-function getConfiguredFirstCheckoutDiscount(config) {
+function getConfiguredFirstCheckoutPromotionCode(config) {
   const discount = config.stripe.firstCheckoutDiscount;
   if (!discount?.enabled) return null;
   if (discount.promotionCodeId) {
-    return { promotion_code: discount.promotionCodeId };
-  }
-  if (discount.couponId) {
-    return { coupon: discount.couponId };
+    return discount.promotionCodeId;
   }
   return null;
 }
@@ -97,9 +94,9 @@ export async function createCheckoutSession(services, config, user) {
     config.firestore.checkoutSessionsCollection
   );
 
-  const configuredDiscount = getConfiguredFirstCheckoutDiscount(config);
+  const configuredPromotionCode = getConfiguredFirstCheckoutPromotionCode(config);
   const canUseFirstCheckoutDiscount =
-    configuredDiscount && !(await hasPriorPaidHistory(services, config, user.uid));
+    configuredPromotionCode && !(await hasPriorPaidHistory(services, config, user.uid));
 
   const checkoutSession = {
     price: config.stripe.priceId,
@@ -113,7 +110,7 @@ export async function createCheckoutSession(services, config, user) {
   };
 
   if (canUseFirstCheckoutDiscount) {
-    checkoutSession.discounts = [configuredDiscount];
+    checkoutSession.promotion_code = configuredPromotionCode;
   }
 
   const docRef = await services.addDoc(checkoutSessionsRef, checkoutSession);
