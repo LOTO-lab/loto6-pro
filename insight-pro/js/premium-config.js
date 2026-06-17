@@ -12,8 +12,8 @@ export const premiumConfig = {
     allowPromotionCodes: false,
     firstCheckoutDiscount: {
       enabled: true,
-      couponId: '6Kpf5KMh',
-      promotionCodeId: '',
+      couponId: '',
+      promotionCodeId: 'promo_1Tj2HRJ5bfMYeiGyB8NHxIKP',
     },
   },
   firestore: {
