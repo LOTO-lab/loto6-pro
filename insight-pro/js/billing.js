@@ -139,36 +139,19 @@ export async function createCheckoutSession(services, config, user) {
 }
 
 export async function createPortalSession(services, config, user) {
-  const portalSessionsRef = getCustomerCollection(
-    services,
-    config,
-    user.uid,
-    config.firestore.portalSessionsCollection
+  const createPortalLink = services.httpsCallable(
+    services.functions,
+    'ext-firestore-stripe-payments-createPortalLink'
   );
-
-  const docRef = await services.addDoc(portalSessionsRef, {
-    return_url: makeReturnUrl(''),
+  const result = await createPortalLink({
+    returnUrl: makeReturnUrl(''),
+    locale: 'ja',
   });
 
-  return new Promise((resolve, reject) => {
-    const unsubscribe = services.onSnapshot(
-      docRef,
-      snapshot => {
-        const data = snapshot.data() || {};
-        if (data.error) {
-          unsubscribe();
-          reject(new Error(data.error.message || '支払い管理ページの作成に失敗しました。'));
-          return;
-        }
-        if (data.url) {
-          unsubscribe();
-          resolve(data.url);
-        }
-      },
-      error => {
-        unsubscribe();
-        reject(error);
-      }
-    );
-  });
+  const url = result?.data?.url;
+  if (!url) {
+    throw new Error('支払い管理ページのURLを取得できませんでした。');
+  }
+
+  return url;
 }

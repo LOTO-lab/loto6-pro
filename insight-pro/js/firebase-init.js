@@ -14,6 +14,10 @@ import {
   getFirestore,
   onSnapshot,
 } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
+import {
+  getFunctions,
+  httpsCallable,
+} from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-functions.js';
 
 let firebaseServices = null;
 
@@ -30,6 +34,7 @@ export function getFirebaseServices(firebaseConfig) {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
+  const functions = getFunctions(app, 'us-central1');
   const googleProvider = new GoogleAuthProvider();
   googleProvider.setCustomParameters({ prompt: 'select_account' });
 
@@ -37,6 +42,7 @@ export function getFirebaseServices(firebaseConfig) {
     app,
     auth,
     db,
+    functions,
     googleProvider,
     onAuthStateChanged,
     signInWithPopup,
@@ -46,6 +52,7 @@ export function getFirebaseServices(firebaseConfig) {
     collection,
     getDocs,
     onSnapshot,
+    httpsCallable,
   };
 
   return firebaseServices;

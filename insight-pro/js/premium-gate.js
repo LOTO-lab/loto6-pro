@@ -9,6 +9,8 @@ let authApi = null;
 let billingApi = null;
 let premiumCheckApi = null;
 let premiumReturnStatus = null;
+let subscriptionWatchId = 0;
+let isSigningOut = false;
 
 function validateFirebaseConfig(config) {
   const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'appId'];
@@ -208,8 +210,23 @@ function renderPurchase(user, errorMessage = '') {
   });
 
   document.getElementById('premium-logout-btn')?.addEventListener('click', () => {
-    authApi.signOutPremium(services);
+    signOutCurrentUser();
   });
+}
+
+async function signOutCurrentUser() {
+  isSigningOut = true;
+  subscriptionWatchId += 1;
+  subscriptionUnsubscribe?.();
+  subscriptionUnsubscribe = null;
+  document.getElementById('premium-account-chip')?.remove();
+
+  try {
+    await authApi.signOutPremium(services);
+  } catch (error) {
+    isSigningOut = false;
+    renderLogin(error.message || 'ログアウトに失敗しました。');
+  }
 }
 
 function unlockPremium(user) {
@@ -239,19 +256,38 @@ function renderAccountChip(user) {
     <span class="premium-account-email">${escapeHtml(user.email || 'ログイン中')}</span>
     <button id="premium-portal-btn" type="button">支払い管理</button>
     <button id="premium-chip-logout-btn" type="button">ログアウト</button>
+    <span id="premium-chip-message" class="premium-chip-message" hidden></span>
   `;
 
   document.getElementById('premium-portal-btn')?.addEventListener('click', async () => {
+    const button = document.getElementById('premium-portal-btn');
+    const message = document.getElementById('premium-chip-message');
+    if (!button || button.disabled) return;
+
+    button.disabled = true;
+    button.textContent = '開いています...';
+    if (message) {
+      message.hidden = false;
+      message.className = 'premium-chip-message';
+      message.textContent = '支払い管理ページを準備しています。';
+    }
+
     try {
       const url = await billingApi.createPortalSession(services, premiumConfig, user);
       window.location.assign(url);
     } catch (error) {
-      window.alert(error.message || '支払い管理ページを開けませんでした。');
+      if (message) {
+        message.hidden = false;
+        message.className = 'premium-chip-message error';
+        message.textContent = error.message || '支払い管理ページを開けませんでした。';
+      }
+      button.disabled = false;
+      button.textContent = '支払い管理';
     }
   });
 
   document.getElementById('premium-chip-logout-btn')?.addEventListener('click', () => {
-    authApi.signOutPremium(services);
+    signOutCurrentUser();
   });
 }
 
@@ -259,19 +295,24 @@ function handleUser(user) {
   currentUser = user;
   subscriptionUnsubscribe?.();
   subscriptionUnsubscribe = null;
+  subscriptionWatchId += 1;
 
   if (!user) {
+    isSigningOut = false;
     document.getElementById('premium-account-chip')?.remove();
     renderLogin();
     return;
   }
 
+  isSigningOut = false;
+  const watchId = subscriptionWatchId;
   renderLoading('購読状態を確認しています...');
   subscriptionUnsubscribe = premiumCheckApi.watchPremiumSubscription(
     services,
     premiumConfig,
     user.uid,
     state => {
+      if (watchId !== subscriptionWatchId || currentUser?.uid !== user.uid) return;
       if (state.subscribed) {
         unlockPremium(user);
       } else {
@@ -279,6 +320,15 @@ function handleUser(user) {
       }
     },
     error => {
+      const authUser = services.auth.currentUser;
+      if (
+        isSigningOut ||
+        watchId !== subscriptionWatchId ||
+        !authUser ||
+        authUser.uid !== user.uid
+      ) {
+        return;
+      }
       renderPurchase(user, error.message || '購読状態の確認に失敗しました。');
     }
   );
