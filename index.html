@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOTO6 PRO | 過去データ条件検索分析</title>
-    <!-- Version: 20260623-0856 -->
+    <!-- Version: 20260623-0931 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -266,6 +266,374 @@
         .trend-recent-title span { color: #64748b; font-size: 11px; font-weight: 600; }
         .trend-empty-mini { color: #94a3b8; font-size: 12px; line-height: 1.6; text-align: center; padding: 10px 6px; }
         .trend-note { color: #64748b; font-size: 11px; line-height: 1.5; padding: 0 4px; }
+
+        .footer-links { margin-top: 10px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .footer-link { color: #2563eb; font-size: 13px; font-weight: 800; text-decoration: none; }
+        .footer-link:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            html, body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+                background: #eef7ff;
+            }
+
+            body {
+                font-size: 14px;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            .page-wrapper {
+                display: block;
+                min-height: 100vh;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 10px 0;
+                border-right: none;
+                border-bottom: none;
+                box-shadow: none;
+                background: #eef7ff;
+                box-sizing: border-box;
+            }
+
+            .sidebar.hidden {
+                display: flex;
+                margin-left: 0;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar > div:first-child {
+                order: 1;
+                margin: 0 !important;
+                padding: 12px 14px;
+                background: #ffffff;
+                border: 1px solid #dbeafe;
+                border-radius: 14px;
+                box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+            }
+
+            .sidebar > div:first-child img {
+                max-width: 210px !important;
+            }
+
+            .sidebar > div:nth-child(2),
+            #publicTrendTitle,
+            #predictionHistory,
+            .sidebar > div[style*="margin-top: 30px"],
+            #maintenance-notice {
+                display: none !important;
+            }
+
+            #sidebar-stats-container {
+                order: 2;
+                display: block;
+                padding: 0;
+            }
+
+            #sidebar-stats-container > div:not(#winnerNumbersSection) {
+                display: none !important;
+            }
+
+            #winnerNumbersSection {
+                margin: 0 !important;
+            }
+
+            #winnerNumbersSection > div:first-child {
+                margin-bottom: 8px !important;
+                padding: 0 2px 8px !important;
+                border-bottom: none !important;
+                font-size: 16px !important;
+            }
+
+            #winnerNumbersInfo {
+                padding: 14px !important;
+                border-radius: 14px !important;
+                border: 1px solid #bfdbfe !important;
+                box-shadow: 0 8px 18px rgba(15, 23, 42, 0.07) !important;
+                font-size: 13px !important;
+                overflow-wrap: anywhere;
+            }
+
+            .top-layout {
+                display: block;
+                overflow: visible;
+                background: #eef7ff;
+            }
+
+            .top-header {
+                display: none !important;
+            }
+
+            .content-wrapper {
+                width: 100%;
+                padding: 10px;
+                gap: 12px;
+                box-sizing: border-box;
+            }
+
+            .content-ad-layout {
+                display: block;
+            }
+
+            .right-ad-column,
+            .admax-banner {
+                display: none !important;
+            }
+
+            .content-main-column {
+                gap: 12px;
+            }
+
+            .main-controls-wrapper {
+                padding: 12px;
+                border-radius: 14px;
+                border: 1px solid #dbeafe;
+                box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+                margin: 0;
+            }
+
+            .notice-box {
+                margin-bottom: 12px;
+                padding: 10px 12px;
+                border-left-color: #2563eb;
+                border-radius: 12px;
+                background: #f8fbff;
+            }
+
+            .controls-flex {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 10px;
+                padding: 0;
+                border: none;
+                background: transparent;
+            }
+
+            .controls-flex > div {
+                width: 100% !important;
+                max-width: 100%;
+                display: flex !important;
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+                gap: 9px !important;
+                flex-wrap: wrap !important;
+                padding: 11px !important;
+                margin: 0 !important;
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                box-sizing: border-box;
+            }
+
+            .controls-flex > div > div {
+                max-width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .controls-flex label {
+                font-size: 13px !important;
+                line-height: 1.35;
+            }
+
+            .controls-flex input[type="number"],
+            .controls-flex select {
+                min-height: 40px;
+                width: clamp(54px, 22vw, 88px) !important;
+                border-radius: 8px !important;
+                font-size: 16px;
+            }
+
+            #f1, #f2, #f3, #f4, #f5 {
+                width: 48px !important;
+                min-width: 48px;
+            }
+
+            #evensDisplay {
+                min-height: 40px;
+                width: 44px !important;
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                border-radius: 8px !important;
+            }
+
+            input[name="elim_mode"],
+            input[name="range_mode"] {
+                width: auto !important;
+                min-height: auto;
+            }
+
+            .controls-flex div[style*="height: 38px"] {
+                height: auto !important;
+                min-height: 44px;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                gap: 8px !important;
+                padding: 8px 10px !important;
+                box-sizing: border-box;
+            }
+
+            #rangeInputsWrapper {
+                width: 100%;
+                flex-wrap: wrap;
+                row-gap: 8px;
+            }
+
+            #rangeInputsWrapper select {
+                width: 54px !important;
+                min-height: 34px;
+            }
+
+            #btnPrevDerived {
+                width: 100% !important;
+                min-height: 48px;
+                margin: 0 !important;
+                white-space: normal;
+            }
+
+            .mobile-action-row {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 10px !important;
+                margin: 14px 0 12px !important;
+            }
+
+            .mobile-action-row .btn {
+                width: 100% !important;
+                min-height: 50px;
+                margin: 0 !important;
+                padding: 12px 14px !important;
+                border-radius: 12px;
+                white-space: normal;
+            }
+
+            .mobile-action-row .predict-btn {
+                font-size: 17px;
+                box-shadow: 0 8px 18px rgba(21, 115, 33, 0.26);
+            }
+
+            .latest-trend-toggle-row,
+            #latestTrendBox {
+                display: none !important;
+            }
+
+            #predictText {
+                margin-top: 12px;
+                padding: 12px !important;
+                border-radius: 12px;
+                font-size: 13px;
+                overflow-wrap: anywhere;
+            }
+
+            .prediction-result-display {
+                gap: 8px;
+                padding: 12px 8px;
+                flex-wrap: wrap;
+            }
+
+            .result-ball {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .board-container {
+                width: calc(100vw - 20px);
+                max-width: calc(100vw - 20px);
+                margin: 0 10px 18px;
+                border: 1px solid #bfdbfe;
+                border-radius: 14px;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior-x: contain;
+                touch-action: pan-x pan-y;
+                box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+                scrollbar-color: #60a5fa #e0f2fe;
+                scrollbar-width: auto;
+            }
+
+            .board-container::-webkit-scrollbar {
+                height: 12px;
+            }
+
+            .board-container::-webkit-scrollbar-track {
+                background: #e0f2fe;
+                border-radius: 999px;
+            }
+
+            .board-container::-webkit-scrollbar-thumb {
+                background: #60a5fa;
+                border-radius: 999px;
+                border: 2px solid #e0f2fe;
+            }
+
+            #mainTable {
+                width: max-content;
+                min-width: 1120px;
+                table-layout: fixed;
+            }
+
+            .board-container th,
+            .board-container td {
+                min-width: 22px;
+                width: 22px;
+                height: 28px;
+                font-size: 12px;
+                padding: 0;
+            }
+
+            .board-container .id-col {
+                min-width: 58px;
+                width: 58px;
+                left: 0;
+                font-size: 11px;
+            }
+
+            .board-container .sb-col,
+            .board-container .sum-col,
+            .board-container .oe-col {
+                min-width: 38px;
+                width: 38px;
+            }
+
+            .board-container .num-cell,
+            .board-container .header-num {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+
+            .site-footer {
+                margin: 6px 10px 0;
+                padding: 18px 12px 24px;
+                border-radius: 14px 14px 0 0;
+            }
+
+            .footer-links {
+                gap: 10px;
+            }
+
+            .footer-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 38px;
+                padding: 0 10px;
+                border: 1px solid #bfdbfe;
+                border-radius: 999px;
+                background: #eff6ff;
+            }
+        }
     </style>
 </head>
 <body>
@@ -309,7 +677,7 @@
                 </div>
             </div>
             
-            <div style="font-size: 15px; font-weight: 800; margin-bottom: 12px; margin-top: 10px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">📊 みんなの予想傾向</div>
+            <div id="publicTrendTitle" style="font-size: 15px; font-weight: 800; margin-bottom: 12px; margin-top: 10px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">📊 みんなの予想傾向</div>
             <div id="predictionHistory" style="padding: 4px; margin-bottom: 15px; transition: opacity 0.3s ease;">
                 <div class="skeleton skeleton-text" style="height: 40px; margin-bottom: 10px;"></div>
                 <div class="skeleton skeleton-text" style="height: 40px; margin-bottom: 10px;"></div>
@@ -472,12 +840,12 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 20px; justify-content: center; margin: 10px 0 20px 0;">
+                    <div class="mobile-action-row" style="display: flex; gap: 20px; justify-content: center; margin: 10px 0 20px 0;">
                         <button class="btn predict-btn" onclick="generatePrediction()" style="width: 220px;">🚀 次回予想を実行</button>
                         <button class="btn" onclick="openHistoryModal()" style="background: #ffffff; color: #1e293b; border: 1px solid #cbd5e1; box-shadow: none; font-size: 14px; width: 220px; padding: 10px;">🔍 検索履歴管理</button>
                     </div>
 
-                    <div style="margin-bottom: 10px;">
+                    <div class="latest-trend-toggle-row" style="margin-bottom: 10px;">
                         <button onclick="toggleTrendBox()" class="btn-toggle" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: #fffdf5; border: 1px solid #ffe082; color: #5c4d04; padding: 10px 15px; border-radius: 8px;">
                             <strong id="trendHeaderTitle">📊 最新回からの次出現傾向（クリックで展開）</strong>
                             <span id="trendToggleIcon">▼</span>
@@ -531,12 +899,17 @@
             <footer class="site-footer">
                 <div class="footer-content">
                     <p>© 2026 LOTO6 PRO. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a class="footer-link" href="javascript:void(0)" onclick="openPP()">プライバシーポリシー</a>
+                        <a class="footer-link" href="javascript:void(0)" onclick="openTerms()">利用規約</a>
+                        <a class="footer-link" href="javascript:void(0)" onclick="openContact()">お問い合わせ</a>
+                    </div>
                 </div>
             </footer>
         </section>
     </div>
 
-    <script src="assets/loto6-pro-7e1851b156.js"></script>
+    <script src="assets/loto6-pro-3207f97b65.js"></script>
 
 
     <style>
