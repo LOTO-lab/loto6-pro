@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CU0WD0yl.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DSEjEb74.css">
+  <script type="module" crossorigin src="./assets/index-Bq4Bazyg.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DT0A3XUd.css">
 </head>
 <body class="premium-boot-lock">
     <div id="app" class="premium-app-area" data-premium-app-area>
@@ -59,7 +59,8 @@
                 <div class="nav-group ai-nav-group">
                     <span class="nav-group-label">AI分析</span>
                     <div class="nav-group-buttons">
-                        <button class="tab-btn" data-target="ai-score-trend-section">過去AIスコア傾向</button>
+                        <button class="tab-btn" data-target="ai-score-trend-section">AIスコア傾向</button>
+                        <button class="tab-btn" data-target="ai-score-link-section">AIスコア帯別・数字結び付き分析</button>
                         <button class="tab-btn" data-target="ai-section">AI分析</button>
                         <button class="tab-btn" data-target="ai-result-section">AI分析結果</button>
                     </div>
@@ -685,6 +686,44 @@
                             <canvas id="mirror-pair-chart"></canvas>
                         </div>
 
+                        <div class="mirror-pair-all-card card">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>全回の対称ペア集計</h3>
+                                    <p>外側・中間・中央それぞれの全期間平均、直近50回平均、基準44より高い回・低い回を確認します。</p>
+                                </div>
+                            </div>
+                            <div id="mirror-pair-all-summary" class="mirror-pair-all-summary-grid">
+                                <!-- All-time summary injected via JS -->
+                            </div>
+                        </div>
+
+                        <div class="mirror-pair-analysis-grid">
+                            <div class="mirror-pair-ranking-card card">
+                                <div class="panel-header">
+                                    <div>
+                                        <h3>合計値別 出現割合ランキング</h3>
+                                        <p>全回と直近50回で多く出ている外側・中間・中央ペア合計をランキング表示します。</p>
+                                    </div>
+                                </div>
+                                <div id="mirror-pair-ranking" class="mirror-pair-ranking-grid">
+                                    <!-- Ranking injected via JS -->
+                                </div>
+                            </div>
+
+                            <div class="mirror-pair-insight-card card">
+                                <div class="panel-header">
+                                    <div>
+                                        <h3>ここからわかること</h3>
+                                        <p>全回集計と直近50回の差から、次回分析で見るべき偏りを整理します。</p>
+                                    </div>
+                                </div>
+                                <ul id="mirror-pair-insights" class="mirror-pair-insights">
+                                    <!-- Insights injected via JS -->
+                                </ul>
+                            </div>
+                        </div>
+
                         <div class="mirror-pair-table-card card">
                             <div class="panel-header">
                                 <div>
@@ -773,7 +812,7 @@
                 <!-- AI Score Trend Section -->
                 <section id="ai-score-trend-section" class="tab-pane">
                     <div class="section-intro">
-                        <h2>過去AIスコア傾向</h2>
+                        <h2>AIスコア傾向</h2>
                         <p>各抽選回の当選数字について、その回より前のデータだけでAI数字スコアを再計算し、実際に出た数字が高スコア寄りだったのか、低〜中スコア寄りだったのかを検証します。</p>
                     </div>
 
@@ -870,11 +909,102 @@
                     </div>
                 </section>
 
+                <!-- AI Score Band Link Analysis Section -->
+                <section id="ai-score-link-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>AIスコア帯別・数字結び付き分析</h2>
+                        <p>AIスコア傾向で見えた高・中・低の構成を、現在の1〜43番の役割へ落とし込みます。低スコアでも拾う根拠がある数字と、軸にしすぎない高スコア数字を分けて確認します。</p>
+                    </div>
+
+                    <div class="ai-score-link-container">
+                        <div id="ai-score-link-summary" class="ai-score-link-summary-grid">
+                            <!-- Summary cards injected here -->
+                        </div>
+
+                        <div class="ai-score-link-grid">
+                            <div class="card ai-score-link-role-card high">
+                                <div class="panel-header">
+                                    <div>
+                                        <h3>高スコア軸候補</h3>
+                                        <p>強い根拠を持つが、採用しすぎると過熱しやすい数字です。</p>
+                                    </div>
+                                </div>
+                                <div id="ai-score-link-high" class="ai-score-link-list">
+                                    <!-- High score candidates injected here -->
+                                </div>
+                            </div>
+
+                            <div class="card ai-score-link-role-card mid">
+                                <div class="panel-header">
+                                    <div>
+                                        <h3>中スコアつなぎ候補</h3>
+                                        <p>高スコア軸と低スコア拾い上げをつなぐ数字です。</p>
+                                    </div>
+                                </div>
+                                <div id="ai-score-link-mid" class="ai-score-link-list">
+                                    <!-- Mid score candidates injected here -->
+                                </div>
+                            </div>
+
+                            <div class="card ai-score-link-role-card low">
+                                <div class="panel-header">
+                                    <div>
+                                        <h3>低スコア拾い上げ候補</h3>
+                                        <p>低スコア帯の中でも、同じ局面で出た実績や補助根拠がある数字です。</p>
+                                    </div>
+                                </div>
+                                <div id="ai-score-link-low" class="ai-score-link-list">
+                                    <!-- Low score candidates injected here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card ai-score-link-note-card">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>AI分析への反映</h3>
+                                    <p>次回候補TOP10では、高スコアだけに寄せず、低スコア帯の拾い上げ候補を分散して残します。</p>
+                                </div>
+                            </div>
+                            <ul id="ai-score-link-notes" class="ai-score-link-notes">
+                                <!-- Notes injected here -->
+                            </ul>
+                        </div>
+
+                        <div class="card ai-score-link-table-card">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>現在候補の数字別判断</h3>
+                                    <p>現在スコア、直近50回の同局面出現、補助根拠を合わせた役割順です。</p>
+                                </div>
+                            </div>
+                            <div class="table-scroll">
+                                <table class="data-table ai-score-link-table">
+                                    <thead>
+                                        <tr>
+                                            <th>数字</th>
+                                            <th>現在帯</th>
+                                            <th>現在スコア</th>
+                                            <th>同局面</th>
+                                            <th>低スコア的中</th>
+                                            <th>判断</th>
+                                            <th>主な根拠</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ai-score-link-tbody">
+                                        <!-- Rows injected via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Comprehensive AI Analysis Section -->
                 <section id="ai-section" class="tab-pane">
                     <div class="section-intro">
                         <h2>AI分析</h2>
-                        <p>各分析エンジンの結果に、過去AIスコア傾向と対称ペアバランスの実績分布を加味し、次回候補TOP10と詳細な選出理由を提示します。</p>
+                        <p>各分析エンジンの結果に、AIスコア傾向、AIスコア帯別・数字結び付き分析、対称ペアバランスの実績分布を加味し、次回候補TOP10と詳細な選出理由を提示します。</p>
                     </div>
 
                     <div class="ai-analysis-container">

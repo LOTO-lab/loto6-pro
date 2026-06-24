@@ -143,7 +143,8 @@ function renderLogin(errorMessage = '') {
     </p>
     <div class="premium-gate-features">
       <span>AI分析 TOP10</span>
-      <span>過去AIスコア傾向</span>
+      <span>AIスコア傾向</span>
+      <span>AIスコア帯別分析</span>
       <span>AI分析結果ログ</span>
       <span>個人予想検証ログ</span>
     </div>
