@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CmOSY-4Z.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CVJIsEDD.css">
+  <script type="module" crossorigin src="./assets/index-Dsv7wla3.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CdaQ0TSW.css">
 </head>
 <body class="premium-boot-lock">
     <div id="app" class="premium-app-area" data-premium-app-area>
@@ -993,6 +993,43 @@
                                     <p>外側・中間・中央の入力値に対して、昇順に並べた6数字が条件一致する組み合わせを全件表示します。</p>
                                 </div>
                                 <span id="ai-score-pair-combo-count" class="ai-score-pair-combo-count">0件</span>
+                            </div>
+                            <div class="ai-score-pair-combo-filters" aria-label="成立する6数字組み合わせの検索条件">
+                                <label>
+                                    <span>奇偶</span>
+                                    <select id="ai-score-pair-combo-odd-even" data-ai-score-pair-combo-filter>
+                                        <option value="">指定なし</option>
+                                        <option value="3:3">3:3</option>
+                                        <option value="4:2">4:2</option>
+                                        <option value="2:4">2:4</option>
+                                        <option value="5:1">5:1</option>
+                                        <option value="1:5">1:5</option>
+                                        <option value="6:0">6:0</option>
+                                        <option value="0:6">0:6</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>下一桁一致</span>
+                                    <select id="ai-score-pair-combo-last-digit" data-ai-score-pair-combo-filter>
+                                        <option value="">指定なし</option>
+                                        <option value="none">一致なし</option>
+                                        <option value="2">2一致以上</option>
+                                        <option value="3">3一致以上</option>
+                                        <option value="4">4一致以上</option>
+                                        <option value="5">5一致以上</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>連続数字</span>
+                                    <select id="ai-score-pair-combo-consecutive" data-ai-score-pair-combo-filter>
+                                        <option value="">指定なし</option>
+                                        <option value="0">連続なし</option>
+                                        <option value="1">1組以上</option>
+                                        <option value="2">2組以上</option>
+                                        <option value="3">3組以上</option>
+                                    </select>
+                                </label>
+                                <button id="ai-score-pair-combo-filter-clear" type="button" class="btn secondary compact">検索条件クリア</button>
                             </div>
                             <div id="ai-score-pair-combo-list" class="ai-score-pair-combo-list">
                                 外側・中間・中央の合計値を入力してください。
