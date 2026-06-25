@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CjCacBb2.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BZMmCHN6.css">
+  <script type="module" crossorigin src="./assets/index-DkUkVL5M.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CO6vVuC8.css">
 </head>
 <body class="premium-boot-lock">
     <div id="app" class="premium-app-area" data-premium-app-area>
@@ -60,6 +60,7 @@
                     <span class="nav-group-label">AI分析</span>
                     <div class="nav-group-buttons">
                         <button class="tab-btn" data-target="ai-score-trend-section">AIスコア傾向</button>
+                        <button class="tab-btn" data-target="ai-score-pair-section">AIスコア&ペア分析</button>
                         <button class="tab-btn" data-target="ai-score-link-section">AIスコア帯別・数字結び付き分析</button>
                         <button class="tab-btn" data-target="ai-section">AI分析</button>
                         <button class="tab-btn" data-target="ai-result-section">AI分析結果</button>
@@ -904,6 +905,84 @@
                                         <!-- Rows injected via JS -->
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Score Pair Analysis Section -->
+                <section id="ai-score-pair-section" class="tab-pane">
+                    <div class="section-intro">
+                        <h2>AIスコア&ペア分析</h2>
+                        <p>現在の各数字AIスコアを見ながら6数字を選択し、外側・中間・中央ペアの合計値に合う組み合わせを確認します。選択した数字と一致するペア候補は強調表示されます。</p>
+                    </div>
+
+                    <div class="ai-score-pair-container">
+                        <div class="ai-score-pair-score-card card">
+                            <div class="panel-header ai-current-score-header">
+                                <div>
+                                    <h3>現在の各数字AIスコア</h3>
+                                    <p>1〜43の現在スコアです。候補にしたい数字を最大6つまで選択できます。</p>
+                                </div>
+                                <div class="ai-score-pair-tools">
+                                    <div class="control-group ai-current-score-sort">
+                                        <label for="ai-score-pair-sort">並び順</label>
+                                        <select id="ai-score-pair-sort">
+                                            <option value="score-desc" selected>スコア降順</option>
+                                            <option value="score-asc">スコア昇順</option>
+                                            <option value="number">数字順</option>
+                                        </select>
+                                    </div>
+                                    <button id="ai-score-pair-clear" type="button" class="btn secondary">選択解除</button>
+                                </div>
+                            </div>
+                            <div class="ai-score-pair-selected-row">
+                                <span id="ai-score-pair-selected-count">選択中 0/6</span>
+                                <div id="ai-score-pair-selected-balls" class="ai-score-pair-selected-balls">未選択</div>
+                            </div>
+                            <div id="ai-score-pair-score-grid" class="ai-current-score-grid ai-score-pair-score-grid">
+                                <!-- Current AI scores injected via JS -->
+                            </div>
+                        </div>
+
+                        <div class="ai-score-pair-board-card card">
+                            <div class="panel-header">
+                                <div>
+                                    <h3>外側・中間・中央ペア入力</h3>
+                                    <p>赤枠に合計値を入れると、該当する全ペアを左右の列に表示します。</p>
+                                </div>
+                            </div>
+                            <div class="ai-score-pair-board" aria-label="AIスコアとペア合計の分析ボード">
+                                <div class="ai-score-pair-column outer left">
+                                    <input id="ai-score-pair-outer-sum" class="ai-score-pair-sum-input" type="number" min="3" max="85" inputmode="numeric" placeholder="44" data-ai-pair-sum="outer" aria-label="外側ペアの合計値">
+                                    <strong>外側</strong>
+                                    <div id="ai-score-pair-outer-left" class="ai-score-pair-list"></div>
+                                </div>
+                                <div class="ai-score-pair-column middle left">
+                                    <input id="ai-score-pair-middle-sum" class="ai-score-pair-sum-input" type="number" min="3" max="85" inputmode="numeric" placeholder="40" data-ai-pair-sum="middle" aria-label="中間ペアの合計値">
+                                    <strong>中間</strong>
+                                    <div id="ai-score-pair-middle-left" class="ai-score-pair-list"></div>
+                                </div>
+                                <div class="ai-score-pair-column center left">
+                                    <input id="ai-score-pair-center-sum" class="ai-score-pair-sum-input" type="number" min="3" max="85" inputmode="numeric" placeholder="53" data-ai-pair-sum="center" aria-label="中央ペアの合計値">
+                                    <strong>中央</strong>
+                                    <div id="ai-score-pair-center-left" class="ai-score-pair-list"></div>
+                                </div>
+                                <div class="ai-score-pair-column center right">
+                                    <span class="ai-score-pair-sum-spacer" aria-hidden="true"></span>
+                                    <strong>中央</strong>
+                                    <div id="ai-score-pair-center-right" class="ai-score-pair-list"></div>
+                                </div>
+                                <div class="ai-score-pair-column middle right">
+                                    <span class="ai-score-pair-sum-spacer" aria-hidden="true"></span>
+                                    <strong>中間</strong>
+                                    <div id="ai-score-pair-middle-right" class="ai-score-pair-list"></div>
+                                </div>
+                                <div class="ai-score-pair-column outer right">
+                                    <span class="ai-score-pair-sum-spacer" aria-hidden="true"></span>
+                                    <strong>外側</strong>
+                                    <div id="ai-score-pair-outer-right" class="ai-score-pair-list"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
